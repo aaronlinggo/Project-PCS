@@ -1,17 +1,16 @@
 # Main Program
-Hotel Harem SamGun/.vs/*
-Hotel Harem Samgun/Hotel Harem Samgun/bin/*
-Hotel Harem Samgun/Hotel Harem Samgun/obj/*
+bin/
+obj/
 
 # Visual Studio Code Workspace File
 *.code-workspace
 
 # Temporary Ignore
-Hotel Harem SamGun/.vs/Hotel Harem SamGun/v16/.suo
-Hotel Harem SamGun/Hotel Harem SamGun/bin/Debug/Hotel Harem SamGun.exe
-Hotel Harem SamGun/Hotel Harem SamGun/bin/Debug/Hotel Harem SamGun.pdb
-Hotel Harem SamGun/Hotel Harem SamGun/FormLogin.Designer.cs
-Hotel Harem SamGun/Hotel Harem SamGun/obj/Debug/Hotel Harem SamGun.csproj.GenerateResource.cache
-Hotel Harem SamGun/Hotel Harem SamGun/obj/Debug/Hotel Harem SamGun.exe
-Hotel Harem SamGun/Hotel Harem SamGun/obj/Debug/Hotel Harem SamGun.pdb
-Hotel Harem SamGun/.vs/Hotel Harem SamGun/v16/.suo
+# Hotel Harem SamGun/.vs/Hotel Harem SamGun/v16/.suo
+# Hotel Harem SamGun/Hotel Harem SamGun/bin/Debug/Hotel Harem SamGun.exe
+# Hotel Harem SamGun/Hotel Harem SamGun/bin/Debug/Hotel Harem SamGun.pdb
+# Hotel Harem SamGun/Hotel Harem SamGun/FormLogin.Designer.cs
+# Hotel Harem SamGun/Hotel Harem SamGun/obj/Debug/Hotel Harem SamGun.csproj.GenerateResource.cache
+# Hotel Harem SamGun/Hotel Harem SamGun/obj/Debug/Hotel Harem SamGun.exe
+# Hotel Harem SamGun/Hotel Harem SamGun/obj/Debug/Hotel Harem SamGun.pdb
+# Hotel Harem SamGun/.vs/Hotel Harem SamGun/v16/.suo
