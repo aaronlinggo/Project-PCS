@@ -22,23 +22,23 @@ namespace Hotel_Harem_SamGun
             //CEK FIELD TEXTBOX
             if (tbUsername.Text.Trim() == "" || tbPassword.Text.Trim() == "")
             {
-                MessageBox.Show("Tidak boleh ada field kosong!");
+                MessageBox.Show("Tidak boleh ada field kosong!", "Failed");
                 return;
             }
 
             //CEK USERNAME
-            string username = "";
+            string username = "tes";
             if (tbUsername.Text.Trim() != username)
             {
-                MessageBox.Show("Username tidak terdaftar! Harap cek kembali!");
+                MessageBox.Show("Username tidak terdaftar! Harap cek kembali!", "Failed");
                 return;
             }
 
             //CEK PASSWORD
-            string password = "";
+            string password = "tes";
             if (tbPassword.Text.Trim() != password)
             {
-                MessageBox.Show("Password salah! Harap cek kembali!");
+                MessageBox.Show("Password salah! Harap cek kembali!", "Failed");
                 tbPassword.Text = "";
                 return;
             }
@@ -46,17 +46,17 @@ namespace Hotel_Harem_SamGun
             bool admin = true;
 
             //GANTI FORM
-            Hide();
+            this.Hide();
             if (admin)
             {
-                // FormMenuAdmin form = new FormMenuAdmin();
-                // form.ShowDialog();
+                FormMenuAdmin form = new FormMenuAdmin();
+                form.ShowDialog();
             } else
             {
-                // FormMenuResepsionis form = new FormMenuResepsionis();
-                // form.ShowDialog();
+                FormMenuResepsionis form = new FormMenuResepsionis();
+                form.ShowDialog();
             }
-            Show();
+            this.Show();
         }
     }
 }
