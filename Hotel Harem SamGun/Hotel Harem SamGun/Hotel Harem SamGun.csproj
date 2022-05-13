@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormDataTipeKamar.cs">
+    <Compile Include="FormDataFasilitasKamar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDataTipeKamar.Designer.cs">
-      <DependentUpon>FormDataTipeKamar.cs</DependentUpon>
+    <Compile Include="FormDataFasilitasKamar.Designer.cs">
+      <DependentUpon>FormDataFasilitasKamar.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -66,8 +66,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormDataTipeKamar.resx">
-      <DependentUpon>FormDataTipeKamar.cs</DependentUpon>
+    <EmbeddedResource Include="FormDataFasilitasKamar.resx">
+      <DependentUpon>FormDataFasilitasKamar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
