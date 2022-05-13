@@ -1,5 +1,4 @@
-﻿
-namespace Hotel_Harem_SamGun
+﻿namespace Hotel_Harem_SamGun
 {
     partial class FormReservasi
     {

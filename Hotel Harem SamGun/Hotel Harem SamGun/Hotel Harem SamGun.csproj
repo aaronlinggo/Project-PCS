@@ -70,11 +70,29 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMenuAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenuAdmin.Designer.cs">
+      <DependentUpon>FormMenuAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMenuResepsionis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenuResepsionis.Designer.cs">
+      <DependentUpon>FormMenuResepsionis.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPemesananMakanan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormPemesananMakanan.Designer.cs">
       <DependentUpon>FormPemesananMakanan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReservasi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReservasi.Designer.cs">
+      <DependentUpon>FormReservasi.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,8 +102,14 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMenuResepsionis.resx">
+      <DependentUpon>FormMenuResepsionis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPemesananMakanan.resx">
       <DependentUpon>FormPemesananMakanan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReservasi.resx">
+      <DependentUpon>FormReservasi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
