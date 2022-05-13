@@ -8,3 +8,13 @@ D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\D
 D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.csproj.CoreCompileInputs.cache
 D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.exe
 D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.pdb
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\bin\Debug\Hotel Harem SamGun.exe.config
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\bin\Debug\Hotel Harem SamGun.exe
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\bin\Debug\Hotel Harem SamGun.pdb
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.csproj.AssemblyReference.cache
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel_Harem_SamGun.FormLogin.resources
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel_Harem_SamGun.Properties.Resources.resources
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.csproj.GenerateResource.cache
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.csproj.CoreCompileInputs.cache
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.exe
+C:\Users\Frans Nathanael\Desktop\To Be Continued\Semester 4\PCS\Proyek\program\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.pdb
