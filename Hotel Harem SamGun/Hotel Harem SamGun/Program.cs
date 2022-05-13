@@ -16,7 +16,7 @@ namespace Hotel_Harem_SamGun
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormPemesananMakanan());
+            Application.Run(new FormLogin());
         }
     }
 }
