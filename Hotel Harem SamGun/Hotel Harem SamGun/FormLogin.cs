@@ -49,12 +49,12 @@ namespace Hotel_Harem_SamGun
             Hide();
             if (admin)
             {
-                FormMenuAdmin form = new FormMenuAdmin();
-                form.ShowDialog();
+                // FormMenuAdmin form = new FormMenuAdmin();
+                // form.ShowDialog();
             } else
             {
-                FormMenuResepsionis form = new FormMenuResepsionis();
-                form.ShowDialog();
+                // FormMenuResepsionis form = new FormMenuResepsionis();
+                // form.ShowDialog();
             }
             Show();
         }

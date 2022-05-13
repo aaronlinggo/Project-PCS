@@ -52,6 +52,18 @@
     <Compile Include="FormDataFasilitasKamar.Designer.cs">
       <DependentUpon>FormDataFasilitasKamar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDataMenuMakanan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDataMenuMakanan.Designer.cs">
+      <DependentUpon>FormDataMenuMakanan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDataTipeKamar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDataTipeKamar.Designer.cs">
+      <DependentUpon>FormDataTipeKamar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
