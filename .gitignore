@@ -1,10 +1,10 @@
 # Directories
 bin/
 obj/
+.vs/
 
 # Visual Studio Code Workspace
 *.code-workspace
 
 # Temporary
 *.suo
-Hotel Harem SamGun/.vs/Hotel Harem SamGun/v16/.suo
