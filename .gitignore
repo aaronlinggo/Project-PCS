@@ -1,10 +1,10 @@
-# Directories
+# Visual Studio Directories
+.vs/
 bin/
 obj/
-.vs/
 
 # Visual Studio Code Workspace
 *.code-workspace
 
-# Temporary
+# Visual Studio Solution Files
 *.suo
