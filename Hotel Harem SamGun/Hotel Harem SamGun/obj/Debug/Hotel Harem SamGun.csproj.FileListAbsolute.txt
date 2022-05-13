@@ -1,0 +1,10 @@
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\bin\Debug\Hotel Harem SamGun.exe.config
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\bin\Debug\Hotel Harem SamGun.exe
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\bin\Debug\Hotel Harem SamGun.pdb
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.csproj.AssemblyReference.cache
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel_Harem_SamGun.FormLogin.resources
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel_Harem_SamGun.Properties.Resources.resources
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.csproj.GenerateResource.cache
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.csproj.CoreCompileInputs.cache
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.exe
+D:\Kuliah\Semester 4\PCS\Project-PCS\Hotel Harem SamGun\Hotel Harem SamGun\obj\Debug\Hotel Harem SamGun.pdb
