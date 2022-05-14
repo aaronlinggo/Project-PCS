@@ -58,6 +58,12 @@
     <Compile Include="FormDataMenuMakanan.Designer.cs">
       <DependentUpon>FormDataMenuMakanan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPenambahanFasilitasKamar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPenambahanFasilitasKamar.Designer.cs">
+      <DependentUpon>FormPenambahanFasilitasKamar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDataResepsionis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,12 @@
     <Compile Include="FormPemesananMakanan.Designer.cs">
       <DependentUpon>FormPemesananMakanan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPenambahanFasilitasDataTamu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPenambahanFasilitasDataTamu.Designer.cs">
+      <DependentUpon>FormPenambahanFasilitasDataTamu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReservasi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +116,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDataFasilitasKamar.resx">
       <DependentUpon>FormDataFasilitasKamar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPenambahanFasilitasKamar.resx">
+      <DependentUpon>FormPenambahanFasilitasKamar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDataResepsionis.resx">
       <DependentUpon>FormDataResepsionis.cs</DependentUpon>
@@ -122,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPemesananMakanan.resx">
       <DependentUpon>FormPemesananMakanan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPenambahanFasilitasDataTamu.resx">
+      <DependentUpon>FormPenambahanFasilitasDataTamu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReservasi.resx">
       <DependentUpon>FormReservasi.cs</DependentUpon>

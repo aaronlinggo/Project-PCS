@@ -44,6 +44,8 @@ namespace Hotel_Harem_SamGun
             this.rb0 = new System.Windows.Forms.RadioButton();
             this.rb1 = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
+            this.tbStok = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -82,12 +84,14 @@ namespace Hotel_Harem_SamGun
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(18, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(354, 31);
+            this.label1.Size = new System.Drawing.Size(521, 31);
             this.label1.TabIndex = 4;
-            this.label1.Text = "DATA FASILITAS KAMAR";
+            this.label1.Text = "DATA TAMBAHAN FASILITAS KAMAR";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbStok);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.rb0);
             this.groupBox1.Controls.Add(this.rb1);
             this.groupBox1.Controls.Add(this.tbHarga);
@@ -172,7 +176,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.rb0.AutoSize = true;
             this.rb0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.rb0.Location = new System.Drawing.Point(967, 29);
+            this.rb0.Location = new System.Drawing.Point(922, 74);
             this.rb0.Name = "rb0";
             this.rb0.Size = new System.Drawing.Size(130, 24);
             this.rb0.TabIndex = 18;
@@ -184,7 +188,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.rb1.AutoSize = true;
             this.rb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.rb1.Location = new System.Drawing.Point(851, 29);
+            this.rb1.Location = new System.Drawing.Point(828, 74);
             this.rb1.Name = "rb1";
             this.rb1.Size = new System.Drawing.Size(88, 24);
             this.rb1.TabIndex = 17;
@@ -196,11 +200,29 @@ namespace Hotel_Harem_SamGun
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(698, 33);
+            this.label7.Location = new System.Drawing.Point(698, 78);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 20);
             this.label7.TabIndex = 16;
             this.label7.Text = "Status";
+            // 
+            // tbStok
+            // 
+            this.tbStok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbStok.Location = new System.Drawing.Point(828, 31);
+            this.tbStok.Name = "tbStok";
+            this.tbStok.Size = new System.Drawing.Size(152, 26);
+            this.tbStok.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(699, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 20);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Stok";
             // 
             // FormDataFasilitasKamar
             // 
@@ -214,7 +236,7 @@ namespace Hotel_Harem_SamGun
             this.Controls.Add(this.btnHapus);
             this.Controls.Add(this.dgvFasilitas);
             this.Name = "FormDataFasilitasKamar";
-            this.Text = "Data Fasilitas Kamar";
+            this.Text = "Data Tambahan Fasilitas Kamar";
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -240,5 +262,7 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.RadioButton rb0;
         private System.Windows.Forms.RadioButton rb1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbStok;
+        private System.Windows.Forms.Label label5;
     }
 }
