@@ -16,5 +16,10 @@ namespace Hotel_Harem_SamGun
         {
             InitializeComponent();
         }
+
+        private void FormDataFasilitasKamar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
