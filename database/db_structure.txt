@@ -1,0 +1,91 @@
+KARYAWAN (ADMIN + RESEPSIONIS):
+    id_karyawan INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_karyawan VARCHAR(5) [UNIQUE], --> 2 digit roles + 3 digit nomor urut
+    username VARCHAR(255) [UNIQUE],
+    nama_karyawan VARCHAR(255),
+    jenis_kelamin_karyawan VARCHAR(1),
+    tanggal_lahir_karyawan DATE,
+    alamat_karyawan VARCHAR(255),
+    nomor_telepon_karyawan VARCHAR(13),
+    email_karyawan VARCHAR(255),
+    password VARCHAR(255),
+    roles VARCHAR(11)
+
+KAMAR:
+    id_kamar INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_kamar VARCHAR(7) [UNIQUE], --> 3 digit jenis kamar + no_kamar
+    nomor_kamar INT(4) [UNIQUE], --> max 2 digit nomor lantai + 2 digit nomor urut
+    nomor_lantai INT(2),
+    status_kamar INT(1), --> 0 = used, 1 = available, 2 = reserved (Reserved kalau sudah reservasi tapi belum check in)
+    id_jenis_kamar FK JENIS_KAMAR [FOREIGN KEY]
+
+JENIS_KAMAR:
+    id_jenis_kamar INT(11) AUTO_INCREMENT [PRIMARY],
+    nama_jenis_kamar VARCHAR(255) [UNIQUE],
+    harga_jenis_kamar INT(16)
+
+FASILITAS:
+    id_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_fasilitas VARCHAR(7) [UNIQUE], --> 4 digit nama fasilitas (2 + 2 digit jika 2 kata/lebih) + 3 digit nomor urut
+    nama_fasilitas VARCHAR(255)
+
+DETAIL_FASILITAS:
+    id_detail_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
+    id_jenis_kamar FK JENIS_KAMAR [FOREIGN KEY],
+    kode_fasilitas FK FASILITAS [FOREIGN KEY]
+
+EXTRA_FASILITAS:
+    id_extra_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_extra_fasilitas VARCHAR(7) [UNIQUE], --> 4 digit nama extra fasilitas (2 + 2 digit jika 2 kata/lebih) + 3 digit nomor urut
+    nama_extra_fasilitas VARCHAR(255),
+    stok_extra_fasilitas INT(5),
+    harga_extra_fasilitas INT(16)
+
+USE_EXTRA_FASILITAS:
+    id_use_extra_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_kamar FK KAMAR [FOREIGN KEY],
+    kode_tamu FK TAMU [FOREIGN KEY],
+    kode_extra_fasilitas FK EXTRA_FASILITAS [FOREIGN KEY],
+    jumlah_extra_fasilitas INT(5)
+
+MAKANAN:
+    id_makanan INT(11) AUTO_INCREMENT [PRIMARY],
+    nama_makanan VARCHAR(255),
+    harga_makanan INT(16),
+    stok_makanan INT(5),
+    status_makanan INT(1),
+    id_jenis_makanan FK JENIS_MAKANAN [FOREIGN KEY]
+
+JENIS_MAKANAN:
+    id_jenis_makanan INT(11) AUTO_INCREMENT [PRIMARY],
+    nama_jenis_makanan VARCHAR(255)
+
+PEMESANAN_MAKANAN:
+    id_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_pemesanan VARCHAR(13) [UNIQUE], --> 4 digit nama makanan (2 + 2 digit jika 2 kata/lebih) + 2 digit tanggal + 2 digit bulan + 2 digit tahun + 3 digit nomor urut
+    id_makanan FK MAKANAN [FOREIGN KEY],
+    tanggal_pemesanan DATE,
+    kode_tamu FK TAMU [FOREIGN KEY],
+    jumlah_pemesanan INT(5)
+
+TAMU:
+    id_tamu INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_tamu VARCHAR(7) [UNIQUE], --> 4 digit nama tamu (2 + 2 digit jika 2 kata/lebih) + 3 digit nomor urut
+    nama_tamu VARCHAR(255),
+    jenis_kelamin_tamu VARCHAR(1),
+    tanggal_lahir_tamu DATE,
+    alamat_tamu VARCHAR(255),
+    nomor_telepon_tamu VARCHAR(13),
+    email_tamu VARCHAR(255)
+
+RESERVASI:
+    id_reservasi INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_reservasi VARCHAR(15) [UNIQUE], --> "RSV" + 2 digit tanggal check in + 2 digit bulan check in + 2 digit tahun check in + 2 digit inisial tamu (1 + 1 jika 2 kata/lebih) + nomor kamar
+    kode_tamu FK TAMU [FOREIGN KEY],
+    kode_kamar FK KAMAR [FOREIGN KEY],
+    down_payment INT(16),
+    deposito INT(16),
+    tanggal_check_in DATE [DEFAULT NULL],
+    tanggal_check_out DATE [DEFAULT NULL],
+    total_tarif_kamar INT(16),
+    kode_karyawan FK KARYAWAN [FOREIGN KEY]
