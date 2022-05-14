@@ -10,16 +10,15 @@ using System.Windows.Forms;
 
 namespace Hotel_Harem_SamGun
 {
-    public partial class FormDataFasilitasKamar : Form
+    public partial class FormDataTambahanFasilitasKamar : Form
     {
-        public FormDataFasilitasKamar()
+        public FormDataTambahanFasilitasKamar()
         {
             InitializeComponent();
         }
 
         private void FormDataFasilitasKamar_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

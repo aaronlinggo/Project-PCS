@@ -1,7 +1,7 @@
 ﻿
 namespace Hotel_Harem_SamGun
 {
-    partial class FormDataFasilitasKamar
+    partial class FormDataTambahanFasilitasKamar
     {
         /// <summary>
         /// Required designer variable.
