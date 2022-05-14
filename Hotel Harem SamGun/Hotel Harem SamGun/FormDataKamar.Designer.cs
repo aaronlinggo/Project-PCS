@@ -45,6 +45,9 @@ namespace Hotel_Harem_SamGun
             this.tbKode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnUbah = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.rb1 = new System.Windows.Forms.RadioButton();
+            this.rb0 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numNoKamar)).BeginInit();
@@ -91,6 +94,9 @@ namespace Hotel_Harem_SamGun
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rb0);
+            this.groupBox1.Controls.Add(this.rb1);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.numNoKamar);
             this.groupBox1.Controls.Add(this.numLantai);
             this.groupBox1.Controls.Add(this.label6);
@@ -219,6 +225,40 @@ namespace Hotel_Harem_SamGun
             this.btnUbah.Text = "UBAH";
             this.btnUbah.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(659, 131);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(62, 20);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Status";
+            // 
+            // rb1
+            // 
+            this.rb1.AutoSize = true;
+            this.rb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.rb1.Location = new System.Drawing.Point(812, 133);
+            this.rb1.Name = "rb1";
+            this.rb1.Size = new System.Drawing.Size(88, 24);
+            this.rb1.TabIndex = 14;
+            this.rb1.TabStop = true;
+            this.rb1.Text = "Tersedia";
+            this.rb1.UseVisualStyleBackColor = true;
+            // 
+            // rb0
+            // 
+            this.rb0.AutoSize = true;
+            this.rb0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.rb0.Location = new System.Drawing.Point(928, 133);
+            this.rb0.Name = "rb0";
+            this.rb0.Size = new System.Drawing.Size(130, 24);
+            this.rb0.TabIndex = 15;
+            this.rb0.TabStop = true;
+            this.rb0.Text = "Tidak Tersedia";
+            this.rb0.UseVisualStyleBackColor = true;
+            // 
             // FormDataKamar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,5 +300,8 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboTipeKamar;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rb1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RadioButton rb0;
     }
 }
