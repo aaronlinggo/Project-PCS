@@ -42,6 +42,7 @@ CREATE TABLE `detail_pemesanan_makanan` (
   `kode_pemesanan` varchar(13) NOT NULL,
   `id_makanan` int(11) NOT NULL,
   `jumlah_pemesanan` int(5) NOT NULL,
+  `subtotal_biaya_pemesanan` int(16) NOT NULL,
   PRIMARY KEY (`id_detail_pemesanan`),
   KEY `kode_pemesanan` (`kode_pemesanan`),
   KEY `id_makanan` (`id_makanan`),
@@ -654,6 +655,7 @@ CREATE TABLE `pemesanan_makanan` (
   `kode_pemesanan` varchar(13) NOT NULL,
   `tanggal_pemesanan` date NOT NULL,
   `kode_tamu` varchar(7) NOT NULL,
+  `total_biaya_pemesanan` int(16) NOT NULL,
   PRIMARY KEY (`id_pemesanan`),
   UNIQUE KEY `kode_pemesanan` (`kode_pemesanan`),
   KEY `kode_tamu` (`kode_tamu`),
@@ -675,7 +677,7 @@ CREATE TABLE `reservasi` (
   `deposito` int(16) NOT NULL,
   `tanggal_check_in` date DEFAULT NULL,
   `tanggal_check_out` date DEFAULT NULL,
-  `total_tarif_kamar` int(16) DEFAULT NULL,
+  `total_biaya` int(16) DEFAULT NULL,
   `kode_karyawan` varchar(5) NOT NULL,
   PRIMARY KEY (`id_reservasi`),
   UNIQUE KEY `kode_reservasi` (`kode_reservasi`),
@@ -689,7 +691,7 @@ CREATE TABLE `reservasi` (
 
 /*Data for the table `reservasi` */
 
-insert  into `reservasi`(`id_reservasi`,`kode_reservasi`,`kode_tamu`,`kode_kamar`,`down_payment`,`deposito`,`tanggal_check_in`,`tanggal_check_out`,`total_tarif_kamar`,`kode_karyawan`) values 
+insert  into `reservasi`(`id_reservasi`,`kode_reservasi`,`kode_tamu`,`kode_kamar`,`down_payment`,`deposito`,`tanggal_check_in`,`tanggal_check_out`,`total_biaya`,`kode_karyawan`) values 
 (1,'RSV120422FW1102','FRWI001','ROS1102',1800000,4850000,'2022-04-25','2022-04-27',3600000,'RE001'),
 (2,'RSV140422BG0911','BOGA001','DES911',1300000,4350000,'2022-04-29','2022-05-01',2600000,'RE002'),
 (3,'RSV170422JM0418','JAMO001','DET418',550000,3000000,'2022-04-20','2022-04-24',1100000,'RE001'),

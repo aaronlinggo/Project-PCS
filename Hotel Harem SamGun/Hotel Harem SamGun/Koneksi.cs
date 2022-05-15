@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Hotel_Harem_SamGun
 {
@@ -20,6 +21,7 @@ namespace Hotel_Harem_SamGun
             server = "localhost";
             uid = "root";
             database = "db_hotel_samgun";
+
             conn = new MySqlConnection($"server = {server}; uid = {uid}; database = {database}");
 
             try
@@ -28,11 +30,14 @@ namespace Hotel_Harem_SamGun
                 {
                     conn.Open();
                 }
+
                 koneksiValid = true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Gagal terhubung ke database!");
+                MessageBox.Show("Gagal terhubung ke database!", "Failed");
+                Console.WriteLine(ex.Message);
+
                 koneksiValid = false;
             }
         }
