@@ -72,13 +72,11 @@ DROP TABLE IF EXISTS `extra_fasilitas`;
 
 CREATE TABLE `extra_fasilitas` (
   `id_extra_fasilitas` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_extra_fasilitas` varchar(7) NOT NULL,
   `nama_extra_fasilitas` varchar(255) NOT NULL,
   `stok_extra_fasilitas` int(5) NOT NULL,
   `harga_extra_fasilitas` int(16) NOT NULL,
-  `status_extra_fasilitas` int(1) NOT NULL,
-  PRIMARY KEY (`id_extra_fasilitas`),
-  UNIQUE KEY `kode_extra_fasilitas` (`kode_extra_fasilitas`)
+  `status_extra_fasilitas` int(2) NOT NULL,
+  PRIMARY KEY (`id_extra_fasilitas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `extra_fasilitas` */
@@ -90,7 +88,7 @@ DROP TABLE IF EXISTS `fasilitas`;
 CREATE TABLE `fasilitas` (
   `id_fasilitas` int(11) NOT NULL AUTO_INCREMENT,
   `nama_fasilitas` varchar(255) NOT NULL,
-  `status_fasilitas` int(1) NOT NULL,
+  `status_fasilitas` int(2) NOT NULL,
   PRIMARY KEY (`id_fasilitas`)
 ) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4;
 
@@ -185,7 +183,7 @@ CREATE TABLE `jenis_kamar` (
   `id_jenis_kamar` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jenis_kamar` varchar(255) NOT NULL,
   `harga_jenis_kamar` int(16) NOT NULL,
-  `status_jenis_kamar` int(1) NOT NULL,
+  `status_jenis_kamar` int(2) NOT NULL,
   PRIMARY KEY (`id_jenis_kamar`),
   UNIQUE KEY `nama_jenis_kamar` (`nama_jenis_kamar`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
@@ -214,7 +212,7 @@ DROP TABLE IF EXISTS `jenis_makanan`;
 CREATE TABLE `jenis_makanan` (
   `id_jenis_makanan` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jenis_makanan` varchar(255) NOT NULL,
-  `status_jenis_makanan` int(1) NOT NULL,
+  `status_jenis_makanan` int(2) NOT NULL,
   PRIMARY KEY (`id_jenis_makanan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
@@ -254,7 +252,7 @@ CREATE TABLE `kamar` (
   `kode_kamar` varchar(7) NOT NULL,
   `nomor_kamar` int(4) NOT NULL,
   `nomor_lantai` int(2) NOT NULL,
-  `status_kamar` int(1) NOT NULL,
+  `status_kamar` int(2) NOT NULL,
   `id_jenis_kamar` int(11) NOT NULL,
   PRIMARY KEY (`id_kamar`),
   UNIQUE KEY `kode_kamar` (`kode_kamar`),
@@ -495,7 +493,7 @@ CREATE TABLE `karyawan` (
   `email_karyawan` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `roles` varchar(11) NOT NULL,
-  `status_karyawan` int(1) NOT NULL,
+  `status_karyawan` int(2) NOT NULL,
   PRIMARY KEY (`id_karyawan`),
   UNIQUE KEY `kode_karyawan` (`kode_karyawan`),
   UNIQUE KEY `username` (`username`)
@@ -521,7 +519,7 @@ CREATE TABLE `makanan` (
   `nama_makanan` varchar(255) NOT NULL,
   `harga_makanan` int(16) NOT NULL,
   `stok_makanan` int(5) NOT NULL,
-  `status_makanan` int(1) NOT NULL,
+  `status_makanan` int(2) NOT NULL,
   `id_jenis_makanan` int(11) NOT NULL,
   PRIMARY KEY (`id_makanan`),
   KEY `id_jenis_makanan` (`id_jenis_makanan`),
@@ -784,7 +782,7 @@ CREATE TABLE `reservasi` (
   `tanggal_check_out` date DEFAULT NULL,
   `total_biaya` int(16) DEFAULT NULL,
   `kode_karyawan` varchar(5) NOT NULL,
-  `status_reservasi` int(1) NOT NULL,
+  `status_reservasi` int(2) NOT NULL,
   PRIMARY KEY (`id_reservasi`),
   UNIQUE KEY `kode_reservasi` (`kode_reservasi`),
   KEY `kode_tamu` (`kode_tamu`),
@@ -828,7 +826,7 @@ CREATE TABLE `tamu` (
   `negara_asal` varchar(255) NOT NULL,
   `nomor_telepon_tamu` varchar(13) NOT NULL,
   `email_tamu` varchar(255) NOT NULL,
-  `status_tamu` int(1) NOT NULL,
+  `status_tamu` int(2) NOT NULL,
   PRIMARY KEY (`id_tamu`),
   UNIQUE KEY `kode_tamu` (`kode_tamu`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
@@ -860,15 +858,15 @@ CREATE TABLE `use_extra_fasilitas` (
   `id_use_extra_fasilitas` int(11) NOT NULL AUTO_INCREMENT,
   `kode_kamar` varchar(7) NOT NULL,
   `kode_tamu` varchar(7) NOT NULL,
-  `kode_extra_fasilitas` varchar(7) NOT NULL,
+  `id_extra_fasilitas` int(11) NOT NULL,
   `jumlah_extra_fasilitas` int(5) NOT NULL,
   PRIMARY KEY (`id_use_extra_fasilitas`),
   KEY `kode_kamar` (`kode_kamar`),
   KEY `kode_tamu` (`kode_tamu`),
-  KEY `kode_extra_fasilitas` (`kode_extra_fasilitas`),
+  KEY `id_extra_fasilitas` (`id_extra_fasilitas`),
   CONSTRAINT `use_extra_fasilitas_ibfk_1` FOREIGN KEY (`kode_tamu`) REFERENCES `tamu` (`kode_tamu`),
   CONSTRAINT `use_extra_fasilitas_ibfk_2` FOREIGN KEY (`kode_kamar`) REFERENCES `kamar` (`kode_kamar`),
-  CONSTRAINT `use_extra_fasilitas_ibfk_3` FOREIGN KEY (`kode_extra_fasilitas`) REFERENCES `extra_fasilitas` (`kode_extra_fasilitas`)
+  CONSTRAINT `use_extra_fasilitas_ibfk_3` FOREIGN KEY (`id_extra_fasilitas`) REFERENCES `extra_fasilitas` (`id_extra_fasilitas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `use_extra_fasilitas` */
