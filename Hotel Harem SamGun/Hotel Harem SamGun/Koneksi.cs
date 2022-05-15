@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Hotel_Harem_SamGun
 {
@@ -13,28 +14,35 @@ namespace Hotel_Harem_SamGun
         public static string server;
         public static string uid;
         public static string database;
-        public static bool koneksiValid;
+        public static bool isValid;
 
         public static void openConn()
         {
             server = "localhost";
             uid = "root";
             database = "db_hotel_samgun";
+
             conn = new MySqlConnection($"server = {server}; uid = {uid}; database = {database}");
 
             try
             {
-                if (conn.State == System.Data.ConnectionState.Closed)
+                if(conn.State == System.Data.ConnectionState.Closed)
                 {
                     conn.Open();
                 }
-                koneksiValid = true;
+
+                isValid = true;
             }
-            catch (Exception e)
+            catch(Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Gagal terhubung ke database!");
-                koneksiValid = false;
+                Console.WriteLine(ex.Message);
+                isValid = false;
             }
+        }
+
+        public static MySqlConnection getConn()
+        {
+            return conn;
         }
 
         public static void closeConn()

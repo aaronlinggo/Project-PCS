@@ -36,10 +36,10 @@
             // 
             // btReservasi
             // 
-            this.btReservasi.Location = new System.Drawing.Point(16, 15);
-            this.btReservasi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btReservasi.Location = new System.Drawing.Point(14, 14);
+            this.btReservasi.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btReservasi.Name = "btReservasi";
-            this.btReservasi.Size = new System.Drawing.Size(185, 66);
+            this.btReservasi.Size = new System.Drawing.Size(756, 85);
             this.btReservasi.TabIndex = 0;
             this.btReservasi.Text = "RESERVASI";
             this.btReservasi.UseVisualStyleBackColor = true;
@@ -47,10 +47,10 @@
             // 
             // btPenambahanFasilitasKamar
             // 
-            this.btPenambahanFasilitasKamar.Location = new System.Drawing.Point(16, 89);
-            this.btPenambahanFasilitasKamar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btPenambahanFasilitasKamar.Location = new System.Drawing.Point(14, 109);
+            this.btPenambahanFasilitasKamar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btPenambahanFasilitasKamar.Name = "btPenambahanFasilitasKamar";
-            this.btPenambahanFasilitasKamar.Size = new System.Drawing.Size(185, 66);
+            this.btPenambahanFasilitasKamar.Size = new System.Drawing.Size(756, 85);
             this.btPenambahanFasilitasKamar.TabIndex = 1;
             this.btPenambahanFasilitasKamar.Text = "PENAMBAHAN FASILITAS KAMAR";
             this.btPenambahanFasilitasKamar.UseVisualStyleBackColor = true;
@@ -58,10 +58,10 @@
             // 
             // btPemesananMakanan
             // 
-            this.btPemesananMakanan.Location = new System.Drawing.Point(16, 162);
-            this.btPemesananMakanan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btPemesananMakanan.Location = new System.Drawing.Point(14, 204);
+            this.btPemesananMakanan.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btPemesananMakanan.Name = "btPemesananMakanan";
-            this.btPemesananMakanan.Size = new System.Drawing.Size(185, 66);
+            this.btPemesananMakanan.Size = new System.Drawing.Size(756, 85);
             this.btPemesananMakanan.TabIndex = 2;
             this.btPemesananMakanan.Text = "PEMESANAN MAKANAN";
             this.btPemesananMakanan.UseVisualStyleBackColor = true;
@@ -69,10 +69,10 @@
             // 
             // btCheckInCheckOut
             // 
-            this.btCheckInCheckOut.Location = new System.Drawing.Point(16, 236);
-            this.btCheckInCheckOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCheckInCheckOut.Location = new System.Drawing.Point(14, 299);
+            this.btCheckInCheckOut.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btCheckInCheckOut.Name = "btCheckInCheckOut";
-            this.btCheckInCheckOut.Size = new System.Drawing.Size(185, 66);
+            this.btCheckInCheckOut.Size = new System.Drawing.Size(756, 85);
             this.btCheckInCheckOut.TabIndex = 3;
             this.btCheckInCheckOut.Text = "CHECK IN\r\nCHECK OUT";
             this.btCheckInCheckOut.UseVisualStyleBackColor = true;
@@ -80,14 +80,16 @@
             // 
             // FormMenuResepsionis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(784, 411);
             this.Controls.Add(this.btCheckInCheckOut);
             this.Controls.Add(this.btPemesananMakanan);
             this.Controls.Add(this.btPenambahanFasilitasKamar);
             this.Controls.Add(this.btReservasi);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "FormMenuResepsionis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Menu Resepsionis";

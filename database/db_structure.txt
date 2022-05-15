@@ -62,15 +62,17 @@ JENIS_MAKANAN:
 
 PEMESANAN_MAKANAN:
     id_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
-    kode_pemesanan VARCHAR(13) [UNIQUE], --> 4 digit nama makanan (2 + 2 digit jika 2 kata/lebih) + 2 digit tanggal + 2 digit bulan + 2 digit tahun + 3 digit nomor urut
+    kode_pemesanan VARCHAR(15) [UNIQUE], --> "NOTA" + 2 digit tanggal pemesanan + 2 digit bulan pemesanan + 2 digit tahun pemesanan + 5 digit nomor urut
     tanggal_pemesanan DATE,
-    kode_tamu FK TAMU [FOREIGN KEY]
+    kode_tamu FK TAMU [FOREIGN KEY],
+    total_biaya_pemesanan INT(16)
 
 DETAIL_PEMESANAN_MAKANAN:
     id_detail_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
     kode_pemesanan FK PEMESANAN_MAKANAN [FOREIGN KEY],
     id_makanan FK MAKANAN [FOREIGN KEY],
-    jumlah_pemesanan INT(5)
+    jumlah_pemesanan INT(5),
+    subtotal_biaya_pemesanan INT(16)
 
 TAMU:
     id_tamu INT(11) AUTO_INCREMENT [PRIMARY],
@@ -85,12 +87,12 @@ TAMU:
 
 RESERVASI:
     id_reservasi INT(11) AUTO_INCREMENT [PRIMARY],
-    kode_reservasi VARCHAR(15) [UNIQUE], --> "RSV" + 2 digit tanggal check in + 2 digit bulan check in + 2 digit tahun check in + 2 digit inisial tamu (1 + 1 jika 2 kata/lebih) + nomor kamar
+    kode_reservasi VARCHAR(15) [UNIQUE], --> "RSV" + 2 digit tanggal reservasi + 2 digit bulan reservasi + 2 digit tahun reservasi + 2 digit inisial tamu (1 + 1 digit jika 2 kata/lebih) + 4 digit nomor kamar
     kode_tamu FK TAMU [FOREIGN KEY],
     kode_kamar FK KAMAR [FOREIGN KEY],
     down_payment INT(16),
     deposito INT(16),
     tanggal_check_in DATE [DEFAULT NULL],
     tanggal_check_out DATE [DEFAULT NULL],
-    total_tarif_kamar INT(16),
+    total_biaya INT(16) [DEFAULT NULL],
     kode_karyawan FK KARYAWAN [FOREIGN KEY]

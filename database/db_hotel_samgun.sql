@@ -39,17 +39,32 @@ DROP TABLE IF EXISTS `detail_pemesanan_makanan`;
 
 CREATE TABLE `detail_pemesanan_makanan` (
   `id_detail_pemesanan` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_pemesanan` varchar(13) NOT NULL,
+  `kode_pemesanan` varchar(15) NOT NULL,
   `id_makanan` int(11) NOT NULL,
   `jumlah_pemesanan` int(5) NOT NULL,
+  `subtotal_biaya_pemesanan` int(16) NOT NULL,
   PRIMARY KEY (`id_detail_pemesanan`),
   KEY `kode_pemesanan` (`kode_pemesanan`),
   KEY `id_makanan` (`id_makanan`),
   CONSTRAINT `detail_pemesanan_makanan_ibfk_1` FOREIGN KEY (`kode_pemesanan`) REFERENCES `pemesanan_makanan` (`kode_pemesanan`),
   CONSTRAINT `detail_pemesanan_makanan_ibfk_2` FOREIGN KEY (`id_makanan`) REFERENCES `makanan` (`id_makanan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `detail_pemesanan_makanan` */
+
+insert  into `detail_pemesanan_makanan`(`id_detail_pemesanan`,`kode_pemesanan`,`id_makanan`,`jumlah_pemesanan`,`subtotal_biaya_pemesanan`) values 
+(1,'NOTA26042200001',36,2,276000),
+(2,'NOTA26042200001',48,1,148000),
+(3,'NOTA26042200001',170,1,55000),
+(4,'NOTA26042200002',124,2,376000),
+(5,'NOTA26042200002',74,1,478000),
+(6,'NOTA26042200002',56,2,136000),
+(7,'NOTA26042200002',2,1,158000),
+(8,'NOTA01052200001',14,3,534000),
+(9,'NOTA01052200001',15,3,414000),
+(10,'NOTA04052200001',180,1,70000),
+(11,'NOTA16052200001',53,2,270000),
+(12,'NOTA16052200001',58,2,136000);
 
 /*Table structure for table `extra_fasilitas` */
 
@@ -651,16 +666,24 @@ DROP TABLE IF EXISTS `pemesanan_makanan`;
 
 CREATE TABLE `pemesanan_makanan` (
   `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_pemesanan` varchar(13) NOT NULL,
+  `kode_pemesanan` varchar(15) NOT NULL,
   `tanggal_pemesanan` date NOT NULL,
   `kode_tamu` varchar(7) NOT NULL,
+  `total_biaya_pemesanan` int(16) NOT NULL,
   PRIMARY KEY (`id_pemesanan`),
   UNIQUE KEY `kode_pemesanan` (`kode_pemesanan`),
   KEY `kode_tamu` (`kode_tamu`),
   CONSTRAINT `pemesanan_makanan_ibfk_2` FOREIGN KEY (`kode_tamu`) REFERENCES `tamu` (`kode_tamu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pemesanan_makanan` */
+
+insert  into `pemesanan_makanan`(`id_pemesanan`,`kode_pemesanan`,`tanggal_pemesanan`,`kode_tamu`,`total_biaya_pemesanan`) values 
+(1,'NOTA26042200001','2022-04-26','JEHU001',479000),
+(2,'NOTA26042200002','2022-04-26','DANA002',1148000),
+(3,'NOTA01052200001','2022-05-01','YIJI001',948000),
+(4,'NOTA04052200001','2022-05-04','YIJI001',70000),
+(5,'NOTA16052200001','2022-05-16','LEHY001',406000);
 
 /*Table structure for table `reservasi` */
 
@@ -675,7 +698,7 @@ CREATE TABLE `reservasi` (
   `deposito` int(16) NOT NULL,
   `tanggal_check_in` date DEFAULT NULL,
   `tanggal_check_out` date DEFAULT NULL,
-  `total_tarif_kamar` int(16) NOT NULL,
+  `total_biaya` int(16) DEFAULT NULL,
   `kode_karyawan` varchar(5) NOT NULL,
   PRIMARY KEY (`id_reservasi`),
   UNIQUE KEY `kode_reservasi` (`kode_reservasi`),
@@ -685,9 +708,26 @@ CREATE TABLE `reservasi` (
   CONSTRAINT `reservasi_ibfk_1` FOREIGN KEY (`kode_tamu`) REFERENCES `tamu` (`kode_tamu`),
   CONSTRAINT `reservasi_ibfk_2` FOREIGN KEY (`kode_kamar`) REFERENCES `kamar` (`kode_kamar`),
   CONSTRAINT `reservasi_ibfk_3` FOREIGN KEY (`kode_karyawan`) REFERENCES `karyawan` (`kode_karyawan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `reservasi` */
+
+insert  into `reservasi`(`id_reservasi`,`kode_reservasi`,`kode_tamu`,`kode_kamar`,`down_payment`,`deposito`,`tanggal_check_in`,`tanggal_check_out`,`total_biaya`,`kode_karyawan`) values 
+(1,'RSV120422FW1102','FRWI001','ROS1102',1800000,4850000,'2022-04-25','2022-04-27',3600000,'RE001'),
+(2,'RSV140422BG0911','BOGA001','DES911',1300000,4350000,'2022-04-29','2022-05-01',2600000,'RE002'),
+(3,'RSV170422JM0418','JAMO001','DET418',550000,3000000,'2022-04-20','2022-04-24',1100000,'RE001'),
+(4,'RSV180422JB1005','JIBO001','EXS1005',1450000,4700000,'2022-04-22','2022-04-26',2900000,'RE001'),
+(5,'RSV180422JH0603','JEHU001','PRK603',1130000,3100000,'2022-04-25','2022-04-29',2260000,'RE003'),
+(6,'RSV220422DN0212','DANA001','SUT212',465000,2750000,'2022-04-27','2022-04-29',930000,'RE001'),
+(7,'RSV230422DN0119','DANA002','SUK119',445000,2500000,'2022-04-26',NULL,890000,'RE002'),
+(8,'RSV250422CK0812','CHKA001','JUS812',950000,4000000,'2022-05-06','2022-05-09',1900000,'RE003'),
+(9,'RSV270422YJ0605','YIJI001','PRT605',1150000,3250000,'2022-04-30','2022-05-05',2300000,'RE001'),
+(10,'RSV010522LC0711','LECH001','CLT711',825000,3700000,'2022-05-11','2022-05-14',1650000,'RE003'),
+(11,'RSV040522MM0716','MYMI001','CLK716',805000,3400000,'2022-05-13',NULL,1610000,'RE003'),
+(12,'RSV070522SY0406','SUYU001','DEK406',530000,2850000,NULL,NULL,NULL,'RE002'),
+(13,'RSV160522LJ1210','LEJI001','PRS1210',4550000,5000000,'2022-05-16',NULL,9100000,'RE002'),
+(14,'RSV160522KM1211','KIMI001','PRS1211',4550000,5000000,'2022-05-16',NULL,9100000,'RE003'),
+(15,'RSV160522LH1212','LEHY001','PRS1212',4550000,5000000,'2022-05-16',NULL,9100000,'RE002');
 
 /*Table structure for table `tamu` */
 
