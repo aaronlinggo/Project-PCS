@@ -62,7 +62,7 @@ JENIS_MAKANAN:
 
 PEMESANAN_MAKANAN:
     id_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
-    kode_pemesanan VARCHAR(13) [UNIQUE], --> "NOTA" + 2 digit tanggal pemesanan + 2 digit bulan pemesanan + 2 digit tahun pemesanan + 3 digit nomor urut
+    kode_pemesanan VARCHAR(15) [UNIQUE], --> "NOTA" + 2 digit tanggal pemesanan + 2 digit bulan pemesanan + 2 digit tahun pemesanan + 5 digit nomor urut
     tanggal_pemesanan DATE,
     kode_tamu FK TAMU [FOREIGN KEY],
     total_biaya_pemesanan INT(16)

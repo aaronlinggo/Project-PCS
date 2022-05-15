@@ -39,7 +39,7 @@ DROP TABLE IF EXISTS `detail_pemesanan_makanan`;
 
 CREATE TABLE `detail_pemesanan_makanan` (
   `id_detail_pemesanan` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_pemesanan` varchar(13) NOT NULL,
+  `kode_pemesanan` varchar(15) NOT NULL,
   `id_makanan` int(11) NOT NULL,
   `jumlah_pemesanan` int(5) NOT NULL,
   `subtotal_biaya_pemesanan` int(16) NOT NULL,
@@ -48,9 +48,23 @@ CREATE TABLE `detail_pemesanan_makanan` (
   KEY `id_makanan` (`id_makanan`),
   CONSTRAINT `detail_pemesanan_makanan_ibfk_1` FOREIGN KEY (`kode_pemesanan`) REFERENCES `pemesanan_makanan` (`kode_pemesanan`),
   CONSTRAINT `detail_pemesanan_makanan_ibfk_2` FOREIGN KEY (`id_makanan`) REFERENCES `makanan` (`id_makanan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `detail_pemesanan_makanan` */
+
+insert  into `detail_pemesanan_makanan`(`id_detail_pemesanan`,`kode_pemesanan`,`id_makanan`,`jumlah_pemesanan`,`subtotal_biaya_pemesanan`) values 
+(1,'NOTA26042200001',36,2,276000),
+(2,'NOTA26042200001',48,1,148000),
+(3,'NOTA26042200001',170,1,55000),
+(4,'NOTA26042200002',124,2,376000),
+(5,'NOTA26042200002',74,1,478000),
+(6,'NOTA26042200002',56,2,136000),
+(7,'NOTA26042200002',2,1,158000),
+(8,'NOTA01052200001',14,3,534000),
+(9,'NOTA01052200001',15,3,414000),
+(10,'NOTA04052200001',180,1,70000),
+(11,'NOTA16052200001',53,2,270000),
+(12,'NOTA16052200001',58,2,136000);
 
 /*Table structure for table `extra_fasilitas` */
 
@@ -652,7 +666,7 @@ DROP TABLE IF EXISTS `pemesanan_makanan`;
 
 CREATE TABLE `pemesanan_makanan` (
   `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_pemesanan` varchar(13) NOT NULL,
+  `kode_pemesanan` varchar(15) NOT NULL,
   `tanggal_pemesanan` date NOT NULL,
   `kode_tamu` varchar(7) NOT NULL,
   `total_biaya_pemesanan` int(16) NOT NULL,
@@ -660,9 +674,16 @@ CREATE TABLE `pemesanan_makanan` (
   UNIQUE KEY `kode_pemesanan` (`kode_pemesanan`),
   KEY `kode_tamu` (`kode_tamu`),
   CONSTRAINT `pemesanan_makanan_ibfk_2` FOREIGN KEY (`kode_tamu`) REFERENCES `tamu` (`kode_tamu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pemesanan_makanan` */
+
+insert  into `pemesanan_makanan`(`id_pemesanan`,`kode_pemesanan`,`tanggal_pemesanan`,`kode_tamu`,`total_biaya_pemesanan`) values 
+(1,'NOTA26042200001','2022-04-26','JEHU001',479000),
+(2,'NOTA26042200002','2022-04-26','DANA002',1148000),
+(3,'NOTA01052200001','2022-05-01','YIJI001',948000),
+(4,'NOTA04052200001','2022-05-04','YIJI001',70000),
+(5,'NOTA16052200001','2022-05-16','LEHY001',406000);
 
 /*Table structure for table `reservasi` */
 
