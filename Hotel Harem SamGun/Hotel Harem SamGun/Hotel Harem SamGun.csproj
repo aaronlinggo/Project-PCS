@@ -116,6 +116,9 @@
     <Compile Include="Koneksi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormDataMenuMakanan.resx">
+      <DependentUpon>FormDataMenuMakanan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDataTambahanFasilitasKamar.resx">
       <DependentUpon>FormDataTambahanFasilitasKamar.cs</DependentUpon>
     </EmbeddedResource>
