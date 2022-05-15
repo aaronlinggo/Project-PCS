@@ -28,14 +28,13 @@ JENIS_KAMAR:
 
 FASILITAS:
     id_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
-    kode_fasilitas VARCHAR(7) [UNIQUE], --> 4 digit nama fasilitas (2 + 2 digit jika 2 kata/lebih) + 3 digit nomor urut
     nama_fasilitas VARCHAR(255),
     status_fasilitas INT(1)
 
 DETAIL_FASILITAS:
     id_detail_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
     id_jenis_kamar FK JENIS_KAMAR [FOREIGN KEY],
-    kode_fasilitas FK FASILITAS [FOREIGN KEY]
+    id_fasilitas FK FASILITAS [FOREIGN KEY]
 
 EXTRA_FASILITAS:
     id_extra_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
