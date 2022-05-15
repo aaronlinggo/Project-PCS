@@ -76,6 +76,7 @@ namespace Hotel_Harem_SamGun
 FROM makanan
   INNER JOIN jenis_makanan
     ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
+WHERE makanan.status_makanan != 99
 order by 1 asc", Koneksi.conn);
                 dtmakanan = new DataTable();
                 adapter.Fill(dtmakanan);
@@ -237,18 +238,17 @@ order by 1 asc", Koneksi.conn);
                                         MySqlTransaction sqlt = Koneksi.getConn().BeginTransaction();
                                         try
                                         {
-                                            MySqlDataAdapter adapter = new MySqlDataAdapter(@"SELECT
-  makanan.id_makanan,
-  makanan.nama_makanan,
-  makanan.harga_makanan,
-  makanan.stok_makanan,
-  makanan.status_makanan,
-  makanan.id_jenis_makanan
+                                            // cek nama makanan
+                                            // cek status makanan 99
+
+                                            MySqlCommand cmd = new MySqlCommand();
+                                            cmd.CommandText = @"SELECT
+  count(makanan.id_makanan)
 FROM makanan
-order by 1 asc", Koneksi.getConn());
-                                            DataTable dt = new DataTable();
-                                            MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter);
-                                            adapter.Fill(dt);
+WHERE UPPER(makanan.nama_makanan) like '%" + tbNama.Text.ToUpper() +"%' AND makanan.status_makanan=99";
+                                            cmd.Connection = Koneksi.getConn();
+                                            int ada;
+                                            ada = Convert.ToInt32(cmd.ExecuteScalar().ToString());
 
                                             int status = 0;
                                             if (rbTersedia.Checked)
@@ -260,17 +260,55 @@ order by 1 asc", Koneksi.getConn());
                                                 status = 1;
                                             }
 
-                                            DataRow baru = dt.NewRow();
-                                            baru["id_makanan"] = tbKode.Text;
-                                            baru["nama_makanan"] = tbNama.Text;
-                                            baru["harga_makanan"] = tbHarga.Text    ;
-                                            baru["stok_makanan"] = tbStok.Text;
-                                            baru["status_makanan"] = status;
-                                            baru["id_jenis_makanan"] = id_jenis[cbJenisMakanan.SelectedIndex];
-                                            dt.Rows.Add(baru);
+                                            if (ada != 0)
+                                            {
+                                                MySqlCommand cmdid = new MySqlCommand();
+                                                cmdid.CommandText = @"SELECT
+  makanan.id_makanan
+FROM makanan
+WHERE UPPER(makanan.nama_makanan) like '%" + tbNama.Text.ToUpper() + "%' AND makanan.status_makanan=99";
+                                                cmdid.Connection = Koneksi.getConn();
+                                                int idtemp;
+                                                idtemp = Convert.ToInt32(cmdid.ExecuteScalar().ToString());
 
-                                            adapter.Update(dt);
+                                                MySqlCommand cmd2 = new MySqlCommand();
+                                                cmd2.CommandText = "UPDATE makanan SET nama_makanan=@nama_makanan, harga_makanan=@harga_makanan, stok_makanan=@stok_makanan, status_makanan=@status_makanan, id_jenis_makanan=@id_jenis_makanan WHERE id_makanan=@id_makanan";
+                                                cmd2.Parameters.AddWithValue("@id_makanan", idtemp);
+                                                cmd2.Parameters.AddWithValue("@nama_makanan", tbNama.Text);
+                                                cmd2.Parameters.AddWithValue("@harga_makanan", tbHarga.Text);
+                                                cmd2.Parameters.AddWithValue("@stok_makanan", tbStok.Text);
+                                                cmd2.Parameters.AddWithValue("@status_makanan", status);
+                                                cmd2.Parameters.AddWithValue("@id_jenis_makanan", id_jenis[cbJenisMakanan.SelectedIndex]);
 
+                                                cmd2.Connection = Koneksi.getConn();
+                                                cmd2.ExecuteNonQuery();
+                                            }
+                                            else
+                                            {
+                                                MySqlDataAdapter adapter = new MySqlDataAdapter(@"SELECT
+  makanan.id_makanan,
+  makanan.nama_makanan,
+  makanan.harga_makanan,
+  makanan.stok_makanan,
+  makanan.status_makanan,
+  makanan.id_jenis_makanan
+FROM makanan
+order by 1 asc", Koneksi.getConn());
+                                                DataTable dt = new DataTable();
+                                                MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter);
+                                                adapter.Fill(dt);
+
+                                                DataRow baru = dt.NewRow();
+                                                baru["id_makanan"] = tbKode.Text;
+                                                baru["nama_makanan"] = tbNama.Text;
+                                                baru["harga_makanan"] = tbHarga.Text;
+                                                baru["stok_makanan"] = tbStok.Text;
+                                                baru["status_makanan"] = status;
+                                                baru["id_jenis_makanan"] = id_jenis[cbJenisMakanan.SelectedIndex];
+                                                dt.Rows.Add(baru);
+
+                                                adapter.Update(dt);
+                                            }
                                             loadCB();
                                             loadDatagrid();
                                             refreshDataGridView();
