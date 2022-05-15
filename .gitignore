@@ -6,5 +6,6 @@ obj/
 # Visual Studio Code Workspace
 *.code-workspace
 
-# Visual Studio Solution Files
+# Visual Studio Files
 *.suo
+program.cs
