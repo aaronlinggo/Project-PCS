@@ -23,7 +23,8 @@ namespace Hotel_Harem_SamGun
         private void FormLogin_Load(object sender, EventArgs e)
         {
             Koneksi.openConn();
-            if (!Koneksi.valid)
+
+            if(!Koneksi.isValid)
             {
                 MessageBox.Show("Gagal terhubung ke database!", "GAGAL");
             }
@@ -32,6 +33,7 @@ namespace Hotel_Harem_SamGun
         private bool getUsernamePasswordRoles()
         {
             dtUsernamePasswordRoles = new DataTable();
+
             try
             {
                 string query = $"SELECT username, password, roles FROM `karyawan` WHERE `username`=@Username AND `password`=@Password";
@@ -40,10 +42,10 @@ namespace Hotel_Harem_SamGun
                 da.SelectCommand.Parameters.AddWithValue("@Password", tbPassword.Text);
                 da.Fill(dtUsernamePasswordRoles);
 
-                if (dtUsernamePasswordRoles.Rows.Count == 1) return true;
+                if(dtUsernamePasswordRoles.Rows.Count == 1) return true;
                 else return false;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -54,13 +56,13 @@ namespace Hotel_Harem_SamGun
         private void btLogin_Click(object sender, EventArgs e)
         {
             //CEK FIELD TEXTBOX
-            if (tbUsername.Text.Trim() == "" || tbPassword.Text.Trim() == "")
+            if(tbUsername.Text.Trim() == "" || tbPassword.Text.Trim() == "")
             {
                 MessageBox.Show("Tidak boleh ada field kosong!", "GAGAL");
                 return;
             }
 
-            if (!getUsernamePasswordRoles())
+            if(!getUsernamePasswordRoles())
             {
                 MessageBox.Show("Username dan Password tidak ditemukan!", "GAGAL");
                 return;
@@ -68,14 +70,15 @@ namespace Hotel_Harem_SamGun
 
             //CEK USERNAME
             MessageBox.Show(dtUsernamePasswordRoles.Rows[0][0].ToString());
-            if (tbUsername.Text.Trim() != dtUsernamePasswordRoles.Rows[0][0].ToString())
+
+            if(tbUsername.Text.Trim() != dtUsernamePasswordRoles.Rows[0][0].ToString())
             {
                 MessageBox.Show("Username Salah! Harap cek kembali!", "GAGAL");
                 return;
             }
 
             //CEK PASSWORD
-            if (tbPassword.Text.Trim() != dtUsernamePasswordRoles.Rows[0][1].ToString())
+            if(tbPassword.Text.Trim() != dtUsernamePasswordRoles.Rows[0][1].ToString())
             {
                 MessageBox.Show("Password Salah! Harap cek kembali!", "GAGAL");
                 tbPassword.Text = "";
@@ -86,15 +89,18 @@ namespace Hotel_Harem_SamGun
 
             //GANTI FORM
             this.Hide();
-            if (roles == "Admin")
+
+            if(roles == "Admin")
             {
                 FormMenuAdmin form = new FormMenuAdmin();
                 form.ShowDialog();
-            } else
+            }
+            else
             {
                 FormMenuResepsionis form = new FormMenuResepsionis();
                 form.ShowDialog();
             }
+
             this.Show();
         }
     }

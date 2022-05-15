@@ -14,7 +14,7 @@ namespace Hotel_Harem_SamGun
         public static string server;
         public static string uid;
         public static string database;
-        public static bool valid;
+        public static bool isValid;
 
         public static void openConn()
         {
@@ -26,16 +26,23 @@ namespace Hotel_Harem_SamGun
 
             try
             {
-                if (conn.State == System.Data.ConnectionState.Closed)
+                if(conn.State == System.Data.ConnectionState.Closed)
                 {
                     conn.Open();
                 }
-                valid = true;
+
+                isValid = true;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                valid = false;
+                Console.WriteLine(ex.Message);
+                isValid = false;
             }
+        }
+
+        public static MySqlConnection getConn()
+        {
+            return conn;
         }
 
         public static void closeConn()
