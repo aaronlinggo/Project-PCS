@@ -28,8 +28,8 @@ namespace Hotel_Harem_SamGun
         private void btPenambahanFasilitasKamar_Click(object sender, EventArgs e)
         {
             Hide();
-            //FormPenambahanFasilitasKamar form = new FormPenambahanFasilitasKamar();
-            //form.ShowDialog();
+            FormPenambahanFasilitasKamar form = new FormPenambahanFasilitasKamar();
+            form.ShowDialog();
             Show();
         }
 
