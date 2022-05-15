@@ -215,38 +215,7 @@ order by 1 asc", Koneksi.conn);
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*makanan.id_makanan, 0
-            makanan.nama_makanan, 1
-            makanan.harga_makanan, 2
-            makanan.stok_makanan, 3
-            makanan.status_makanan, 4
-            makanan.id_jenis_makanan, 5
-            (
-            CASE
-                WHEN makanan.status_makanan = 0 THEN 'Tidak Tersedia'
-                ELSE 'Tersedia'
-            END
-            ), 6
-            jenis_makanan.nama_jenis_makanan 7 */
-            isEdit = true;
-            btnHapus.Enabled = true;
-            btnEdit.Enabled = true;
-            pick = dtmakanan.Rows[dataGridView1.CurrentRow.Index];
-            tbKode.Text = pick[0].ToString();
-            tbNama.Text = pick[1].ToString();
-            tbHarga.Text = pick[2].ToString();
-            tbStok.Text = pick[3].ToString();
-            if (pick[4].ToString() == "0")
-            {
-                rbTidakTersedia.Checked = true;
-                rbTersedia.Checked = false;
-            }
-            else
-            {
-                rbTidakTersedia.Checked = false;
-                rbTersedia.Checked = true;
-            }
-            cbJenisMakanan.SelectedItem = pick[7].ToString();
+            
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
@@ -300,6 +269,12 @@ order by 1 asc", Koneksi.getConn());
                                             baru["id_jenis_makanan"] = id_jenis[cbJenisMakanan.SelectedIndex];
                                             dt.Rows.Add(baru);
 
+                                            adapter.Update(dt);
+
+                                            loadCB();
+                                            loadDatagrid();
+                                            refreshDataGridView();
+
                                             isEdit = false;
                                             start = false;
                                             tbKode.Text = "";
@@ -313,10 +288,6 @@ order by 1 asc", Koneksi.getConn());
                                             btnEdit.Enabled = false;
                                             btnHapus.Enabled = false;
 
-                                            loadCB();
-                                            loadDatagrid();
-
-                                            adapter.Update(dt);
                                             MessageBox.Show("Berhasil Insert Menu Makanan!");
                                             sqlt.Commit();
                                         }
@@ -360,6 +331,208 @@ order by 1 asc", Koneksi.getConn());
             {
                 MessageBox.Show("Nama Makanan tidak boleh kosong!");
             }
+        }
+
+        public void refreshDataGridView()
+        {
+            dataGridView1.DataSource = dtmakanan;
+            dataGridView1.Columns[0].HeaderText = "ID Makanan";
+            dataGridView1.Columns[1].HeaderText = "Nama Makanan";
+            dataGridView1.Columns[2].HeaderText = "Harga Makanan";
+            dataGridView1.Columns[3].HeaderText = "Stok Makanan";
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].HeaderText = "Status Makanan";
+            dataGridView1.Columns[7].HeaderText = "Jenis Makanan";
+            dataGridView1.ClearSelection();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (tbNama.Text != "")
+            {
+                if (tbHarga.Text != "")
+                {
+                    if (tbStok.Text != "")
+                    {
+                        if (rbTersedia.Checked || rbTidakTersedia.Checked)
+                        {
+                            if (cbJenisMakanan.SelectedIndex != -1)
+                            {
+                                if (Convert.ToInt32(tbHarga.Text) >= 0)
+                                {
+                                    if (Convert.ToInt32(tbStok.Text) >= 0)
+                                    {
+                                        MySqlTransaction sqlt = Koneksi.getConn().BeginTransaction();
+                                        try
+                                        {
+                                            int status = 0;
+                                            if (rbTersedia.Checked)
+                                            {
+                                                status = 0;
+                                            }
+                                            else
+                                            {
+                                                status = 1;
+                                            }
+
+                                            MySqlCommand cmd2 = new MySqlCommand();
+                                            cmd2.CommandText = "UPDATE makanan SET nama_makanan=@nama_makanan, harga_makanan=@harga_makanan, stok_makanan=@stok_makanan, status_makanan=@status_makanan, id_jenis_makanan=@id_jenis_makanan WHERE id_makanan=@id_makanan";
+                                            cmd2.Parameters.AddWithValue("@id_makanan", tbKode.Text);
+                                            cmd2.Parameters.AddWithValue("@nama_makanan", tbNama.Text);
+                                            cmd2.Parameters.AddWithValue("@harga_makanan", tbHarga.Text);
+                                            cmd2.Parameters.AddWithValue("@stok_makanan", tbStok.Text);
+                                            cmd2.Parameters.AddWithValue("@status_makanan", status);
+                                            cmd2.Parameters.AddWithValue("@id_jenis_makanan", id_jenis[cbJenisMakanan.SelectedIndex]);
+                                            cmd2.Connection = Koneksi.getConn();
+                                            cmd2.ExecuteNonQuery();
+
+                                            loadCB();
+                                            loadDatagrid();
+                                            refreshDataGridView();
+
+                                            isEdit = false;
+                                            start = false;
+                                            tbKode.Text = "";
+                                            tbNama.Text = "";
+                                            tbHarga.Text = "";
+                                            tbStok.Text = "";
+                                            rbTersedia.Checked = true;
+                                            rbTidakTersedia.Checked = false;
+                                            cbJenisMakanan.SelectedIndex = 0;
+                                            start = true;
+                                            btnEdit.Enabled = false;
+                                            btnHapus.Enabled = false;
+
+                                            MessageBox.Show("Berhasil Ubah Menu Makanan!");
+                                            sqlt.Commit();
+                                        }
+                                        catch (MySqlException ex)
+                                        {
+                                            sqlt.Rollback();
+                                            MessageBox.Show("Gagal Ubah Menu Makanan!");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Stok Makanan harus lebih besar sama dengan 0 (>=0)");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Harga Makanan harus lebih besar sama dengan 0 (>=0)");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Jenis Makanan tidak boleh kosong!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Status Makanan tidak boleh kosong!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Stok Makanan tidak boleh kosong!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Harga Makanan tidak boleh kosong!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nama Makanan tidak boleh kosong!");
+            }
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            MySqlTransaction sqlt = Koneksi.getConn().BeginTransaction();
+            try
+            {
+                MySqlCommand cmd2 = new MySqlCommand();
+                cmd2.CommandText = "UPDATE makanan set status_makanan=@status_makanan WHERE id_makanan=@id_makanan";
+                cmd2.Parameters.AddWithValue("@id_makanan", tbKode.Text);
+                cmd2.Parameters.AddWithValue("@status_makanan", "99");
+
+                cmd2.Connection = Koneksi.getConn();
+                cmd2.ExecuteNonQuery();
+
+                loadCB();
+                loadDatagrid();
+                refreshDataGridView();
+
+                isEdit = false;
+                start = false;
+                tbKode.Text = "";
+                tbNama.Text = "";
+                tbHarga.Text = "";
+                tbStok.Text = "";
+                rbTersedia.Checked = true;
+                rbTidakTersedia.Checked = false;
+                cbJenisMakanan.SelectedIndex = 0;
+                start = true;
+                btnEdit.Enabled = false;
+                btnHapus.Enabled = false;
+
+                MessageBox.Show("Berhasil Hapus Menu Makanan!");
+                sqlt.Commit();
+            }
+            catch (MySqlException ex)
+            {
+                sqlt.Rollback();
+                MessageBox.Show("Gagal Hapus Menu Makanan!");
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /*makanan.id_makanan, 0
+            makanan.nama_makanan, 1
+            makanan.harga_makanan, 2
+            makanan.stok_makanan, 3
+            makanan.status_makanan, 4
+            makanan.id_jenis_makanan, 5
+            (
+            CASE
+                WHEN makanan.status_makanan = 0 THEN 'Tidak Tersedia'
+                ELSE 'Tersedia'
+            END
+            ), 6
+            jenis_makanan.nama_jenis_makanan 7 */
+            isEdit = true;
+            btnHapus.Enabled = true;
+            btnEdit.Enabled = true;
+            pick = dtmakanan.Rows[dataGridView1.CurrentRow.Index];
+            tbKode.Text = pick[0].ToString();
+            tbNama.Text = pick[1].ToString();
+            tbHarga.Text = pick[2].ToString();
+            tbStok.Text = pick[3].ToString();
+            if (pick[4].ToString() == "0")
+            {
+                rbTidakTersedia.Checked = true;
+                rbTersedia.Checked = false;
+            }
+            else
+            {
+                rbTidakTersedia.Checked = false;
+                rbTersedia.Checked = true;
+            }
+            cbJenisMakanan.SelectedItem = pick[7].ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
