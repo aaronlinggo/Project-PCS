@@ -76,6 +76,7 @@ CREATE TABLE `extra_fasilitas` (
   `nama_extra_fasilitas` varchar(255) NOT NULL,
   `stok_extra_fasilitas` int(5) NOT NULL,
   `harga_extra_fasilitas` int(16) NOT NULL,
+  `status_extra_fasilitas` int(1) NOT NULL,
   PRIMARY KEY (`id_extra_fasilitas`),
   UNIQUE KEY `kode_extra_fasilitas` (`kode_extra_fasilitas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -90,6 +91,7 @@ CREATE TABLE `fasilitas` (
   `id_fasilitas` int(11) NOT NULL AUTO_INCREMENT,
   `kode_fasilitas` varchar(7) NOT NULL,
   `nama_fasilitas` varchar(255) NOT NULL,
+  `status_fasilitas` int(1) NOT NULL,
   PRIMARY KEY (`id_fasilitas`),
   UNIQUE KEY `kode_fasilitas` (`kode_fasilitas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -104,26 +106,27 @@ CREATE TABLE `jenis_kamar` (
   `id_jenis_kamar` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jenis_kamar` varchar(255) NOT NULL,
   `harga_jenis_kamar` int(16) NOT NULL,
+  `status_jenis_kamar` int(1) NOT NULL,
   PRIMARY KEY (`id_jenis_kamar`),
   UNIQUE KEY `nama_jenis_kamar` (`nama_jenis_kamar`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `jenis_kamar` */
 
-insert  into `jenis_kamar`(`id_jenis_kamar`,`nama_jenis_kamar`,`harga_jenis_kamar`) values 
-(1,'Superior King',890000),
-(2,'Superior Twin',930000),
-(3,'Deluxe King',1060000),
-(4,'Deluxe Twin',1100000),
-(5,'Premium King',1260000),
-(6,'Premium Twin',1300000),
-(7,'Club King',1610000),
-(8,'Club Twin',1650000),
-(9,'Junior Suite',1900000),
-(10,'Deluxe Suite',2600000),
-(11,'Executive Suite',2900000),
-(12,'Royal Suite',3600000),
-(13,'Presidential Suite',9100000);
+insert  into `jenis_kamar`(`id_jenis_kamar`,`nama_jenis_kamar`,`harga_jenis_kamar`,`status_jenis_kamar`) values 
+(1,'Superior King',890000,1),
+(2,'Superior Twin',930000,1),
+(3,'Deluxe King',1060000,1),
+(4,'Deluxe Twin',1100000,1),
+(5,'Premium King',1260000,1),
+(6,'Premium Twin',1300000,1),
+(7,'Club King',1610000,1),
+(8,'Club Twin',1650000,1),
+(9,'Junior Suite',1900000,1),
+(10,'Deluxe Suite',2600000,1),
+(11,'Executive Suite',2900000,1),
+(12,'Royal Suite',3600000,1),
+(13,'Presidential Suite',9100000,1);
 
 /*Table structure for table `jenis_makanan` */
 
@@ -132,35 +135,36 @@ DROP TABLE IF EXISTS `jenis_makanan`;
 CREATE TABLE `jenis_makanan` (
   `id_jenis_makanan` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jenis_makanan` varchar(255) NOT NULL,
+  `status_jenis_makanan` int(1) NOT NULL,
   PRIMARY KEY (`id_jenis_makanan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `jenis_makanan` */
 
-insert  into `jenis_makanan`(`id_jenis_makanan`,`nama_jenis_makanan`) values 
-(1,'Starters & Salad'),
-(2,'Soups'),
-(3,'Pasta & Risotto'),
-(4,'Pizza'),
-(5,'Sandwich & Burgers'),
-(6,'Meat'),
-(7,'Grilled'),
-(8,'Barbecues & Marinations'),
-(9,'Seafood'),
-(10,'Rice'),
-(11,'Noodles'),
-(12,'Seasonal Vegetables'),
-(13,'Dim Sum & Bento'),
-(14,'Sushi & Sashimi'),
-(15,'Hot Pot'),
-(16,'Vegetarian'),
-(17,'Dessert'),
-(18,'Coffee'),
-(19,'Mineral Water'),
-(20,'Tea'),
-(21,'Fresh Juices'),
-(22,'Soft Drinks'),
-(23,'Beer');
+insert  into `jenis_makanan`(`id_jenis_makanan`,`nama_jenis_makanan`,`status_jenis_makanan`) values 
+(1,'Starters & Salad',1),
+(2,'Soups',1),
+(3,'Pasta & Risotto',1),
+(4,'Pizza',1),
+(5,'Sandwich & Burgers',1),
+(6,'Meat',1),
+(7,'Grilled',1),
+(8,'Barbecues & Marinations',1),
+(9,'Seafood',1),
+(10,'Rice',1),
+(11,'Noodles',1),
+(12,'Seasonal Vegetables',1),
+(13,'Dim Sum & Bento',1),
+(14,'Sushi & Sashimi',1),
+(15,'Hot Pot',1),
+(16,'Vegetarian',1),
+(17,'Dessert',1),
+(18,'Coffee',1),
+(19,'Mineral Water',1),
+(20,'Tea',1),
+(21,'Fresh Juices',1),
+(22,'Soft Drinks',1),
+(23,'Beer',1);
 
 /*Table structure for table `kamar` */
 
@@ -412,6 +416,7 @@ CREATE TABLE `karyawan` (
   `email_karyawan` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `roles` varchar(11) NOT NULL,
+  `status_karyawan` int(1) NOT NULL,
   PRIMARY KEY (`id_karyawan`),
   UNIQUE KEY `kode_karyawan` (`kode_karyawan`),
   UNIQUE KEY `username` (`username`)
@@ -419,14 +424,14 @@ CREATE TABLE `karyawan` (
 
 /*Data for the table `karyawan` */
 
-insert  into `karyawan`(`id_karyawan`,`kode_karyawan`,`username`,`nama_karyawan`,`jenis_kelamin_karyawan`,`tanggal_lahir_karyawan`,`alamat_karyawan`,`nomor_telepon_karyawan`,`email_karyawan`,`password`,`roles`) values 
-(1,'AD001','ExE','Aaron Linggo Satria','L','2002-01-01','Jl. Isekai 1, Isekai','081234567890','aaron_l20@mhs.istts.ac.id','admin1234','Admin'),
-(2,'AD002','acxel','Acxel Derian Afandi','L','2002-03-01','Jl. Isekai 2, Isekai','081245678903','acxel_d20@mhs.istts.ac.id','admin1234','Admin'),
-(3,'AD003','MrKarep','Ignatius Odi','L','2002-05-01','Jl. Isekai 3, Isekai','081256789034','ignatius_o20@mhs.istts.ac.id','admin1234','Admin'),
-(4,'AD004','SamGun_Official','Samuel Gunawan','L','2002-07-01','Jl. Isekai 4, Isekai','081267890345','samuel_20@mhs.istts.ac.id','admin1234','Admin'),
-(5,'RE001','Kosmas','Kenny','P','2002-02-01','Jl. Ngagel Jaya 73, Surabaya','089265430987','kenny_20@mhs.istts.ac.id','12345678','Resepsionis'),
-(6,'RE002','KaiserX00','Mikhael Chris','L','2002-04-01','Jl. Ngagel Jaya 74, Surabaya','089254309876','mikhael_c20@mhs.istts.ac.id','12345678','Resepsionis'),
-(7,'RE003','CBEngineer','Alexander Kevin','L','2002-06-01','Jl. Ngagel Jaya 75, Surabaya','089243098765','alexander_k20@mhs.istts.ac.id','12345678','Resepsionis');
+insert  into `karyawan`(`id_karyawan`,`kode_karyawan`,`username`,`nama_karyawan`,`jenis_kelamin_karyawan`,`tanggal_lahir_karyawan`,`alamat_karyawan`,`nomor_telepon_karyawan`,`email_karyawan`,`password`,`roles`,`status_karyawan`) values 
+(1,'AD001','ExE','Aaron Linggo Satria','L','2002-01-01','Jl. Isekai 1, Isekai','081234567890','aaron_l20@mhs.istts.ac.id','admin1234','Admin',1),
+(2,'AD002','acxel','Acxel Derian Afandi','L','2002-03-01','Jl. Isekai 2, Isekai','081245678903','acxel_d20@mhs.istts.ac.id','admin1234','Admin',1),
+(3,'AD003','MrKarep','Ignatius Odi','L','2002-05-01','Jl. Isekai 3, Isekai','081256789034','ignatius_o20@mhs.istts.ac.id','admin1234','Admin',1),
+(4,'AD004','SamGun_Official','Samuel Gunawan','L','2002-07-01','Jl. Isekai 4, Isekai','081267890345','samuel_20@mhs.istts.ac.id','admin1234','Admin',1),
+(5,'RE001','Kosmas','Kenny','P','2002-02-01','Jl. Ngagel Jaya 73, Surabaya','089265430987','kenny_20@mhs.istts.ac.id','12345678','Resepsionis',1),
+(6,'RE002','KaiserX00','Mikhael Chris','L','2002-04-01','Jl. Ngagel Jaya 74, Surabaya','089254309876','mikhael_c20@mhs.istts.ac.id','12345678','Resepsionis',1),
+(7,'RE003','CBEngineer','Alexander Kevin','L','2002-06-01','Jl. Ngagel Jaya 75, Surabaya','089243098765','alexander_k20@mhs.istts.ac.id','12345678','Resepsionis',1);
 
 /*Table structure for table `makanan` */
 
@@ -700,6 +705,7 @@ CREATE TABLE `reservasi` (
   `tanggal_check_out` date DEFAULT NULL,
   `total_biaya` int(16) DEFAULT NULL,
   `kode_karyawan` varchar(5) NOT NULL,
+  `status_reservasi` int(1) NOT NULL,
   PRIMARY KEY (`id_reservasi`),
   UNIQUE KEY `kode_reservasi` (`kode_reservasi`),
   KEY `kode_tamu` (`kode_tamu`),
@@ -712,22 +718,22 @@ CREATE TABLE `reservasi` (
 
 /*Data for the table `reservasi` */
 
-insert  into `reservasi`(`id_reservasi`,`kode_reservasi`,`kode_tamu`,`kode_kamar`,`down_payment`,`deposito`,`tanggal_check_in`,`tanggal_check_out`,`total_biaya`,`kode_karyawan`) values 
-(1,'RSV120422FW1102','FRWI001','ROS1102',1800000,4850000,'2022-04-25','2022-04-27',3600000,'RE001'),
-(2,'RSV140422BG0911','BOGA001','DES911',1300000,4350000,'2022-04-29','2022-05-01',2600000,'RE002'),
-(3,'RSV170422JM0418','JAMO001','DET418',550000,3000000,'2022-04-20','2022-04-24',1100000,'RE001'),
-(4,'RSV180422JB1005','JIBO001','EXS1005',1450000,4700000,'2022-04-22','2022-04-26',2900000,'RE001'),
-(5,'RSV180422JH0603','JEHU001','PRK603',1130000,3100000,'2022-04-25','2022-04-29',2260000,'RE003'),
-(6,'RSV220422DN0212','DANA001','SUT212',465000,2750000,'2022-04-27','2022-04-29',930000,'RE001'),
-(7,'RSV230422DN0119','DANA002','SUK119',445000,2500000,'2022-04-26',NULL,890000,'RE002'),
-(8,'RSV250422CK0812','CHKA001','JUS812',950000,4000000,'2022-05-06','2022-05-09',1900000,'RE003'),
-(9,'RSV270422YJ0605','YIJI001','PRT605',1150000,3250000,'2022-04-30','2022-05-05',2300000,'RE001'),
-(10,'RSV010522LC0711','LECH001','CLT711',825000,3700000,'2022-05-11','2022-05-14',1650000,'RE003'),
-(11,'RSV040522MM0716','MYMI001','CLK716',805000,3400000,'2022-05-13',NULL,1610000,'RE003'),
-(12,'RSV070522SY0406','SUYU001','DEK406',530000,2850000,NULL,NULL,NULL,'RE002'),
-(13,'RSV160522LJ1210','LEJI001','PRS1210',4550000,5000000,'2022-05-16',NULL,9100000,'RE002'),
-(14,'RSV160522KM1211','KIMI001','PRS1211',4550000,5000000,'2022-05-16',NULL,9100000,'RE003'),
-(15,'RSV160522LH1212','LEHY001','PRS1212',4550000,5000000,'2022-05-16',NULL,9100000,'RE002');
+insert  into `reservasi`(`id_reservasi`,`kode_reservasi`,`kode_tamu`,`kode_kamar`,`down_payment`,`deposito`,`tanggal_check_in`,`tanggal_check_out`,`total_biaya`,`kode_karyawan`,`status_reservasi`) values 
+(1,'RSV120422FW1102','FRWI001','ROS1102',1800000,4850000,'2022-04-25','2022-04-27',3600000,'RE001',1),
+(2,'RSV140422BG0911','BOGA001','DES911',1300000,4350000,'2022-04-29','2022-05-01',2600000,'RE002',1),
+(3,'RSV170422JM0418','JAMO001','DET418',550000,3000000,'2022-04-20','2022-04-24',1100000,'RE001',1),
+(4,'RSV180422JB1005','JIBO001','EXS1005',1450000,4700000,'2022-04-22','2022-04-26',2900000,'RE001',1),
+(5,'RSV180422JH0603','JEHU001','PRK603',1130000,3100000,'2022-04-25','2022-04-29',2739000,'RE003',1),
+(6,'RSV220422DN0212','DANA001','SUT212',465000,2750000,'2022-04-27','2022-04-29',930000,'RE001',1),
+(7,'RSV230422DN0119','DANA002','SUK119',445000,2500000,'2022-04-26',NULL,2038000,'RE002',1),
+(8,'RSV250422CK0812','CHKA001','JUS812',950000,4000000,'2022-05-06','2022-05-09',1900000,'RE003',1),
+(9,'RSV270422YJ0605','YIJI001','PRT605',1150000,3250000,'2022-04-30','2022-05-05',3318000,'RE001',1),
+(10,'RSV010522LC0711','LECH001','CLT711',825000,3700000,'2022-05-11','2022-05-14',1650000,'RE003',1),
+(11,'RSV040522MM0716','MYMI001','CLK716',805000,3400000,'2022-05-13',NULL,1610000,'RE003',1),
+(12,'RSV070522SY0406','SUYU001','DEK406',530000,2850000,NULL,NULL,NULL,'RE002',1),
+(13,'RSV160522LJ1210','LEJI001','PRS1210',4550000,5000000,'2022-05-16',NULL,9100000,'RE002',1),
+(14,'RSV160522KM1211','KIMI001','PRS1211',4550000,5000000,'2022-05-16',NULL,9100000,'RE003',1),
+(15,'RSV160522LH1212','LEHY001','PRS1212',4550000,5000000,'2022-05-16',NULL,9506000,'RE002',1);
 
 /*Table structure for table `tamu` */
 
@@ -743,28 +749,29 @@ CREATE TABLE `tamu` (
   `negara_asal` varchar(255) NOT NULL,
   `nomor_telepon_tamu` varchar(13) NOT NULL,
   `email_tamu` varchar(255) NOT NULL,
+  `status_tamu` int(1) NOT NULL,
   PRIMARY KEY (`id_tamu`),
   UNIQUE KEY `kode_tamu` (`kode_tamu`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tamu` */
 
-insert  into `tamu`(`id_tamu`,`kode_tamu`,`nama_tamu`,`jenis_kelamin_tamu`,`tanggal_lahir_tamu`,`alamat_tamu`,`negara_asal`,`nomor_telepon_tamu`,`email_tamu`) values 
-(1,'FRWI001','Frank Williams','L','1978-10-17','Jl. Siliwangi 381, Jawa Tengah','United States','0247608795','frankdwilliams@armyspy.com'),
-(2,'BOGA001','Bobby Gainer','L','1977-07-22','Jl. Hayam Wuruk Glodok Jaya Blok C/28 Lt. Dasar, DKI Jakarta','United States','5152746701','bobbyagainer@dayrep.com'),
-(3,'JAMO001','Janice Moore','P','1998-01-19','Jl. Ngagel Jaya Indah I/10, Jawa Timur','United States',' 0315025552','janicetmoore@teleworm.us'),
-(4,'JIBO001','Jimmy Boggs','L','1980-06-10','Jl. Kalibutuh 195-197, Jawa Timur','United States','0315311552','jimmysboggs@rhyta.com'),
-(5,'JEHU001','Jennie Huff','P','1990-05-13','Jl. Cempaka Putih XIX 8 RT 007/07, DKI Jakarta','United States','0214264274','jennielhuff@jourrapide.com'),
-(6,'DANA001','Dalia Napolitano','P','1986-10-27','Jl. Rawagatel Kav. III Blok S-39, DKI Jakarta','Italy','0214894934','dalianapolitano@rhyta.com'),
-(7,'DANA002','Dalgisa Napolitano','P','1996-07-12','Jl. Jayakarta 141 Blok C/14, DKI Jakarta','Italy','0216289758','dalgisanapolitano@armyspy.com'),
-(8,'CHKA001','Chen Kang','L','1980-02-11','Jl. Jend Sudirman Kav. 33 A Wisma Standard Chartered Bank, DKI Jakarta','China','0215721057','chenkang@teleworm.us'),
-(9,'YIJI001','Yi Jie Tseng','P','1989-10-28','Jl. Letjen Haryono MT 821, Jawa Tengah','Taiwan','0248316638','yijietseng@teleworm.us'),
-(10,'LECH001','Lee Chou','L','1991-01-03','Kompleks Palem Indah Blok R-1/4 RT 011/011, DKI Jakarta','China','02186903256','leechou@teleworm.us'),
-(11,'MYMI001','Myoui Mina','P','1997-03-24','Jl. Raya Kuta 56 Blok D-E, Bali','Japan','0361754391','minamyoui@twicejapan.com'),
-(12,'SUYU001','Suzuhana Yuko','P','1983-06-07','Jl. Kelapa Puyuh 11 Kompleks Kelapa Gading Permai Blok KD/30, DKI Jakarta','Japan','0214520325','yukosuzuhana@wagakkiband.com'),
-(13,'LEJI001','Lee Ji-eun','P','1993-05-16','Jl. Kol. Yos Sudarso 11 B, DKI Jakarta','South Korea','02143902350','dlwlrma@edam-ent.com'),
-(14,'KIMI001','Kim Min-jeong','P','2001-01-01','Jl. Tarumanegara 67, DKI Jakarta','South Korea','0217499840','winter@sm-entertainment.com'),
-(15,'LEHY001','Lee Hye-ri','P','1994-06-09','Jl. Purwakarta 169, Jawa Barat','South Korea','0227270229','hyerissi@gumiho.tv');
+insert  into `tamu`(`id_tamu`,`kode_tamu`,`nama_tamu`,`jenis_kelamin_tamu`,`tanggal_lahir_tamu`,`alamat_tamu`,`negara_asal`,`nomor_telepon_tamu`,`email_tamu`,`status_tamu`) values 
+(1,'FRWI001','Frank Williams','L','1978-10-17','Jl. Siliwangi 381, Jawa Tengah','United States','0247608795','frankdwilliams@armyspy.com',1),
+(2,'BOGA001','Bobby Gainer','L','1977-07-22','Jl. Hayam Wuruk Glodok Jaya Blok C/28 Lt. Dasar, DKI Jakarta','United States','5152746701','bobbyagainer@dayrep.com',1),
+(3,'JAMO001','Janice Moore','P','1998-01-19','Jl. Ngagel Jaya Indah I/10, Jawa Timur','United States',' 0315025552','janicetmoore@teleworm.us',1),
+(4,'JIBO001','Jimmy Boggs','L','1980-06-10','Jl. Kalibutuh 195-197, Jawa Timur','United States','0315311552','jimmysboggs@rhyta.com',1),
+(5,'JEHU001','Jennie Huff','P','1990-05-13','Jl. Cempaka Putih XIX 8 RT 007/07, DKI Jakarta','United States','0214264274','jennielhuff@jourrapide.com',1),
+(6,'DANA001','Dalia Napolitano','P','1986-10-27','Jl. Rawagatel Kav. III Blok S-39, DKI Jakarta','Italy','0214894934','dalianapolitano@rhyta.com',1),
+(7,'DANA002','Dalgisa Napolitano','P','1996-07-12','Jl. Jayakarta 141 Blok C/14, DKI Jakarta','Italy','0216289758','dalgisanapolitano@armyspy.com',1),
+(8,'CHKA001','Chen Kang','L','1980-02-11','Jl. Jend Sudirman Kav. 33 A Wisma Standard Chartered Bank, DKI Jakarta','China','0215721057','chenkang@teleworm.us',1),
+(9,'YIJI001','Yi Jie Tseng','P','1989-10-28','Jl. Letjen Haryono MT 821, Jawa Tengah','Taiwan','0248316638','yijietseng@teleworm.us',1),
+(10,'LECH001','Lee Chou','L','1991-01-03','Kompleks Palem Indah Blok R-1/4 RT 011/011, DKI Jakarta','China','02186903256','leechou@teleworm.us',1),
+(11,'MYMI001','Myoui Mina','P','1997-03-24','Jl. Raya Kuta 56 Blok D-E, Bali','Japan','0361754391','minamyoui@twicejapan.com',1),
+(12,'SUYU001','Suzuhana Yuko','P','1983-06-07','Jl. Kelapa Puyuh 11 Kompleks Kelapa Gading Permai Blok KD/30, DKI Jakarta','Japan','0214520325','yukosuzuhana@wagakkiband.com',1),
+(13,'LEJI001','Lee Ji-eun','P','1993-05-16','Jl. Kol. Yos Sudarso 11 B, DKI Jakarta','South Korea','02143902350','dlwlrma@edam-ent.com',1),
+(14,'KIMI001','Kim Min-jeong','P','2001-01-01','Jl. Tarumanegara 67, DKI Jakarta','South Korea','0217499840','winter@sm-entertainment.com',1),
+(15,'LEHY001','Lee Hye-ri','P','1994-06-09','Jl. Purwakarta 169, Jawa Barat','South Korea','0227270229','hyerissi@gumiho.tv',1);
 
 /*Table structure for table `use_extra_fasilitas` */
 

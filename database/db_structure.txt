@@ -9,7 +9,8 @@ KARYAWAN (ADMIN + RESEPSIONIS):
     nomor_telepon_karyawan VARCHAR(13),
     email_karyawan VARCHAR(255),
     password VARCHAR(255),
-    roles VARCHAR(11)
+    roles VARCHAR(11),
+    status_karyawan INT(1)
 
 KAMAR:
     id_kamar INT(11) AUTO_INCREMENT [PRIMARY],
@@ -22,12 +23,14 @@ KAMAR:
 JENIS_KAMAR:
     id_jenis_kamar INT(11) AUTO_INCREMENT [PRIMARY],
     nama_jenis_kamar VARCHAR(255) [UNIQUE],
-    harga_jenis_kamar INT(16)
+    harga_jenis_kamar INT(16),
+    status_jenis_kamar INT(1)
 
 FASILITAS:
     id_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
     kode_fasilitas VARCHAR(7) [UNIQUE], --> 4 digit nama fasilitas (2 + 2 digit jika 2 kata/lebih) + 3 digit nomor urut
-    nama_fasilitas VARCHAR(255)
+    nama_fasilitas VARCHAR(255),
+    status_fasilitas INT(1)
 
 DETAIL_FASILITAS:
     id_detail_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
@@ -39,7 +42,8 @@ EXTRA_FASILITAS:
     kode_extra_fasilitas VARCHAR(7) [UNIQUE], --> 4 digit nama extra fasilitas (2 + 2 digit jika 2 kata/lebih) + 3 digit nomor urut
     nama_extra_fasilitas VARCHAR(255),
     stok_extra_fasilitas INT(5),
-    harga_extra_fasilitas INT(16)
+    harga_extra_fasilitas INT(16),
+    status_extra_fasilitas INT(1)
 
 USE_EXTRA_FASILITAS:
     id_use_extra_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
@@ -58,7 +62,8 @@ MAKANAN:
 
 JENIS_MAKANAN:
     id_jenis_makanan INT(11) AUTO_INCREMENT [PRIMARY],
-    nama_jenis_makanan VARCHAR(255)
+    nama_jenis_makanan VARCHAR(255),
+    status_jenis_makanan INT(1)
 
 PEMESANAN_MAKANAN:
     id_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
@@ -83,7 +88,8 @@ TAMU:
     alamat_tamu VARCHAR(255),
     negara_asal VARCHAR(255),
     nomor_telepon_tamu VARCHAR(13),
-    email_tamu VARCHAR(255)
+    email_tamu VARCHAR(255),
+    status_tamu INT(1)
 
 RESERVASI:
     id_reservasi INT(11) AUTO_INCREMENT [PRIMARY],
@@ -95,4 +101,5 @@ RESERVASI:
     tanggal_check_in DATE [DEFAULT NULL],
     tanggal_check_out DATE [DEFAULT NULL],
     total_biaya INT(16) [DEFAULT NULL],
-    kode_karyawan FK KARYAWAN [FOREIGN KEY]
+    kode_karyawan FK KARYAWAN [FOREIGN KEY],
+    status_reservasi INT(1)

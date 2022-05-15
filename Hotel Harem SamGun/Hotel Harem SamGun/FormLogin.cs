@@ -69,8 +69,6 @@ namespace Hotel_Harem_SamGun
             }
 
             //CEK USERNAME
-            MessageBox.Show(dtUsernamePasswordRoles.Rows[0][0].ToString());
-
             if(tbUsername.Text.Trim() != dtUsernamePasswordRoles.Rows[0][0].ToString())
             {
                 MessageBox.Show("Username Salah! Harap cek kembali!", "GAGAL");
