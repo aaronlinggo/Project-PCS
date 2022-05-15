@@ -13,7 +13,7 @@ namespace Hotel_Harem_SamGun
         public static string server;
         public static string uid;
         public static string database;
-        public static bool koneksiValid;
+        public static bool valid;
 
         public static void openConn()
         {
@@ -28,12 +28,11 @@ namespace Hotel_Harem_SamGun
                 {
                     conn.Open();
                 }
-                koneksiValid = true;
+                valid = true;
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show("Gagal terhubung ke database!");
-                koneksiValid = false;
+                valid = false;
             }
         }
 

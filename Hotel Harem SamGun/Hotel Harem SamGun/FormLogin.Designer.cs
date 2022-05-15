@@ -97,11 +97,13 @@ namespace Hotel_Harem_SamGun
             this.tbPassword.Location = new System.Drawing.Point(167, 203);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(6);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(288, 26);
             this.tbPassword.TabIndex = 5;
             // 
             // FormLogin
             // 
+            this.AcceptButton = this.btLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 433);
@@ -118,6 +120,7 @@ namespace Hotel_Harem_SamGun
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Login";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
