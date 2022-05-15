@@ -300,6 +300,22 @@ order by 1 asc", Koneksi.getConn());
                                             baru["id_jenis_makanan"] = id_jenis[cbJenisMakanan.SelectedIndex];
                                             dt.Rows.Add(baru);
 
+                                            isEdit = false;
+                                            start = false;
+                                            tbKode.Text = "";
+                                            tbNama.Text = "";
+                                            tbHarga.Text = "";
+                                            tbStok.Text = "";
+                                            rbTersedia.Checked = true;
+                                            rbTidakTersedia.Checked = false;
+                                            cbJenisMakanan.SelectedIndex = 0;
+                                            start = true;
+                                            btnEdit.Enabled = false;
+                                            btnHapus.Enabled = false;
+
+                                            loadCB();
+                                            loadDatagrid();
+
                                             adapter.Update(dt);
                                             MessageBox.Show("Berhasil Insert Menu Makanan!");
                                             sqlt.Commit();
