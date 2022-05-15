@@ -66,6 +66,7 @@
             this.dgvReservasi.AllowUserToDeleteRows = false;
             this.dgvReservasi.AllowUserToResizeColumns = false;
             this.dgvReservasi.AllowUserToResizeRows = false;
+            this.dgvReservasi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvReservasi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReservasi.Location = new System.Drawing.Point(13, 14);
             this.dgvReservasi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
