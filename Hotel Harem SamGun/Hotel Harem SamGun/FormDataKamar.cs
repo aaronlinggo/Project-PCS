@@ -50,7 +50,7 @@ namespace Hotel_Harem_SamGun
         public void refreshDGV()
         {
             dt = new DataTable();
-            query = "SELECT id_kamar, kode_kamar, nomor_kamar, nomor_lantai, nama_jenis_kamar, harga_jenis_kamar,status_kamar FROM kamar k JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar ORDER BY id_kamar";
+            query = "SELECT id_kamar, kode_kamar, nomor_kamar, nomor_lantai, nama_jenis_kamar, harga_jenis_kamar, IF(status_kamar=1,'Tersedia','Tidak tersedia') FROM kamar k JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar ORDER BY id_kamar";
             cmd = new MySqlCommand(query, conn);
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -129,7 +129,7 @@ namespace Hotel_Harem_SamGun
             cmd = new MySqlCommand($"SELECT id_jenis_kamar FROM jenis_kamar WHERE nama_jenis_kamar = '{dgvKamar.Rows[selectedIdx].Cells[4].Value.ToString()}'",conn);
             int id_jenis_kamar = Convert.ToInt32(cmd.ExecuteScalar().ToString());
             comboJenisKamar.SelectedIndex = id_jenis_kamar-1;
-            if(dgvKamar.Rows[selectedIdx].Cells[6].Value.ToString() == "1")
+            if(dgvKamar.Rows[selectedIdx].Cells[6].Value.ToString() == "Tersedia")
             {
                 rb1.Checked = true;
             }

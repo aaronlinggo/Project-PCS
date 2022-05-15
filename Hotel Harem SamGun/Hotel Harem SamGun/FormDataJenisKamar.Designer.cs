@@ -45,6 +45,7 @@ namespace Hotel_Harem_SamGun
             this.btnTambah = new System.Windows.Forms.Button();
             this.btnHapus = new System.Windows.Forms.Button();
             this.dgvJenisKamar = new System.Windows.Forms.DataGridView();
+            this.btnKembali = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJenisKamar)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +53,7 @@ namespace Hotel_Harem_SamGun
             // btnBersihkan
             // 
             this.btnBersihkan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBersihkan.Location = new System.Drawing.Point(165, 293);
+            this.btnBersihkan.Location = new System.Drawing.Point(165, 601);
             this.btnBersihkan.Name = "btnBersihkan";
             this.btnBersihkan.Size = new System.Drawing.Size(118, 43);
             this.btnBersihkan.TabIndex = 14;
@@ -63,7 +64,7 @@ namespace Hotel_Harem_SamGun
             // btnUbah
             // 
             this.btnUbah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUbah.Location = new System.Drawing.Point(1140, 293);
+            this.btnUbah.Location = new System.Drawing.Point(1140, 601);
             this.btnUbah.Name = "btnUbah";
             this.btnUbah.Size = new System.Drawing.Size(105, 43);
             this.btnUbah.TabIndex = 13;
@@ -82,7 +83,7 @@ namespace Hotel_Harem_SamGun
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tbNama);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(26, 72);
+            this.groupBox1.Location = new System.Drawing.Point(26, 380);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1219, 204);
             this.groupBox1.TabIndex = 12;
@@ -148,6 +149,7 @@ namespace Hotel_Harem_SamGun
             this.tbHarga.Name = "tbHarga";
             this.tbHarga.Size = new System.Drawing.Size(164, 26);
             this.tbHarga.TabIndex = 3;
+            this.tbHarga.TextChanged += new System.EventHandler(this.tbHarga_TextChanged);
             // 
             // label3
             // 
@@ -164,7 +166,7 @@ namespace Hotel_Harem_SamGun
             this.tbNama.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNama.Location = new System.Drawing.Point(153, 60);
             this.tbNama.Name = "tbNama";
-            this.tbNama.Size = new System.Drawing.Size(126, 26);
+            this.tbNama.Size = new System.Drawing.Size(334, 26);
             this.tbNama.TabIndex = 1;
             // 
             // label2
@@ -190,7 +192,7 @@ namespace Hotel_Harem_SamGun
             // btnTambah
             // 
             this.btnTambah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.Location = new System.Drawing.Point(1018, 293);
+            this.btnTambah.Location = new System.Drawing.Point(1018, 601);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(105, 43);
             this.btnTambah.TabIndex = 10;
@@ -201,7 +203,7 @@ namespace Hotel_Harem_SamGun
             // btnHapus
             // 
             this.btnHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHapus.Location = new System.Drawing.Point(26, 293);
+            this.btnHapus.Location = new System.Drawing.Point(26, 601);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(118, 43);
             this.btnHapus.TabIndex = 9;
@@ -211,8 +213,12 @@ namespace Hotel_Harem_SamGun
             // 
             // dgvJenisKamar
             // 
+            this.dgvJenisKamar.AllowUserToAddRows = false;
+            this.dgvJenisKamar.AllowUserToDeleteRows = false;
+            this.dgvJenisKamar.AllowUserToResizeColumns = false;
+            this.dgvJenisKamar.AllowUserToResizeRows = false;
             this.dgvJenisKamar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJenisKamar.Location = new System.Drawing.Point(26, 356);
+            this.dgvJenisKamar.Location = new System.Drawing.Point(26, 66);
             this.dgvJenisKamar.Name = "dgvJenisKamar";
             this.dgvJenisKamar.ReadOnly = true;
             this.dgvJenisKamar.RowHeadersVisible = false;
@@ -221,11 +227,22 @@ namespace Hotel_Harem_SamGun
             this.dgvJenisKamar.TabIndex = 8;
             this.dgvJenisKamar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJenisKamar_CellClick);
             // 
+            // btnKembali
+            // 
+            this.btnKembali.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKembali.Location = new System.Drawing.Point(1140, 17);
+            this.btnKembali.Name = "btnKembali";
+            this.btnKembali.Size = new System.Drawing.Size(105, 43);
+            this.btnKembali.TabIndex = 15;
+            this.btnKembali.Text = "Kembali";
+            this.btnKembali.UseVisualStyleBackColor = true;
+            // 
             // FormDataJenisKamar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.btnKembali);
             this.Controls.Add(this.btnBersihkan);
             this.Controls.Add(this.btnUbah);
             this.Controls.Add(this.groupBox1);
@@ -261,5 +278,6 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.Button btnTambah;
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.DataGridView dgvJenisKamar;
+        private System.Windows.Forms.Button btnKembali;
     }
 }
