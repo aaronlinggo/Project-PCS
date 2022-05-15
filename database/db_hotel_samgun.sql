@@ -700,13 +700,31 @@ CREATE TABLE `tamu` (
   `jenis_kelamin_tamu` varchar(1) NOT NULL,
   `tanggal_lahir_tamu` date NOT NULL,
   `alamat_tamu` varchar(255) NOT NULL,
+  `negara_asal` varchar(255) NOT NULL,
   `nomor_telepon_tamu` varchar(13) NOT NULL,
   `email_tamu` varchar(255) NOT NULL,
   PRIMARY KEY (`id_tamu`),
   UNIQUE KEY `kode_tamu` (`kode_tamu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tamu` */
+
+insert  into `tamu`(`id_tamu`,`kode_tamu`,`nama_tamu`,`jenis_kelamin_tamu`,`tanggal_lahir_tamu`,`alamat_tamu`,`negara_asal`,`nomor_telepon_tamu`,`email_tamu`) values 
+(1,'FRWI001','Frank Williams','L','1978-10-17','Jl. Siliwangi 381, Jawa Tengah','United States','0247608795','frankdwilliams@armyspy.com'),
+(2,'BOGA001','Bobby Gainer','L','1977-07-22','Jl. Hayam Wuruk Glodok Jaya Blok C/28 Lt. Dasar, DKI Jakarta','United States','5152746701','bobbyagainer@dayrep.com'),
+(3,'JAMO001','Janice Moore','P','1998-01-19','Jl. Ngagel Jaya Indah I/10, Jawa Timur','United States',' 0315025552','janicetmoore@teleworm.us'),
+(4,'JIBO001','Jimmy Boggs','L','1980-06-10','Jl. Kalibutuh 195-197, Jawa Timur','United States','0315311552','jimmysboggs@rhyta.com'),
+(5,'JEHU001','Jennie Huff','P','1990-05-13','Jl. Cempaka Putih XIX 8 RT 007/07, DKI Jakarta','United States','0214264274','jennielhuff@jourrapide.com'),
+(6,'DANA001','Dalia Napolitano','P','1986-10-27','Jl. Rawagatel Kav. III Blok S-39, DKI Jakarta','Italy','0214894934','dalianapolitano@rhyta.com'),
+(7,'DANA002','Dalgisa Napolitano','P','1996-07-12','Jl. Jayakarta 141 Blok C/14, DKI Jakarta','Italy','0216289758','dalgisanapolitano@armyspy.com'),
+(8,'CHKA001','Chen Kang','L','1980-02-11','Jl. Jend Sudirman Kav. 33 A Wisma Standard Chartered Bank, DKI Jakarta','China','0215721057','chenkang@teleworm.us'),
+(9,'YIJI001','Yi Jie Tseng','P','1989-10-28','Jl. Letjen Haryono MT 821, Jawa Tengah','Taiwan','0248316638','yijietseng@teleworm.us'),
+(10,'LECH001','Lee Chou','L','1991-01-03','Kompleks Palem Indah Blok R-1/4 RT 011/011, DKI Jakarta','China','02186903256','leechou@teleworm.us'),
+(11,'MYMI001','Myoui Mina','P','1997-03-24','Jl. Raya Kuta 56 Blok D-E, Bali','Japan','0361754391','minamyoui@twicejapan.com'),
+(12,'SUYU001','Suzuhana Yuko','P','1983-06-07','Jl. Kelapa Puyuh 11 Kompleks Kelapa Gading Permai Blok KD/30, DKI Jakarta','Japan','0214520325','yukosuzuhana@wagakkiband.com'),
+(13,'LEJI001','Lee Ji-eun','P','1993-05-16','Jl. Kol. Yos Sudarso 11 B, DKI Jakarta','South Korea','02143902350','dlwlrma@edam-ent.com'),
+(14,'KIMI001','Kim Min-jeong','P','2001-01-01','Jl. Tarumanegara 67, DKI Jakarta','South Korea','0217499840','winter@sm-entertainment.com'),
+(15,'LEHY001','Lee Hye-ri','P','1994-06-09','Jl. Purwakarta 169, Jawa Barat','South Korea','0227270229','hyerissi@gumiho.tv');
 
 /*Table structure for table `use_extra_fasilitas` */
 
