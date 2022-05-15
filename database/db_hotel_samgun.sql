@@ -33,6 +33,24 @@ CREATE TABLE `detail_fasilitas` (
 
 /*Data for the table `detail_fasilitas` */
 
+/*Table structure for table `detail_pemesanan_makanan` */
+
+DROP TABLE IF EXISTS `detail_pemesanan_makanan`;
+
+CREATE TABLE `detail_pemesanan_makanan` (
+  `id_detail_pemesanan` int(11) NOT NULL AUTO_INCREMENT,
+  `kode_pemesanan` varchar(13) NOT NULL,
+  `id_makanan` int(11) NOT NULL,
+  `jumlah_pemesanan` int(5) NOT NULL,
+  PRIMARY KEY (`id_detail_pemesanan`),
+  KEY `kode_pemesanan` (`kode_pemesanan`),
+  KEY `id_makanan` (`id_makanan`),
+  CONSTRAINT `detail_pemesanan_makanan_ibfk_1` FOREIGN KEY (`kode_pemesanan`) REFERENCES `pemesanan_makanan` (`kode_pemesanan`),
+  CONSTRAINT `detail_pemesanan_makanan_ibfk_2` FOREIGN KEY (`id_makanan`) REFERENCES `makanan` (`id_makanan`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `detail_pemesanan_makanan` */
+
 /*Table structure for table `extra_fasilitas` */
 
 DROP TABLE IF EXISTS `extra_fasilitas`;
@@ -634,15 +652,11 @@ DROP TABLE IF EXISTS `pemesanan_makanan`;
 CREATE TABLE `pemesanan_makanan` (
   `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT,
   `kode_pemesanan` varchar(13) NOT NULL,
-  `id_makanan` int(11) NOT NULL,
   `tanggal_pemesanan` date NOT NULL,
   `kode_tamu` varchar(7) NOT NULL,
-  `jumlah_pemesanan` int(5) NOT NULL,
   PRIMARY KEY (`id_pemesanan`),
   UNIQUE KEY `kode_pemesanan` (`kode_pemesanan`),
   KEY `kode_tamu` (`kode_tamu`),
-  KEY `id_makanan` (`id_makanan`),
-  CONSTRAINT `pemesanan_makanan_ibfk_1` FOREIGN KEY (`id_makanan`) REFERENCES `makanan` (`id_makanan`),
   CONSTRAINT `pemesanan_makanan_ibfk_2` FOREIGN KEY (`kode_tamu`) REFERENCES `tamu` (`kode_tamu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

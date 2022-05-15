@@ -63,9 +63,13 @@ JENIS_MAKANAN:
 PEMESANAN_MAKANAN:
     id_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
     kode_pemesanan VARCHAR(13) [UNIQUE], --> 4 digit nama makanan (2 + 2 digit jika 2 kata/lebih) + 2 digit tanggal + 2 digit bulan + 2 digit tahun + 3 digit nomor urut
-    id_makanan FK MAKANAN [FOREIGN KEY],
     tanggal_pemesanan DATE,
-    kode_tamu FK TAMU [FOREIGN KEY],
+    kode_tamu FK TAMU [FOREIGN KEY]
+
+DETAIL_PEMESANAN_MAKANAN:
+    id_detail_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_pemesanan FK PEMESANAN_MAKANAN [FOREIGN KEY],
+    id_makanan FK MAKANAN [FOREIGN KEY],
     jumlah_pemesanan INT(5)
 
 TAMU:
