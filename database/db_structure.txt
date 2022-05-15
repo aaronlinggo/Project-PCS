@@ -79,6 +79,7 @@ TAMU:
     jenis_kelamin_tamu VARCHAR(1),
     tanggal_lahir_tamu DATE,
     alamat_tamu VARCHAR(255),
+    negara_asal VARCHAR(255),
     nomor_telepon_tamu VARCHAR(13),
     email_tamu VARCHAR(255)
 
