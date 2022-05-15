@@ -44,6 +44,7 @@ namespace Hotel_Harem_SamGun
             rb1.Checked = true;
             tbKode.Text = "";
             tbNoKamar.Text = "";
+            selectedIdx = -1;
         }
 
         public void refreshDGV()
