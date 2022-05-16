@@ -229,13 +229,14 @@ namespace Hotel_Harem_SamGun
             // 
             // btnKembali
             // 
-            this.btnKembali.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKembali.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnKembali.Location = new System.Drawing.Point(1140, 17);
             this.btnKembali.Name = "btnKembali";
             this.btnKembali.Size = new System.Drawing.Size(105, 43);
             this.btnKembali.TabIndex = 15;
-            this.btnKembali.Text = "Kembali";
+            this.btnKembali.Text = "KEMBALI";
             this.btnKembali.UseVisualStyleBackColor = true;
+            this.btnKembali.Click += new System.EventHandler(this.btnKembali_Click);
             // 
             // FormDataJenisKamar
             // 

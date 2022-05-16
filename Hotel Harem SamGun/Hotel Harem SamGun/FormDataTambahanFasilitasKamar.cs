@@ -284,5 +284,10 @@ namespace Hotel_Harem_SamGun
                 rb0.Checked = true;
             }
         }
+
+        private void btnKembali_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

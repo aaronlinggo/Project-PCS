@@ -259,5 +259,10 @@ namespace Hotel_Harem_SamGun
         {
             generateKode();
         }
+
+        private void btnKembali_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

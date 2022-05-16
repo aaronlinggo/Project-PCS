@@ -29,9 +29,9 @@ namespace Hotel_Harem_SamGun
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvFasilitas = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgvKeranjang = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.btnKembali = new System.Windows.Forms.Button();
             this.btPesan = new System.Windows.Forms.Button();
@@ -47,19 +47,22 @@ namespace Hotel_Harem_SamGun
             this.numJumlah = new System.Windows.Forms.NumericUpDown();
             this.btnBersihkan = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblPesanan = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.lblKodeReservasi = new System.Windows.Forms.Label();
+            this.lblNamaTamu = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKeranjang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView2
+            // dgvFasilitas
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(41, 138);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1203, 237);
-            this.dataGridView2.TabIndex = 11;
+            this.dgvFasilitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFasilitas.ColumnHeadersVisible = false;
+            this.dgvFasilitas.Location = new System.Drawing.Point(41, 138);
+            this.dgvFasilitas.Name = "dgvFasilitas";
+            this.dgvFasilitas.Size = new System.Drawing.Size(1203, 237);
+            this.dgvFasilitas.TabIndex = 11;
             // 
             // label3
             // 
@@ -71,13 +74,13 @@ namespace Hotel_Harem_SamGun
             this.label3.TabIndex = 10;
             this.label3.Text = "DATA PENAMBAHAN FASILITAS";
             // 
-            // dataGridView3
+            // dgvKeranjang
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(42, 437);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(507, 214);
-            this.dataGridView3.TabIndex = 13;
+            this.dgvKeranjang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKeranjang.Location = new System.Drawing.Point(42, 437);
+            this.dgvKeranjang.Name = "dgvKeranjang";
+            this.dgvKeranjang.Size = new System.Drawing.Size(507, 214);
+            this.dgvKeranjang.TabIndex = 13;
             // 
             // label4
             // 
@@ -98,6 +101,7 @@ namespace Hotel_Harem_SamGun
             this.btnKembali.TabIndex = 14;
             this.btnKembali.Text = "Kembali";
             this.btnKembali.UseVisualStyleBackColor = true;
+            this.btnKembali.Click += new System.EventHandler(this.btnKembali_Click);
             // 
             // btPesan
             // 
@@ -222,28 +226,50 @@ namespace Hotel_Harem_SamGun
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label7.Location = new System.Drawing.Point(40, 58);
+            this.label7.Location = new System.Drawing.Point(40, 29);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(129, 24);
+            this.label7.Size = new System.Drawing.Size(152, 24);
             this.label7.TabIndex = 43;
-            this.label7.Text = "No. Pesanan :";
+            this.label7.Text = "Kode Reservasi :";
             // 
-            // lblPesanan
+            // lblKodeReservasi
             // 
-            this.lblPesanan.AutoSize = true;
-            this.lblPesanan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblPesanan.Location = new System.Drawing.Point(211, 58);
-            this.lblPesanan.Name = "lblPesanan";
-            this.lblPesanan.Size = new System.Drawing.Size(60, 24);
-            this.lblPesanan.TabIndex = 44;
-            this.lblPesanan.Text = "label8";
+            this.lblKodeReservasi.AutoSize = true;
+            this.lblKodeReservasi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblKodeReservasi.Location = new System.Drawing.Point(210, 29);
+            this.lblKodeReservasi.Name = "lblKodeReservasi";
+            this.lblKodeReservasi.Size = new System.Drawing.Size(60, 24);
+            this.lblKodeReservasi.TabIndex = 44;
+            this.lblKodeReservasi.Text = "label8";
+            // 
+            // lblNamaTamu
+            // 
+            this.lblNamaTamu.AutoSize = true;
+            this.lblNamaTamu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblNamaTamu.Location = new System.Drawing.Point(210, 63);
+            this.lblNamaTamu.Name = "lblNamaTamu";
+            this.lblNamaTamu.Size = new System.Drawing.Size(60, 24);
+            this.lblNamaTamu.TabIndex = 46;
+            this.lblNamaTamu.Text = "label8";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label9.Location = new System.Drawing.Point(40, 63);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(124, 24);
+            this.label9.TabIndex = 45;
+            this.label9.Text = "Nama Tamu :";
             // 
             // FormPenambahanFasilitasKamar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.lblPesanan);
+            this.Controls.Add(this.lblNamaTamu);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblKodeReservasi);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnBersihkan);
             this.Controls.Add(this.numJumlah);
@@ -258,14 +284,14 @@ namespace Hotel_Harem_SamGun
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnKembali);
-            this.Controls.Add(this.dataGridView3);
+            this.Controls.Add(this.dgvKeranjang);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dgvFasilitas);
             this.Controls.Add(this.label3);
             this.Name = "FormPenambahanFasilitasKamar";
             this.Text = "Penambahan Fasilitas Kamar";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKeranjang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -274,9 +300,9 @@ namespace Hotel_Harem_SamGun
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvFasilitas;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dgvKeranjang;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnKembali;
         private System.Windows.Forms.Button btPesan;
@@ -292,6 +318,8 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.NumericUpDown numJumlah;
         private System.Windows.Forms.Button btnBersihkan;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblPesanan;
+        private System.Windows.Forms.Label lblKodeReservasi;
+        private System.Windows.Forms.Label lblNamaTamu;
+        private System.Windows.Forms.Label label9;
     }
 }
