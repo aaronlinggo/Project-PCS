@@ -36,9 +36,8 @@
             this.dtpCheckOut = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbJenisKamar = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -47,6 +46,12 @@
             this.lbKodeReservasi = new System.Windows.Forms.Label();
             this.lbTotalTarifKamar = new System.Windows.Forms.Label();
             this.lbKodeKaryawan = new System.Windows.Forms.Label();
+            this.cbNamaTamu = new System.Windows.Forms.ComboBox();
+            this.tbDownPayment = new System.Windows.Forms.TextBox();
+            this.tbDeposito = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbNomorKamar = new System.Windows.Forms.ComboBox();
+            this.btTambahTamu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservasi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +85,7 @@
             // 
             // btReservasi
             // 
-            this.btReservasi.Location = new System.Drawing.Point(953, 422);
+            this.btReservasi.Location = new System.Drawing.Point(982, 443);
             this.btReservasi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btReservasi.Name = "btReservasi";
             this.btReservasi.Size = new System.Drawing.Size(214, 50);
@@ -90,7 +95,7 @@
             // 
             // btBatal
             // 
-            this.btBatal.Location = new System.Drawing.Point(953, 540);
+            this.btBatal.Location = new System.Drawing.Point(982, 546);
             this.btBatal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btBatal.Name = "btBatal";
             this.btBatal.Size = new System.Drawing.Size(214, 49);
@@ -136,14 +141,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Nama Tamu :";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(164, 423);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(222, 26);
-            this.textBox1.TabIndex = 8;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -152,17 +149,18 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 20);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Kode Kamar :";
+            this.label4.Text = "Jenis Kamar :";
             // 
-            // comboBox1
+            // cbJenisKamar
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(667, 395);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 28);
-            this.comboBox1.TabIndex = 10;
+            this.cbJenisKamar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbJenisKamar.FormattingEnabled = true;
+            this.cbJenisKamar.Location = new System.Drawing.Point(667, 395);
+            this.cbJenisKamar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbJenisKamar.Name = "cbJenisKamar";
+            this.cbJenisKamar.Size = new System.Drawing.Size(180, 28);
+            this.cbJenisKamar.TabIndex = 10;
+            this.cbJenisKamar.SelectedIndexChanged += new System.EventHandler(this.cbJenisKamar_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -187,7 +185,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(508, 437);
+            this.label7.Location = new System.Drawing.Point(508, 546);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(137, 20);
@@ -227,7 +225,7 @@
             // lbTotalTarifKamar
             // 
             this.lbTotalTarifKamar.AutoSize = true;
-            this.lbTotalTarifKamar.Location = new System.Drawing.Point(653, 437);
+            this.lbTotalTarifKamar.Location = new System.Drawing.Point(663, 546);
             this.lbTotalTarifKamar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTotalTarifKamar.Name = "lbTotalTarifKamar";
             this.lbTotalTarifKamar.Size = new System.Drawing.Size(43, 20);
@@ -244,11 +242,73 @@
             this.lbKodeKaryawan.TabIndex = 18;
             this.lbKodeKaryawan.Text = "-";
             // 
+            // cbNamaTamu
+            // 
+            this.cbNamaTamu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNamaTamu.FormattingEnabled = true;
+            this.cbNamaTamu.Location = new System.Drawing.Point(164, 423);
+            this.cbNamaTamu.Name = "cbNamaTamu";
+            this.cbNamaTamu.Size = new System.Drawing.Size(246, 28);
+            this.cbNamaTamu.TabIndex = 19;
+            // 
+            // tbDownPayment
+            // 
+            this.tbDownPayment.Location = new System.Drawing.Point(164, 557);
+            this.tbDownPayment.Name = "tbDownPayment";
+            this.tbDownPayment.Size = new System.Drawing.Size(298, 26);
+            this.tbDownPayment.TabIndex = 20;
+            this.tbDownPayment.TextChanged += new System.EventHandler(this.tbDownPayment_TextChanged);
+            // 
+            // tbDeposito
+            // 
+            this.tbDeposito.Location = new System.Drawing.Point(164, 590);
+            this.tbDeposito.Name = "tbDeposito";
+            this.tbDeposito.Size = new System.Drawing.Size(298, 26);
+            this.tbDeposito.TabIndex = 21;
+            this.tbDeposito.TextChanged += new System.EventHandler(this.tbDeposito_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(531, 443);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(114, 20);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Nomor Kamar :";
+            // 
+            // cbNomorKamar
+            // 
+            this.cbNomorKamar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNomorKamar.FormattingEnabled = true;
+            this.cbNomorKamar.Location = new System.Drawing.Point(667, 440);
+            this.cbNomorKamar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbNomorKamar.Name = "cbNomorKamar";
+            this.cbNomorKamar.Size = new System.Drawing.Size(180, 28);
+            this.cbNomorKamar.TabIndex = 23;
+            // 
+            // btTambahTamu
+            // 
+            this.btTambahTamu.Location = new System.Drawing.Point(416, 423);
+            this.btTambahTamu.Name = "btTambahTamu";
+            this.btTambahTamu.Size = new System.Drawing.Size(46, 28);
+            this.btTambahTamu.TabIndex = 24;
+            this.btTambahTamu.Text = "...";
+            this.btTambahTamu.UseVisualStyleBackColor = true;
+            this.btTambahTamu.Click += new System.EventHandler(this.btTambahTamu_Click);
+            // 
             // FormReservasi
             // 
+            this.AcceptButton = this.btTambahTamu;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.btTambahTamu);
+            this.Controls.Add(this.cbNomorKamar);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.tbDeposito);
+            this.Controls.Add(this.tbDownPayment);
+            this.Controls.Add(this.cbNamaTamu);
             this.Controls.Add(this.lbKodeKaryawan);
             this.Controls.Add(this.lbTotalTarifKamar);
             this.Controls.Add(this.lbKodeReservasi);
@@ -257,9 +317,8 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbJenisKamar);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpCheckOut);
@@ -290,9 +349,8 @@
         private System.Windows.Forms.DateTimePicker dtpCheckOut;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbJenisKamar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -301,5 +359,11 @@
         private System.Windows.Forms.Label lbKodeReservasi;
         private System.Windows.Forms.Label lbTotalTarifKamar;
         private System.Windows.Forms.Label lbKodeKaryawan;
+        private System.Windows.Forms.ComboBox cbNamaTamu;
+        private System.Windows.Forms.TextBox tbDownPayment;
+        private System.Windows.Forms.TextBox tbDeposito;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbNomorKamar;
+        private System.Windows.Forms.Button btTambahTamu;
     }
 }

@@ -15,6 +15,11 @@ namespace Hotel_Harem_SamGun
     {
         int selected;
         DataTable dtReservasi;
+        DataTable dtTamu;
+        DataTable dtJenisKamar;
+        DataTable dtNomorKamar;
+
+        MySqlDataAdapter da;
 
         public FormReservasi()
         {
@@ -24,24 +29,17 @@ namespace Hotel_Harem_SamGun
         private void FormReservasi_Load(object sender, EventArgs e)
         {
             refreshDGVReservasi();
+            loadNamaTamu();
+            loadJenisKamar();
             changeMode(1);
         }
 
-        private void loadReservasi()
+        private void fillDT(DataTable dt, string query)
         {
             try
             {
-                dtReservasi = new DataTable();
-                string query = @"
-                    SELECT id_reservasi, kode_reservasi, t.nama_tamu, jk.nama_jenis_kamar, km.nomor_kamar, down_payment, deposito, tanggal_check_in, tanggal_check_out, total_biaya, kr.nama_karyawan
-                    FROM reservasi r
-                    JOIN tamu t ON t.kode_tamu = r.kode_tamu
-                    JOIN kamar km ON km.kode_kamar = r.kode_kamar
-                    JOIN jenis_kamar jk ON jk.id_jenis_kamar = km.id_jenis_kamar
-                    JOIN karyawan kr ON kr.kode_karyawan = r.kode_karyawan
-                    WHERE r.status_reservasi = 1;";
-                MySqlDataAdapter da = new MySqlDataAdapter(query, Koneksi.conn);
-                da.Fill(dtReservasi);
+                da = new MySqlDataAdapter(query, Koneksi.conn);
+                da.Fill(dt);
             }
             catch (Exception ex)
             {
@@ -49,22 +47,36 @@ namespace Hotel_Harem_SamGun
             }
         }
 
+        private void loadReservasi()
+        {
+            dtReservasi = new DataTable();
+            string query = @"
+                    SELECT kode_reservasi, t.nama_tamu, jk.nama_jenis_kamar, km.nomor_kamar, down_payment, deposito, jadwal_check_in, jadwal_check_out, tanggal_check_in, tanggal_check_out, total_biaya, kr.nama_karyawan, status_reservasi
+                    FROM reservasi r
+                    JOIN tamu t ON t.kode_tamu = r.kode_tamu
+                    JOIN kamar km ON km.kode_kamar = r.kode_kamar
+                    JOIN jenis_kamar jk ON jk.id_jenis_kamar = km.id_jenis_kamar
+                    JOIN karyawan kr ON kr.kode_karyawan = r.kode_karyawan";
+            fillDT(dtReservasi, query);
+        }
+
         private void refreshDGVReservasi()
         {
             loadReservasi();
             dgvReservasi.DataSource = dtReservasi;
-            dgvReservasi.Columns[0].HeaderText = "ID";
-            dgvReservasi.Columns[0].Width = 100;
-            dgvReservasi.Columns[1].HeaderText = "Kode Reservasi";
-            dgvReservasi.Columns[2].HeaderText = "Nama Tamu";
-            dgvReservasi.Columns[3].HeaderText = "Jenis Kamar";
-            dgvReservasi.Columns[4].HeaderText = "Nomor Kamar";
-            dgvReservasi.Columns[5].HeaderText = "DP";
-            dgvReservasi.Columns[6].HeaderText = "Deposito";
-            dgvReservasi.Columns[7].HeaderText = "Tanggal Check In";
-            dgvReservasi.Columns[8].HeaderText = "Tanggal Check Out";
-            dgvReservasi.Columns[9].HeaderText = "Total Biaya";
-            dgvReservasi.Columns[10].HeaderText = "Nama Karyawan";
+            dgvReservasi.Columns[0].HeaderText = "Kode Reservasi";
+            dgvReservasi.Columns[1].HeaderText = "Nama Tamu";
+            dgvReservasi.Columns[2].HeaderText = "Jenis Kamar";
+            dgvReservasi.Columns[3].HeaderText = "Nomor Kamar";
+            dgvReservasi.Columns[4].HeaderText = "DP";
+            dgvReservasi.Columns[5].HeaderText = "Deposito";
+            dgvReservasi.Columns[6].HeaderText = "Jadwal Check In";
+            dgvReservasi.Columns[7].HeaderText = "Jadwal Check Out";
+            dgvReservasi.Columns[8].HeaderText = "Tanggal Check In";
+            dgvReservasi.Columns[9].HeaderText = "Tanggal Check Out";
+            dgvReservasi.Columns[10].HeaderText = "Total Biaya";
+            dgvReservasi.Columns[11].HeaderText = "Nama Karyawan";
+            dgvReservasi.Columns[12].HeaderText = "Status Reservasi";
 
             //DISABLE SORT
             foreach (DataGridViewColumn col in dgvReservasi.Columns)
@@ -73,6 +85,36 @@ namespace Hotel_Harem_SamGun
             }
 
             dgvReservasi.ClearSelection();
+        }
+
+        private void loadNamaTamu()
+        {
+            dtTamu = new DataTable();
+            string query = "SELECT kode_tamu, nama_tamu FROM tamu WHERE status_tamu = 1";
+            fillDT(dtTamu, query);
+            cbNamaTamu.DataSource = dtTamu;
+            cbNamaTamu.DisplayMember = "nama_tamu";
+            cbNamaTamu.ValueMember = "kode_tamu";
+        }
+
+        private void loadJenisKamar()
+        {
+            dtJenisKamar = new DataTable();
+            string query = "SELECT id_jenis_kamar, nama_jenis_kamar FROM jenis_kamar WHERE status_jenis_kamar = 1";
+            fillDT(dtJenisKamar, query);
+            cbJenisKamar.DataSource = dtJenisKamar;
+            cbJenisKamar.DisplayMember = "nama_jenis_kamar";
+            cbJenisKamar.ValueMember = "id_jenis_kamar";
+        }
+
+        private void loadNomorKamar()
+        {
+            dtNomorKamar = new DataTable();
+            string query = $"SELECT kode_kamar, nomor_kamar FROM kamar WHERE status_kamar = 1 AND id_jenis_kamar = {Convert.ToInt32(dtJenisKamar.Rows[cbJenisKamar.SelectedIndex][0])}";
+            fillDT(dtNomorKamar, query);
+            cbNomorKamar.DataSource = dtNomorKamar;
+            cbNomorKamar.DisplayMember = "nomor_kamar";
+            cbNomorKamar.ValueMember = "kode_kamar";
         }
 
         private void changeMode(int mode)
@@ -121,7 +163,48 @@ namespace Hotel_Harem_SamGun
             if (dtpCheckOut.Value < dtpCheckIn.Value)
             {
                 MessageBox.Show("Tanggal Check Out tidak boleh kurang dari Tanggal Check In!");
+                dtpCheckOut.Value = dtpCheckIn.Value;
             }
+        }
+
+        private void tbDownPayment_TextChanged(object sender, EventArgs e)
+        {
+            if (tbDownPayment.Text.Length > 0)
+            {
+                char temp = tbDownPayment.Text[(tbDownPayment.Text.Length - 1)];
+                if (!Char.IsDigit(temp))
+                {
+                    tbDownPayment.Text = tbDownPayment.Text.Remove(tbDownPayment.Text.Length - 1, 1);
+                    tbDownPayment.SelectionStart = tbDownPayment.Text.Length;
+                }
+            }
+        }
+
+        private void tbDeposito_TextChanged(object sender, EventArgs e)
+        {
+            if (tbDeposito.Text.Length > 0)
+            {
+                char temp = tbDeposito.Text[(tbDeposito.Text.Length - 1)];
+                if (!Char.IsDigit(temp))
+                {
+                    tbDeposito.Text = tbDeposito.Text.Remove(tbDeposito.Text.Length - 1, 1);
+                    tbDeposito.SelectionStart = tbDeposito.Text.Length;
+                }
+            }
+        }
+
+        private void cbJenisKamar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadNomorKamar();
+        }
+
+        private void btTambahTamu_Click(object sender, EventArgs e)
+        {
+            Hide();
+            FormPencatatanDataTamu form = new FormPencatatanDataTamu();
+            form.ShowDialog();
+            loadNamaTamu();
+            Show();
         }
     }
 }
