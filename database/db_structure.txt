@@ -17,7 +17,7 @@ KAMAR:
     kode_kamar VARCHAR(7) [UNIQUE], --> 3 digit jenis kamar (2 digit kata pertama + 1 digit kata terakhir) + no_kamar
     nomor_kamar INT(4) [UNIQUE], --> max 2 digit nomor lantai + 2 digit nomor urut
     nomor_lantai INT(2),
-    status_kamar INT(2), --> 0 = used, 1 = available, 2 = reserved (Reserved kalau sudah reservasi tapi belum check in)
+    status_kamar INT(2), --> 0 = used, 1 = available, 2 = reserved, 4 = unavailable, 99 = deleted (Reserved kalau sudah reservasi tapi belum check in)
     id_jenis_kamar FK JENIS_KAMAR [FOREIGN KEY]
 
 JENIS_KAMAR:
@@ -100,4 +100,4 @@ RESERVASI:
     tanggal_check_out DATE [DEFAULT NULL],
     total_biaya INT(16) [DEFAULT NULL],
     kode_karyawan FK KARYAWAN [FOREIGN KEY],
-    status_reservasi INT(2)
+    status_reservasi INT(2) --> 0 = done, 1 = not check-in, 2 = not check out
