@@ -103,4 +103,4 @@ RESERVASI:
     tanggal_check_out DATE [DEFAULT NULL],
     total_biaya INT(16) [DEFAULT NULL],
     kode_karyawan FK KARYAWAN [FOREIGN KEY],
-    status_reservasi INT(2) --> 0 = done, 1 = not check-in, 2 = not check out
+    status_reservasi INT(2) --> 0 = done, 1 = not check-in, 2 = not check out, 99 = cancel reservation
