@@ -25,7 +25,7 @@ namespace Hotel_Harem_SamGun
 
         private void FormDataMenuMakanan_Load(object sender, EventArgs e)
         {
-            Koneksi.openConn();
+            /*Koneksi.openConn();*/
             id_jenis = new List<string>();
             isEdit = false;
             start = false;

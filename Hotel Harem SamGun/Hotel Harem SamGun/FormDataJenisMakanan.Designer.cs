@@ -51,28 +51,29 @@ namespace Hotel_Harem_SamGun
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tbKode);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(30, 42);
+            this.groupBox1.Location = new System.Drawing.Point(38, 354);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(710, 153);
+            this.groupBox1.Size = new System.Drawing.Size(710, 128);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
             // tbNama
             // 
             this.tbNama.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNama.Location = new System.Drawing.Point(270, 91);
+            this.tbNama.Location = new System.Drawing.Point(270, 79);
             this.tbNama.Margin = new System.Windows.Forms.Padding(4);
             this.tbNama.Name = "tbNama";
             this.tbNama.Size = new System.Drawing.Size(397, 30);
             this.tbNama.TabIndex = 3;
+            this.tbNama.TextChanged += new System.EventHandler(this.tbNama_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 94);
+            this.label3.Location = new System.Drawing.Point(32, 82);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(221, 25);
@@ -82,7 +83,7 @@ namespace Hotel_Harem_SamGun
             // tbKode
             // 
             this.tbKode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKode.Location = new System.Drawing.Point(270, 31);
+            this.tbKode.Location = new System.Drawing.Point(270, 19);
             this.tbKode.Margin = new System.Windows.Forms.Padding(4);
             this.tbKode.Name = "tbKode";
             this.tbKode.ReadOnly = true;
@@ -93,7 +94,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(32, 34);
+            this.label2.Location = new System.Drawing.Point(32, 22);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(186, 25);
@@ -119,7 +120,7 @@ namespace Hotel_Harem_SamGun
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 278);
+            this.dataGridView1.Location = new System.Drawing.Point(38, 74);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -128,52 +129,57 @@ namespace Hotel_Harem_SamGun
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(904, 272);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // btnBersihkan
             // 
             this.btnBersihkan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBersihkan.Location = new System.Drawing.Point(583, 203);
+            this.btnBersihkan.Location = new System.Drawing.Point(583, 498);
             this.btnBersihkan.Margin = new System.Windows.Forms.Padding(4);
             this.btnBersihkan.Name = "btnBersihkan";
             this.btnBersihkan.Size = new System.Drawing.Size(157, 53);
             this.btnBersihkan.TabIndex = 15;
             this.btnBersihkan.Text = "BERSIHKAN";
             this.btnBersihkan.UseVisualStyleBackColor = true;
+            this.btnBersihkan.Click += new System.EventHandler(this.btnBersihkan_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.Enabled = false;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(395, 203);
+            this.btnEdit.Location = new System.Drawing.Point(395, 498);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(157, 53);
             this.btnEdit.TabIndex = 14;
             this.btnEdit.Text = "UBAH";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnHapus
             // 
             this.btnHapus.Enabled = false;
             this.btnHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHapus.Location = new System.Drawing.Point(211, 203);
+            this.btnHapus.Location = new System.Drawing.Point(211, 498);
             this.btnHapus.Margin = new System.Windows.Forms.Padding(4);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(157, 53);
             this.btnHapus.TabIndex = 13;
             this.btnHapus.Text = "HAPUS";
             this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnTambah
             // 
             this.btnTambah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.Location = new System.Drawing.Point(30, 203);
+            this.btnTambah.Location = new System.Drawing.Point(30, 498);
             this.btnTambah.Margin = new System.Windows.Forms.Padding(4);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(157, 53);
             this.btnTambah.TabIndex = 12;
             this.btnTambah.Text = "TAMBAH";
             this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // button1
             // 
@@ -185,6 +191,7 @@ namespace Hotel_Harem_SamGun
             this.button1.TabIndex = 16;
             this.button1.Text = "KEMBALI";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormDataJenisMakanan
             // 
@@ -204,6 +211,7 @@ namespace Hotel_Harem_SamGun
             this.Name = "FormDataJenisMakanan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormDataJenisMakanan";
+            this.Load += new System.EventHandler(this.FormDataJenisMakanan_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
