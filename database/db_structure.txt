@@ -97,6 +97,8 @@ RESERVASI:
     kode_kamar FK KAMAR [FOREIGN KEY],
     down_payment INT(16),
     deposito INT(16),
+    jadwal_check_in DATE,
+    jadwal_check_out DATE,
     tanggal_check_in DATE [DEFAULT NULL],
     tanggal_check_out DATE [DEFAULT NULL],
     total_biaya INT(16) [DEFAULT NULL],
