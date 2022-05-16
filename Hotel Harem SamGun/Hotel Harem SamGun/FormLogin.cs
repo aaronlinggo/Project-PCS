@@ -27,6 +27,7 @@ namespace Hotel_Harem_SamGun
             if(!Koneksi.isValid)
             {
                 MessageBox.Show("Gagal terhubung ke database!", "GAGAL");
+                return;
             }
         }
 
