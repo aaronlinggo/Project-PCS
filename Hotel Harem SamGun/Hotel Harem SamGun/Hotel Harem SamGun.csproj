@@ -122,6 +122,12 @@
     <Compile Include="FormPenambahanFasilitasDataTamu.Designer.cs">
       <DependentUpon>FormPenambahanFasilitasDataTamu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPencatatanDataTamu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPencatatanDataTamu.Designer.cs">
+      <DependentUpon>FormPencatatanDataTamu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReservasi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPenambahanFasilitasDataTamu.resx">
       <DependentUpon>FormPenambahanFasilitasDataTamu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPencatatanDataTamu.resx">
+      <DependentUpon>FormPencatatanDataTamu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReservasi.resx">
       <DependentUpon>FormReservasi.cs</DependentUpon>
