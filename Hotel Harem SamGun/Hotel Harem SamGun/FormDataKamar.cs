@@ -148,41 +148,52 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                int nomor_kamar = Convert.ToInt32(tbNoKamar.Text);
-                query = $"SELECT COUNT(*) FROM kamar where nomor_kamar = '{nomor_kamar}'";
-                cmd = new MySqlCommand(query, conn);
-                int jumlah = Convert.ToInt32(cmd.ExecuteScalar().ToString());
-                if (jumlah > 0)
+                if (numLantai.Value == 0 || numKamarKe.Value == 0)
                 {
-                    // ada nomor kamarnya
-                    MessageBox.Show("Nomor kamar sudah terdaftar");
+                    MessageBox.Show("Lantai dan Kamarnya tidak mungkin 0");
                 }
                 else
                 {
-                    // belum ada, boleh insert
-                    int status;
-                    if (rb1.Checked)
+                    int nomor_kamar = Convert.ToInt32(tbNoKamar.Text);
+                    query = $"SELECT COUNT(*) FROM kamar where nomor_kamar = '{nomor_kamar}'";
+                    cmd = new MySqlCommand(query, conn);
+                    int jumlah = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                    if (jumlah > 0)
                     {
-                        status = 1;
+                        cmd = new MySqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = $"UPDATE kamar SET status_kamar = 1 WHERE nomor_kamar = '{tbNoKamar.Text}'";
+                        cmd.ExecuteNonQuery();
                     }
                     else
                     {
-                        status = 0;
+                        // belum ada, boleh insert
+                        int status;
+                        if (rb1.Checked)
+                        {
+                            status = 1;
+                        }
+                        else
+                        {
+                            status = 0;
+                        }
+                        cmd = new MySqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = "INSERT INTO kamar (id_kamar, kode_kamar, nomor_kamar, nomor_lantai, status_kamar, id_jenis_kamar) VALUES (@id, @kode, @nomor, @lantai, @status, @jenis)";
+                        cmd.Parameters.Add(new MySqlParameter("@id", tbID.Text));
+                        cmd.Parameters.Add(new MySqlParameter("@kode", tbKode.Text));
+                        cmd.Parameters.Add(new MySqlParameter("@nomor", tbNoKamar.Text));
+                        cmd.Parameters.Add(new MySqlParameter("@lantai", numLantai.Value));
+                        cmd.Parameters.Add(new MySqlParameter("@status", status));
+                        cmd.Parameters.Add(new MySqlParameter("@jenis", comboJenisKamar.SelectedValue));
+                        cmd.ExecuteNonQuery();
                     }
-                    cmd = new MySqlCommand();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO kamar (id_kamar, kode_kamar, nomor_kamar, nomor_lantai, status_kamar, id_jenis_kamar) VALUES (@id, @kode, @nomor, @lantai, @status, @jenis)";
-                    cmd.Parameters.Add(new MySqlParameter("@id", tbID.Text));
-                    cmd.Parameters.Add(new MySqlParameter("@kode", tbKode.Text));
-                    cmd.Parameters.Add(new MySqlParameter("@nomor", tbNoKamar.Text));
-                    cmd.Parameters.Add(new MySqlParameter("@lantai", numLantai.Value));
-                    cmd.Parameters.Add(new MySqlParameter("@status", status));
-                    cmd.Parameters.Add(new MySqlParameter("@jenis", comboJenisKamar.SelectedValue));
-                    cmd.ExecuteNonQuery();
+
                     MessageBox.Show("Berhasil menambah kamar baru");
                     refreshDGV();
                     resetTampilan();
                 }
+                
             }
             
         }
@@ -192,21 +203,28 @@ namespace Hotel_Harem_SamGun
 
             if(selectedIdx > -1)
             {
-                int status;
-                if(rb1.Checked)
+                if(numLantai.Value == 0 || numKamarKe.Value == 0)
                 {
-                    status = 1;
+                    MessageBox.Show("Lantai dan nomor kamar tidak mungkin 0");
                 }
                 else
                 {
-                    status = 0;
+                    int status;
+                    if (rb1.Checked)
+                    {
+                        status = 1;
+                    }
+                    else
+                    {
+                        status = 0;
+                    }
+                    query = $"UPDATE kamar SET kode_kamar = '{tbKode.Text}', nomor_kamar = '{tbNoKamar.Text}', nomor_lantai = '{numLantai.Value}',status_kamar = '{status}', id_jenis_kamar = '{comboJenisKamar.SelectedValue}' WHERE id_kamar = '{tbID.Text}'";
+                    cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Berhasil mengubah kamar");
+                    refreshDGV();
+                    resetTampilan();
                 }
-                query = $"UPDATE kamar SET kode_kamar = '{tbKode.Text}', nomor_kamar = '{tbNoKamar.Text}', nomor_lantai = '{numLantai.Value}',status_kamar = '{status}', id_jenis_kamar = '{comboJenisKamar.SelectedValue}' WHERE id_kamar = '{tbID.Text}'";
-                cmd = new MySqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Berhasil mengubah kamar");
-                refreshDGV();
-                resetTampilan();
             }
             else
             {

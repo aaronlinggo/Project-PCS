@@ -31,7 +31,7 @@ namespace Hotel_Harem_SamGun
         public void refreshDGV()
         {
             dt = new DataTable();
-            query = "SELECT id_extra_fasilitas,nama_extra_fasilitas,stok_extra_fasilitas,harga_extra_fasilitas,status_extra_fasilitas FROM extra_fasilitas ORDER BY 1";
+            query = "SELECT id_extra_fasilitas,nama_extra_fasilitas,stok_extra_fasilitas,harga_extra_fasilitas, IF(status_extra_fasilitas = 1, 'Tersedia', 'Tidak Tersedia') FROM extra_fasilitas ORDER BY 1";
             cmd = new MySqlCommand(query, conn);
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -103,53 +103,78 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                int harga;
-                if (!int.TryParse(tbHarga.Text, out harga))
+                if(tbNama.Text == "" || tbHarga.Text == "" || tbStok.Text == "")
                 {
-                    // cek harga
-                    MessageBox.Show("Harga harus angka");
-                }
-                else if (harga < 0)
-                {
-                    MessageBox.Show("Harga minimalnya adalah 0");
+                    MessageBox.Show("Semua field harus terisi");
                 }
                 else
                 {
-                    int stok;
-                    if (!int.TryParse(tbStok.Text, out stok))
+                    int harga;
+                    if (!int.TryParse(tbHarga.Text, out harga))
                     {
-                        // cek stok
-                        MessageBox.Show("Stok harus angka");
+                        // cek harga
+                        MessageBox.Show("Harga harus angka");
                     }
-                    else if (stok < 0)
+                    else if (harga < 0)
                     {
-                        MessageBox.Show("Stok minimalnya adalah 0");
+                        MessageBox.Show("Harga minimalnya adalah 0");
                     }
                     else
                     {
-                        int status;
-                        if (rb1.Checked)
+                        int stok;
+                        if (!int.TryParse(tbStok.Text, out stok))
                         {
-                            status = 1;
+                            // cek stok
+                            MessageBox.Show("Stok harus angka");
+                        }
+                        else if (stok < 0)
+                        {
+                            MessageBox.Show("Stok minimalnya adalah 0");
                         }
                         else
                         {
-                            status = 0;
+                            int status;
+                            if (rb1.Checked)
+                            {
+                                status = 1;
+                            }
+                            else
+                            {
+                                status = 0;
+                            }
+                            cmd = new MySqlCommand();
+                            cmd.Connection = conn;
+                            cmd.CommandText = $"SELECT COUNT(*) FROM extra_fasilitas WHERE nama_extra_fasilitas = '{tbNama.Text}'";
+                            int count = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                            cmd = new MySqlCommand();
+                            cmd.Connection = conn;
+                            if (count > 0)
+                            {
+                                // ambil id lama
+                                cmd.CommandText = $"SELECT id_extra_fasilitas FROM extra_fasilitas WHERE nama_extra_fasilitas = '{tbNama.Text}'";
+                                int id_lama = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                                // updata yg lama
+                                cmd.CommandText = $"UPDATE extra_fasilitas SET status_extra_fasilitas = 1 WHERE id_extra_fasilitas = '{id_lama}'";
+                                cmd.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                cmd.CommandText = "INSERT INTO extra_fasilitas (id_extra_fasilitas, nama_extra_fasilitas, stok_extra_fasilitas, harga_extra_fasilitas, status_extra_fasilitas) VALUES (@id, @nama, @stok, @harga, @status)";
+                                cmd.Parameters.Add(new MySqlParameter("@id", tbID.Text));
+                                cmd.Parameters.Add(new MySqlParameter("@nama", tbNama.Text));
+                                cmd.Parameters.Add(new MySqlParameter("@stok", tbStok.Text));
+                                cmd.Parameters.Add(new MySqlParameter("@harga", tbHarga.Text));
+                                cmd.Parameters.Add(new MySqlParameter("@status", status));
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            MessageBox.Show("Berhasil menambah tambahan fasilitas baru");
+                            refreshDGV();
+                            resetTampilan();
                         }
-                        cmd = new MySqlCommand();
-                        cmd.Connection = conn;
-                        cmd.CommandText = "INSERT INTO extra_fasilitas (id_extra_fasilitas, nama_extra_fasilitas, stok_extra_fasilitas, harga_extra_fasilitas, status_extra_fasilitas) VALUES (@id, @nama, @stok, @harga, @status)";
-                        cmd.Parameters.Add(new MySqlParameter("@id", tbID.Text));
-                        cmd.Parameters.Add(new MySqlParameter("@nama", tbNama.Text));
-                        cmd.Parameters.Add(new MySqlParameter("@stok", tbStok.Text));
-                        cmd.Parameters.Add(new MySqlParameter("@harga", tbHarga.Text));
-                        cmd.Parameters.Add(new MySqlParameter("@status", status));
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Berhasil menambah tambahan fasilitas baru");
-                        refreshDGV();
-                        resetTampilan();
                     }
                 }
+                
             }
         }
 
@@ -157,48 +182,54 @@ namespace Hotel_Harem_SamGun
         {
             if (selectedIdx > -1)
             {
-                int harga;
-                if (!int.TryParse(tbHarga.Text, out harga))
+                if(tbNama.Text == "" || tbHarga.Text == "" || tbStok.Text == "")
                 {
-                    // cek harga
-                    MessageBox.Show("Harga harus angka");
-                }
-                else if (harga < 0)
-                {
-                    MessageBox.Show("Harga minimalnya adalah 0");
+                    MessageBox.Show("Semua field harus terisi");
                 }
                 else
                 {
-                    int stok;
-                    if (!int.TryParse(tbStok.Text, out stok))
+                    int harga;
+                    if (!int.TryParse(tbHarga.Text, out harga))
                     {
                         // cek harga
-                        MessageBox.Show("Stok harus angka");
+                        MessageBox.Show("Harga harus angka");
                     }
-                    else if (stok < 0)
+                    else if (harga < 0)
                     {
-                        MessageBox.Show("Stok minimalnya adalah 0");
+                        MessageBox.Show("Harga minimalnya adalah 0");
                     }
                     else
                     {
-                        int status;
-                        if (rb1.Checked)
+                        int stok;
+                        if (!int.TryParse(tbStok.Text, out stok))
                         {
-                            status = 1;
+                            // cek harga
+                            MessageBox.Show("Stok harus angka");
+                        }
+                        else if (stok < 0)
+                        {
+                            MessageBox.Show("Stok minimalnya adalah 0");
                         }
                         else
                         {
-                            status = 0;
+                            int status;
+                            if (rb1.Checked)
+                            {
+                                status = 1;
+                            }
+                            else
+                            {
+                                status = 0;
+                            }
+                            query = $"UPDATE extra_fasilitas SET nama_extra_fasilitas = '{tbNama.Text}', stok_extra_fasilitas = '{tbStok.Text}', harga_extra_fasilitas = '{tbHarga.Text}', status_extra_fasilitas = '{status}' WHERE id_extra_fasilitas = '{tbID.Text}'";
+                            cmd = new MySqlCommand(query, conn);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Berhasil mengubah tambahan fasilitas");
+                            refreshDGV();
+                            resetTampilan();
                         }
-                        query = $"UPDATE extra_fasilitas SET nama_extra_fasilitas = '{tbNama.Text}', stok_extra_fasilitas = '{tbStok.Text}', harga_extra_fasilitas = '{tbHarga.Text}', status_extra_fasilitas = '{status}' WHERE id_extra_fasilitas = '{tbID.Text}'";
-                        cmd = new MySqlCommand(query, conn);
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Berhasil mengubah tambahan fasilitas");
-                        refreshDGV();
-                        resetTampilan();
                     }
                 }
-                
             }
             else
             {
@@ -215,7 +246,6 @@ namespace Hotel_Harem_SamGun
         {
             if (selectedIdx > -1)
             {
-
                 int status;
                 if (rb1.Checked)
                 {
@@ -245,7 +275,7 @@ namespace Hotel_Harem_SamGun
             tbNama.Text = dgvFasilitas.Rows[selectedIdx].Cells[1].Value.ToString();
             tbStok.Text = dgvFasilitas.Rows[selectedIdx].Cells[2].Value.ToString();
             tbHarga.Text = dgvFasilitas.Rows[selectedIdx].Cells[3].Value.ToString();
-            if (dgvFasilitas.Rows[selectedIdx].Cells[3].Value.ToString() == "Tersedia")
+            if (dgvFasilitas.Rows[selectedIdx].Cells[4].Value.ToString() == "Tersedia")
             {
                 rb1.Checked = true;
             }

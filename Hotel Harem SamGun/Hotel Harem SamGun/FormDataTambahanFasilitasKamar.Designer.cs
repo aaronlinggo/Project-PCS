@@ -62,6 +62,7 @@ namespace Hotel_Harem_SamGun
             this.dgvFasilitas.Location = new System.Drawing.Point(24, 70);
             this.dgvFasilitas.Name = "dgvFasilitas";
             this.dgvFasilitas.ReadOnly = true;
+            this.dgvFasilitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFasilitas.Size = new System.Drawing.Size(1219, 308);
             this.dgvFasilitas.TabIndex = 0;
             this.dgvFasilitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFasilitas_CellClick);

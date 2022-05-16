@@ -122,37 +122,61 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                int harga;
-                if(!int.TryParse(tbHarga.Text, out harga))
+                if(tbNama.Text == "" || tbHarga.Text == "")
                 {
-                    MessageBox.Show("Harga harus angka");
-                }
-                else if(harga < 0)
-                {
-                    MessageBox.Show("Harga minimalnya adalah 0");
+                    MessageBox.Show("Semua field harus terisi");
                 }
                 else
                 {
-                    int status;
-                    if (rb1.Checked)
+                    int harga;
+                    if (!int.TryParse(tbHarga.Text, out harga))
                     {
-                        status = 1;
+                        MessageBox.Show("Harga harus angka");
+                    }
+                    else if (harga < 0)
+                    {
+                        MessageBox.Show("Harga minimalnya adalah 0");
                     }
                     else
                     {
-                        status = 0;
+                        int status;
+                        if (rb1.Checked)
+                        {
+                            status = 1;
+                        }
+                        else
+                        {
+                            status = 0;
+                        }
+                        cmd = new MySqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = $"SELECT COUNT(*) FROM jenis_kamar WHERE nama_jenis_kamar = '{tbNama.Text}'";
+                        int count = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                        cmd = new MySqlCommand();
+                        cmd.Connection = conn;
+                        if(count > 0)
+                        {
+                            cmd.CommandText = $"SELECT id_jenis_kamar FROM jenis_kamar WHERE nama_jenis_kamar = '{tbNama.Text}'";
+                            int id_lama = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                            cmd = new MySqlCommand();
+                            cmd.Connection = conn;
+                            cmd.CommandText = $"UPDATE jenis_kamar SET status_jenis_kamar = 1 WHERE id_jenis_kamar = '{id_lama}'";
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            cmd.CommandText = "INSERT INTO jenis_kamar (id_jenis_kamar, nama_jenis_kamar, harga_jenis_kamar, status_jenis_kamar) VALUES (@id, @nama, @harga, @status)";
+                            cmd.Parameters.Add(new MySqlParameter("@id", tbID.Text));
+                            cmd.Parameters.Add(new MySqlParameter("@nama", tbNama.Text));
+                            cmd.Parameters.Add(new MySqlParameter("@harga", harga));
+                            cmd.Parameters.Add(new MySqlParameter("@status", status));
+                            cmd.ExecuteNonQuery();
+                        }
+                        
+                        MessageBox.Show("Berhasil menambah jenis kamar baru");
+                        refreshDGV();
+                        resetTampilan();
                     }
-                    cmd = new MySqlCommand();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO jenis_kamar (id_jenis_kamar, nama_jenis_kamar, harga_jenis_kamar, status_jenis_kamar) VALUES (@id, @nama, @harga, @status)";
-                    cmd.Parameters.Add(new MySqlParameter("@id", tbID.Text));
-                    cmd.Parameters.Add(new MySqlParameter("@nama", tbNama.Text));
-                    cmd.Parameters.Add(new MySqlParameter("@harga", harga));
-                    cmd.Parameters.Add(new MySqlParameter("@status", status));
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Berhasil menambah jenis kamar baru");
-                    refreshDGV();
-                    resetTampilan();
                 }
                 
             }
