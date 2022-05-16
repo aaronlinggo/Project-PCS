@@ -48,7 +48,8 @@ USE_EXTRA_FASILITAS:
     kode_kamar FK KAMAR [FOREIGN KEY],
     kode_tamu FK TAMU [FOREIGN KEY],
     id_extra_fasilitas FK EXTRA_FASILITAS [FOREIGN KEY],
-    jumlah_extra_fasilitas INT(5)
+    jumlah_extra_fasilitas INT(5),
+    subtotal_extra_fasilitas INT(16)
 
 MAKANAN:
     id_makanan INT(11) AUTO_INCREMENT [PRIMARY],

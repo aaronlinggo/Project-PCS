@@ -572,9 +572,21 @@ CREATE TABLE `extra_fasilitas` (
   `harga_extra_fasilitas` int(16) NOT NULL,
   `status_extra_fasilitas` int(2) NOT NULL,
   PRIMARY KEY (`id_extra_fasilitas`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `extra_fasilitas` */
+
+insert  into `extra_fasilitas`(`id_extra_fasilitas`,`nama_extra_fasilitas`,`stok_extra_fasilitas`,`harga_extra_fasilitas`,`status_extra_fasilitas`) values 
+(1,'Blanket',179,278000,1),
+(2,'Thick Blanket',119,338000,1),
+(3,'Towel',220,118000,1),
+(4,'Pillow',240,288000,1),
+(5,'Bolster',179,248000,1),
+(6,'Slippers',200,78000,1),
+(7,'Tissue Pack',198,25000,1),
+(8,'Electrical Socket',248,20000,1),
+(9,'First Aid Kit',150,48000,1),
+(10,'Rollaway Bed',100,650000,1);
 
 /*Table structure for table `fasilitas` */
 
@@ -1310,9 +1322,9 @@ insert  into `reservasi`(`id_reservasi`,`kode_reservasi`,`kode_tamu`,`kode_kamar
 (10,'RSV010522LC0711','LECH001','CLT711',825000,3700000,'2022-05-11','2022-05-14',1650000,'RE003',0),
 (11,'RSV040522MM0716','MYMI001','CLK716',805000,3400000,'2022-05-13',NULL,1610000,'RE003',2),
 (12,'RSV070522SY0406','SUYU001','DEK406',530000,2850000,NULL,NULL,NULL,'RE002',1),
-(13,'RSV160522LJ1210','LEJI001','PRS1210',4550000,5000000,'2022-05-16',NULL,9100000,'RE002',2),
-(14,'RSV160522KM1211','KIMI001','PRS1211',4550000,5000000,'2022-05-16',NULL,9100000,'RE003',2),
-(15,'RSV160522LH1212','LEHY001','PRS1212',4550000,5000000,'2022-05-16',NULL,9506000,'RE002',2);
+(13,'RSV160522LJ1210','LEJI001','PRS1210',4550000,5000000,'2022-05-16',NULL,9686000,'RE002',2),
+(14,'RSV160522KM1211','KIMI001','PRS1211',4550000,5000000,'2022-05-16',NULL,9150000,'RE003',2),
+(15,'RSV160522LH1212','LEHY001','PRS1212',4550000,5000000,'2022-05-16',NULL,9824000,'RE002',2);
 
 /*Table structure for table `tamu` */
 
@@ -1362,6 +1374,7 @@ CREATE TABLE `use_extra_fasilitas` (
   `kode_tamu` varchar(7) NOT NULL,
   `id_extra_fasilitas` int(11) NOT NULL,
   `jumlah_extra_fasilitas` int(5) NOT NULL,
+  `subtotal_extra_fasilitas` int(16) NOT NULL,
   PRIMARY KEY (`id_use_extra_fasilitas`),
   KEY `kode_kamar` (`kode_kamar`),
   KEY `kode_tamu` (`kode_tamu`),
@@ -1369,9 +1382,16 @@ CREATE TABLE `use_extra_fasilitas` (
   CONSTRAINT `use_extra_fasilitas_ibfk_1` FOREIGN KEY (`kode_tamu`) REFERENCES `tamu` (`kode_tamu`),
   CONSTRAINT `use_extra_fasilitas_ibfk_2` FOREIGN KEY (`kode_kamar`) REFERENCES `kamar` (`kode_kamar`),
   CONSTRAINT `use_extra_fasilitas_ibfk_3` FOREIGN KEY (`id_extra_fasilitas`) REFERENCES `extra_fasilitas` (`id_extra_fasilitas`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `use_extra_fasilitas` */
+
+insert  into `use_extra_fasilitas`(`id_use_extra_fasilitas`,`kode_kamar`,`kode_tamu`,`id_extra_fasilitas`,`jumlah_extra_fasilitas`,`subtotal_extra_fasilitas`) values 
+(1,'PRS1210','LEJI001',2,1,338000),
+(2,'PRS1210','LEJI001',5,1,248000),
+(3,'PRS1211','KIMI001',7,2,50000),
+(4,'PRS1212','LEHY001',8,2,40000),
+(5,'PRS1212','LEHY001',1,1,278000);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
