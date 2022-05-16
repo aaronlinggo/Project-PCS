@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,27 @@ namespace Hotel_Harem_SamGun
 {
     public partial class FormMenuResepsionis : Form
     {
-        public FormMenuResepsionis()
+        public static string user_resepsionis;
+        public FormMenuResepsionis(string username)
         {
             InitializeComponent();
+            user_resepsionis = username;
+        }
+
+        private void FormMenuResepsionis_Load(object sender, EventArgs e)
+        {
+            string query = $"SELECT nama_karyawan FROM karyawan WHERE username = '{user_resepsionis}'";
+
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(query, Koneksi.conn);
+                lbWelcome.Text = $"Welcome,\n{cmd.ExecuteScalar()}!";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal mendapatkan nama karyawan!");
+            }
+            
         }
 
         private void btReservasi_Click(object sender, EventArgs e)

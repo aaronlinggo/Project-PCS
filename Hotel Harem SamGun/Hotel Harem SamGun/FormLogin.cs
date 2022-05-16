@@ -84,6 +84,7 @@ namespace Hotel_Harem_SamGun
                 return;
             }
 
+            string username = dtUsernamePasswordRoles.Rows[0][0].ToString();
             string roles = dtUsernamePasswordRoles.Rows[0][2].ToString();
 
             //GANTI FORM
@@ -91,12 +92,12 @@ namespace Hotel_Harem_SamGun
 
             if(roles == "Admin")
             {
-                FormMenuAdmin form = new FormMenuAdmin();
+                FormMenuAdmin form = new FormMenuAdmin(username);
                 form.ShowDialog();
             }
             else
             {
-                FormMenuResepsionis form = new FormMenuResepsionis();
+                FormMenuResepsionis form = new FormMenuResepsionis(username);
                 form.ShowDialog();
             }
 
