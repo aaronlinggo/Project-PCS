@@ -55,6 +55,7 @@ namespace Hotel_Harem_SamGun
             this.label10 = new System.Windows.Forms.Label();
             this.cbStatus = new System.Windows.Forms.CheckBox();
             this.btBatal = new System.Windows.Forms.Button();
+            this.btKembali = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTamu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -323,11 +324,22 @@ namespace Hotel_Harem_SamGun
             this.btBatal.UseVisualStyleBackColor = true;
             this.btBatal.Click += new System.EventHandler(this.btBatal_Click);
             // 
+            // btKembali
+            // 
+            this.btKembali.Location = new System.Drawing.Point(1039, 11);
+            this.btKembali.Name = "btKembali";
+            this.btKembali.Size = new System.Drawing.Size(212, 29);
+            this.btKembali.TabIndex = 25;
+            this.btKembali.Text = "Kembali";
+            this.btKembali.UseVisualStyleBackColor = true;
+            this.btKembali.Click += new System.EventHandler(this.btKembali_Click);
+            // 
             // FormPencatatanDataTamu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 624);
+            this.Controls.Add(this.btKembali);
             this.Controls.Add(this.btBatal);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.label10);
@@ -393,5 +405,6 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox cbStatus;
         private System.Windows.Forms.Button btBatal;
+        private System.Windows.Forms.Button btKembali;
     }
 }

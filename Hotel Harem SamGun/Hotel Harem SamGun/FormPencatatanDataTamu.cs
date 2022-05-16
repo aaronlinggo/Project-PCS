@@ -380,5 +380,10 @@ namespace Hotel_Harem_SamGun
         {
             AcceptButton = btCari;
         }
+
+        private void btKembali_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
