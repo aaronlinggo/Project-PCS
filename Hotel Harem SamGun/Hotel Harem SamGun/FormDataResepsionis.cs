@@ -24,7 +24,7 @@ namespace Hotel_Harem_SamGun
 
         private void FormDataResepsionis_Load(object sender, EventArgs e)
         {
-            Koneksi.openConn();
+            /*Koneksi.openConn();*/
             isEdit = false;
             start = false;
             loadDatagrid();

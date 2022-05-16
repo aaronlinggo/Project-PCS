@@ -35,10 +35,6 @@ namespace Hotel_Harem_SamGun
             this.label7 = new System.Windows.Forms.Label();
             this.tbStok = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.rbTidakTersedia = new System.Windows.Forms.RadioButton();
-            this.rbTersedia = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
             this.tbHarga = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbNama = new System.Windows.Forms.TextBox();
@@ -52,7 +48,6 @@ namespace Hotel_Harem_SamGun
             this.btnBersihkan = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,8 +68,6 @@ namespace Hotel_Harem_SamGun
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.tbStok);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.tbHarga);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tbNama);
@@ -85,7 +78,7 @@ namespace Hotel_Harem_SamGun
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(992, 392);
+            this.groupBox1.Size = new System.Drawing.Size(992, 345);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -93,7 +86,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.cbJenisMakanan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbJenisMakanan.FormattingEnabled = true;
-            this.cbJenisMakanan.Location = new System.Drawing.Point(213, 338);
+            this.cbJenisMakanan.Location = new System.Drawing.Point(219, 271);
             this.cbJenisMakanan.Name = "cbJenisMakanan";
             this.cbJenisMakanan.Size = new System.Drawing.Size(400, 33);
             this.cbJenisMakanan.TabIndex = 11;
@@ -103,7 +96,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(32, 341);
+            this.label7.Location = new System.Drawing.Point(38, 274);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(159, 25);
@@ -130,52 +123,6 @@ namespace Hotel_Harem_SamGun
             this.label6.Size = new System.Drawing.Size(151, 25);
             this.label6.TabIndex = 8;
             this.label6.Text = "Stok Makanan";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.rbTidakTersedia);
-            this.panel1.Controls.Add(this.rbTersedia);
-            this.panel1.Location = new System.Drawing.Point(213, 263);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 54);
-            this.panel1.TabIndex = 7;
-            // 
-            // rbTidakTersedia
-            // 
-            this.rbTidakTersedia.AutoSize = true;
-            this.rbTidakTersedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTidakTersedia.Location = new System.Drawing.Point(137, 12);
-            this.rbTidakTersedia.Name = "rbTidakTersedia";
-            this.rbTidakTersedia.Size = new System.Drawing.Size(164, 29);
-            this.rbTidakTersedia.TabIndex = 1;
-            this.rbTidakTersedia.Text = "Tidak Tersedia";
-            this.rbTidakTersedia.UseVisualStyleBackColor = true;
-            this.rbTidakTersedia.CheckedChanged += new System.EventHandler(this.rbTidakTersedia_CheckedChanged);
-            // 
-            // rbTersedia
-            // 
-            this.rbTersedia.AutoSize = true;
-            this.rbTersedia.Checked = true;
-            this.rbTersedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTersedia.Location = new System.Drawing.Point(3, 12);
-            this.rbTersedia.Name = "rbTersedia";
-            this.rbTersedia.Size = new System.Drawing.Size(110, 29);
-            this.rbTersedia.TabIndex = 0;
-            this.rbTersedia.TabStop = true;
-            this.rbTersedia.Text = "Tersedia";
-            this.rbTersedia.UseVisualStyleBackColor = true;
-            this.rbTersedia.CheckedChanged += new System.EventHandler(this.rbTersedia_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 277);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 25);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Status Makanan";
             // 
             // tbHarga
             // 
@@ -344,8 +291,6 @@ namespace Hotel_Harem_SamGun
             this.Load += new System.EventHandler(this.FormDataMenuMakanan_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -356,7 +301,6 @@ namespace Hotel_Harem_SamGun
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbHarga;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbNama;
@@ -365,9 +309,6 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnTambah;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton rbTidakTersedia;
-        private System.Windows.Forms.RadioButton rbTersedia;
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnBersihkan;
