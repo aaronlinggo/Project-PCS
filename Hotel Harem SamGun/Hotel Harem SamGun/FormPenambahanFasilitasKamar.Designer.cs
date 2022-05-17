@@ -32,14 +32,19 @@ namespace Hotel_Harem_SamGun
             this.dgvFasilitas = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvKeranjang = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.btnKembali = new System.Windows.Forms.Button();
-            this.btPesan = new System.Windows.Forms.Button();
+            this.btnPesan = new System.Windows.Forms.Button();
             this.btnHapus = new System.Windows.Forms.Button();
             this.btnTambah = new System.Windows.Forms.Button();
             this.tbHarga = new System.Windows.Forms.TextBox();
             this.tbNama = new System.Windows.Forms.TextBox();
-            this.tbKode = new System.Windows.Forms.TextBox();
+            this.tbID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +55,8 @@ namespace Hotel_Harem_SamGun
             this.lblKodeReservasi = new System.Windows.Forms.Label();
             this.lblNamaTamu = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblNoKamar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeranjang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).BeginInit();
@@ -57,12 +64,19 @@ namespace Hotel_Harem_SamGun
             // 
             // dgvFasilitas
             // 
+            this.dgvFasilitas.AllowUserToAddRows = false;
+            this.dgvFasilitas.AllowUserToDeleteRows = false;
+            this.dgvFasilitas.AllowUserToResizeColumns = false;
+            this.dgvFasilitas.AllowUserToResizeRows = false;
             this.dgvFasilitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFasilitas.ColumnHeadersVisible = false;
             this.dgvFasilitas.Location = new System.Drawing.Point(41, 138);
             this.dgvFasilitas.Name = "dgvFasilitas";
+            this.dgvFasilitas.ReadOnly = true;
+            this.dgvFasilitas.RowHeadersVisible = false;
+            this.dgvFasilitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFasilitas.Size = new System.Drawing.Size(1203, 237);
             this.dgvFasilitas.TabIndex = 11;
+            this.dgvFasilitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFasilitas_CellClick);
             // 
             // label3
             // 
@@ -76,11 +90,64 @@ namespace Hotel_Harem_SamGun
             // 
             // dgvKeranjang
             // 
+            this.dgvKeranjang.AllowUserToAddRows = false;
+            this.dgvKeranjang.AllowUserToDeleteRows = false;
+            this.dgvKeranjang.AllowUserToResizeColumns = false;
+            this.dgvKeranjang.AllowUserToResizeRows = false;
             this.dgvKeranjang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKeranjang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.dgvKeranjang.Location = new System.Drawing.Point(42, 437);
             this.dgvKeranjang.Name = "dgvKeranjang";
+            this.dgvKeranjang.ReadOnly = true;
+            this.dgvKeranjang.RowHeadersVisible = false;
+            this.dgvKeranjang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKeranjang.Size = new System.Drawing.Size(507, 214);
             this.dgvKeranjang.TabIndex = 13;
+            this.dgvKeranjang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKeranjang_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 43;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Nama";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column3.HeaderText = "Harga";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 61;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column4.HeaderText = "Jumlah";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 65;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column5.HeaderText = "Subtotal";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 71;
             // 
             // label4
             // 
@@ -103,16 +170,17 @@ namespace Hotel_Harem_SamGun
             this.btnKembali.UseVisualStyleBackColor = true;
             this.btnKembali.Click += new System.EventHandler(this.btnKembali_Click);
             // 
-            // btPesan
+            // btnPesan
             // 
-            this.btPesan.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btPesan.Location = new System.Drawing.Point(994, 588);
-            this.btPesan.Margin = new System.Windows.Forms.Padding(2);
-            this.btPesan.Name = "btPesan";
-            this.btPesan.Size = new System.Drawing.Size(250, 41);
-            this.btPesan.TabIndex = 39;
-            this.btPesan.Text = "Pesan";
-            this.btPesan.UseVisualStyleBackColor = true;
+            this.btnPesan.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesan.Location = new System.Drawing.Point(994, 588);
+            this.btnPesan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPesan.Name = "btnPesan";
+            this.btnPesan.Size = new System.Drawing.Size(250, 41);
+            this.btnPesan.TabIndex = 39;
+            this.btnPesan.Text = "Pesan";
+            this.btnPesan.UseVisualStyleBackColor = true;
+            this.btnPesan.Click += new System.EventHandler(this.btnPesan_Click);
             // 
             // btnHapus
             // 
@@ -124,6 +192,7 @@ namespace Hotel_Harem_SamGun
             this.btnHapus.TabIndex = 38;
             this.btnHapus.Text = "Hapus";
             this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnTambah
             // 
@@ -135,6 +204,7 @@ namespace Hotel_Harem_SamGun
             this.btnTambah.TabIndex = 37;
             this.btnTambah.Text = "Tambah";
             this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // tbHarga
             // 
@@ -142,7 +212,7 @@ namespace Hotel_Harem_SamGun
             this.tbHarga.Location = new System.Drawing.Point(725, 538);
             this.tbHarga.Name = "tbHarga";
             this.tbHarga.ReadOnly = true;
-            this.tbHarga.Size = new System.Drawing.Size(248, 26);
+            this.tbHarga.Size = new System.Drawing.Size(247, 26);
             this.tbHarga.TabIndex = 32;
             // 
             // tbNama
@@ -154,14 +224,14 @@ namespace Hotel_Harem_SamGun
             this.tbNama.Size = new System.Drawing.Size(248, 26);
             this.tbNama.TabIndex = 31;
             // 
-            // tbKode
+            // tbID
             // 
-            this.tbKode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKode.Location = new System.Drawing.Point(725, 435);
-            this.tbKode.Name = "tbKode";
-            this.tbKode.ReadOnly = true;
-            this.tbKode.Size = new System.Drawing.Size(248, 26);
-            this.tbKode.TabIndex = 30;
+            this.tbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbID.Location = new System.Drawing.Point(725, 435);
+            this.tbID.Name = "tbID";
+            this.tbID.ReadOnly = true;
+            this.tbID.Size = new System.Drawing.Size(247, 26);
+            this.tbID.TabIndex = 30;
             // 
             // label5
             // 
@@ -189,9 +259,9 @@ namespace Hotel_Harem_SamGun
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(572, 437);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
+            this.label2.Size = new System.Drawing.Size(28, 20);
             this.label2.TabIndex = 26;
-            this.label2.Text = "Kode";
+            this.label2.Text = "ID";
             // 
             // label6
             // 
@@ -207,6 +277,11 @@ namespace Hotel_Harem_SamGun
             // 
             this.numJumlah.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.numJumlah.Location = new System.Drawing.Point(725, 585);
+            this.numJumlah.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             this.numJumlah.Name = "numJumlah";
             this.numJumlah.Size = new System.Drawing.Size(247, 26);
             this.numJumlah.TabIndex = 41;
@@ -221,6 +296,7 @@ namespace Hotel_Harem_SamGun
             this.btnBersihkan.TabIndex = 42;
             this.btnBersihkan.Text = "Bersihkan";
             this.btnBersihkan.UseVisualStyleBackColor = true;
+            this.btnBersihkan.Click += new System.EventHandler(this.btnBersihkan_Click);
             // 
             // label7
             // 
@@ -262,11 +338,33 @@ namespace Hotel_Harem_SamGun
             this.label9.TabIndex = 45;
             this.label9.Text = "Nama Tamu :";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label8.Location = new System.Drawing.Point(541, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(137, 24);
+            this.label8.TabIndex = 47;
+            this.label8.Text = "Nomor Kamar :";
+            // 
+            // lblNoKamar
+            // 
+            this.lblNoKamar.AutoSize = true;
+            this.lblNoKamar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblNoKamar.Location = new System.Drawing.Point(704, 29);
+            this.lblNoKamar.Name = "lblNoKamar";
+            this.lblNoKamar.Size = new System.Drawing.Size(60, 24);
+            this.lblNoKamar.TabIndex = 48;
+            this.lblNoKamar.Text = "label8";
+            // 
             // FormPenambahanFasilitasKamar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.lblNoKamar);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.lblNamaTamu);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblKodeReservasi);
@@ -274,12 +372,12 @@ namespace Hotel_Harem_SamGun
             this.Controls.Add(this.btnBersihkan);
             this.Controls.Add(this.numJumlah);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btPesan);
+            this.Controls.Add(this.btnPesan);
             this.Controls.Add(this.btnHapus);
             this.Controls.Add(this.btnTambah);
             this.Controls.Add(this.tbHarga);
             this.Controls.Add(this.tbNama);
-            this.Controls.Add(this.tbKode);
+            this.Controls.Add(this.tbID);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -305,12 +403,12 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.DataGridView dgvKeranjang;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnKembali;
-        private System.Windows.Forms.Button btPesan;
+        private System.Windows.Forms.Button btnPesan;
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Button btnTambah;
         private System.Windows.Forms.TextBox tbHarga;
         private System.Windows.Forms.TextBox tbNama;
-        private System.Windows.Forms.TextBox tbKode;
+        private System.Windows.Forms.TextBox tbID;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -321,5 +419,12 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.Label lblKodeReservasi;
         private System.Windows.Forms.Label lblNamaTamu;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblNoKamar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }
