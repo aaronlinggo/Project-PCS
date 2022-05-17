@@ -127,7 +127,15 @@ namespace Hotel_Harem_SamGun
                     cmd.Parameters.Add(new MySqlParameter("@id_extra", Convert.ToInt32(dgvKeranjang.Rows[i].Cells[0].Value.ToString())));
                     cmd.Parameters.Add(new MySqlParameter("@jumlah", Convert.ToInt32(dgvKeranjang.Rows[i].Cells[3].Value.ToString())));
                     cmd.Parameters.Add(new MySqlParameter("@subtotal", Convert.ToInt32(dgvKeranjang.Rows[i].Cells[4].Value.ToString())));
-                    MessageBox.Show(cmd.CommandText);
+                    cmd.ExecuteNonQuery();
+
+                    int id_extra = Convert.ToInt32(dgvKeranjang.Rows[i].Cells[0].Value.ToString());
+                    int jumlah = Convert.ToInt32(dgvKeranjang.Rows[i].Cells[3].Value.ToString());
+
+                    cmd.CommandText = $"SELECT stok_extra_fasilitas FROM extra_fasilitas WHERE id_extra_fasilitas = '{id_extra}'";
+                    int stok_baru = Convert.ToInt32(cmd.ExecuteScalar().ToString()) - jumlah;
+
+                    cmd.CommandText = $"UPDATE extra_fasilitas SET stok_extra_fasilitas = '{stok_baru}' WHERE id_extra_fasilitas = '{id_extra}'";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = $"SELECT total_biaya FROM reservasi WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
@@ -136,10 +144,11 @@ namespace Hotel_Harem_SamGun
                     cmd.CommandText = $"UPDATE reservasi SET total_biaya = '{total_biaya_baru}' WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
                     cmd.ExecuteNonQuery();
                 }
-                dgvKeranjang.Rows.Clear();
-                resetField();
                 trans.Commit();
                 MessageBox.Show("Transaksi Berhasil");
+                dgvKeranjang.Rows.Clear();
+                resetField();
+                refreshDGV();
             }
             catch (MySqlException ex)
             {
