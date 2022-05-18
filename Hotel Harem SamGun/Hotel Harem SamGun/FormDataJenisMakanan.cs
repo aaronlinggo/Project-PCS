@@ -186,6 +186,7 @@ order by 1 asc", Koneksi.getConn());
                 tbNama.Text = "";
                 btnEdit.Enabled = false;
                 btnHapus.Enabled = false;
+                btnTambah.Enabled = true;
 
                 MessageBox.Show("Berhasil Hapus Jenis Makanan!");
                 sqlt.Commit();
@@ -222,6 +223,7 @@ order by 1 asc", Koneksi.getConn());
                     tbNama.Text = "";
                     btnEdit.Enabled = false;
                     btnHapus.Enabled = false;
+                    btnTambah.Enabled = true;
 
                     MessageBox.Show("Berhasil Ubah Jenis Makanan!");
                     sqlt.Commit();
@@ -245,6 +247,7 @@ order by 1 asc", Koneksi.getConn());
             tbNama.Text = "";
             btnEdit.Enabled = false;
             btnHapus.Enabled = false;
+            btnTambah.Enabled = false;
             query = @"SELECT
   jenis_makanan.id_jenis_makanan,
   jenis_makanan.nama_jenis_makanan
@@ -262,6 +265,7 @@ order by 1 asc";
             isEdit = true;
             btnHapus.Enabled = true;
             btnEdit.Enabled = true;
+            btnTambah.Enabled = false;
             pick = dtjenis.Rows[dataGridView1.CurrentRow.Index];
             tbKode.Text = pick[0].ToString();
             tbNama.Text = pick[1].ToString();

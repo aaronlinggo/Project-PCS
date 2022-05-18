@@ -398,10 +398,16 @@ order by 1 asc";
                             id_detail_pemesanan++;
                             dt.Rows.Add(baru);
 
+                            MySqlCommand check_total = new MySqlCommand();
+                            check_total.CommandText = $"select total_terjual from makanan where id_makanan='{id_keranjang[i]}'";
+                            check_total.Connection = Koneksi.getConn();
+                            int terjual = Convert.ToInt32(check_total.ExecuteScalar().ToString());
+
                             MySqlCommand cm9 = new MySqlCommand();
-                            cm9.CommandText = "UPDATE makanan SET stok_makanan=@tot WHERE id_makanan=@kod";
+                            cm9.CommandText = "UPDATE makanan SET stok_makanan=@tot, total_terjual=@tot1 WHERE id_makanan=@kod";
                             cm9.Parameters.AddWithValue("@kod", id_keranjang[i]);
                             cm9.Parameters.AddWithValue("@tot", stock - Convert.ToInt32(dtkeranjang.Rows[i].ItemArray[2].ToString()));
+                            cm9.Parameters.AddWithValue("@tot1", terjual + Convert.ToInt32(dtkeranjang.Rows[i].ItemArray[2].ToString()));
                             cm9.Connection = Koneksi.getConn();
                             cm9.ExecuteNonQuery();
                         }
@@ -419,6 +425,8 @@ order by 1 asc";
                     dtkeranjang.Columns.Add("Jumlah Pemesanan", typeof(string));
                     dtkeranjang.Columns.Add("Total Harga", typeof(string));
                     dataGridView2.DataSource = dtkeranjang;
+
+                    id_keranjang = new List<string>();
 
                     tbNama.Text = "";
                     tbHarga.Text = "";

@@ -131,6 +131,7 @@ order by 1 asc";
             start = true;
             btnHapus.Enabled = false;
             btnEdit.Enabled = false;
+            btnTambah.Enabled = true;
             rbAdmin.Enabled = true;
             rbResepsionis.Enabled = true;
             dataGridView1.ClearSelection();
@@ -549,6 +550,7 @@ order by 1 asc", Koneksi.getConn());
             }
             rbAdmin.Enabled = false;
             rbResepsionis.Enabled = false;
+            btnTambah.Enabled = false;
         }
 
         private void btnHapus_Click(object sender, EventArgs e)
@@ -588,6 +590,7 @@ order by 1 asc", Koneksi.getConn());
 
                 rbAdmin.Enabled = true;
                 rbResepsionis.Enabled = true;
+                btnTambah.Enabled = true;
 
                 MessageBox.Show("Berhasil Hapus Data Karyawan!");
                 sqlt.Commit();
@@ -685,6 +688,7 @@ order by 1 asc", Koneksi.getConn());
                                                     start = true;
                                                     btnHapus.Enabled = false;
                                                     btnEdit.Enabled = false;
+                                                    btnTambah.Enabled = true;
 
                                                     rbAdmin.Enabled = true;
                                                     rbResepsionis.Enabled = true;
