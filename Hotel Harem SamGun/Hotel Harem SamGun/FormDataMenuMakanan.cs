@@ -207,6 +207,7 @@ order by 1 asc";
             cbJenisMakanan.SelectedIndex = 0;
             start = true;
             btnEdit.Enabled = false;
+            btnTambah.Enabled = true;
             btnHapus.Enabled = false;
             query = @"SELECT
   makanan.id_makanan,
@@ -289,6 +290,7 @@ makanan.id_makanan,
 makanan.nama_makanan,
 makanan.harga_makanan,
 makanan.stok_makanan,
+makanan.total_terjual,
 makanan.status_makanan,
 makanan.id_jenis_makanan
 FROM makanan
@@ -302,6 +304,7 @@ order by 1 asc", Koneksi.getConn());
                                             baru["nama_makanan"] = tbNama.Text;
                                             baru["harga_makanan"] = tbHarga.Text;
                                             baru["stok_makanan"] = tbStok.Text;
+                                            baru["total_terjual"] = "0";
                                             baru["status_makanan"] = "1";
                                             baru["id_jenis_makanan"] = id_jenis[cbJenisMakanan.SelectedIndex];
                                             dt.Rows.Add(baru);
@@ -417,6 +420,7 @@ order by 1 asc", Koneksi.getConn());
                                         start = true;
                                         btnEdit.Enabled = false;
                                         btnHapus.Enabled = false;
+                                        btnTambah.Enabled = true;
 
                                         MessageBox.Show("Berhasil Ubah Menu Makanan!");
                                         sqlt.Commit();
@@ -485,6 +489,7 @@ order by 1 asc", Koneksi.getConn());
                 start = true;
                 btnEdit.Enabled = false;
                 btnHapus.Enabled = false;
+                btnTambah.Enabled = true;
 
                 MessageBox.Show("Berhasil Hapus Menu Makanan!");
                 sqlt.Commit();
@@ -512,6 +517,7 @@ order by 1 asc", Koneksi.getConn());
             jenis_makanan.nama_jenis_makanan 6 */
             isEdit = true;
             btnHapus.Enabled = true;
+            btnTambah.Enabled = false;
             btnEdit.Enabled = true;
             pick = dtmakanan.Rows[dataGridView1.CurrentRow.Index];
             tbKode.Text = pick[0].ToString();
