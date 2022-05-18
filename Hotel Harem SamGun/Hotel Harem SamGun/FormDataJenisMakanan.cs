@@ -16,6 +16,7 @@ namespace Hotel_Harem_SamGun
         DataTable dtjenis;
         DataRow pick;
         bool isEdit = false;
+        string query = "";
         public FormDataJenisMakanan()
         {
             InitializeComponent();
@@ -24,6 +25,12 @@ namespace Hotel_Harem_SamGun
         private void FormDataJenisMakanan_Load(object sender, EventArgs e)
         {
             /*Koneksi.openConn();*/
+            query = @"SELECT
+  jenis_makanan.id_jenis_makanan,
+  jenis_makanan.nama_jenis_makanan
+FROM jenis_makanan
+WHERE jenis_makanan.status_jenis_makanan = 1
+order by 1 asc";
             isEdit = false;
             loadDatagrid();
         }
@@ -32,12 +39,7 @@ namespace Hotel_Harem_SamGun
         {
             try
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter(@"SELECT
-  jenis_makanan.id_jenis_makanan,
-  jenis_makanan.nama_jenis_makanan
-FROM jenis_makanan
-WHERE jenis_makanan.status_jenis_makanan = 1
-order by 1 asc", Koneksi.conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, Koneksi.conn);
                 dtjenis = new DataTable();
                 adapter.Fill(dtjenis);
 
@@ -243,6 +245,14 @@ order by 1 asc", Koneksi.getConn());
             tbNama.Text = "";
             btnEdit.Enabled = false;
             btnHapus.Enabled = false;
+            query = @"SELECT
+  jenis_makanan.id_jenis_makanan,
+  jenis_makanan.nama_jenis_makanan
+FROM jenis_makanan
+WHERE jenis_makanan.status_jenis_makanan = 1
+order by 1 asc";
+            loadDatagrid();
+            tbCari.Text = "";
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -260,6 +270,20 @@ order by 1 asc", Koneksi.getConn());
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            query = @"SELECT
+  jenis_makanan.id_jenis_makanan,
+  jenis_makanan.nama_jenis_makanan
+FROM jenis_makanan
+WHERE jenis_makanan.status_jenis_makanan = 1
+AND
+jenis_makanan.nama_jenis_makanan LIKE '%" + tbCari.Text + @"%'
+order by 1 asc";
+            loadDatagrid();
+            tbCari.Text = "";
         }
     }
 }

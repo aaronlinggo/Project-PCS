@@ -18,6 +18,7 @@ namespace Hotel_Harem_SamGun
         DataTable dtmakanan;
         DataRow pick;
         bool start = false;
+        string query = "";
         public FormDataMenuMakanan()
         {
             InitializeComponent();
@@ -29,9 +30,25 @@ namespace Hotel_Harem_SamGun
             id_jenis = new List<string>();
             isEdit = false;
             start = false;
+            query = @"SELECT
+  makanan.id_makanan,
+  makanan.nama_makanan,
+  makanan.harga_makanan,
+  makanan.stok_makanan,
+  makanan.status_makanan,
+  makanan.id_jenis_makanan,
+  jenis_makanan.nama_jenis_makanan
+FROM makanan
+  INNER JOIN jenis_makanan
+    ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
+WHERE makanan.status_makanan != 0
+order by 1 asc";
             loadCB();
             loadDatagrid();
-
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             start = true;
         }
 
@@ -59,19 +76,7 @@ namespace Hotel_Harem_SamGun
         {
             try
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter(@"SELECT
-  makanan.id_makanan,
-  makanan.nama_makanan,
-  makanan.harga_makanan,
-  makanan.stok_makanan,
-  makanan.status_makanan,
-  makanan.id_jenis_makanan,
-  jenis_makanan.nama_jenis_makanan
-FROM makanan
-  INNER JOIN jenis_makanan
-    ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
-WHERE makanan.status_makanan != 0
-order by 1 asc", Koneksi.conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, Koneksi.conn);
                 dtmakanan = new DataTable();
                 adapter.Fill(dtmakanan);
 
@@ -203,6 +208,21 @@ order by 1 asc", Koneksi.conn);
             start = true;
             btnEdit.Enabled = false;
             btnHapus.Enabled = false;
+            query = @"SELECT
+  makanan.id_makanan,
+  makanan.nama_makanan,
+  makanan.harga_makanan,
+  makanan.stok_makanan,
+  makanan.status_makanan,
+  makanan.id_jenis_makanan,
+  jenis_makanan.nama_jenis_makanan
+FROM makanan
+  INNER JOIN jenis_makanan
+    ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
+WHERE makanan.status_makanan != 0
+order by 1 asc";
+            loadDatagrid();
+            tbCari.Text = "";
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -504,6 +524,27 @@ order by 1 asc", Koneksi.getConn());
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            query = @"SELECT
+  makanan.id_makanan,
+  makanan.nama_makanan,
+  makanan.harga_makanan,
+  makanan.stok_makanan,
+  makanan.status_makanan,
+  makanan.id_jenis_makanan,
+  jenis_makanan.nama_jenis_makanan
+FROM makanan
+  INNER JOIN jenis_makanan
+    ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
+WHERE makanan.status_makanan != 0
+AND
+makanan.nama_makanan LIKE '%" + tbCari.Text + @"%'
+order by 1 asc";
+            loadDatagrid();
+            tbCari.Text = "";
         }
     }
 }

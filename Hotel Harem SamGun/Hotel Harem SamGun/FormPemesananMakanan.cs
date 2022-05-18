@@ -13,6 +13,7 @@ namespace Hotel_Harem_SamGun
 {
     public partial class FormPemesananMakanan : Form
     {
+        string query = "";
         int pilih;
         DataTable dtmakanan;
         DataTable dtkeranjang;
@@ -73,6 +74,19 @@ namespace Hotel_Harem_SamGun
 
         private void FormPemesananMakanan_Load(object sender, EventArgs e)
         {
+            query = @"SELECT
+  makanan.id_makanan,
+  makanan.nama_makanan,
+  makanan.harga_makanan,
+  makanan.stok_makanan,
+  makanan.status_makanan,
+  makanan.id_jenis_makanan,
+  jenis_makanan.nama_jenis_makanan
+FROM makanan
+  INNER JOIN jenis_makanan
+    ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
+WHERE makanan.status_makanan != 0
+order by 1 asc";
             id_makanan = new List<string>();
             id_tamu = new List<string>();
             kode_tamu = new List<string>();
@@ -83,6 +97,14 @@ namespace Hotel_Harem_SamGun
             dtkeranjang.Columns.Add("Jumlah Pemesanan", typeof(string));
             dtkeranjang.Columns.Add("Total Harga", typeof(string));
             dataGridView2.DataSource = dtkeranjang;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+            dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView2.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+            dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             /*Koneksi.openConn();*/
             loadDatagrid();
             loadCB();
@@ -114,19 +136,7 @@ namespace Hotel_Harem_SamGun
         {
             try
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter(@"SELECT
-  makanan.id_makanan,
-  makanan.nama_makanan,
-  makanan.harga_makanan,
-  makanan.stok_makanan,
-  makanan.status_makanan,
-  makanan.id_jenis_makanan,
-  jenis_makanan.nama_jenis_makanan
-FROM makanan
-  INNER JOIN jenis_makanan
-    ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
-WHERE makanan.status_makanan != 99
-order by 1 asc", Koneksi.conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, Koneksi.conn);
                 dtmakanan = new DataTable();
                 adapter.Fill(dtmakanan);
 
@@ -134,11 +144,11 @@ order by 1 asc", Koneksi.conn);
                 dataGridView1.Columns[0].HeaderText = "ID Makanan";
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].HeaderText = "Nama Makanan";
-                dataGridView1.Columns[2].HeaderText = "Harga Makanan";
-                dataGridView1.Columns[3].HeaderText = "Stok Makanan";
+                dataGridView1.Columns[2].HeaderText = "Harga";
+                dataGridView1.Columns[3].HeaderText = "Stok";
                 dataGridView1.Columns[4].Visible = false;
                 dataGridView1.Columns[5].Visible = false;
-                dataGridView1.Columns[6].HeaderText = "Jenis Makanan";
+                dataGridView1.Columns[6].HeaderText = "Jenis";
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
@@ -177,6 +187,19 @@ order by 1 asc", Koneksi.conn);
 
         private void btnBersihkan_Click(object sender, EventArgs e)
         {
+            query = @"SELECT
+  makanan.id_makanan,
+  makanan.nama_makanan,
+  makanan.harga_makanan,
+  makanan.stok_makanan,
+  makanan.status_makanan,
+  makanan.id_jenis_makanan,
+  jenis_makanan.nama_jenis_makanan
+FROM makanan
+  INNER JOIN jenis_makanan
+    ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
+WHERE makanan.status_makanan != 0
+order by 1 asc";
             tbNama.Text = "";
             tbHarga.Text = "";
             tbStok.Text = "";
@@ -187,6 +210,8 @@ order by 1 asc", Koneksi.conn);
             btnMines.Enabled = false;
             btnPlus.Enabled = false;
             dataGridView1.ClearSelection();
+            loadDatagrid();
+            tbCari.Text = "";
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
@@ -395,6 +420,17 @@ order by 1 asc", Koneksi.conn);
                     dtkeranjang.Columns.Add("Total Harga", typeof(string));
                     dataGridView2.DataSource = dtkeranjang;
 
+                    tbNama.Text = "";
+                    tbHarga.Text = "";
+                    tbStok.Text = "";
+                    tbKeterangan.Text = "";
+                    tbPembelian.Text = "0";
+                    tbSubtotal.Text = "0";
+                    btnHapus.Enabled = false;
+                    btnTambah.Enabled = false;
+                    btnMines.Enabled = false;
+                    btnPlus.Enabled = false;
+
                     MessageBox.Show("Berhasil Pesan Makanan!");
 
                     adapter.Update(dt);
@@ -422,13 +458,38 @@ order by 1 asc", Koneksi.conn);
             dataGridView1.Columns[0].HeaderText = "ID Makanan";
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].HeaderText = "Nama Makanan";
-            dataGridView1.Columns[2].HeaderText = "Harga Makanan";
-            dataGridView1.Columns[3].HeaderText = "Stok Makanan";
+            dataGridView1.Columns[2].HeaderText = "Harga";
+            dataGridView1.Columns[3].HeaderText = "Stok";
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].HeaderText = "Jenis Makanan";
+            dataGridView1.Columns[6].HeaderText = "Jenis";
             dataGridView1.ClearSelection();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            query = @"SELECT
+  makanan.id_makanan,
+  makanan.nama_makanan,
+  makanan.harga_makanan,
+  makanan.stok_makanan,
+  makanan.status_makanan,
+  makanan.id_jenis_makanan,
+  jenis_makanan.nama_jenis_makanan
+FROM makanan
+  INNER JOIN jenis_makanan
+    ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
+WHERE makanan.status_makanan != 0
+AND
+makanan.nama_makanan LIKE '%" + tbCari.Text +@"%'
+order by 1 asc";
+            loadDatagrid();
+            tbCari.Text = "";
+        }
+
+        private void tbCari_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

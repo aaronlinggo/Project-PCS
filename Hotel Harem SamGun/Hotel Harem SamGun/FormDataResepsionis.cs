@@ -17,6 +17,7 @@ namespace Hotel_Harem_SamGun
         DataRow pick;
         bool isEdit = false;
         bool start = false;
+        string query = "";
         public FormDataResepsionis()
         {
             InitializeComponent();
@@ -25,17 +26,7 @@ namespace Hotel_Harem_SamGun
         private void FormDataResepsionis_Load(object sender, EventArgs e)
         {
             /*Koneksi.openConn();*/
-            isEdit = false;
-            start = false;
-            loadDatagrid();
-            start = true;
-        }
-
-        public void loadDatagrid()
-        {
-            try
-            {
-                MySqlDataAdapter adapter = new MySqlDataAdapter(@"SELECT
+            query = @"SELECT
   karyawan.id_karyawan,
   karyawan.kode_karyawan,
   karyawan.username,
@@ -50,7 +41,18 @@ namespace Hotel_Harem_SamGun
   karyawan.status_karyawan
 FROM karyawan
 WHERE karyawan.status_karyawan != 0
-order by 1 asc", Koneksi.conn);
+order by 1 asc";
+            isEdit = false;
+            start = false;
+            loadDatagrid();
+            start = true;
+        }
+
+        public void loadDatagrid()
+        {
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, Koneksi.conn);
                 dtkaryawan = new DataTable();
                 adapter.Fill(dtkaryawan);
 
@@ -95,6 +97,22 @@ order by 1 asc", Koneksi.conn);
 
         private void button3_Click(object sender, EventArgs e)
         {
+            query = @"SELECT
+  karyawan.id_karyawan,
+  karyawan.kode_karyawan,
+  karyawan.username,
+  karyawan.nama_karyawan,
+  karyawan.jenis_kelamin_karyawan,
+  karyawan.tanggal_lahir_karyawan,
+  karyawan.alamat_karyawan,
+  karyawan.nomor_telepon_karyawan,
+  karyawan.email_karyawan,
+  karyawan.password,
+  karyawan.roles,
+  karyawan.status_karyawan
+FROM karyawan
+WHERE karyawan.status_karyawan != 0
+order by 1 asc";
             isEdit = false;
             start = false;
             tbID.Text = "";
@@ -116,6 +134,9 @@ order by 1 asc", Koneksi.conn);
             rbAdmin.Enabled = true;
             rbResepsionis.Enabled = true;
             dataGridView1.ClearSelection();
+            loadDatagrid();
+            refreshDataGridView();
+            tbCari.Text = "";
         }
 
         private void tbNoTelp_TextChanged(object sender, EventArgs e)
@@ -739,6 +760,31 @@ order by 1 asc", Koneksi.getConn());
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            query = @"SELECT
+  karyawan.id_karyawan,
+  karyawan.kode_karyawan,
+  karyawan.username,
+  karyawan.nama_karyawan,
+  karyawan.jenis_kelamin_karyawan,
+  karyawan.tanggal_lahir_karyawan,
+  karyawan.alamat_karyawan,
+  karyawan.nomor_telepon_karyawan,
+  karyawan.email_karyawan,
+  karyawan.password,
+  karyawan.roles,
+  karyawan.status_karyawan
+FROM karyawan
+WHERE karyawan.status_karyawan != 0
+AND
+karyawan.nama_karyawan LIKE '%" + tbCari.Text + @"%'
+order by 1 asc";
+            loadDatagrid();
+            refreshDataGridView();
+            tbCari.Text = "";
         }
     }
 }
