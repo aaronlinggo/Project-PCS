@@ -13,27 +13,14 @@ namespace Hotel_Harem_SamGun
 {
     public partial class FormMenuResepsionis : Form
     {
-        public static string user_resepsionis;
-        public FormMenuResepsionis(string username)
+        public FormMenuResepsionis()
         {
             InitializeComponent();
-            user_resepsionis = username;
         }
 
         private void FormMenuResepsionis_Load(object sender, EventArgs e)
         {
-            string query = $"SELECT nama_karyawan FROM karyawan WHERE username = '{user_resepsionis}'";
-
-            try
-            {
-                MySqlCommand cmd = new MySqlCommand(query, Koneksi.conn);
-                lbWelcome.Text = $"Welcome,\n{cmd.ExecuteScalar()}!";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal mendapatkan nama karyawan!");
-            }
-            
+            lbWelcome.Text = $"Welcome,\n{FormLogin.dtKaryawan.Rows[0][1]}!";
         }
 
         private void btReservasi_Click(object sender, EventArgs e)

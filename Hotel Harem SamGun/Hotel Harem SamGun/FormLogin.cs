@@ -13,7 +13,7 @@ namespace Hotel_Harem_SamGun
 {
     public partial class FormLogin : Form
     {
-        DataTable dtUsernamePasswordRoles;
+        public static DataTable dtKaryawan;
 
         public FormLogin()
         {
@@ -33,17 +33,17 @@ namespace Hotel_Harem_SamGun
 
         private bool getUsernamePasswordRoles()
         {
-            dtUsernamePasswordRoles = new DataTable();
+            dtKaryawan = new DataTable();
 
             try
             {
-                string query = $"SELECT username, password, roles FROM `karyawan` WHERE `username`=@Username AND `password`=@Password";
+                string query = $"SELECT kode_karyawan, nama_karyawan, username, password, roles FROM `karyawan` WHERE `username`=@Username AND `password`=@Password";
                 MySqlDataAdapter da = new MySqlDataAdapter(query, Koneksi.conn);
                 da.SelectCommand.Parameters.AddWithValue("@Username", tbUsername.Text);
                 da.SelectCommand.Parameters.AddWithValue("@Password", tbPassword.Text);
-                da.Fill(dtUsernamePasswordRoles);
+                da.Fill(dtKaryawan);
 
-                if(dtUsernamePasswordRoles.Rows.Count == 1) return true;
+                if(dtKaryawan.Rows.Count == 1) return true;
                 else return false;
             }
             catch(Exception ex)
@@ -70,34 +70,33 @@ namespace Hotel_Harem_SamGun
             }
 
             //CEK USERNAME
-            if(tbUsername.Text.Trim() != dtUsernamePasswordRoles.Rows[0][0].ToString())
+            if(tbUsername.Text.Trim() != dtKaryawan.Rows[0][2].ToString())
             {
                 MessageBox.Show("Username Salah! Harap cek kembali!", "GAGAL");
                 return;
             }
 
             //CEK PASSWORD
-            if(tbPassword.Text.Trim() != dtUsernamePasswordRoles.Rows[0][1].ToString())
+            if(tbPassword.Text.Trim() != dtKaryawan.Rows[0][3].ToString())
             {
                 MessageBox.Show("Password Salah! Harap cek kembali!", "GAGAL");
                 tbPassword.Text = "";
                 return;
             }
 
-            string username = dtUsernamePasswordRoles.Rows[0][0].ToString();
-            string roles = dtUsernamePasswordRoles.Rows[0][2].ToString();
+            string roles = dtKaryawan.Rows[0][4].ToString();
 
             //GANTI FORM
             this.Hide();
 
             if(roles == "Admin")
             {
-                FormMenuAdmin form = new FormMenuAdmin(username);
+                FormMenuAdmin form = new FormMenuAdmin();
                 form.ShowDialog();
             }
             else
             {
-                FormMenuResepsionis form = new FormMenuResepsionis(username);
+                FormMenuResepsionis form = new FormMenuResepsionis();
                 form.ShowDialog();
             }
 
