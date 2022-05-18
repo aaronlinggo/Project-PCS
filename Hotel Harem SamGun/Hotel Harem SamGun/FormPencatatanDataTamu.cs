@@ -141,6 +141,7 @@ namespace Hotel_Harem_SamGun
                 col.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
+            //COLOR
             foreach(DataGridViewRow row in dgvTamu.Rows)
             {
                 if (row.Cells[12].Value.ToString() == "0")
