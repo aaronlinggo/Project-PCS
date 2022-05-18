@@ -393,7 +393,7 @@ order by 1 asc";
                             baru["id_detail_pemesanan"] = id_detail_pemesanan;
                             baru["kode_pemesanan"] = nota;
                             baru["id_makanan"] = id_keranjang[i];
-                            baru["jumlah_pemesanan"] = "1";
+                            baru["jumlah_pemesanan"] = dtkeranjang.Rows[i].ItemArray[2];
                             baru["subtotal_biaya_pemesanan"] = dtkeranjang.Rows[i].ItemArray[3];
                             id_detail_pemesanan++;
                             dt.Rows.Add(baru);
