@@ -56,6 +56,7 @@ MAKANAN:
     nama_makanan VARCHAR(255),
     harga_makanan INT(16),
     stok_makanan INT(5),
+    total_terjual INT(11),
     status_makanan INT(2),
     id_jenis_makanan FK JENIS_MAKANAN [FOREIGN KEY]
 
