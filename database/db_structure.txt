@@ -24,6 +24,7 @@ JENIS_KAMAR:
     id_jenis_kamar INT(11) AUTO_INCREMENT [PRIMARY],
     nama_jenis_kamar VARCHAR(255) [UNIQUE],
     harga_jenis_kamar INT(16),
+    total_penyewaan INT(11),
     status_jenis_kamar INT(2)
 
 FASILITAS:

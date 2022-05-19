@@ -697,6 +697,7 @@ CREATE TABLE `jenis_kamar` (
   `id_jenis_kamar` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jenis_kamar` varchar(255) NOT NULL,
   `harga_jenis_kamar` int(16) NOT NULL,
+  `total_penyewaan` int(11) NOT NULL,
   `status_jenis_kamar` int(2) NOT NULL,
   PRIMARY KEY (`id_jenis_kamar`),
   UNIQUE KEY `nama_jenis_kamar` (`nama_jenis_kamar`)
@@ -704,20 +705,20 @@ CREATE TABLE `jenis_kamar` (
 
 /*Data for the table `jenis_kamar` */
 
-insert  into `jenis_kamar`(`id_jenis_kamar`,`nama_jenis_kamar`,`harga_jenis_kamar`,`status_jenis_kamar`) values 
-(1,'Superior King',890000,0),
-(2,'Superior Twin',930000,0),
-(3,'Deluxe King',1060000,1),
-(4,'Deluxe Twin',1100000,1),
-(5,'Premium King',1260000,1),
-(6,'Premium Twin',1300000,1),
-(7,'Club King',1610000,1),
-(8,'Club Twin',1650000,1),
-(9,'Junior Suite',1900000,1),
-(10,'Deluxe Suite',2600000,1),
-(11,'Executive Suite',2900000,1),
-(12,'Royal Suite',3600000,1),
-(13,'Presidential Suite',9100000,1);
+insert  into `jenis_kamar`(`id_jenis_kamar`,`nama_jenis_kamar`,`harga_jenis_kamar`,`total_penyewaan`,`status_jenis_kamar`) values 
+(1,'Superior King',890000,0,0),
+(2,'Superior Twin',930000,0,0),
+(3,'Deluxe King',1060000,0,1),
+(4,'Deluxe Twin',1100000,0,1),
+(5,'Premium King',1260000,0,1),
+(6,'Premium Twin',1300000,0,1),
+(7,'Club King',1610000,0,1),
+(8,'Club Twin',1650000,0,1),
+(9,'Junior Suite',1900000,0,1),
+(10,'Deluxe Suite',2600000,0,1),
+(11,'Executive Suite',2900000,0,1),
+(12,'Royal Suite',3600000,0,1),
+(13,'Presidential Suite',9100000,0,1);
 
 /*Table structure for table `jenis_makanan` */
 
@@ -1395,6 +1396,26 @@ insert  into `use_extra_fasilitas`(`id_use_extra_fasilitas`,`kode_kamar`,`kode_t
 (3,'PRS1211','KIMI001',7,2,50000),
 (4,'PRS1212','LEHY001',8,2,40000),
 (5,'PRS1212','LEHY001',1,1,278000);
+
+/* Procedure structure for procedure `generateKodeTamu` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `generateKodeTamu` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `generateKodeTamu`(IN nama VARCHAR(255), IN nomor INT, OUT kode VARCHAR(15))
+BEGIN
+	                SET kode = CONCAT('RSV', DATE_FORMAT(NOW(), '%d%m%y'));
+
+                        IF INSTR(nama, ' ') = 0 THEN
+                                SET kode = CONCAT(kode, SUBSTR(nama, 1, 2));
+                        ELSE
+                                SET kode = CONCAT(kode, CONCAT(SUBSTR(nama, 1, 1), SUBSTR(nama, INSTR(nama, ' ') + 1, 1)));
+                        END IF;
+        
+                        SET kode = UPPER(CONCAT(kode, LPAD(nomor, 4, '0')));
+                END */$$
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
