@@ -25,42 +25,42 @@ namespace Hotel_Harem_SamGun
 
         private void btDataResepsionis_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Hide();
             FormDataResepsionis form = new FormDataResepsionis();
             form.ShowDialog();
-            Show();
+            this.Show();
         }
 
         private void btDataMenuMakanan_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Hide();
             FormDataMenuMakanan form = new FormDataMenuMakanan();
             form.ShowDialog();
-            Show();
+            this.Show();
         }
 
         private void btDataKamar_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Hide();
             FormDataKamar form = new FormDataKamar();
             form.ShowDialog();
-            Show();
+            this.Show();
         }
 
         private void btDataFasilitasTambahanKamar_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Hide();
             FormDataTambahanFasilitasKamar form = new FormDataTambahanFasilitasKamar();
             form.ShowDialog();
-            Show();
+            this.Show();
         }
 
         private void btLaporan_Click(object sender, EventArgs e)
         {
-            Hide();
-            //FormLaporan form = new FormLaporan();
-            //form.ShowDialog();
-            Show();
+            this.Hide();
+            FormLaporan form = new FormLaporan();
+            form.ShowDialog();
+            this.Show();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

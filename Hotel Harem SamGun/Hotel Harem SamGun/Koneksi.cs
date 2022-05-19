@@ -13,6 +13,7 @@ namespace Hotel_Harem_SamGun
         public static MySqlConnection conn;
         public static string server;
         public static string uid;
+        public static string pass;
         public static string database;
         public static bool isValid;
 
@@ -20,9 +21,10 @@ namespace Hotel_Harem_SamGun
         {
             server = "localhost";
             uid = "root";
+            pass = "";
             database = "db_hotel_samgun";
 
-            conn = new MySqlConnection($"server = {server}; uid = {uid}; database = {database}");
+            conn = new MySqlConnection($"server = {server}; uid = {uid}; database = {database};");
 
             try
             {

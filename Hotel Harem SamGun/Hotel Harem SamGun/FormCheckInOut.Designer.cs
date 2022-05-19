@@ -87,7 +87,7 @@ namespace Hotel_Harem_SamGun
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(135, 52);
             this.btnBack.TabIndex = 3;
-            this.btnBack.Text = "Back to Menu";
+            this.btnBack.Text = "Kembali ke Menu Utama";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
