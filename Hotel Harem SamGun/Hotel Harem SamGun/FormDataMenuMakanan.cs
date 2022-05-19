@@ -331,6 +331,7 @@ order by 1 asc", Koneksi.getConn());
                                     }
                                     catch (MySqlException ex)
                                     {
+                                        Console.WriteLine(ex.Message);
                                         sqlt.Rollback();
                                         MessageBox.Show("Gagal Insert Menu Makanan!");
                                     }
@@ -427,6 +428,7 @@ order by 1 asc", Koneksi.getConn());
                                     }
                                     catch (MySqlException ex)
                                     {
+                                        Console.WriteLine(ex.Message);
                                         sqlt.Rollback();
                                         MessageBox.Show("Gagal Ubah Menu Makanan!");
                                     }
@@ -496,6 +498,7 @@ order by 1 asc", Koneksi.getConn());
             }
             catch (MySqlException ex)
             {
+                Console.WriteLine(ex.Message);
                 sqlt.Rollback();
                 MessageBox.Show("Gagal Hapus Menu Makanan!");
             }

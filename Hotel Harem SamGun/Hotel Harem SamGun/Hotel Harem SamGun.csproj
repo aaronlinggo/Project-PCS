@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCheckInOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCheckInOut.Designer.cs">
+      <DependentUpon>FormCheckInOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDataJenisKamar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCheckInOut.resx">
+      <DependentUpon>FormCheckInOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDataJenisKamar.resx">
       <DependentUpon>FormDataJenisKamar.cs</DependentUpon>
     </EmbeddedResource>

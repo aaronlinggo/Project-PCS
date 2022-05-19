@@ -451,6 +451,7 @@ order by 1 asc", Koneksi.getConn());
                                                 }
                                                 catch (MySqlException ex)
                                                 {
+                                                    Console.WriteLine(ex.Message);
                                                     sqlt.Rollback();
                                                     MessageBox.Show("Gagal Insert Data Karyawan!");
                                                 }
@@ -597,6 +598,7 @@ order by 1 asc", Koneksi.getConn());
             }
             catch (MySqlException ex)
             {
+                Console.WriteLine(ex.Message);
                 sqlt.Rollback();
                 MessageBox.Show("Gagal Hapus Data Karyawan!");
             }
@@ -698,6 +700,7 @@ order by 1 asc", Koneksi.getConn());
                                                 }
                                                 catch (MySqlException ex)
                                                 {
+                                                    Console.WriteLine(ex.Message);
                                                     sqlt.Rollback();
                                                     MessageBox.Show("Gagal Ubah Data Karyawan!");
                                                 }

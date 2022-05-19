@@ -122,7 +122,7 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                if(tbNama.Text == "" || tbHarga.Text == "")
+                if (tbNama.Text == "" || tbHarga.Text == "")
                 {
                     MessageBox.Show("Semua field harus terisi");
                 }
@@ -154,7 +154,7 @@ namespace Hotel_Harem_SamGun
                         int count = Convert.ToInt32(cmd.ExecuteScalar().ToString());
                         cmd = new MySqlCommand();
                         cmd.Connection = conn;
-                        if(count > 0)
+                        if (count > 0)
                         {
                             cmd.CommandText = $"SELECT id_jenis_kamar FROM jenis_kamar WHERE nama_jenis_kamar = '{tbNama.Text}'";
                             int id_lama = Convert.ToInt32(cmd.ExecuteScalar().ToString());
@@ -173,13 +173,13 @@ namespace Hotel_Harem_SamGun
                             cmd.Parameters.Add(new MySqlParameter("@status", status));
                             cmd.ExecuteNonQuery();
                         }
-                        
+
                         MessageBox.Show("Berhasil menambah jenis kamar baru");
                         refreshDGV();
                         resetTampilan();
                     }
                 }
-                
+
             }
         }
 
@@ -214,7 +214,7 @@ namespace Hotel_Harem_SamGun
                     refreshDGV();
                     resetTampilan();
                 }
-                
+
             }
             else
             {
