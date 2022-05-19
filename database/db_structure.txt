@@ -24,6 +24,7 @@ JENIS_KAMAR:
     id_jenis_kamar INT(11) AUTO_INCREMENT [PRIMARY],
     nama_jenis_kamar VARCHAR(255) [UNIQUE],
     harga_jenis_kamar INT(16),
+    maks_penghuni_kamar INT(2),
     total_penyewaan INT(11),
     status_jenis_kamar INT(2)
 
@@ -97,6 +98,7 @@ RESERVASI:
     kode_reservasi VARCHAR(15) [UNIQUE], --> "RSV" + 2 digit tanggal reservasi + 2 digit bulan reservasi + 2 digit tahun reservasi + 2 digit inisial tamu (1 + 1 digit jika 2 kata/lebih) + 4 digit nomor kamar
     kode_tamu FK TAMU [FOREIGN KEY],
     kode_kamar FK KAMAR [FOREIGN KEY],
+    jumlah_penghuni_kamar INT(2),
     down_payment INT(16),
     deposito INT(16),
     jadwal_check_in DATE,

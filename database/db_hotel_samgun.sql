@@ -697,6 +697,7 @@ CREATE TABLE `jenis_kamar` (
   `id_jenis_kamar` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jenis_kamar` varchar(255) NOT NULL,
   `harga_jenis_kamar` int(16) NOT NULL,
+  `maks_penghuni_kamar` int(2) NOT NULL,
   `total_penyewaan` int(11) NOT NULL,
   `status_jenis_kamar` int(2) NOT NULL,
   PRIMARY KEY (`id_jenis_kamar`),
@@ -705,20 +706,20 @@ CREATE TABLE `jenis_kamar` (
 
 /*Data for the table `jenis_kamar` */
 
-insert  into `jenis_kamar`(`id_jenis_kamar`,`nama_jenis_kamar`,`harga_jenis_kamar`,`total_penyewaan`,`status_jenis_kamar`) values 
-(1,'Superior King',890000,0,0),
-(2,'Superior Twin',930000,0,0),
-(3,'Deluxe King',1060000,0,1),
-(4,'Deluxe Twin',1100000,0,1),
-(5,'Premium King',1260000,0,1),
-(6,'Premium Twin',1300000,0,1),
-(7,'Club King',1610000,0,1),
-(8,'Club Twin',1650000,0,1),
-(9,'Junior Suite',1900000,0,1),
-(10,'Deluxe Suite',2600000,0,1),
-(11,'Executive Suite',2900000,0,1),
-(12,'Royal Suite',3600000,0,1),
-(13,'Presidential Suite',9100000,0,1);
+insert  into `jenis_kamar`(`id_jenis_kamar`,`nama_jenis_kamar`,`harga_jenis_kamar`,`maks_penghuni_kamar`,`total_penyewaan`,`status_jenis_kamar`) values 
+(1,'Superior King',890000,2,0,0),
+(2,'Superior Twin',930000,2,0,0),
+(3,'Deluxe King',1060000,2,0,1),
+(4,'Deluxe Twin',1100000,2,0,1),
+(5,'Premium King',1260000,2,0,1),
+(6,'Premium Twin',1300000,2,0,1),
+(7,'Club King',1610000,2,0,1),
+(8,'Club Twin',1650000,2,0,1),
+(9,'Junior Suite',1900000,2,0,1),
+(10,'Deluxe Suite',2600000,2,0,1),
+(11,'Executive Suite',2900000,2,0,1),
+(12,'Royal Suite',3600000,2,0,1),
+(13,'Presidential Suite',9100000,2,0,1);
 
 /*Table structure for table `jenis_makanan` */
 
@@ -1292,6 +1293,7 @@ CREATE TABLE `reservasi` (
   `kode_reservasi` varchar(15) NOT NULL COMMENT '"RSV" + 2 digit tanggal reservasi + 2 digit bulan reservasi + 2 digit tahun reservasi + 2 digit inisial tamu (1 + 1 digit jika 2 kata/lebih) + 4 digit nomor kamar',
   `kode_tamu` varchar(7) NOT NULL,
   `kode_kamar` varchar(7) NOT NULL,
+  `jumlah_penghuni_kamar` int(2) NOT NULL,
   `down_payment` int(16) NOT NULL,
   `deposito` int(16) NOT NULL,
   `jadwal_check_in` date NOT NULL,
@@ -1313,22 +1315,22 @@ CREATE TABLE `reservasi` (
 
 /*Data for the table `reservasi` */
 
-insert  into `reservasi`(`id_reservasi`,`kode_reservasi`,`kode_tamu`,`kode_kamar`,`down_payment`,`deposito`,`jadwal_check_in`,`jadwal_check_out`,`tanggal_check_in`,`tanggal_check_out`,`total_biaya`,`kode_karyawan`,`status_reservasi`) values 
-(1,'RSV120422FW1102','FRWI001','ROS1102',1800000,4850000,'2022-04-25','2022-04-27','2022-04-25','2022-04-27',3600000,'RE001',0),
-(2,'RSV140422BG0911','BOGA001','DES911',1300000,4350000,'2022-04-28','2022-05-01','2022-04-29','2022-05-01',2600000,'RE002',0),
-(3,'RSV170422JM0418','JAMO001','DET418',550000,3000000,'2022-04-20','2022-04-24','2022-04-20','2022-04-24',1100000,'RE001',0),
-(4,'RSV180422JB1005','JIBO001','EXS1005',1450000,4700000,'2022-04-22','2022-04-26','2022-04-22','2022-04-26',2900000,'RE001',0),
-(5,'RSV180422JH0603','JEHU001','PRK603',1130000,3100000,'2022-04-24','2022-04-29','2022-04-25','2022-04-29',2739000,'RE003',0),
-(6,'RSV220422DN0212','DANA001','PRT607',1150000,3500000,'2022-04-27','2022-04-29','2022-04-27','2022-04-29',2300000,'RE001',0),
-(7,'RSV230422DN0119','DANA002','DES906',1300000,3000000,'2022-04-26','2022-05-18','2022-04-26',NULL,3748000,'RE002',2),
-(8,'RSV250422CK0812','CHKA001','JUS812',950000,4000000,'2022-05-06','2022-05-09','2022-05-06','2022-05-09',1900000,'RE003',0),
-(9,'RSV270422YJ0605','YIJI001','PRT605',1150000,3250000,'2022-04-30','2022-05-05','2022-04-30','2022-05-05',3318000,'RE001',0),
-(10,'RSV010522LC0711','LECH001','CLT711',825000,3700000,'2022-05-11','2022-05-14','2022-05-11','2022-05-14',1650000,'RE003',0),
-(11,'RSV040522MM0716','MYMI001','CLK716',805000,3400000,'2022-05-13','2022-05-18','2022-05-13',NULL,1610000,'RE003',2),
-(12,'RSV070522SY0406','SUYU001','DEK406',530000,2850000,'2022-05-17','2022-05-18',NULL,NULL,NULL,'RE002',1),
-(13,'RSV160522LJ1210','LEJI001','PRS1210',4550000,5000000,'2022-05-16','2022-05-21','2022-05-16',NULL,9686000,'RE002',2),
-(14,'RSV160522KM1211','KIMI001','PRS1211',4550000,5000000,'2022-05-16','2022-05-21','2022-05-16',NULL,9150000,'RE003',2),
-(15,'RSV160522LH1212','LEHY001','PRS1212',4550000,5000000,'2022-05-16','2022-05-21','2022-05-16',NULL,9824000,'RE002',2);
+insert  into `reservasi`(`id_reservasi`,`kode_reservasi`,`kode_tamu`,`kode_kamar`,`jumlah_penghuni_kamar`,`down_payment`,`deposito`,`jadwal_check_in`,`jadwal_check_out`,`tanggal_check_in`,`tanggal_check_out`,`total_biaya`,`kode_karyawan`,`status_reservasi`) values 
+(1,'RSV120422FW1102','FRWI001','ROS1102',1,1800000,4850000,'2022-04-25','2022-04-27','2022-04-25','2022-04-27',3600000,'RE001',0),
+(2,'RSV140422BG0911','BOGA001','DES911',2,1300000,4350000,'2022-04-28','2022-05-01','2022-04-29','2022-05-01',2600000,'RE002',0),
+(3,'RSV170422JM0418','JAMO001','DET418',1,550000,3000000,'2022-04-20','2022-04-24','2022-04-20','2022-04-24',1100000,'RE001',0),
+(4,'RSV180422JB1005','JIBO001','EXS1005',1,1450000,4700000,'2022-04-22','2022-04-26','2022-04-22','2022-04-26',2900000,'RE001',0),
+(5,'RSV180422JH0603','JEHU001','PRK603',2,1130000,3100000,'2022-04-24','2022-04-29','2022-04-25','2022-04-29',2739000,'RE003',0),
+(6,'RSV220422DN0212','DANA001','PRT607',1,1150000,3500000,'2022-04-27','2022-04-29','2022-04-27','2022-04-29',2300000,'RE001',0),
+(7,'RSV230422DN0119','DANA002','DES906',1,1300000,3000000,'2022-04-26','2022-05-18','2022-04-26',NULL,3748000,'RE002',2),
+(8,'RSV250422CK0812','CHKA001','JUS812',1,950000,4000000,'2022-05-06','2022-05-09','2022-05-06','2022-05-09',1900000,'RE003',0),
+(9,'RSV270422YJ0605','YIJI001','PRT605',1,1150000,3250000,'2022-04-30','2022-05-05','2022-04-30','2022-05-05',3318000,'RE001',0),
+(10,'RSV010522LC0711','LECH001','CLT711',1,825000,3700000,'2022-05-11','2022-05-14','2022-05-11','2022-05-14',1650000,'RE003',0),
+(11,'RSV040522MM0716','MYMI001','CLK716',2,805000,3400000,'2022-05-13','2022-05-18','2022-05-13',NULL,1610000,'RE003',2),
+(12,'RSV070522SY0406','SUYU001','DEK406',1,530000,2850000,'2022-05-17','2022-05-18',NULL,NULL,NULL,'RE002',1),
+(13,'RSV160522LJ1210','LEJI001','PRS1210',1,4550000,5000000,'2022-05-16','2022-05-21','2022-05-16',NULL,9686000,'RE002',2),
+(14,'RSV160522KM1211','KIMI001','PRS1211',1,4550000,5000000,'2022-05-16','2022-05-21','2022-05-16',NULL,9150000,'RE003',2),
+(15,'RSV160522LH1212','LEHY001','PRS1212',1,4550000,5000000,'2022-05-16','2022-05-21','2022-05-16',NULL,9824000,'RE002',2);
 
 /*Table structure for table `tamu` */
 
