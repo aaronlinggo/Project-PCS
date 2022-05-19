@@ -24,7 +24,7 @@ namespace Hotel_Harem_SamGun
         {
             Koneksi.openConn();
 
-            if(!Koneksi.isValid)
+            if (!Koneksi.isValid)
             {
                 MessageBox.Show("Gagal terhubung ke database!", "GAGAL");
                 return;
@@ -43,10 +43,10 @@ namespace Hotel_Harem_SamGun
                 da.SelectCommand.Parameters.AddWithValue("@Password", tbPassword.Text);
                 da.Fill(dtKaryawan);
 
-                if(dtKaryawan.Rows.Count == 1) return true;
+                if (dtKaryawan.Rows.Count == 1) return true;
                 else return false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -57,27 +57,27 @@ namespace Hotel_Harem_SamGun
         private void btLogin_Click(object sender, EventArgs e)
         {
             //CEK FIELD TEXTBOX
-            if(tbUsername.Text.Trim() == "" || tbPassword.Text.Trim() == "")
+            if (tbUsername.Text.Trim() == "" || tbPassword.Text.Trim() == "")
             {
                 MessageBox.Show("Tidak boleh ada field kosong!", "GAGAL");
                 return;
             }
 
-            if(!getUsernamePasswordRoles())
+            if (!getUsernamePasswordRoles())
             {
                 MessageBox.Show("Username dan Password tidak ditemukan!", "GAGAL");
                 return;
             }
 
             //CEK USERNAME
-            if(tbUsername.Text.Trim() != dtKaryawan.Rows[0][2].ToString())
+            if (tbUsername.Text.Trim() != dtKaryawan.Rows[0][2].ToString())
             {
                 MessageBox.Show("Username Salah! Harap cek kembali!", "GAGAL");
                 return;
             }
 
             //CEK PASSWORD
-            if(tbPassword.Text.Trim() != dtKaryawan.Rows[0][3].ToString())
+            if (tbPassword.Text.Trim() != dtKaryawan.Rows[0][3].ToString())
             {
                 MessageBox.Show("Password Salah! Harap cek kembali!", "GAGAL");
                 tbPassword.Text = "";
@@ -87,9 +87,12 @@ namespace Hotel_Harem_SamGun
             string roles = dtKaryawan.Rows[0][4].ToString();
 
             //GANTI FORM
+            tbUsername.Text = "";
+            tbPassword.Text = "";
+
             this.Hide();
 
-            if(roles == "Admin")
+            if (roles == "Admin")
             {
                 FormMenuAdmin form = new FormMenuAdmin();
                 form.ShowDialog();

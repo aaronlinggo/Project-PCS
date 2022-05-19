@@ -33,6 +33,7 @@
             this.btPemesananMakanan = new System.Windows.Forms.Button();
             this.btCheckInCheckOut = new System.Windows.Forms.Button();
             this.lbWelcome = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btReservasi
@@ -89,12 +90,23 @@
             this.lbWelcome.Text = "Welcome,\r\nNama Karyawan!";
             this.lbWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(21, 350);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(122, 47);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // FormMenuResepsionis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(784, 411);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lbWelcome);
             this.Controls.Add(this.btCheckInCheckOut);
             this.Controls.Add(this.btPemesananMakanan);
@@ -117,5 +129,6 @@
         private System.Windows.Forms.Button btPemesananMakanan;
         private System.Windows.Forms.Button btCheckInCheckOut;
         private System.Windows.Forms.Label lbWelcome;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
