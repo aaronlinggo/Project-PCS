@@ -99,10 +99,56 @@ namespace Hotel_Harem_SamGun
 
         private void button1_Click(object sender, EventArgs e)
         {
+            using (MySqlTransaction obTrans = Koneksi.getConn().BeginTransaction())
+            {
+                try
+                {
+                    Console.WriteLine(dataGridView1.SelectedRows[0].Cells[0].Value);
+
+                    MySqlCommand cmd = new MySqlCommand("UPDATE reservasi SET status_reservasi = 2 WHERE kode_reservasi = @kode;", Koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@kode", dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    cmd.ExecuteNonQuery();
+
+                    obTrans.Commit();
+                    MessageBox.Show("Berhasil check-in!", "Success");
+
+                    loadDatabase();
+                    refreshDataGridView();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    obTrans.Rollback();
+                    MessageBox.Show("Tidak ada data yang sedang dipilih!", "Failed");
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            using (MySqlTransaction obTrans = Koneksi.getConn().BeginTransaction())
+            {
+                try
+                {
+                    Console.WriteLine(dataGridView2.SelectedRows[0].Cells[0].Value);
+
+                    MySqlCommand cmd = new MySqlCommand("UPDATE reservasi SET status_reservasi = 0 WHERE kode_reservasi = @kode;", Koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@kode", dataGridView2.SelectedRows[0].Cells[0].Value.ToString());
+                    cmd.ExecuteNonQuery();
+
+                    obTrans.Commit();
+                    MessageBox.Show("Berhasil check-out!", "Success");
+
+                    loadDatabase();
+                    refreshDataGridView();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    obTrans.Rollback();
+                    MessageBox.Show("Tidak ada data yang sedang dipilih!", "Failed");
+                }
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)

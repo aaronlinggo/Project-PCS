@@ -57,7 +57,7 @@ namespace Hotel_Harem_SamGun
 
         private void btnMines_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(tbPembelian.Text)-1 >= 0)
+            if (Convert.ToInt32(tbPembelian.Text) - 1 >= 0)
             {
                 tbPembelian.Text = Convert.ToInt32(tbPembelian.Text) - 1 + "";
             }
@@ -247,7 +247,7 @@ order by 1 asc";
                     dataGridView2.Rows[pos_ada].Cells[2].Value = Convert.ToInt32(dataGridView2.Rows[pos_ada].Cells[2].Value.ToString()) + Convert.ToInt32(tbPembelian.Text) + "";
                     dataGridView2.Rows[pos_ada].Cells[3].Value = Convert.ToInt32(dataGridView2.Rows[pos_ada].Cells[3].Value.ToString()) + (Convert.ToInt32(dataGridView1.Rows[pilih].Cells[2].Value) * Convert.ToInt32(tbPembelian.Text)) + "";
                 }
-                
+
                 dataGridView2.DataSource = dtkeranjang;
 
                 tbSubtotal.Text = Convert.ToInt32(tbSubtotal.Text) + (Convert.ToInt32(dataGridView1.Rows[pilih].Cells[2].Value) * Convert.ToInt32(tbPembelian.Text)) + "";
@@ -489,7 +489,7 @@ FROM makanan
     ON makanan.id_jenis_makanan = jenis_makanan.id_jenis_makanan
 WHERE makanan.status_makanan != 0
 AND
-makanan.nama_makanan LIKE '%" + tbCari.Text +@"%'
+makanan.nama_makanan LIKE '%" + tbCari.Text + @"%'
 order by 1 asc";
             loadDatagrid();
             tbCari.Text = "";

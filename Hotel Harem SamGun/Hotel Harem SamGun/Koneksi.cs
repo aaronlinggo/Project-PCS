@@ -26,14 +26,14 @@ namespace Hotel_Harem_SamGun
 
             try
             {
-                if(conn.State == System.Data.ConnectionState.Closed)
+                if (conn.State == System.Data.ConnectionState.Closed)
                 {
                     conn.Open();
                 }
 
                 isValid = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 isValid = false;

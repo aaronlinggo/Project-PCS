@@ -146,7 +146,7 @@ order by 1 asc";
             {
                 generateID();
             }
-            
+
         }
 
         public void generateID()
@@ -372,7 +372,7 @@ WHERE UPPER(karyawan.nama_karyawan) like '%" + tbUsername.Text.ToUpper() + "%' A
                                                         {
                                                             cmd2.Parameters.AddWithValue("@roles", "Resepsionis");
                                                         }
-                                                            cmd2.Parameters.AddWithValue("@status_karyawan", "1");
+                                                        cmd2.Parameters.AddWithValue("@status_karyawan", "1");
 
                                                         cmd2.Connection = Koneksi.getConn();
                                                         cmd2.ExecuteNonQuery();
@@ -418,7 +418,7 @@ order by 1 asc", Koneksi.getConn());
                                                             baru["roles"] = "Resepsionis";
                                                         }
                                                         baru["status_karyawan"] = "1";
-                                                        
+
                                                         dt.Rows.Add(baru);
 
                                                         adapter.Update(dt);

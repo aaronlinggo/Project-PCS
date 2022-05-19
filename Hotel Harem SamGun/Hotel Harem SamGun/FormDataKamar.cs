@@ -94,7 +94,7 @@ namespace Hotel_Harem_SamGun
 
         public void generateKode()
         {
-            query = $"SELECT CONCAT(UPPER(SUBSTR(nama_jenis_kamar,1,2)) , UPPER(SUBSTR(nama_jenis_kamar,INSTR(nama_jenis_kamar, ' ')+1,1))) FROM jenis_kamar WHERE id_jenis_kamar = '{comboJenisKamar.SelectedIndex+1}'";
+            query = $"SELECT CONCAT(UPPER(SUBSTR(nama_jenis_kamar,1,2)) , UPPER(SUBSTR(nama_jenis_kamar,INSTR(nama_jenis_kamar, ' ')+1,1))) FROM jenis_kamar WHERE id_jenis_kamar = '{comboJenisKamar.SelectedIndex + 1}'";
             cmd = new MySqlCommand(query, conn);
             tbKode.Text = cmd.ExecuteScalar().ToString() + tbNoKamar.Text;
         }
@@ -110,11 +110,11 @@ namespace Hotel_Harem_SamGun
 
         private void numNoKamar_ValueChanged(object sender, EventArgs e)
         {
-            if(selectedIdx == -1)
+            if (selectedIdx == -1)
             {
                 generateID();
             }
-            tbNoKamar.Text = $"{numLantai.Value}" + ($"{numKamarKe.Value}").PadLeft(2,'0');
+            tbNoKamar.Text = $"{numLantai.Value}" + ($"{numKamarKe.Value}").PadLeft(2, '0');
             generateKode();
         }
 
@@ -125,11 +125,11 @@ namespace Hotel_Harem_SamGun
             tbKode.Text = dgvKamar.Rows[selectedIdx].Cells[1].Value.ToString();
             tbNoKamar.Text = dgvKamar.Rows[selectedIdx].Cells[2].Value.ToString();
             numLantai.Value = Convert.ToInt32(dgvKamar.Rows[selectedIdx].Cells[3].Value.ToString());
-            numKamarKe.Value = Convert.ToInt32(dgvKamar.Rows[selectedIdx].Cells[2].Value.ToString().Substring(1,2));
-            cmd = new MySqlCommand($"SELECT id_jenis_kamar FROM jenis_kamar WHERE nama_jenis_kamar = '{dgvKamar.Rows[selectedIdx].Cells[4].Value.ToString()}'",conn);
+            numKamarKe.Value = Convert.ToInt32(dgvKamar.Rows[selectedIdx].Cells[2].Value.ToString().Substring(1, 2));
+            cmd = new MySqlCommand($"SELECT id_jenis_kamar FROM jenis_kamar WHERE nama_jenis_kamar = '{dgvKamar.Rows[selectedIdx].Cells[4].Value.ToString()}'", conn);
             int id_jenis_kamar = Convert.ToInt32(cmd.ExecuteScalar().ToString());
-            comboJenisKamar.SelectedIndex = id_jenis_kamar-1;
-            if(dgvKamar.Rows[selectedIdx].Cells[6].Value.ToString() == "Tersedia")
+            comboJenisKamar.SelectedIndex = id_jenis_kamar - 1;
+            if (dgvKamar.Rows[selectedIdx].Cells[6].Value.ToString() == "Tersedia")
             {
                 rb1.Checked = true;
             }
@@ -141,7 +141,7 @@ namespace Hotel_Harem_SamGun
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            if(selectedIdx > -1)
+            if (selectedIdx > -1)
             {
                 //update atau delete
                 MessageBox.Show("Tidak bisa insert di data yang sudah ada di database");
@@ -193,17 +193,17 @@ namespace Hotel_Harem_SamGun
                     refreshDGV();
                     resetTampilan();
                 }
-                
+
             }
-            
+
         }
 
         private void btnUbah_Click(object sender, EventArgs e)
         {
 
-            if(selectedIdx > -1)
+            if (selectedIdx > -1)
             {
-                if(numLantai.Value == 0 || numKamarKe.Value == 0)
+                if (numLantai.Value == 0 || numKamarKe.Value == 0)
                 {
                     MessageBox.Show("Lantai dan nomor kamar tidak mungkin 0");
                 }

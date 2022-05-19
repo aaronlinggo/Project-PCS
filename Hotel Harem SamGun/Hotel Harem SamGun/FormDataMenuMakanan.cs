@@ -228,7 +228,7 @@ order by 1 asc";
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
@@ -255,7 +255,7 @@ order by 1 asc";
                                         cmd.CommandText = @"SELECT
 count(makanan.id_makanan)
 FROM makanan
-WHERE UPPER(makanan.nama_makanan) like '%" + tbNama.Text.ToUpper() +"%' AND makanan.status_makanan=0";
+WHERE UPPER(makanan.nama_makanan) like '%" + tbNama.Text.ToUpper() + "%' AND makanan.status_makanan=0";
                                         cmd.Connection = Koneksi.getConn();
                                         int ada;
                                         ada = Convert.ToInt32(cmd.ExecuteScalar().ToString());

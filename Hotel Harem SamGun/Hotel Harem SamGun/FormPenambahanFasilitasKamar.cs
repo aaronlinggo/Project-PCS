@@ -17,7 +17,7 @@ namespace Hotel_Harem_SamGun
         MySqlCommand cmd;
         string query;
         DataTable dt;
-        int id_reservasi, selectedIdxFasilitas = -1,selectedIdxKeranjang = -1;
+        int id_reservasi, selectedIdxFasilitas = -1, selectedIdxKeranjang = -1;
         FormPenambahanFasilitasDataTamu formLama;
         public FormPenambahanFasilitasKamar(FormPenambahanFasilitasDataTamu formLama)
         {
@@ -47,7 +47,7 @@ namespace Hotel_Harem_SamGun
             lblNoKamar.Text = cmd.ExecuteScalar().ToString();
         }
 
-       
+
 
         public void refreshDGV()
         {
@@ -152,6 +152,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (MySqlException ex)
             {
+                Console.WriteLine(ex.Message);
                 MessageBox.Show("Gagal melakukan transaksi");
                 trans.Rollback();
             }
@@ -159,27 +160,27 @@ namespace Hotel_Harem_SamGun
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            if(numJumlah.Value > 0)
+            if (numJumlah.Value > 0)
             {
                 int idxRow = -1;
                 for (int i = 0; i < dgvKeranjang.Rows.Count; i++)
                 {
-                    if(tbID.Text == dgvKeranjang.Rows[i].Cells[0].Value.ToString())
+                    if (tbID.Text == dgvKeranjang.Rows[i].Cells[0].Value.ToString())
                     {
                         idxRow = i;
                     }
                 }
-                
-                if(idxRow == -1)
+
+                if (idxRow == -1)
                 {
                     int stok = Convert.ToInt32(dgvFasilitas.Rows[selectedIdxFasilitas].Cells[2].Value.ToString());
                     int jumlah = Convert.ToInt32(numJumlah.Value.ToString());
-                    if(jumlah > stok)
+                    if (jumlah > stok)
                     {
                         MessageBox.Show("Stok tidak mencukupi");
                     }
                     else
-                    {                        
+                    {
                         idxRow = dgvKeranjang.Rows.Add();
                         dgvKeranjang.Rows[idxRow].Cells[0].Value = tbID.Text;
                         dgvKeranjang.Rows[idxRow].Cells[1].Value = tbNama.Text;
@@ -193,7 +194,7 @@ namespace Hotel_Harem_SamGun
                 {
                     int stok = Convert.ToInt32(dgvFasilitas.Rows[selectedIdxFasilitas].Cells[2].Value.ToString());
                     int jumlah = Convert.ToInt32(numJumlah.Value.ToString()) + Convert.ToInt32(dgvKeranjang.Rows[idxRow].Cells[3].Value.ToString());
-                    if(jumlah > stok)
+                    if (jumlah > stok)
                     {
                         MessageBox.Show("Stok tidak mencukupi");
                     }

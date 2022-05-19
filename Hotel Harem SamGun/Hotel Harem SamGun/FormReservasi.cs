@@ -64,15 +64,18 @@ namespace Hotel_Harem_SamGun
             {
                 // DONE
                 query += " WHERE status_reservasi = 0";
-            } else if (status == 1)
+            }
+            else if (status == 1)
             {
                 // RESERVED
                 query += " WHERE status_reservasi = 1";
-            } else if (status == 2)
+            }
+            else if (status == 2)
             {
                 // CHECKED IN
                 query += " WHERE status_reservasi = 2";
-            } else if (status == 3)
+            }
+            else if (status == 3)
             {
                 query += " WHERE status_reservasi = 99";
             }
@@ -209,12 +212,14 @@ namespace Hotel_Harem_SamGun
 
                 btReservasi.Enabled = true;
                 btBatal.Enabled = false;
-            } else if (mode == 2)
+            }
+            else if (mode == 2)
             {
                 // Batal
                 btReservasi.Enabled = false;
                 btBatal.Enabled = true;
-            } else
+            }
+            else
             {
                 // NOTHING TO DO
                 btReservasi.Enabled = false;
@@ -258,7 +263,8 @@ namespace Hotel_Harem_SamGun
             {
                 // DIPESAN -> BATAL
                 changeMode(2);
-            } else
+            }
+            else
             {
                 // SELESAI / CHECK IN / BATAL -> NOTHING TO DO
                 changeMode();
@@ -306,13 +312,13 @@ namespace Hotel_Harem_SamGun
             //FIND NOMOR KAMAR DAN STATUS 1 / 2
             string query = $"SELECT jadwal_check_in, jadwal_check_out FROM reservasi r JOIN kamar km ON km.kode_kamar = r.kode_kamar WHERE nomor_kamar = {dtNomorKamar.Rows[cbNomorKamar.SelectedIndex][1]} AND (status_reservasi = 1 OR status_reservasi = 2)";
             fillDT(dtListedReservasi, query);
-            
+
             if (dtListedReservasi.Rows.Count > 0)
             {
                 //CHECK JADWAL CHECK IN DAN JADWAL CHECK OUT
                 for (int i = 0; i < dtListedReservasi.Rows.Count; i++)
                 {
-                    if ((dtpJadwalCheckIn.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckIn.Value <= (DateTime) dtListedReservasi.Rows[i][1]) || (dtpJadwalCheckOut.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckOut.Value <= (DateTime)dtListedReservasi.Rows[i][1]))
+                    if ((dtpJadwalCheckIn.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckIn.Value <= (DateTime)dtListedReservasi.Rows[i][1]) || (dtpJadwalCheckOut.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckOut.Value <= (DateTime)dtListedReservasi.Rows[i][1]))
                     {
                         return false;
                     }
@@ -364,6 +370,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 trans.Rollback();
                 MessageBox.Show("Gagal reservasi!", "GAGAL");
             }
@@ -388,6 +395,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 trans.Rollback();
                 MessageBox.Show("Gagal membatalkan reservasi!", "GAGAL");
             }

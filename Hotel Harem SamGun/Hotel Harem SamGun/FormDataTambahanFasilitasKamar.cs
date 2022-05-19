@@ -103,7 +103,7 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                if(tbNama.Text == "" || tbHarga.Text == "" || tbStok.Text == "")
+                if (tbNama.Text == "" || tbHarga.Text == "" || tbStok.Text == "")
                 {
                     MessageBox.Show("Semua field harus terisi");
                 }
@@ -174,7 +174,7 @@ namespace Hotel_Harem_SamGun
                         }
                     }
                 }
-                
+
             }
         }
 
@@ -182,7 +182,7 @@ namespace Hotel_Harem_SamGun
         {
             if (selectedIdx > -1)
             {
-                if(tbNama.Text == "" || tbHarga.Text == "" || tbStok.Text == "")
+                if (tbNama.Text == "" || tbHarga.Text == "" || tbStok.Text == "")
                 {
                     MessageBox.Show("Semua field harus terisi");
                 }

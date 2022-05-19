@@ -91,7 +91,8 @@ namespace Hotel_Harem_SamGun
                 btPerbarui.Enabled = false;
 
                 AcceptButton = btTambah;
-            } else
+            }
+            else
             {
                 // PERBARUI
                 tbNama.Enabled = false;
@@ -142,7 +143,7 @@ namespace Hotel_Harem_SamGun
             }
 
             //COLOR
-            foreach(DataGridViewRow row in dgvTamu.Rows)
+            foreach (DataGridViewRow row in dgvTamu.Rows)
             {
                 if (row.Cells[12].Value.ToString() == "0")
                 {
@@ -172,7 +173,8 @@ namespace Hotel_Harem_SamGun
             {
                 rbLakiLaki.Checked = true;
                 rbPerempuan.Checked = false;
-            } else
+            }
+            else
             {
                 rbLakiLaki.Checked = false;
                 rbPerempuan.Checked = true;
@@ -185,7 +187,8 @@ namespace Hotel_Harem_SamGun
             if (dgvTamu.SelectedRows[0].Cells[12].Value.ToString() == "1")
             {
                 cbStatus.Checked = true;
-            } else
+            }
+            else
             {
                 cbStatus.Checked = false;
             }
@@ -236,13 +239,14 @@ namespace Hotel_Harem_SamGun
                 cmd.Parameters.AddWithValue("@Email", tbEmail.Text);
                 cmd.Parameters.AddWithValue("@Status", status);
                 cmd.ExecuteNonQuery();
-                
+
                 trans.Commit();
                 MessageBox.Show("Berhasil menambahkan!", "BERHASIL");
                 FormPencatatanDataTamu_Load(sender, e);
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 trans.Rollback();
                 MessageBox.Show("Gagal menambahkan!", "GAGAL");
             }
@@ -289,7 +293,8 @@ namespace Hotel_Harem_SamGun
                 MessageBox.Show("Tamu sudah terdaftar! Mengubah status tamu menjadi Aktif", "UPDATE DATA TAMU");
                 updateData(cmd.Parameters["@kode"].Value.ToString());
                 return 1;
-            } else
+            }
+            else
             {
                 return 0;
             }
@@ -313,7 +318,8 @@ namespace Hotel_Harem_SamGun
                 if (kode != "")
                 {
                     cmd.Parameters.AddWithValue("@KodeTamu", kode);
-                } else
+                }
+                else
                 {
                     cmd.Parameters.AddWithValue("@KodeTamu", lbKodeTamu.Text);
                 }
@@ -332,6 +338,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 trans.Rollback();
                 MessageBox.Show("Gagal memperbarui!", "GAGAL");
             }
@@ -371,7 +378,8 @@ namespace Hotel_Harem_SamGun
             if (tbNama.Text.Trim() != "" && tbNama.Text.Length >= 4)
             {
                 generateKodeTamu();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Pastikan Nama lebih panjang dari 4");
             }

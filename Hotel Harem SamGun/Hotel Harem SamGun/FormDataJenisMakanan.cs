@@ -158,7 +158,7 @@ order by 1 asc", Koneksi.getConn());
                     sqlt.Rollback();
                     MessageBox.Show("Gagal Insert Jenis Makanan!");
                 }
-                                   
+
             }
             else
             {
@@ -204,7 +204,7 @@ order by 1 asc", Koneksi.getConn());
         {
             if (tbNama.Text != "")
             {
-                
+
                 MySqlTransaction sqlt = Koneksi.getConn().BeginTransaction();
                 try
                 {
