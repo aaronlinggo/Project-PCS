@@ -58,7 +58,8 @@ namespace Hotel_Harem_SamGun
                     JOIN tamu t ON t.kode_tamu = r.kode_tamu
                     JOIN kamar km ON km.kode_kamar = r.kode_kamar
                     JOIN jenis_kamar jk ON jk.id_jenis_kamar = km.id_jenis_kamar
-                    JOIN karyawan kr ON kr.kode_karyawan = r.kode_karyawan";
+                    JOIN karyawan kr ON kr.kode_karyawan = r.kode_karyawan
+                    ORDER BY id_reservasi";
             if (status == 0)
             {
                 // DONE
@@ -193,7 +194,8 @@ namespace Hotel_Harem_SamGun
 
                 lbKodeReservasi.Text = "-";
                 cbNamaTamu.SelectedIndex = -1;
-                dtpJadwalCheckIn.Value = dtpJadwalCheckOut.Value = DateTime.Now;
+                dtpJadwalCheckIn.Value = DateTime.Today;
+                dtpJadwalCheckOut.Value = DateTime.Today;
                 cbJenisKamar.SelectedIndex = -1;
                 cbNomorKamar.SelectedIndex = -1;
                 lbDownPayment.Text = "-";
@@ -298,9 +300,43 @@ namespace Hotel_Harem_SamGun
             Close();
         }
 
+        private bool bisaReservasi()
+        {
+            DataTable dtListedReservasi = new DataTable();
+            //FIND NOMOR KAMAR DAN STATUS 1 / 2
+            string query = $"SELECT jadwal_check_in, jadwal_check_out FROM reservasi r JOIN kamar km ON km.kode_kamar = r.kode_kamar WHERE nomor_kamar = {dtNomorKamar.Rows[cbNomorKamar.SelectedIndex][1]} AND (status_reservasi = 1 OR status_reservasi = 2)";
+            fillDT(dtListedReservasi, query);
+            
+            if (dtListedReservasi.Rows.Count > 0)
+            {
+                //CHECK JADWAL CHECK IN DAN JADWAL CHECK OUT
+                for (int i = 0; i < dtListedReservasi.Rows.Count; i++)
+                {
+                    if ((dtpJadwalCheckIn.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckIn.Value <= (DateTime) dtListedReservasi.Rows[i][1]) || (dtpJadwalCheckOut.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckOut.Value <= (DateTime)dtListedReservasi.Rows[i][1]))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         private void btReservasi_Click(object sender, EventArgs e)
         {
-            // PENGECEKAN
+            // TIDAK BOLEH ADA DATA KOSONG
+            if (cbNamaTamu.SelectedIndex == -1 || cbJenisKamar.SelectedIndex == -1 || cbNomorKamar.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pastikan semua DATA TERISI dengan benar!", "GAGAL");
+                return;
+            }
+
+            // PENGECEKAN TANGGAL
+            if (!bisaReservasi())
+            {
+                MessageBox.Show("Kamar sudah direservasi / ditempati!", "GAGAL");
+                return;
+            }
 
             // DIPESAN -> 1
             string query = @"INSERT INTO reservasi (id_reservasi, kode_reservasi, kode_tamu, kode_kamar, down_payment, deposito, jadwal_check_in, jadwal_check_out, kode_karyawan, status_reservasi) VALUES (@IdReservasi, @KodeReservasi, @KodeTamu, @KodeKamar, @DownPayment, @Deposito, @JadwalCheckIn, @JadwalCheckOut, @KodeKaryawan, @StatusReservasi)";
@@ -363,8 +399,8 @@ namespace Hotel_Harem_SamGun
             {
                 if (dtpJadwalCheckIn.Value < DateTime.Today)
                 {
-                    MessageBox.Show("Tanggal Check In tidak boleh kurang dari Tanggal SAAT INI!");
-                    dtpJadwalCheckIn.Value = DateTime.Now;
+                    MessageBox.Show("Jadwal Check In tidak boleh kurang dari Jadwal SAAT INI!");
+                    dtpJadwalCheckIn.Value = DateTime.Today;
                 }
             }
         }
@@ -373,7 +409,9 @@ namespace Hotel_Harem_SamGun
         {
             if (dtpJadwalCheckOut.Value < dtpJadwalCheckIn.Value)
             {
-                MessageBox.Show("Tanggal Check Out tidak boleh kurang dari Tanggal Check In!");
+                Console.WriteLine("CO: " + dtpJadwalCheckOut.Value);
+                Console.WriteLine("CI: " + dtpJadwalCheckIn.Value);
+                MessageBox.Show("Jadwal Check Out tidak boleh kurang dari Jadwal Check In!");
                 dtpJadwalCheckOut.Value = dtpJadwalCheckIn.Value;
             }
         }
