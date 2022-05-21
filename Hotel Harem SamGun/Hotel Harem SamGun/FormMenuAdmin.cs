@@ -21,6 +21,8 @@ namespace Hotel_Harem_SamGun
         private void FormMenuAdmin_Load(object sender, EventArgs e)
         {
             lbWelcome.Text = $"Welcome,\n{FormLogin.dtKaryawan.Rows[0][1]}!";
+            btnLogout.BackColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
+            btnLogout.ForeColor = Color.White;
         }
 
         private void btDataResepsionis_Click(object sender, EventArgs e)
@@ -66,6 +68,22 @@ namespace Hotel_Harem_SamGun
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnJenisMakanan_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormDataJenisMakanan form = new FormDataJenisMakanan();
+            form.ShowDialog();
+            this.Show();
+        }
+
+        private void btnJenisKamar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormDataJenisKamar form = new FormDataJenisKamar();
+            form.ShowDialog();
+            this.Show();
         }
     }
 }

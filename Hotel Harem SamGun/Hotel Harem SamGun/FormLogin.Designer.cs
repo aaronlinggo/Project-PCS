@@ -44,8 +44,8 @@ namespace Hotel_Harem_SamGun
             // 
             this.btLogin.FlatAppearance.BorderSize = 0;
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLogin.Location = new System.Drawing.Point(70, 420);
+            this.btLogin.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogin.Location = new System.Drawing.Point(71, 403);
             this.btLogin.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(502, 46);
