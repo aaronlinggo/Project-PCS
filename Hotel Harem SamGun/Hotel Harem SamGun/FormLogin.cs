@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hotel_Harem_SamGun
@@ -22,8 +16,13 @@ namespace Hotel_Harem_SamGun
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            label4.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
+            tbUsername.BackColor = System.Drawing.ColorTranslator.FromHtml("#f6f6f6");
+            tbPassword.BackColor = System.Drawing.ColorTranslator.FromHtml("#f6f6f6");
+            btLogin.BackColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
+            btLogin.ForeColor = System.Drawing.Color.White;
             Koneksi.openConn();
-
+            btLogin.FlatAppearance.BorderSize = 0;
             if (!Koneksi.isValid)
             {
                 MessageBox.Show("Gagal terhubung ke database!", "GAGAL");
