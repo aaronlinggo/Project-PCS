@@ -29,6 +29,7 @@ namespace Hotel_Harem_SamGun
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuAdmin));
             this.btDataResepsionis = new System.Windows.Forms.Button();
             this.btDataMenuMakanan = new System.Windows.Forms.Button();
             this.btDataKamar = new System.Windows.Forms.Button();
@@ -36,15 +37,17 @@ namespace Hotel_Harem_SamGun
             this.btLaporan = new System.Windows.Forms.Button();
             this.lbWelcome = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnJenisMakanan = new System.Windows.Forms.Button();
+            this.btnJenisKamar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btDataResepsionis
             // 
-            this.btDataResepsionis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDataResepsionis.Location = new System.Drawing.Point(371, 17);
+            this.btDataResepsionis.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDataResepsionis.Location = new System.Drawing.Point(13, 28);
             this.btDataResepsionis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btDataResepsionis.Name = "btDataResepsionis";
-            this.btDataResepsionis.Size = new System.Drawing.Size(400, 68);
+            this.btDataResepsionis.Size = new System.Drawing.Size(637, 68);
             this.btDataResepsionis.TabIndex = 0;
             this.btDataResepsionis.Text = "DATA RESEPSIONIS";
             this.btDataResepsionis.UseVisualStyleBackColor = true;
@@ -52,11 +55,11 @@ namespace Hotel_Harem_SamGun
             // 
             // btDataMenuMakanan
             // 
-            this.btDataMenuMakanan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDataMenuMakanan.Location = new System.Drawing.Point(371, 95);
+            this.btDataMenuMakanan.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDataMenuMakanan.Location = new System.Drawing.Point(13, 106);
             this.btDataMenuMakanan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btDataMenuMakanan.Name = "btDataMenuMakanan";
-            this.btDataMenuMakanan.Size = new System.Drawing.Size(400, 68);
+            this.btDataMenuMakanan.Size = new System.Drawing.Size(637, 68);
             this.btDataMenuMakanan.TabIndex = 1;
             this.btDataMenuMakanan.Text = "DATA MENU MAKANAN";
             this.btDataMenuMakanan.UseVisualStyleBackColor = true;
@@ -64,11 +67,11 @@ namespace Hotel_Harem_SamGun
             // 
             // btDataKamar
             // 
-            this.btDataKamar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDataKamar.Location = new System.Drawing.Point(371, 173);
+            this.btDataKamar.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDataKamar.Location = new System.Drawing.Point(13, 262);
             this.btDataKamar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btDataKamar.Name = "btDataKamar";
-            this.btDataKamar.Size = new System.Drawing.Size(400, 68);
+            this.btDataKamar.Size = new System.Drawing.Size(637, 68);
             this.btDataKamar.TabIndex = 2;
             this.btDataKamar.Text = "DATA KAMAR";
             this.btDataKamar.UseVisualStyleBackColor = true;
@@ -76,11 +79,11 @@ namespace Hotel_Harem_SamGun
             // 
             // btDataFasilitasTambahanKamar
             // 
-            this.btDataFasilitasTambahanKamar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDataFasilitasTambahanKamar.Location = new System.Drawing.Point(371, 251);
+            this.btDataFasilitasTambahanKamar.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDataFasilitasTambahanKamar.Location = new System.Drawing.Point(13, 418);
             this.btDataFasilitasTambahanKamar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btDataFasilitasTambahanKamar.Name = "btDataFasilitasTambahanKamar";
-            this.btDataFasilitasTambahanKamar.Size = new System.Drawing.Size(400, 68);
+            this.btDataFasilitasTambahanKamar.Size = new System.Drawing.Size(637, 68);
             this.btDataFasilitasTambahanKamar.TabIndex = 3;
             this.btDataFasilitasTambahanKamar.Text = "DATA TAMBAHAN FASILITAS KAMAR";
             this.btDataFasilitasTambahanKamar.UseVisualStyleBackColor = true;
@@ -88,11 +91,11 @@ namespace Hotel_Harem_SamGun
             // 
             // btLaporan
             // 
-            this.btLaporan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLaporan.Location = new System.Drawing.Point(371, 329);
+            this.btLaporan.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLaporan.Location = new System.Drawing.Point(13, 496);
             this.btLaporan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btLaporan.Name = "btLaporan";
-            this.btLaporan.Size = new System.Drawing.Size(400, 68);
+            this.btLaporan.Size = new System.Drawing.Size(637, 68);
             this.btLaporan.TabIndex = 4;
             this.btLaporan.Text = "LAPORAN";
             this.btLaporan.UseVisualStyleBackColor = true;
@@ -100,8 +103,9 @@ namespace Hotel_Harem_SamGun
             // 
             // lbWelcome
             // 
+            this.lbWelcome.BackColor = System.Drawing.Color.Transparent;
             this.lbWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWelcome.Location = new System.Drawing.Point(12, 17);
+            this.lbWelcome.Location = new System.Drawing.Point(880, 146);
             this.lbWelcome.Name = "lbWelcome";
             this.lbWelcome.Size = new System.Drawing.Size(352, 380);
             this.lbWelcome.TabIndex = 5;
@@ -110,20 +114,48 @@ namespace Hotel_Harem_SamGun
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(21, 350);
+            this.btnLogout.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(12, 572);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(122, 47);
+            this.btnLogout.Size = new System.Drawing.Size(638, 72);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnJenisMakanan
+            // 
+            this.btnJenisMakanan.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJenisMakanan.Location = new System.Drawing.Point(13, 184);
+            this.btnJenisMakanan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnJenisMakanan.Name = "btnJenisMakanan";
+            this.btnJenisMakanan.Size = new System.Drawing.Size(637, 68);
+            this.btnJenisMakanan.TabIndex = 7;
+            this.btnJenisMakanan.Text = "DATA JENIS MAKANAN";
+            this.btnJenisMakanan.UseVisualStyleBackColor = true;
+            this.btnJenisMakanan.Click += new System.EventHandler(this.btnJenisMakanan_Click);
+            // 
+            // btnJenisKamar
+            // 
+            this.btnJenisKamar.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJenisKamar.Location = new System.Drawing.Point(13, 340);
+            this.btnJenisKamar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnJenisKamar.Name = "btnJenisKamar";
+            this.btnJenisKamar.Size = new System.Drawing.Size(637, 68);
+            this.btnJenisKamar.TabIndex = 8;
+            this.btnJenisKamar.Text = "DATA JENIS KAMAR";
+            this.btnJenisKamar.UseVisualStyleBackColor = true;
+            this.btnJenisKamar.Click += new System.EventHandler(this.btnJenisKamar_Click);
+            // 
             // FormMenuAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(784, 411);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.btnJenisKamar);
+            this.Controls.Add(this.btnJenisMakanan);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lbWelcome);
             this.Controls.Add(this.btLaporan);
@@ -132,7 +164,9 @@ namespace Hotel_Harem_SamGun
             this.Controls.Add(this.btDataMenuMakanan);
             this.Controls.Add(this.btDataResepsionis);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "FormMenuAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Menu Admin";
@@ -150,5 +184,7 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.Button btLaporan;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnJenisMakanan;
+        private System.Windows.Forms.Button btnJenisKamar;
     }
 }
