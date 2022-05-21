@@ -104,10 +104,10 @@ namespace Hotel_Harem_SamGun
             // lbWelcome
             // 
             this.lbWelcome.BackColor = System.Drawing.Color.Transparent;
-            this.lbWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWelcome.Location = new System.Drawing.Point(880, 146);
+            this.lbWelcome.Font = new System.Drawing.Font("Gill Sans MT", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWelcome.Location = new System.Drawing.Point(900, 9);
             this.lbWelcome.Name = "lbWelcome";
-            this.lbWelcome.Size = new System.Drawing.Size(352, 380);
+            this.lbWelcome.Size = new System.Drawing.Size(352, 663);
             this.lbWelcome.TabIndex = 5;
             this.lbWelcome.Text = "Welcome,\r\nNama Admin!";
             this.lbWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

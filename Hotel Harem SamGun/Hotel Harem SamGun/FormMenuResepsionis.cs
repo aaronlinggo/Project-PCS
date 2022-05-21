@@ -21,6 +21,8 @@ namespace Hotel_Harem_SamGun
         private void FormMenuResepsionis_Load(object sender, EventArgs e)
         {
             lbWelcome.Text = $"Welcome,\n{FormLogin.dtKaryawan.Rows[0][1]}!";
+            btnLogout.BackColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
+            btnLogout.ForeColor = Color.White;
         }
 
         private void btReservasi_Click(object sender, EventArgs e)
