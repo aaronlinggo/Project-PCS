@@ -40,10 +40,10 @@
             // btReservasi
             // 
             this.btReservasi.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btReservasi.Location = new System.Drawing.Point(14, 18);
+            this.btReservasi.Location = new System.Drawing.Point(695, 17);
             this.btReservasi.Margin = new System.Windows.Forms.Padding(5);
             this.btReservasi.Name = "btReservasi";
-            this.btReservasi.Size = new System.Drawing.Size(643, 88);
+            this.btReservasi.Size = new System.Drawing.Size(555, 88);
             this.btReservasi.TabIndex = 0;
             this.btReservasi.Text = "RESERVASI";
             this.btReservasi.UseVisualStyleBackColor = true;
@@ -52,10 +52,10 @@
             // btPenambahanFasilitasKamar
             // 
             this.btPenambahanFasilitasKamar.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btPenambahanFasilitasKamar.Location = new System.Drawing.Point(14, 116);
+            this.btPenambahanFasilitasKamar.Location = new System.Drawing.Point(695, 115);
             this.btPenambahanFasilitasKamar.Margin = new System.Windows.Forms.Padding(5);
             this.btPenambahanFasilitasKamar.Name = "btPenambahanFasilitasKamar";
-            this.btPenambahanFasilitasKamar.Size = new System.Drawing.Size(643, 88);
+            this.btPenambahanFasilitasKamar.Size = new System.Drawing.Size(555, 88);
             this.btPenambahanFasilitasKamar.TabIndex = 1;
             this.btPenambahanFasilitasKamar.Text = "PENAMBAHAN FASILITAS KAMAR";
             this.btPenambahanFasilitasKamar.UseVisualStyleBackColor = true;
@@ -64,10 +64,10 @@
             // btPemesananMakanan
             // 
             this.btPemesananMakanan.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btPemesananMakanan.Location = new System.Drawing.Point(14, 214);
+            this.btPemesananMakanan.Location = new System.Drawing.Point(695, 213);
             this.btPemesananMakanan.Margin = new System.Windows.Forms.Padding(5);
             this.btPemesananMakanan.Name = "btPemesananMakanan";
-            this.btPemesananMakanan.Size = new System.Drawing.Size(643, 88);
+            this.btPemesananMakanan.Size = new System.Drawing.Size(555, 88);
             this.btPemesananMakanan.TabIndex = 2;
             this.btPemesananMakanan.Text = "PEMESANAN MAKANAN";
             this.btPemesananMakanan.UseVisualStyleBackColor = true;
@@ -76,10 +76,10 @@
             // btCheckInCheckOut
             // 
             this.btCheckInCheckOut.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCheckInCheckOut.Location = new System.Drawing.Point(14, 312);
+            this.btCheckInCheckOut.Location = new System.Drawing.Point(695, 311);
             this.btCheckInCheckOut.Margin = new System.Windows.Forms.Padding(5);
             this.btCheckInCheckOut.Name = "btCheckInCheckOut";
-            this.btCheckInCheckOut.Size = new System.Drawing.Size(643, 88);
+            this.btCheckInCheckOut.Size = new System.Drawing.Size(555, 88);
             this.btCheckInCheckOut.TabIndex = 3;
             this.btCheckInCheckOut.Text = "CHECK IN\r\nCHECK OUT";
             this.btCheckInCheckOut.UseVisualStyleBackColor = true;
@@ -89,9 +89,9 @@
             // 
             this.lbWelcome.BackColor = System.Drawing.Color.Transparent;
             this.lbWelcome.Font = new System.Drawing.Font("Gill Sans MT", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWelcome.Location = new System.Drawing.Point(902, 14);
+            this.lbWelcome.Location = new System.Drawing.Point(12, 6);
             this.lbWelcome.Name = "lbWelcome";
-            this.lbWelcome.Size = new System.Drawing.Size(350, 657);
+            this.lbWelcome.Size = new System.Drawing.Size(675, 137);
             this.lbWelcome.TabIndex = 4;
             this.lbWelcome.Text = "Welcome,\r\nNama Karyawan!";
             this.lbWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,9 +99,9 @@
             // btnLogout
             // 
             this.btnLogout.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(14, 593);
+            this.btnLogout.Location = new System.Drawing.Point(695, 592);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(643, 78);
+            this.btnLogout.Size = new System.Drawing.Size(555, 78);
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
