@@ -24,6 +24,11 @@ namespace Hotel_Harem_SamGun
 
         private void FormDataJenisMakanan_Load(object sender, EventArgs e)
         {
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
             /*Koneksi.openConn();*/
             query = @"SELECT
   jenis_makanan.id_jenis_makanan,

@@ -25,6 +25,7 @@ namespace Hotel_Harem_SamGun
 
         private void FormDataResepsionis_Load(object sender, EventArgs e)
         {
+            label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
             /*Koneksi.openConn();*/
             query = @"SELECT
   karyawan.id_karyawan,
@@ -46,6 +47,10 @@ order by 1 asc";
             start = false;
             loadDatagrid();
             start = true;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
         }
 
         public void loadDatagrid()
