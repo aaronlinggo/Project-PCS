@@ -21,6 +21,10 @@ namespace Hotel_Harem_SamGun
             tbPassword.BackColor = System.Drawing.ColorTranslator.FromHtml("#f6f6f6");
             btLogin.BackColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
             btLogin.ForeColor = System.Drawing.Color.White;
+
+            // tbUsername.Text = "SamGun_Official";
+            // tbPassword.Text = "admin1234";
+
             Koneksi.openConn();
             btLogin.FlatAppearance.BorderSize = 0;
             if (!Koneksi.isValid)
@@ -86,8 +90,8 @@ namespace Hotel_Harem_SamGun
             string roles = dtKaryawan.Rows[0][4].ToString();
 
             //GANTI FORM
-            tbUsername.Text = "";
-            tbPassword.Text = "";
+            // tbUsername.Text = "";
+            // tbPassword.Text = "";
 
             this.Hide();
 
