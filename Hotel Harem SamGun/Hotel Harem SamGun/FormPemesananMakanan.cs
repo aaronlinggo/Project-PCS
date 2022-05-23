@@ -74,6 +74,16 @@ namespace Hotel_Harem_SamGun
 
         private void FormPemesananMakanan_Load(object sender, EventArgs e)
         {
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView2.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
+
             query = @"SELECT
   makanan.id_makanan,
   makanan.nama_makanan,

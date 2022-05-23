@@ -38,6 +38,7 @@ namespace Hotel_Harem_SamGun
   karyawan.nomor_telepon_karyawan,
   karyawan.email_karyawan,
   karyawan.password,
+  repeat('*', length(password)),
   karyawan.roles,
   karyawan.status_karyawan
 FROM karyawan
@@ -71,9 +72,10 @@ order by 1 asc";
                 dataGridView1.Columns[6].HeaderText = "Alamat";
                 dataGridView1.Columns[7].HeaderText = "Nomor Telepon";
                 dataGridView1.Columns[8].HeaderText = "Email";
-                dataGridView1.Columns[9].HeaderText = "Password";
-                dataGridView1.Columns[10].HeaderText = "Roles";
-                dataGridView1.Columns[11].Visible = false;
+                dataGridView1.Columns[9].Visible = false;
+                dataGridView1.Columns[10].HeaderText = "Password";
+                dataGridView1.Columns[11].HeaderText = "Roles";
+                dataGridView1.Columns[12].Visible = false;
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
@@ -113,6 +115,7 @@ order by 1 asc";
   karyawan.nomor_telepon_karyawan,
   karyawan.email_karyawan,
   karyawan.password,
+  repeat('*', length(password)),
   karyawan.roles,
   karyawan.status_karyawan
 FROM karyawan
@@ -395,6 +398,7 @@ WHERE UPPER(karyawan.nama_karyawan) like '%" + tbUsername.Text.ToUpper() + "%' A
   karyawan.nomor_telepon_karyawan,
   karyawan.email_karyawan,
   karyawan.password,
+  repeat('*', length(password)),
   karyawan.roles,
   karyawan.status_karyawan
 FROM karyawan
@@ -519,8 +523,9 @@ order by 1 asc", Koneksi.getConn());
   karyawan.nomor_telepon_karyawan, 7
   karyawan.email_karyawan, 8
   karyawan.password, 9
-  karyawan.roles, 10
-  karyawan.status_karyawan 11 */
+  repeat('*', length(password)), 10
+  karyawan.roles, 11
+  karyawan.status_karyawan 12 */
             isEdit = true;
             btnHapus.Enabled = true;
             btnEdit.Enabled = true;
@@ -787,6 +792,7 @@ order by 1 asc", Koneksi.getConn());
   karyawan.nomor_telepon_karyawan,
   karyawan.email_karyawan,
   karyawan.password,
+  repeat('*', length(password)),
   karyawan.roles,
   karyawan.status_karyawan
 FROM karyawan
@@ -797,6 +803,11 @@ order by 1 asc";
             loadDatagrid();
             refreshDataGridView();
             tbCari.Text = "";
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            
         }
     }
 }
