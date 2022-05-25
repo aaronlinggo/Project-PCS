@@ -128,6 +128,12 @@ namespace Hotel_Harem_SamGun
                 for (int i = 0; i < dgvKeranjang.RowCount; i++)
                 {
                     cmd.Parameters.Clear();
+                    cmd.CommandText = $"SELECT harga_extra_fasilitas from extra_fasilitas WHERE id_extra_fasilitas = '{dgvKeranjang.Rows[i].Cells[0].Value}'";
+                    cmd.Connection = conn;
+                    int harga = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+
+                    cmd = new MySqlCommand();
+                    cmd.Connection = conn;
                     cmd.CommandText = "SELECT COUNT(*) FROM use_extra_fasilitas";
                     int new_id_use = Convert.ToInt32(cmd.ExecuteScalar().ToString());
                     new_id_use++;
@@ -138,13 +144,15 @@ namespace Hotel_Harem_SamGun
                     cmd.CommandText = $"SELECT kode_kamar FROM kamar WHERE nomor_kamar = '{lblNoKamar.Text}'";
                     string kode_kamar = cmd.ExecuteScalar().ToString();
 
+                    int subtotal = harga * Convert.ToInt32(dgvKeranjang.Rows[i].Cells[3].Value.ToString());
+
                     cmd.CommandText = "INSERT INTO use_extra_fasilitas (id_use_extra_fasilitas, kode_kamar, kode_tamu, id_extra_fasilitas, jumlah_extra_fasilitas, subtotal_extra_fasilitas) VALUES (@id_use, @kode_kamar, @kode_tamu, @id_extra, @jumlah, @subtotal)";
                     cmd.Parameters.Add(new MySqlParameter("@id_use", new_id_use));
                     cmd.Parameters.Add(new MySqlParameter("@kode_kamar", kode_kamar));
                     cmd.Parameters.Add(new MySqlParameter("@kode_tamu", kode_tamu));
                     cmd.Parameters.Add(new MySqlParameter("@id_extra", Convert.ToInt32(dgvKeranjang.Rows[i].Cells[0].Value.ToString())));
                     cmd.Parameters.Add(new MySqlParameter("@jumlah", Convert.ToInt32(dgvKeranjang.Rows[i].Cells[3].Value.ToString())));
-                    cmd.Parameters.Add(new MySqlParameter("@subtotal", Convert.ToInt32(dgvKeranjang.Rows[i].Cells[4].Value.ToString())));
+                    cmd.Parameters.Add(new MySqlParameter("@subtotal", subtotal));
                     cmd.ExecuteNonQuery();
 
                     int id_extra = Convert.ToInt32(dgvKeranjang.Rows[i].Cells[0].Value.ToString());
@@ -157,7 +165,7 @@ namespace Hotel_Harem_SamGun
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = $"SELECT total_biaya FROM reservasi WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
-                    int total_biaya_baru = Convert.ToInt32(cmd.ExecuteScalar().ToString()) + Convert.ToInt32(dgvKeranjang.Rows[i].Cells[4].Value.ToString());
+                    int total_biaya_baru = Convert.ToInt32(cmd.ExecuteScalar().ToString()) + subtotal;
 
                     cmd.CommandText = $"UPDATE reservasi SET total_biaya = '{total_biaya_baru}' WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
                     cmd.ExecuteNonQuery();
