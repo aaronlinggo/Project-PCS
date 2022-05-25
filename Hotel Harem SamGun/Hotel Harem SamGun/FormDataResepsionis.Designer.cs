@@ -93,7 +93,7 @@ namespace Hotel_Harem_SamGun
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(24, 122);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -108,7 +108,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.btnBersihkan.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.btnBersihkan.Location = new System.Drawing.Point(1319, 32);
-            this.btnBersihkan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBersihkan.Margin = new System.Windows.Forms.Padding(4);
             this.btnBersihkan.Name = "btnBersihkan";
             this.btnBersihkan.Size = new System.Drawing.Size(157, 39);
             this.btnBersihkan.TabIndex = 16;
@@ -121,7 +121,7 @@ namespace Hotel_Harem_SamGun
             this.btnEdit.Enabled = false;
             this.btnEdit.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.btnEdit.Location = new System.Drawing.Point(389, 396);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(157, 53);
             this.btnEdit.TabIndex = 15;
@@ -134,7 +134,7 @@ namespace Hotel_Harem_SamGun
             this.btnHapus.Enabled = false;
             this.btnHapus.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.btnHapus.Location = new System.Drawing.Point(205, 396);
-            this.btnHapus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHapus.Margin = new System.Windows.Forms.Padding(4);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(157, 53);
             this.btnHapus.TabIndex = 14;
@@ -146,7 +146,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.btnTambah.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.btnTambah.Location = new System.Drawing.Point(24, 396);
-            this.btnTambah.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTambah.Margin = new System.Windows.Forms.Padding(4);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(157, 53);
             this.btnTambah.TabIndex = 13;
@@ -179,9 +179,9 @@ namespace Hotel_Harem_SamGun
             this.groupBox1.Controls.Add(this.tbID);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(24, 457);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1633, 377);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
@@ -190,7 +190,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbNoTelp.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.tbNoTelp.Location = new System.Drawing.Point(216, 316);
-            this.tbNoTelp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbNoTelp.Margin = new System.Windows.Forms.Padding(4);
             this.tbNoTelp.Name = "tbNoTelp";
             this.tbNoTelp.Size = new System.Drawing.Size(397, 31);
             this.tbNoTelp.TabIndex = 23;
@@ -211,7 +211,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbKode.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.tbKode.Location = new System.Drawing.Point(216, 79);
-            this.tbKode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbKode.Margin = new System.Windows.Forms.Padding(4);
             this.tbKode.Name = "tbKode";
             this.tbKode.ReadOnly = true;
             this.tbKode.Size = new System.Drawing.Size(397, 31);
@@ -279,8 +279,9 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbPassword.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.tbPassword.Location = new System.Drawing.Point(877, 123);
-            this.tbPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(4);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(397, 31);
             this.tbPassword.TabIndex = 17;
             this.tbPassword.TextChanged += new System.EventHandler(this.tbPassword_TextChanged);
@@ -300,7 +301,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbEmail.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.tbEmail.Location = new System.Drawing.Point(877, 78);
-            this.tbEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(397, 31);
             this.tbEmail.TabIndex = 15;
@@ -321,7 +322,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbAlamat.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.tbAlamat.Location = new System.Drawing.Point(877, 36);
-            this.tbAlamat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbAlamat.Margin = new System.Windows.Forms.Padding(4);
             this.tbAlamat.Name = "tbAlamat";
             this.tbAlamat.Size = new System.Drawing.Size(397, 31);
             this.tbAlamat.TabIndex = 13;
@@ -412,7 +413,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbNama.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.tbNama.Location = new System.Drawing.Point(216, 176);
-            this.tbNama.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbNama.Margin = new System.Windows.Forms.Padding(4);
             this.tbNama.Name = "tbNama";
             this.tbNama.Size = new System.Drawing.Size(397, 31);
             this.tbNama.TabIndex = 5;
@@ -433,7 +434,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbUsername.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.tbUsername.Location = new System.Drawing.Point(216, 126);
-            this.tbUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbUsername.Margin = new System.Windows.Forms.Padding(4);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(397, 31);
             this.tbUsername.TabIndex = 3;
@@ -454,7 +455,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbID.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbID.Location = new System.Drawing.Point(216, 31);
-            this.tbID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbID.Margin = new System.Windows.Forms.Padding(4);
             this.tbID.Name = "tbID";
             this.tbID.ReadOnly = true;
             this.tbID.Size = new System.Drawing.Size(397, 31);
@@ -475,7 +476,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.button1.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.button1.Location = new System.Drawing.Point(1500, 18);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(157, 53);
             this.button1.TabIndex = 18;
