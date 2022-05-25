@@ -31,7 +31,28 @@ namespace Hotel_Harem_SamGun
         public void refreshDGV()
         {
             dt = new DataTable();
-            query = "SELECT id_extra_fasilitas,nama_extra_fasilitas,stok_extra_fasilitas,harga_extra_fasilitas, IF(status_extra_fasilitas = 1, 'Tersedia', 'Tidak Tersedia') FROM extra_fasilitas ORDER BY 1";
+            query = "SELECT id_extra_fasilitas,nama_extra_fasilitas,stok_extra_fasilitas,CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')), IF(status_extra_fasilitas = 1, 'Tersedia', 'Tidak Tersedia') FROM extra_fasilitas ORDER BY 1";
+            cmd = new MySqlCommand(query, conn);
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(dt);
+            dgvFasilitas.DataSource = dt;
+            dgvFasilitas.Columns[0].HeaderText = "ID Fasilitas";
+            dgvFasilitas.Columns[1].HeaderText = "Nama Fasilitas";
+            dgvFasilitas.Columns[2].HeaderText = "Stok Fasilitas";
+            dgvFasilitas.Columns[3].HeaderText = "Harga Fasilitas";
+            dgvFasilitas.Columns[4].HeaderText = "Status Fasilitas";
+            dgvFasilitas.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvFasilitas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvFasilitas.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            selectedIdx = -1;
+        }
+
+        public void searchDGV(string keyword)
+        {
+            dt = new DataTable();
+            query = $"SELECT id_extra_fasilitas,nama_extra_fasilitas,stok_extra_fasilitas,CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')), IF(status_extra_fasilitas = 1, 'Tersedia', 'Tidak Tersedia') FROM extra_fasilitas WHERE nama_extra_fasilitas LIKE '%{keyword}%' ORDER BY 1";
             cmd = new MySqlCommand(query, conn);
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -240,6 +261,8 @@ namespace Hotel_Harem_SamGun
         private void btnBersihkan_Click(object sender, EventArgs e)
         {
             resetTampilan();
+            refreshDGV();
+            tbCari.Text = "";
         }
 
         private void btnHapus_Click(object sender, EventArgs e)
@@ -274,7 +297,10 @@ namespace Hotel_Harem_SamGun
             tbID.Text = dgvFasilitas.Rows[selectedIdx].Cells[0].Value.ToString();
             tbNama.Text = dgvFasilitas.Rows[selectedIdx].Cells[1].Value.ToString();
             tbStok.Text = dgvFasilitas.Rows[selectedIdx].Cells[2].Value.ToString();
-            tbHarga.Text = dgvFasilitas.Rows[selectedIdx].Cells[3].Value.ToString();
+            cmd = new MySqlCommand();
+            cmd.CommandText = $"SELECT harga_extra_fasilitas FROM extra_fasilitas WHERE id_extra_fasilitas LIKE '%{tbID.Text}%'";
+            cmd.Connection = conn;
+            tbHarga.Text = cmd.ExecuteScalar().ToString();
             if (dgvFasilitas.Rows[selectedIdx].Cells[4].Value.ToString() == "Tersedia")
             {
                 rb1.Checked = true;
@@ -288,6 +314,11 @@ namespace Hotel_Harem_SamGun
         private void btnKembali_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            searchDGV(tbCari.Text);
         }
     }
 }

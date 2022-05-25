@@ -57,6 +57,9 @@ namespace Hotel_Harem_SamGun
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblNoKamar = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbSubtotal = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeranjang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).BeginInit();
@@ -101,7 +104,7 @@ namespace Hotel_Harem_SamGun
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvKeranjang.Location = new System.Drawing.Point(42, 437);
+            this.dgvKeranjang.Location = new System.Drawing.Point(41, 435);
             this.dgvKeranjang.Name = "dgvKeranjang";
             this.dgvKeranjang.ReadOnly = true;
             this.dgvKeranjang.RowHeadersVisible = false;
@@ -153,7 +156,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(39, 395);
+            this.label4.Location = new System.Drawing.Point(39, 393);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(252, 25);
             this.label4.TabIndex = 12;
@@ -358,11 +361,43 @@ namespace Hotel_Harem_SamGun
             this.lblNoKamar.TabIndex = 48;
             this.lblNoKamar.Text = "label8";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(323, 393);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 25);
+            this.label10.TabIndex = 49;
+            this.label10.Text = "TOTAL";
+            // 
+            // tbSubtotal
+            // 
+            this.tbSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSubtotal.Location = new System.Drawing.Point(488, 394);
+            this.tbSubtotal.Name = "tbSubtotal";
+            this.tbSubtotal.ReadOnly = true;
+            this.tbSubtotal.Size = new System.Drawing.Size(247, 26);
+            this.tbSubtotal.TabIndex = 50;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(432, 393);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 25);
+            this.label11.TabIndex = 51;
+            this.label11.Text = "Rp. ";
+            // 
             // FormPenambahanFasilitasKamar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.tbSubtotal);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.lblNoKamar);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblNamaTamu);
@@ -426,5 +461,8 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbSubtotal;
+        private System.Windows.Forms.Label label11;
     }
 }

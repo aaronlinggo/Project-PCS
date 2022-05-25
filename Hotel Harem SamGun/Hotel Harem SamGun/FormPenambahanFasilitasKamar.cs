@@ -28,6 +28,7 @@ namespace Hotel_Harem_SamGun
             id_reservasi = formLama.id_reservasi;
             isiKodeReservasidanNamaTamu();
             refreshDGV();
+            hitungSubtotal();
         }
 
 
@@ -53,7 +54,7 @@ namespace Hotel_Harem_SamGun
         {
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "SELECT id_extra_fasilitas, nama_extra_fasilitas, stok_extra_fasilitas, harga_extra_fasilitas FROM extra_fasilitas WHERE status_extra_fasilitas = 1";
+            cmd.CommandText = "SELECT id_extra_fasilitas, nama_extra_fasilitas, stok_extra_fasilitas, CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')) FROM extra_fasilitas WHERE status_extra_fasilitas = 1";
             dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -76,6 +77,23 @@ namespace Hotel_Harem_SamGun
             tbNama.Text = "";
             tbHarga.Text = "";
             numJumlah.Value = 0;
+            hitungSubtotal();
+        }
+
+        public void hitungSubtotal()
+        {
+            int subtotal = 0;
+            for (int i = 0; i < dgvKeranjang.Rows.Count; i++)
+            {
+                cmd = new MySqlCommand();
+                cmd.CommandText = $"select harga_extra_fasilitas from extra_fasilitas where id_extra_fasilitas = '{dgvKeranjang.Rows[i].Cells[0].Value}'";
+                cmd.Connection = conn;
+                int harga = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                int jumlah = Convert.ToInt32(dgvKeranjang.Rows[i].Cells[3].Value.ToString());
+                subtotal += (jumlah * harga);
+
+            }
+            tbSubtotal.Text = subtotal.ToString();
         }
 
         private void btnKembali_Click(object sender, EventArgs e)
@@ -186,7 +204,14 @@ namespace Hotel_Harem_SamGun
                         dgvKeranjang.Rows[idxRow].Cells[1].Value = tbNama.Text;
                         dgvKeranjang.Rows[idxRow].Cells[2].Value = tbHarga.Text;
                         dgvKeranjang.Rows[idxRow].Cells[3].Value = numJumlah.Value;
-                        dgvKeranjang.Rows[idxRow].Cells[4].Value = (numJumlah.Value * Convert.ToInt32(tbHarga.Text));
+                        cmd = new MySqlCommand();
+                        cmd.CommandText = $"SELECT harga_extra_fasilitas FROM extra_fasilitas WHERE id_extra_fasilitas = '{tbID.Text}'";
+                        cmd.Connection = conn;
+                        int harga = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                        cmd = new MySqlCommand();
+                        cmd.CommandText = $"SELECT CONCAT('Rp ', FORMAT({numJumlah.Value * Convert.ToInt32(harga)},0,'de_DE')) FROM DUAL";
+                        cmd.Connection = conn;
+                        dgvKeranjang.Rows[idxRow].Cells[4].Value = cmd.ExecuteScalar().ToString();
                         resetField();
                     }
                 }
