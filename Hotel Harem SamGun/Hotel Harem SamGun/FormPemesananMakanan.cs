@@ -53,6 +53,10 @@ namespace Hotel_Harem_SamGun
             {
                 tbPembelian.Text = "0";
             }
+            if (Convert.ToInt32(tbPembelian.Text) > Convert.ToInt32(tbStok.Text))
+            {
+                tbPembelian.Text = tbStok.Text;
+            }
         }
 
         private void btnMines_Click(object sender, EventArgs e)
@@ -88,6 +92,7 @@ namespace Hotel_Harem_SamGun
   makanan.id_makanan,
   makanan.nama_makanan,
   makanan.harga_makanan,
+CONCAT('Rp ', FORMAT(makanan.harga_makanan, 0)),
   makanan.stok_makanan,
   makanan.status_makanan,
   makanan.id_jenis_makanan,
@@ -154,11 +159,12 @@ order by 1 asc";
                 dataGridView1.Columns[0].HeaderText = "ID Makanan";
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].HeaderText = "Nama Makanan";
-                dataGridView1.Columns[2].HeaderText = "Harga";
-                dataGridView1.Columns[3].HeaderText = "Stok";
-                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].HeaderText = "Harga";
+                dataGridView1.Columns[4].HeaderText = "Stok";
                 dataGridView1.Columns[5].Visible = false;
-                dataGridView1.Columns[6].HeaderText = "Jenis";
+                dataGridView1.Columns[6].Visible = false;
+                dataGridView1.Columns[7].HeaderText = "Jenis";
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
@@ -179,8 +185,8 @@ order by 1 asc";
             pick = dtmakanan.Rows[dataGridView1.CurrentRow.Index];
             pilih = dataGridView1.CurrentRow.Index;
             tbNama.Text = pick[1].ToString();
-            tbHarga.Text = pick[2].ToString();
-            tbStok.Text = pick[3].ToString();
+            tbHarga.Text = pick[3].ToString();
+            tbStok.Text = pick[4].ToString();
             if (pick[3].ToString() != "0")
             {
                 tbKeterangan.Text = "Tersedia";
@@ -201,6 +207,7 @@ order by 1 asc";
   makanan.id_makanan,
   makanan.nama_makanan,
   makanan.harga_makanan,
+CONCAT('Rp ', FORMAT(makanan.harga_makanan, 0)),
   makanan.stok_makanan,
   makanan.status_makanan,
   makanan.id_jenis_makanan,
@@ -476,11 +483,12 @@ order by 1 asc";
             dataGridView1.Columns[0].HeaderText = "ID Makanan";
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].HeaderText = "Nama Makanan";
-            dataGridView1.Columns[2].HeaderText = "Harga";
-            dataGridView1.Columns[3].HeaderText = "Stok";
-            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView1.Columns[3].HeaderText = "Harga";
+            dataGridView1.Columns[4].HeaderText = "Stok";
             dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].HeaderText = "Jenis";
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[7].HeaderText = "Jenis";
             dataGridView1.ClearSelection();
         }
 
@@ -490,6 +498,7 @@ order by 1 asc";
   makanan.id_makanan,
   makanan.nama_makanan,
   makanan.harga_makanan,
+CONCAT('Rp ', FORMAT(makanan.harga_makanan, 0)),
   makanan.stok_makanan,
   makanan.status_makanan,
   makanan.id_jenis_makanan,
