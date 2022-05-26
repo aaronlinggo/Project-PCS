@@ -295,5 +295,10 @@ namespace Hotel_Harem_SamGun
         {
             searchDGV(tbCari.Text);
         }
+
+        private void FormDataKamar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

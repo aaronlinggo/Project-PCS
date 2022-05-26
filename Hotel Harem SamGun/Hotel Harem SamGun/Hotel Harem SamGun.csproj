@@ -84,6 +84,12 @@
     <Compile Include="FormDataTambahanFasilitasKamar.Designer.cs">
       <DependentUpon>FormDataTambahanFasilitasKamar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDetailFasilitasJenisKamar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetailFasilitasJenisKamar.Designer.cs">
+      <DependentUpon>FormDetailFasilitasJenisKamar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLaporan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDataTambahanFasilitasKamar.resx">
       <DependentUpon>FormDataTambahanFasilitasKamar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDetailFasilitasJenisKamar.resx">
+      <DependentUpon>FormDetailFasilitasJenisKamar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLaporan.resx">
       <DependentUpon>FormLaporan.cs</DependentUpon>

@@ -18,6 +18,7 @@ namespace Hotel_Harem_SamGun
         string query;
         DataTable dt;
         int selectedIdx = -1;
+        public int id_jk;
         public FormDataJenisKamar()
         {
             Koneksi.openConn();
@@ -87,6 +88,7 @@ namespace Hotel_Harem_SamGun
         private void dgvJenisKamar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             selectedIdx = dgvJenisKamar.CurrentCell.RowIndex;
+            id_jk = Convert.ToInt32(dgvJenisKamar.Rows[selectedIdx].Cells[0].Value.ToString());
             tbID.Text = dgvJenisKamar.Rows[selectedIdx].Cells[0].Value.ToString();
             tbNama.Text = dgvJenisKamar.Rows[selectedIdx].Cells[1].Value.ToString();
             cmd = new MySqlCommand();
@@ -266,6 +268,20 @@ namespace Hotel_Harem_SamGun
         private void btnCari_Click(object sender, EventArgs e)
         {
             searchDGV(tbCari.Text);
+        }
+
+        private void btnFasilitas_Click(object sender, EventArgs e)
+        {
+            if(selectedIdx > -1)
+            {
+                this.Hide();
+                FormDetailFasilitasJenisKamar form = new FormDetailFasilitasJenisKamar(this);
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("Silahkan pilih terlebih dulu");
+            }
         }
     }
 }

@@ -76,7 +76,7 @@ namespace Hotel_Harem_SamGun
             // btnHapus
             // 
             this.btnHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHapus.Location = new System.Drawing.Point(24, 617);
+            this.btnHapus.Location = new System.Drawing.Point(154, 617);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(118, 43);
             this.btnHapus.TabIndex = 1;
@@ -87,7 +87,7 @@ namespace Hotel_Harem_SamGun
             // btnTambah
             // 
             this.btnTambah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.Location = new System.Drawing.Point(1016, 617);
+            this.btnTambah.Location = new System.Drawing.Point(24, 617);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(105, 43);
             this.btnTambah.TabIndex = 2;
@@ -290,7 +290,7 @@ namespace Hotel_Harem_SamGun
             // btnUbah
             // 
             this.btnUbah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUbah.Location = new System.Drawing.Point(1138, 617);
+            this.btnUbah.Location = new System.Drawing.Point(288, 617);
             this.btnUbah.Name = "btnUbah";
             this.btnUbah.Size = new System.Drawing.Size(105, 43);
             this.btnUbah.TabIndex = 6;
@@ -367,6 +367,7 @@ namespace Hotel_Harem_SamGun
             this.Controls.Add(this.dgvKamar);
             this.Name = "FormDataKamar";
             this.Text = "Data Kamar";
+            this.Load += new System.EventHandler(this.FormDataKamar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
