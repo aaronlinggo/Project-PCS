@@ -213,6 +213,9 @@
     <EmbeddedResource Include="FormDetailFasilitasJenisKamar.resx">
       <DependentUpon>FormDetailFasilitasJenisKamar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDetailReservasi.resx">
+      <DependentUpon>FormDetailReservasi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLaporan.resx">
       <DependentUpon>FormLaporan.cs</DependentUpon>
     </EmbeddedResource>
