@@ -90,6 +90,12 @@
     <Compile Include="FormDetailFasilitasJenisKamar.Designer.cs">
       <DependentUpon>FormDetailFasilitasJenisKamar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDetailReservasi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetailReservasi.Designer.cs">
+      <DependentUpon>FormDetailReservasi.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLaporan.cs">
       <SubType>Form</SubType>
     </Compile>
