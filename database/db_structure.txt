@@ -36,7 +36,8 @@ FASILITAS:
 DETAIL_FASILITAS:
     id_detail_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
     id_jenis_kamar FK JENIS_KAMAR [FOREIGN KEY],
-    id_fasilitas FK FASILITAS [FOREIGN KEY]
+    id_fasilitas FK FASILITAS [FOREIGN KEY],
+    status_detail_fasilitas INT(2)
 
 EXTRA_FASILITAS:
     id_extra_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
@@ -45,10 +46,15 @@ EXTRA_FASILITAS:
     harga_extra_fasilitas INT(16),
     status_extra_fasilitas INT(2)
 
-USE_EXTRA_FASILITAS:
-    id_use_extra_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
+HEADER_EXTRA_FASILITAS:
+    id_header_extra_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_reservasi FK RESERVASI [FOREIGN KEY],
+    total_biaya_extra_fasilitas INT(16)
+
+DETAIL_EXTRA_FASILITAS:
+    id_detail_extra_fasilitas INT(11) AUTO_INCREMENT [PRIMARY],
+    id_header_extra_fasilitas FK HEADER_EXTRA_FASILITAS [FOREIGN KEY],
     kode_kamar FK KAMAR [FOREIGN KEY],
-    kode_tamu FK TAMU [FOREIGN KEY],
     id_extra_fasilitas FK EXTRA_FASILITAS [FOREIGN KEY],
     jumlah_extra_fasilitas INT(5),
     subtotal_extra_fasilitas INT(16)
@@ -67,12 +73,13 @@ JENIS_MAKANAN:
     nama_jenis_makanan VARCHAR(255),
     status_jenis_makanan INT(2)
 
-PEMESANAN_MAKANAN:
-    id_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
+HEADER_PEMESANAN_MAKANAN:
+    id_header_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
     kode_pemesanan VARCHAR(15) [UNIQUE], --> "NOTA" + 2 digit tanggal pemesanan + 2 digit bulan pemesanan + 2 digit tahun pemesanan + 5 digit nomor urut
     tanggal_pemesanan DATE,
     kode_tamu FK TAMU [FOREIGN KEY],
-    total_biaya_pemesanan INT(16)
+    total_biaya_pemesanan INT(16),
+    status_pemesanan_makanan INT(2)
 
 DETAIL_PEMESANAN_MAKANAN:
     id_detail_pemesanan INT(11) AUTO_INCREMENT [PRIMARY],
@@ -93,10 +100,17 @@ TAMU:
     email_tamu VARCHAR(255),
     status_tamu INT(2)
 
-RESERVASI:
-    id_reservasi INT(11) AUTO_INCREMENT [PRIMARY],
+HEADER_RESERVASI:
+    id_header_reservasi INT(11) AUTO_INCREMENT [PRIMARY],
     kode_reservasi VARCHAR(15) [UNIQUE], --> "RSV" + 2 digit tanggal reservasi + 2 digit bulan reservasi + 2 digit tahun reservasi + 2 digit inisial tamu (1 + 1 digit jika 2 kata/lebih) + 4 digit nomor kamar
     kode_tamu FK TAMU [FOREIGN KEY],
+    total_biaya_reservasi INT(16),
+    kode_karyawan FK KARYAWAN [FOREIGN KEY],
+    status_header_reservasi INT(2) --> 0 = all-done, 1 = still-active, 99 = all-cancelled
+
+DETAIL_RESERVASI:
+    id_detail_reservasi INT(11) AUTO_INCREMENT [PRIMARY],
+    kode_reservasi FK HEADER_RESERVASI [FOREIGN KEY],
     kode_kamar FK KAMAR [FOREIGN KEY],
     jumlah_penghuni_kamar INT(2),
     down_payment INT(16),
@@ -105,6 +119,18 @@ RESERVASI:
     jadwal_check_out DATE,
     tanggal_check_in DATE [DEFAULT NULL],
     tanggal_check_out DATE [DEFAULT NULL],
-    total_biaya INT(16) [DEFAULT NULL],
-    kode_karyawan FK KARYAWAN [FOREIGN KEY],
-    status_reservasi INT(2) --> 0 = done, 1 = not check-in, 2 = not check out, 99 = cancel reservation
+    subtotal_biaya_reservasi INT(16),
+    status_detail_reservasi INT(2) --> 0 = done, 1 = not check-in, 2 = not check out, 99 = cancel reservation
+
+NOTES:
+    - Untuk 4 digit nomor kamar pada kode reservasi, yang dianggap adalah kamar yang pertama diinputkan dalam pembuatan reservasi itu jika ada lebih dari 1 kamar. Contoh: Samuel Gunawan memesan 2 kamar, yang pertama dengan kode PRS1208 dan yang kedua dengan kode ROS1104, maka 6 digit terakhir dari kode reservasi tersebut adalah SG1208.
+    - Semua yang berhubungan sama makanan diolah sendiri datanya, tidak ada hubungannya dengan reservasi, jadi pembayarannya terpisah dari reservasi.
+    - Deposito akan dikembalikan apabila tidak ada yang dirusak selama menginap di hotel, tetapi tidak akan dikembalikan apabila ada yang dirusak.
+    - Subtotal (Detail Reservasi)
+        a. Waktu reservasi : 0
+        b. Waktu check in  : 50% kekurangan harga kamar
+        c. Waktu check out : 50% kekurangan harga kamar + (extra fasilitas kalo ada)
+    - Total (Header Reservasi)
+        a. Waktu reservasi : DP + deposito
+        b. Waktu check in  : DP + deposito + 50% kekurangan harga kamar
+        c. Waktu check out : DP + deposito + 50% kekurangan harga kamar + (extra fasilitas kalo ada)
