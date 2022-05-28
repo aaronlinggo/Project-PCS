@@ -35,6 +35,7 @@
             this.btCheckInCheckOut = new System.Windows.Forms.Button();
             this.lbWelcome = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btReservasi
@@ -76,7 +77,7 @@
             // btCheckInCheckOut
             // 
             this.btCheckInCheckOut.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCheckInCheckOut.Location = new System.Drawing.Point(695, 311);
+            this.btCheckInCheckOut.Location = new System.Drawing.Point(695, 409);
             this.btCheckInCheckOut.Margin = new System.Windows.Forms.Padding(5);
             this.btCheckInCheckOut.Name = "btCheckInCheckOut";
             this.btCheckInCheckOut.Size = new System.Drawing.Size(555, 88);
@@ -107,13 +108,26 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(695, 311);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(555, 88);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "PEMBAYARAN MAKANAN";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormMenuResepsionis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lbWelcome);
             this.Controls.Add(this.btCheckInCheckOut);
@@ -139,5 +153,6 @@
         private System.Windows.Forms.Button btCheckInCheckOut;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button button1;
     }
 }
