@@ -1,7 +1,7 @@
 ﻿
 namespace Hotel_Harem_SamGun
 {
-    partial class FormDetailReservasi
+    partial class FormPembayaranMakanan
     {
         /// <summary>
         /// Required designer variable.
@@ -34,21 +34,21 @@ namespace Hotel_Harem_SamGun
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(360, 205);
+            this.button1.Location = new System.Drawing.Point(381, 254);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // FormDetailReservasi
+            // FormPembayaranMakanan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
-            this.Name = "FormDetailReservasi";
-            this.Text = "FormDetailReservasi";
+            this.Name = "FormPembayaranMakanan";
+            this.Text = "FormPembayaranMakanan";
             this.ResumeLayout(false);
 
         }
