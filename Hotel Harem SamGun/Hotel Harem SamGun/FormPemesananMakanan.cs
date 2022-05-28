@@ -349,12 +349,12 @@ order by 1 asc";
                 try
                 {
                     MySqlCommand cmd55 = new MySqlCommand();
-                    cmd55.CommandText = "select max(id_pemesanan) + 1 from pemesanan_makanan";
+                    cmd55.CommandText = "select max(id_header_pemesanan) + 1 from header_pemesanan_makanan";
                     cmd55.Connection = Koneksi.getConn();
                     int id_pemesanan = Convert.ToInt32(cmd55.ExecuteScalar().ToString());
                     /*"NOTA" + 2 digit tanggal pemesanan + 2 digit bulan pemesanan + 2 digit tahun pemesanan + 5 digit nomor urut*/
                     MySqlCommand cmd = new MySqlCommand();
-                    cmd.CommandText = "select count(id_pemesanan) + 1 from pemesanan_makanan where kode_pemesanan LIKE 'NOTA" + DateTime.Now.ToString("ddMMyy") + "%'";
+                    cmd.CommandText = "select count(id_header_pemesanan) + 1 from header_pemesanan_makanan where kode_pemesanan LIKE 'NOTA" + DateTime.Now.ToString("ddMMyy") + "%'";
                     cmd.Connection = Koneksi.getConn();
                     int count_kode;
                     count_kode = Convert.ToInt32(cmd.ExecuteScalar().ToString());
@@ -386,7 +386,7 @@ order by 1 asc";
                     MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter);
                     adapter.Fill(dt);
 
-                    string query = $"insert into pemesanan_makanan values('{id_pemesanan}', '{nota}', '{DateTime.Now.ToString("yyyy-MM-dd")}', '{kode_tamu[cbTamu.SelectedIndex]}', '{tbSubtotal.Text}')";
+                    string query = $"insert into header_pemesanan_makanan values('{id_pemesanan}', '{nota}', '{DateTime.Now.ToString("yyyy-MM-dd")}', '{kode_tamu[cbTamu.SelectedIndex]}', '{tbSubtotal.Text}', '0')";
                     MySqlCommand cmd1 = new MySqlCommand(query, Koneksi.getConn());
                     cmd1.ExecuteNonQuery();
 
