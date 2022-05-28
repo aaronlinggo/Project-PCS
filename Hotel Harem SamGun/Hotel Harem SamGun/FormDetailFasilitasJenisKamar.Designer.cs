@@ -31,6 +31,8 @@ namespace Hotel_Harem_SamGun
         {
             this.dgvFasilitas = new System.Windows.Forms.DataGridView();
             this.dgvDetailFasilitas = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTambah = new System.Windows.Forms.Button();
             this.btnKembali = new System.Windows.Forms.Button();
@@ -43,8 +45,6 @@ namespace Hotel_Harem_SamGun
             this.tbCari = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBersihkan = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailFasilitas)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +83,18 @@ namespace Hotel_Harem_SamGun
             this.dgvDetailFasilitas.Size = new System.Drawing.Size(420, 246);
             this.dgvDetailFasilitas.TabIndex = 1;
             this.dgvDetailFasilitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetailFasilitas_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID Fasilitas";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nama Fasilitas";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // label1
             // 
@@ -141,9 +153,9 @@ namespace Hotel_Harem_SamGun
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(19, 380);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(322, 26);
+            this.label2.Size = new System.Drawing.Size(330, 26);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Fasilitas yang sudah tersedia";
+            this.label2.Text = "FASILITAS YANG TERSEDIA";
             // 
             // btnHapus
             // 
@@ -165,6 +177,7 @@ namespace Hotel_Harem_SamGun
             this.btnSimpan.TabIndex = 20;
             this.btnSimpan.Text = "SIMPAN";
             this.btnSimpan.UseVisualStyleBackColor = true;
+            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
             // btnCari
             // 
@@ -205,18 +218,6 @@ namespace Hotel_Harem_SamGun
             this.btnBersihkan.Text = "BERSIHKAN";
             this.btnBersihkan.UseVisualStyleBackColor = true;
             this.btnBersihkan.Click += new System.EventHandler(this.btnBersihkan_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID Fasilitas";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nama Fasilitas";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             // 
             // FormDetailFasilitasJenisKamar
             // 
