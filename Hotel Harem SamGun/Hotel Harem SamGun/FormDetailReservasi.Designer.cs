@@ -439,6 +439,7 @@ namespace Hotel_Harem_SamGun
             this.cbNamaTamu.Name = "cbNamaTamu";
             this.cbNamaTamu.Size = new System.Drawing.Size(263, 31);
             this.cbNamaTamu.TabIndex = 140;
+            this.cbNamaTamu.SelectedIndexChanged += new System.EventHandler(this.cbNamaTamu_SelectedIndexChanged);
             // 
             // label13
             // 

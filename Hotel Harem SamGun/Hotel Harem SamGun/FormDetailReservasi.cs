@@ -14,15 +14,9 @@ namespace Hotel_Harem_SamGun
     public partial class FormDetailReservasi : Form
     {
         bool inputingData;
-        bool initData;
-        int deposito;
-        int dp;
-        DataTable dtDetailReservasi;
-        DataTable dtAvailableKodeReservasi;
-        DataTable dtNamaTamu;
-        DataTable dtJenisKamar;
-        DataTable dtNomorKamar;
+        int deposito, dp, subtotal;
 
+        DataTable dtDetailReservasi, dtAvailableKodeReservasi, dtNamaTamu, dtJenisKamar, dtNomorKamar;
         MySqlDataAdapter da;
 
         public FormDetailReservasi()
@@ -55,12 +49,12 @@ namespace Hotel_Harem_SamGun
         {
             dtDetailReservasi = new DataTable();
             string query = @"
-                    SELECT CONCAT(t.nama_tamu, ' - ', dr.kode_reservasi) AS nama_kode, dr.kode_reservasi, t.nama_tamu, jk.nama_jenis_kamar, km.nomor_kamar, dr.jumlah_penghuni_kamar, CONCAT('Rp ', FORMAT(down_payment, 0, 'de_DE')), down_payment, CONCAT('Rp ', FORMAT(deposito, 0, 'de_DE')), deposito, DATE_FORMAT(jadwal_check_in, '%W, %d %M %Y'), jadwal_check_in, DATE_FORMAT(jadwal_check_out, '%W, %d %M %Y'), jadwal_check_out, IFNULL(DATE_FORMAT(tanggal_check_in, '%W, %d %M %Y'), '-'), tanggal_check_in, IFNULL(DATE_FORMAT(tanggal_check_out, '%W, %d %M %Y'), '-'), tanggal_check_out, CONCAT('Rp ', FORMAT(dr.subtotal_biaya_reservasi, 0, 'de_DE')), dr.subtotal_biaya_reservasi, dr.status_detail_reservasi
-                    FROM detail_reservasi dr
-                    JOIN header_reservasi hr ON hr.kode_reservasi = dr.kode_reservasi
-                    JOIN tamu t ON t.kode_tamu = hr.kode_tamu
-                    JOIN kamar km ON km.kode_kamar = dr.kode_kamar
-                    JOIN jenis_kamar jk ON jk.id_jenis_kamar = km.id_jenis_kamar";
+                SELECT CONCAT(t.nama_tamu, ' - ', dr.kode_reservasi) AS nama_kode, dr.kode_reservasi, t.nama_tamu, jk.nama_jenis_kamar, km.nomor_kamar, dr.jumlah_penghuni_kamar, CONCAT('Rp ', FORMAT(down_payment, 0, 'de_DE')), down_payment, CONCAT('Rp ', FORMAT(deposito, 0, 'de_DE')), deposito, DATE_FORMAT(jadwal_check_in, '%W, %d %M %Y'), jadwal_check_in, DATE_FORMAT(jadwal_check_out, '%W, %d %M %Y'), jadwal_check_out, IFNULL(DATE_FORMAT(tanggal_check_in, '%W, %d %M %Y'), '-'), tanggal_check_in, IFNULL(DATE_FORMAT(tanggal_check_out, '%W, %d %M %Y'), '-'), tanggal_check_out, CONCAT('Rp ', FORMAT(dr.subtotal_biaya_reservasi, 0, 'de_DE')), dr.subtotal_biaya_reservasi, dr.status_detail_reservasi
+                FROM detail_reservasi dr
+                JOIN header_reservasi hr ON hr.kode_reservasi = dr.kode_reservasi
+                JOIN tamu t ON t.kode_tamu = hr.kode_tamu
+                JOIN kamar km ON km.kode_kamar = dr.kode_kamar
+                JOIN jenis_kamar jk ON jk.id_jenis_kamar = km.id_jenis_kamar";
             if (status == 0)
             {
                 // SELESAI
@@ -156,10 +150,10 @@ namespace Hotel_Harem_SamGun
         {
             dtAvailableKodeReservasi = new DataTable();
             string query = @"
-                            SELECT CONCAT(kode_reservasi, ' - ', nama_tamu) AS kode_nama, kode_reservasi, nama_tamu
-                            FROM header_reservasi hr
-                            JOIN tamu t ON t.kode_tamu = hr.kode_tamu
-                            WHERE status_header_reservasi = 1";
+                SELECT CONCAT(kode_reservasi, ' - ', nama_tamu) AS kode_nama, kode_reservasi, nama_tamu
+                FROM header_reservasi hr
+                JOIN tamu t ON t.kode_tamu = hr.kode_tamu
+                WHERE status_header_reservasi = 1";
             fillDT(dtAvailableKodeReservasi, query);
             cbKodeReservasi.DataSource = dtAvailableKodeReservasi;
             cbKodeReservasi.DisplayMember = "kode_nama";
@@ -191,7 +185,7 @@ namespace Hotel_Harem_SamGun
         private void loadNomorKamar()
         {
             dtNomorKamar = new DataTable();
-            string query = $"SELECT kode_kamar, nomor_kamar FROM kamar WHERE id_jenis_kamar = {Convert.ToInt32(dtJenisKamar.Rows[cbJenisKamar.SelectedIndex][0])}";
+            string query = $"SELECT kode_kamar, nomor_kamar FROM kamar WHERE id_jenis_kamar = {Convert.ToInt32(dtJenisKamar.Rows[cbJenisKamar.SelectedIndex][0])} AND (status_kamar = 0 OR status_kamar = 1)";
             fillDT(dtNomorKamar, query);
             cbNomorKamar.DataSource = dtNomorKamar;
             cbNomorKamar.DisplayMember = "nomor_kamar";
@@ -209,7 +203,6 @@ namespace Hotel_Harem_SamGun
             if (mode == 1)
             {
                 // RESERVASI
-                initData = true;
                 inputingData = true;
 
                 cbKodeReservasi.SelectedIndex = -1;
@@ -218,12 +211,14 @@ namespace Hotel_Harem_SamGun
                 cbCari.SelectedIndex = -1;
 
                 lbKodeReservasi.Text = "-";
+                nudJumlahPenghuniKamar.Value = 1;
                 dtpJadwalCheckIn.Value = DateTime.Today;
-                dtpJadwalCheckOut.Value = DateTime.Today;
+                dtpJadwalCheckOut.Value = DateTime.Today.AddDays(1);
                 cbJenisKamar.SelectedIndex = -1;
                 cbNomorKamar.SelectedIndex = -1;
                 lbDownPayment.Text = "-";
                 lbDeposito.Text = "-";
+                lbSubtotalBiaya.Text = "-";
 
                 cbReservasiBaru.Checked = false;
                 cbReservasiBaru.Enabled = true;
@@ -236,8 +231,6 @@ namespace Hotel_Harem_SamGun
 
                 btReservasi.Enabled = true;
                 btBatal.Enabled = false;
-
-                initData = false;
             }
             else if (mode == 2)
             {
@@ -349,8 +342,8 @@ namespace Hotel_Harem_SamGun
         private bool bisaReservasi()
         {
             DataTable dtListedReservasi = new DataTable();
-            //FIND NOMOR KAMAR DAN STATUS 1 / 2
-            string query = $"SELECT jadwal_check_in, jadwal_check_out FROM reservasi r JOIN kamar km ON km.kode_kamar = r.kode_kamar WHERE nomor_kamar = {dtNomorKamar.Rows[cbNomorKamar.SelectedIndex][1]} AND (status_reservasi = 1 OR status_reservasi = 2)";
+            //FIND NOMOR KAMAR & STATUS_DETAIL 1 / 2
+            string query = $"SELECT jadwal_check_in, jadwal_check_out FROM detail_reservasi dr JOIN kamar k ON k.kode_kamar = dr.kode_kamar WHERE nomor_kamar = {Convert.ToInt32(dtNomorKamar.Rows[cbNomorKamar.SelectedIndex][1])} AND (status_detail_reservasi = 1 OR status_detail_reservasi = 2)";
             fillDT(dtListedReservasi, query);
 
             if (dtListedReservasi.Rows.Count > 0)
@@ -358,7 +351,7 @@ namespace Hotel_Harem_SamGun
                 //CHECK JADWAL CHECK IN DAN JADWAL CHECK OUT
                 for (int i = 0; i < dtListedReservasi.Rows.Count; i++)
                 {
-                    if ((dtpJadwalCheckIn.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckIn.Value <= (DateTime)dtListedReservasi.Rows[i][1]) || (dtpJadwalCheckOut.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckOut.Value <= (DateTime)dtListedReservasi.Rows[i][1]))
+                    if ((dtpJadwalCheckIn.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckIn.Value < (DateTime)dtListedReservasi.Rows[i][1]) || (dtpJadwalCheckOut.Value > (DateTime)dtListedReservasi.Rows[i][0]))
                     {
                         return false;
                     }
@@ -371,7 +364,7 @@ namespace Hotel_Harem_SamGun
         private void btReservasi_Click(object sender, EventArgs e)
         {
             // TIDAK BOLEH ADA DATA KOSONG
-            if (cbJenisKamar.SelectedIndex == -1 || cbNomorKamar.SelectedIndex == -1)
+            if (cbNamaTamu.SelectedIndex == -1 || cbJenisKamar.SelectedIndex == -1 || cbNomorKamar.SelectedIndex == -1)
             {
                 MessageBox.Show("Pastikan semua DATA TERISI dengan benar!", "GAGAL");
                 return;
@@ -385,25 +378,54 @@ namespace Hotel_Harem_SamGun
             }
 
             // DIPESAN -> 1
-            string query = @"INSERT INTO reservasi (id_reservasi, kode_reservasi, kode_tamu, kode_kamar, down_payment, deposito, jadwal_check_in, jadwal_check_out, kode_karyawan, status_reservasi) VALUES (@IdReservasi, @KodeReservasi, @KodeTamu, @KodeKamar, @DownPayment, @Deposito, @JadwalCheckIn, @JadwalCheckOut, @KodeKaryawan, @StatusReservasi)";
+            string query;
+            int total_biaya = deposito + dp + subtotal;
             MySqlTransaction trans = Koneksi.conn.BeginTransaction();
+            MySqlCommand cmd;
             try
             {
-                // INSERT HEADER
+                if (cbReservasiBaru.Checked)
+                {
+                    // INSERT HEADER
+                    query = @"INSERT INTO header_reservasi VALUES (@IdHeader, @KodeReservasi, @KodeTamu, @TotalBiaya, @KodeKaryawan, @StatusHeader)";
+                    cmd = new MySqlCommand(query, Koneksi.conn);
+                    cmd.Parameters.AddWithValue("@IdHeader", 0);
+                    cmd.Parameters.AddWithValue("@KodeReservasi", lbKodeReservasi.Text);
+                    cmd.Parameters.AddWithValue("@KodeTamu", dtNamaTamu.Rows[cbNamaTamu.SelectedIndex][0].ToString());
+                    cmd.Parameters.AddWithValue("@TotalBiaya", total_biaya);
+                    cmd.Parameters.AddWithValue("@KodeKaryawan", FormLogin.dtKaryawan.Rows[0][0].ToString());
+                    cmd.Parameters.AddWithValue("@StatusHeader", 1);
+                    cmd.ExecuteNonQuery();
+                } else
+                {
+                    // CARI total_biaya_reservasi
+                    query = @"SELECT total_biaya_reservasi FROM header_reservasi WHERE kode_reservasi = @KodeReservasi";
+                    cmd = new MySqlCommand(query, Koneksi.conn);
+                    cmd.Parameters.AddWithValue("@KodeReservasi", lbKodeReservasi.Text);
+                    int total_biaya_sebelum = Convert.ToInt32(cmd.ExecuteScalar());
+                    total_biaya += total_biaya_sebelum;
 
+                    // UPDATE HEADER
+                    query = @"UPDATE header_reservasi SET total_biaya_reservasi = @TotalBiaya WHERE kode_reservasi = @KodeReservasi";
+                    cmd = new MySqlCommand(query, Koneksi.conn);
+                    cmd.Parameters.AddWithValue("@TotalBiaya", total_biaya);
+                    cmd.Parameters.AddWithValue("@KodeReservasi", lbKodeReservasi.Text);
+                    cmd.ExecuteNonQuery();
+                }
 
                 //INSERT DETAIL
-                MySqlCommand cmd = new MySqlCommand(query, Koneksi.conn);
-                cmd.Parameters.AddWithValue("@IdReservasi", 0);
+                query = @"INSERT INTO detail_reservasi (id_detail_reservasi, kode_reservasi, kode_kamar, jumlah_penghuni_kamar, down_payment, deposito, jadwal_check_in, jadwal_check_out, subtotal_biaya_reservasi, status_detail_reservasi) VALUES (@IdDetail, @KodeReservasi, @KodeKamar, @JumlahPenghuniKamar, @DownPayment, @Deposito, @JadwalCheckIn, @JadwalCheckOut, @SubtotalBiaya, @StatusDetail)";
+                cmd = new MySqlCommand(query, Koneksi.conn);
+                cmd.Parameters.AddWithValue("@IdDetail", 0);
                 cmd.Parameters.AddWithValue("@KodeReservasi", lbKodeReservasi.Text);
-                cmd.Parameters.AddWithValue("@KodeTamu", dtNamaTamu.Rows[cbNamaTamu.SelectedIndex][1].ToString());
                 cmd.Parameters.AddWithValue("@KodeKamar", dtNomorKamar.Rows[cbNomorKamar.SelectedIndex][0].ToString());
+                cmd.Parameters.AddWithValue("@JumlahPenghuniKamar", Convert.ToInt32(nudJumlahPenghuniKamar.Value));
                 cmd.Parameters.AddWithValue("@DownPayment", dp);
                 cmd.Parameters.AddWithValue("@Deposito", deposito);
                 cmd.Parameters.AddWithValue("@JadwalCheckIn", dtpJadwalCheckIn.Value.ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("@JadwalCheckOut", dtpJadwalCheckOut.Value.ToString("yyyy-MM-dd"));
-                cmd.Parameters.AddWithValue("@KodeKaryawan", FormLogin.dtKaryawan.Rows[0][0].ToString());
-                cmd.Parameters.AddWithValue("@StatusReservasi", 1);
+                cmd.Parameters.AddWithValue("@SubtotalBiaya", subtotal);
+                cmd.Parameters.AddWithValue("@StatusDetail", 1);
                 cmd.ExecuteNonQuery();
 
                 trans.Commit();
@@ -453,24 +475,23 @@ namespace Hotel_Harem_SamGun
             {
                 cmd.Connection = Koneksi.conn;
                 cmd.CommandText = @"
-                                CREATE OR REPLACE TRIGGER update_status_totalBiaya_header_reservasi
-                                AFTER UPDATE ON detail_reservasi FOR EACH ROW
-                                BEGIN
+                     CREATE OR REPLACE TRIGGER update_status_totalBiaya_header_reservasi
+                     AFTER UPDATE ON detail_reservasi FOR EACH ROW
+                     BEGIN
+	                     DECLARE jumlah INT;
+	                     DECLARE total_biaya INT;
 	
-	                                DECLARE jumlah INT;
-	                                DECLARE total_biaya INT;
+	                     SELECT total_biaya_reservasi INTO total_biaya FROM header_reservasi WHERE kode_reservas = NEW.kode_reservasi;
+	                     SET total_biaya = total_biaya - (NEW.subtotal_biaya_reservasi + NEW.deposito + (0.5 *NEW.down_payment));
+	                     UPDATE header_reservasi SET total_biaya_reservasi = total_biaya WHERE kode_reservasi =NEW.kode_reservasi;
 	
-	                                SELECT total_biaya_reservasi INTO total_biaya FROM header_reservasi WHERE kode_reservasi = NEW.kode_reservasi;
-	                                SET total_biaya = total_biaya - (NEW.subtotal_biaya_reservasi + NEW.deposito + (0.5 * NEW.down_payment));
-	                                UPDATE header_reservasi SET total_biaya_reservasi = total_biaya WHERE kode_reservasi = NEW.kode_reservasi;
+	                     # JIKA SEMUA STATUS DETAIL = 99 MAKA STATUS HEADER 99
+	                     SELECT COUNT(*) INTO jumlah FROM detail_reservasi WHERE status_detail_reservasi != 99AND kode_reservasi = NEW.kode_reservasi;
 	
-	                                # JIKA SEMUA STATUS DETAIL = 99 MAKA STATUS HEADER 99
-	                                SELECT COUNT(*) INTO jumlah FROM detail_reservasi WHERE status_detail_reservasi != 99 AND kode_reservasi = NEW.kode_reservasi;
-	
-	                                IF (jumlah = 0) THEN
-		                                UPDATE header_reservasi SET status_header_reservasi = 99 WHERE kode_reservasi = NEW.kode_reservasi;
-	                                END IF;
-                                END";
+	                     IF (jumlah = 0) THEN
+		                     UPDATE header_reservasi SET status_header_reservasi = 99 WHERE kode_reservasi =NEW.kode_reservasi;
+	                     END IF;
+                     END";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -488,25 +509,21 @@ namespace Hotel_Harem_SamGun
                     MessageBox.Show("Jadwal Check In tidak boleh kurang dari Jadwal SAAT INI!");
                     dtpJadwalCheckIn.Value = DateTime.Today;
                 }
-                if (!initData)
+                if (dtpJadwalCheckOut.Value <= dtpJadwalCheckIn.Value)
                 {
-                    if (dtpJadwalCheckOut.Value < dtpJadwalCheckIn.Value)
-                    {
-                        MessageBox.Show("Jadwal Check Out tidak boleh kurang dari Jadwal Check In!");
-                        dtpJadwalCheckOut.Value = dtpJadwalCheckIn.Value;
-                    }
+                    dtpJadwalCheckOut.Value = dtpJadwalCheckIn.Value.AddDays(1);
                 }
             }
         }
 
         private void dtpJadwalCheckOut_ValueChanged(object sender, EventArgs e)
         {
-            if (!initData)
+            if (inputingData)
             {
-                if (dtpJadwalCheckOut.Value < dtpJadwalCheckIn.Value)
+                if (dtpJadwalCheckOut.Value <= dtpJadwalCheckIn.Value)
                 {
-                    MessageBox.Show("Jadwal Check Out tidak boleh kurang dari Jadwal Check In!");
-                    dtpJadwalCheckOut.Value = dtpJadwalCheckIn.Value;
+                    MessageBox.Show("Jadwal Check Out tidak boleh kurang dari sama dengan Jadwal Check In!");
+                    dtpJadwalCheckOut.Value = dtpJadwalCheckIn.Value.AddDays(1);
                 }
             }
         }
@@ -528,18 +545,18 @@ namespace Hotel_Harem_SamGun
             {
                 cmd.Connection = Koneksi.conn;
                 cmd.CommandText = @"
-                CREATE OR REPLACE PROCEDURE generateKodeTamu(IN nama VARCHAR(255), IN nomor INT, OUT kode VARCHAR(15))
-                BEGIN
-	                SET kode = CONCAT('RSV', DATE_FORMAT(NOW(), '%d%m%y'));
+                    CREATE OR REPLACE PROCEDURE generateKodeTamu(IN nama VARCHAR(255), IN nomor INT, OUT kode VARCHAR(15))
+                    BEGIN
+	                    SET kode = CONCAT('RSV', DATE_FORMAT(NOW(), '%d%m%y'));
 
-                        IF INSTR(nama, ' ') = 0 THEN
-                                SET kode = CONCAT(kode, SUBSTR(nama, 1, 2));
-                        ELSE
-                                SET kode = CONCAT(kode, CONCAT(SUBSTR(nama, 1, 1), SUBSTR(nama, INSTR(nama, ' ') + 1, 1)));
-                        END IF;
+                            IF INSTR(nama, ' ') = 0 THEN
+                                    SET kode = CONCAT(kode, SUBSTR(nama, 1, 2));
+                            ELSE
+                                    SET kode = CONCAT(kode, CONCAT(SUBSTR(nama, 1, 1), SUBSTR(nama, INSTR(nama, ' ') + 1, 1)));
+                            END IF;
         
-                        SET kode = UPPER(CONCAT(kode, LPAD(nomor, 4, '0')));
-                END";
+                            SET kode = UPPER(CONCAT(kode, LPAD(nomor, 4, '0')));
+                    END";
                 cmd.ExecuteNonQuery();
 
                 cmd.CommandText = "generateKodeTamu";
@@ -565,11 +582,21 @@ namespace Hotel_Harem_SamGun
 
         private void generate_DownPayment_Deposito()
         {
-            deposito = 500000;
             dp = (int)(Convert.ToInt32(dtJenisKamar.Rows[cbJenisKamar.SelectedIndex][2]) * 0.5);
+            deposito = 500000;
+            subtotal = 0;
 
-            lbDownPayment.Text = $"Rp {string.Format("{0:#,0}", dp).Replace(",", ".")},00";
-            lbDeposito.Text = $"Rp {string.Format("{0:#,0}", deposito).Replace(",", ".")},00";
+            lbDownPayment.Text = $"Rp {string.Format("{0:#,0}", dp).Replace(",", ".")}";
+            lbDeposito.Text = $"Rp {string.Format("{0:#,0}", deposito).Replace(",", ".")}";
+            lbSubtotalBiaya.Text = $"Rp {string.Format("{0:#,0}", subtotal).Replace(",", ".")}";
+        }
+
+        private void cbNamaTamu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbNamaTamu.SelectedIndex > -1 && cbReservasiBaru.Checked && cbNomorKamar.SelectedIndex > -1)
+            {
+                generateKodeReservasi();
+            }
         }
 
         private void cbJenisKamar_SelectedIndexChanged(object sender, EventArgs e)
@@ -588,17 +615,23 @@ namespace Hotel_Harem_SamGun
 
         private void cbNomorKamar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbNomorKamar.SelectedIndex > -1)
+            if (cbNomorKamar.Items[0].ToString() != "" && cbNomorKamar.SelectedIndex > -1)
             {
                 generate_DownPayment_Deposito();
+
+                if (cbNamaTamu.SelectedIndex > -1 && cbReservasiBaru.Checked)
+                {
+                    generateKodeReservasi();
+                }
             }
         }
 
         private void cbReservasiBaru_CheckedChanged(object sender, EventArgs e)
         {
+            lbKodeReservasi.Text = "-";
             cbKodeReservasi.Enabled = true;
             cbKodeReservasi.SelectedIndex = -1;
-            lbKodeReservasi.Text = "-";
+            cbNamaTamu.SelectedIndex = -1;
             cbNamaTamu.Enabled = false;
             if (cbReservasiBaru.Checked)
             {
@@ -611,6 +644,7 @@ namespace Hotel_Harem_SamGun
         {
             if (cbKodeReservasi.SelectedIndex > -1)
             {
+                lbKodeReservasi.Text = dtAvailableKodeReservasi.Rows[cbKodeReservasi.SelectedIndex][1].ToString();
                 for (int i = 0; i < cbNamaTamu.Items.Count; i++)
                 {
                     if (dtNamaTamu.Rows[i][1].ToString() == dtAvailableKodeReservasi.Rows[cbKodeReservasi.SelectedIndex][2].ToString())
