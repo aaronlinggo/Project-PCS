@@ -128,7 +128,6 @@ namespace Hotel_Harem_SamGun
             if (cbCari.SelectedIndex != -1)
             {
                 fillInput("cari");
-                this.AcceptButton = btBuatReservasi;
             }
         }
 
@@ -190,15 +189,8 @@ namespace Hotel_Harem_SamGun
             Hide();
             FormDetailReservasi form = new FormDetailReservasi();
             form.ShowDialog();
+            FormReservasi_Load(sender, e);
             Show();
-        }
-
-        private void cbCari_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbCari.SelectedIndex != -1)
-            {
-                this.AcceptButton = btCari;
-            }
         }
     }
 }

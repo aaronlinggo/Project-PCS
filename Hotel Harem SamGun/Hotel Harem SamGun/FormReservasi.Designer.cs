@@ -47,8 +47,8 @@
             this.lbNamaTamu = new System.Windows.Forms.Label();
             this.lbJumlahReservasi = new System.Windows.Forms.Label();
             this.legend0 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.legend1 = new System.Windows.Forms.Panel();
+            this.legend99 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -78,12 +78,12 @@
             // btBuatReservasi
             // 
             this.btBuatReservasi.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBuatReservasi.Location = new System.Drawing.Point(553, 581);
+            this.btBuatReservasi.Location = new System.Drawing.Point(953, 572);
             this.btBuatReservasi.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btBuatReservasi.Name = "btBuatReservasi";
-            this.btBuatReservasi.Size = new System.Drawing.Size(200, 43);
+            this.btBuatReservasi.Size = new System.Drawing.Size(250, 43);
             this.btBuatReservasi.TabIndex = 4;
-            this.btBuatReservasi.Text = "BUAT RESERVASI";
+            this.btBuatReservasi.Text = "BUAT RESERVASI BARU";
             this.btBuatReservasi.UseVisualStyleBackColor = true;
             this.btBuatReservasi.Click += new System.EventHandler(this.btBuatReservasi_Click);
             // 
@@ -91,7 +91,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(137, 565);
+            this.label8.Location = new System.Drawing.Point(461, 565);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 23);
@@ -102,7 +102,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(115, 530);
+            this.label5.Location = new System.Drawing.Point(439, 530);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(120, 23);
@@ -113,7 +113,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(78, 640);
+            this.label9.Location = new System.Drawing.Point(402, 640);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(157, 23);
@@ -124,7 +124,7 @@
             // 
             this.lbKodeReservasi.AutoSize = true;
             this.lbKodeReservasi.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbKodeReservasi.Location = new System.Drawing.Point(243, 527);
+            this.lbKodeReservasi.Location = new System.Drawing.Point(567, 527);
             this.lbKodeReservasi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbKodeReservasi.Name = "lbKodeReservasi";
             this.lbKodeReservasi.Size = new System.Drawing.Size(15, 23);
@@ -141,7 +141,6 @@
             this.cbCari.Name = "cbCari";
             this.cbCari.Size = new System.Drawing.Size(370, 31);
             this.cbCari.TabIndex = 1;
-            this.cbCari.SelectedIndexChanged += new System.EventHandler(this.cbCari_SelectedIndexChanged);
             // 
             // btCari
             // 
@@ -206,7 +205,7 @@
             // lbTotalBiayaReservasi
             // 
             this.lbTotalBiayaReservasi.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalBiayaReservasi.Location = new System.Drawing.Point(243, 640);
+            this.lbTotalBiayaReservasi.Location = new System.Drawing.Point(567, 640);
             this.lbTotalBiayaReservasi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTotalBiayaReservasi.Name = "lbTotalBiayaReservasi";
             this.lbTotalBiayaReservasi.Size = new System.Drawing.Size(181, 23);
@@ -240,7 +239,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(108, 601);
+            this.label6.Location = new System.Drawing.Point(432, 601);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(127, 23);
@@ -251,7 +250,7 @@
             // 
             this.lbNamaTamu.AutoSize = true;
             this.lbNamaTamu.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNamaTamu.Location = new System.Drawing.Point(243, 565);
+            this.lbNamaTamu.Location = new System.Drawing.Point(567, 565);
             this.lbNamaTamu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNamaTamu.Name = "lbNamaTamu";
             this.lbNamaTamu.Size = new System.Drawing.Size(15, 23);
@@ -262,7 +261,7 @@
             // 
             this.lbJumlahReservasi.AutoSize = true;
             this.lbJumlahReservasi.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbJumlahReservasi.Location = new System.Drawing.Point(243, 601);
+            this.lbJumlahReservasi.Location = new System.Drawing.Point(567, 601);
             this.lbJumlahReservasi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbJumlahReservasi.Name = "lbJumlahReservasi";
             this.lbJumlahReservasi.Size = new System.Drawing.Size(15, 23);
@@ -272,33 +271,33 @@
             // legend0
             // 
             this.legend0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.legend0.Location = new System.Drawing.Point(1074, 542);
+            this.legend0.Location = new System.Drawing.Point(13, 533);
             this.legend0.Name = "legend0";
             this.legend0.Size = new System.Drawing.Size(20, 20);
             this.legend0.TabIndex = 141;
             // 
-            // panel1
+            // legend1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightGreen;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(1074, 568);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(20, 20);
-            this.panel1.TabIndex = 142;
+            this.legend1.BackColor = System.Drawing.Color.LightGreen;
+            this.legend1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.legend1.Location = new System.Drawing.Point(13, 559);
+            this.legend1.Name = "legend1";
+            this.legend1.Size = new System.Drawing.Size(20, 20);
+            this.legend1.TabIndex = 142;
             // 
-            // panel2
+            // legend99
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkGray;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(1074, 594);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(20, 20);
-            this.panel2.TabIndex = 143;
+            this.legend99.BackColor = System.Drawing.Color.DarkGray;
+            this.legend99.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.legend99.Location = new System.Drawing.Point(13, 585);
+            this.legend99.Name = "legend99";
+            this.legend99.Size = new System.Drawing.Size(20, 20);
+            this.legend99.TabIndex = 143;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1100, 539);
+            this.label1.Location = new System.Drawing.Point(39, 530);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 23);
             this.label1.TabIndex = 144;
@@ -307,7 +306,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1100, 565);
+            this.label2.Location = new System.Drawing.Point(39, 556);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(137, 23);
             this.label2.TabIndex = 145;
@@ -316,7 +315,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1100, 591);
+            this.label3.Location = new System.Drawing.Point(39, 582);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 23);
             this.label3.TabIndex = 146;
@@ -333,8 +332,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.legend99);
+            this.Controls.Add(this.legend1);
             this.Controls.Add(this.legend0);
             this.Controls.Add(this.lbJumlahReservasi);
             this.Controls.Add(this.lbNamaTamu);
@@ -386,8 +385,8 @@
         private System.Windows.Forms.Label lbNamaTamu;
         private System.Windows.Forms.Label lbJumlahReservasi;
         private System.Windows.Forms.Panel legend0;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel legend1;
+        private System.Windows.Forms.Panel legend99;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
