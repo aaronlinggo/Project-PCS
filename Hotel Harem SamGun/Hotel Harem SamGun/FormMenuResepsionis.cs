@@ -61,5 +61,13 @@ namespace Hotel_Harem_SamGun
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormPembayaranMakanan form = new FormPembayaranMakanan();
+            form.ShowDialog();
+            this.Show();
+        }
     }
 }
