@@ -31,7 +31,7 @@ namespace Hotel_Harem_SamGun
         {
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "SELECT id_reservasi, kode_reservasi, nama_tamu, nomor_kamar, nama_jenis_kamar, DATE_FORMAT(tanggal_check_in,'%W, %d %M %Y'), CONCAT('Rp ', FORMAT(total_biaya,0,'de_DE'))  FROM reservasi r JOIN tamu t ON t.kode_tamu = r.kode_tamu JOIN kamar k ON k.kode_kamar = r.kode_kamar JOIN jenis_kamar jk ON jk.id_jenis_kamar = k.id_jenis_kamar WHERE tanggal_check_in IS NOT NULL AND tanggal_check_out IS NULL";
+            cmd.CommandText = "SELECT id_header_reservasi, hr.kode_reservasi, nama_tamu, nomor_kamar, nama_jenis_kamar, DATE_FORMAT(tanggal_check_in,'%W, %d %M %Y'), CONCAT('Rp ', FORMAT(subtotal_biaya_reservasi,0,'de_DE')) FROM header_reservasi hr JOIN tamu t ON t.kode_tamu = hr.kode_tamu JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi JOIN kamar k ON k.kode_kamar = dr.kode_kamar  JOIN jenis_kamar jk ON jk.id_jenis_kamar = k.id_jenis_kamar WHERE tanggal_check_in IS NOT NULL AND tanggal_check_out IS NULL";
             dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -40,7 +40,7 @@ namespace Hotel_Harem_SamGun
             dataGridView1.Columns[1].HeaderText = "Nomor Reservasi";
             dataGridView1.Columns[2].HeaderText = "Nama Tamu";
             dataGridView1.Columns[3].HeaderText = "Nomor Kamar";
-            dataGridView1.Columns[4].HeaderText = "Jenis Kamar";
+            dataGridView1.Columns[4].HeaderText = "Nama Jenis Kamar";
             dataGridView1.Columns[5].HeaderText = "Tanggal Check In";
             dataGridView1.Columns[6].HeaderText = "Subtotal";
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -49,7 +49,7 @@ namespace Hotel_Harem_SamGun
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
         private void btnKembali_Click(object sender, EventArgs e)

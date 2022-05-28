@@ -35,15 +35,15 @@ namespace Hotel_Harem_SamGun
         public void isiKodeReservasidanNamaTamu()
         {
             cmd = new MySqlCommand();
-            cmd.CommandText = $"SELECT kode_reservasi FROM reservasi WHERE id_reservasi = '{id_reservasi}'";
+            cmd.CommandText = $"SELECT hr.kode_reservasi FROM header_reservasi hr JOIN detail_reservasi dr ON dr.kode_reservasi = hr.kode_reservasi WHERE id_detail_reservasi = '{id_reservasi}'";
             cmd.Connection = conn;
             lblKodeReservasi.Text = cmd.ExecuteScalar().ToString();
 
-            cmd.CommandText = $"SELECT nama_tamu FROM reservasi r JOIN tamu t ON t.kode_tamu = r.kode_tamu WHERE id_reservasi = '{id_reservasi}'";
+            cmd.CommandText = $"SELECT nama_tamu FROM header_reservasi hr JOIN tamu t ON t.kode_tamu = hr.kode_tamu JOIN detail_reservasi dr ON dr.kode_reservasi = hr.kode_reservasi WHERE id_detail_reservasi = '{id_reservasi}'";
             cmd.Connection = conn;
             lblNamaTamu.Text = cmd.ExecuteScalar().ToString();
-
-            cmd.CommandText = $"SELECT nomor_kamar FROM reservasi r JOIN kamar k ON k.kode_kamar = r.kode_kamar WHERE id_reservasi = '{id_reservasi}'";
+            
+            cmd.CommandText = $"SELECT nomor_kamar FROM header_reservasi hr  JOIN detail_reservasi dr ON dr.kode_reservasi = hr.kode_reservasi JOIN kamar k ON k.kode_kamar = dr.kode_kamar WHERE id_detail_reservasi = '{id_reservasi}'";
             cmd.Connection = conn;
             lblNoKamar.Text = cmd.ExecuteScalar().ToString();
         }
@@ -123,8 +123,28 @@ namespace Hotel_Harem_SamGun
             MySqlTransaction trans = conn.BeginTransaction();
             try
             {
+                int id_header;
                 cmd = new MySqlCommand();
                 cmd.Connection = conn;
+                cmd.CommandText = $"SELECT COUNT(*) FROM header_extra_fasilitas WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
+                int jml = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                if(jml > 0)
+                {
+                    // sudah ada di header
+                    cmd.CommandText = $"SELECT id_header_extra_fasilitas FROM header_extra_fasilitas WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
+                    id_header = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                }
+                else
+                {
+                    cmd.CommandText = "SELECT COUNT(*) FROM header_extra_fasilitas";
+                    id_header = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                    id_header++;
+                    // belum ada di header
+                    cmd.CommandText = "INSERT INTO header_extra_fasilitas (id_header_extra_fasilitas, kode_reservasi, total_biaya_extra_fasilitas) VALUES (@id_header, @kode_res, 0)";
+                    cmd.Parameters.Add(new MySqlParameter("@id_header", id_header));
+                    cmd.Parameters.Add(new MySqlParameter("@kode_res", lblKodeReservasi.Text));
+                    cmd.ExecuteNonQuery();
+                }
                 for (int i = 0; i < dgvKeranjang.RowCount; i++)
                 {
                     cmd.Parameters.Clear();
@@ -134,22 +154,19 @@ namespace Hotel_Harem_SamGun
 
                     cmd = new MySqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT COUNT(*) FROM use_extra_fasilitas";
+                    cmd.CommandText = "SELECT COUNT(*) FROM detail_extra_fasilitas";
                     int new_id_use = Convert.ToInt32(cmd.ExecuteScalar().ToString());
                     new_id_use++;
-
-                    cmd.CommandText = $"SELECT kode_tamu FROM tamu WHERE nama_tamu = '{lblNamaTamu.Text}'";
-                    string kode_tamu = cmd.ExecuteScalar().ToString();
 
                     cmd.CommandText = $"SELECT kode_kamar FROM kamar WHERE nomor_kamar = '{lblNoKamar.Text}'";
                     string kode_kamar = cmd.ExecuteScalar().ToString();
 
                     int subtotal = harga * Convert.ToInt32(dgvKeranjang.Rows[i].Cells[3].Value.ToString());
 
-                    cmd.CommandText = "INSERT INTO use_extra_fasilitas (id_use_extra_fasilitas, kode_kamar, kode_tamu, id_extra_fasilitas, jumlah_extra_fasilitas, subtotal_extra_fasilitas) VALUES (@id_use, @kode_kamar, @kode_tamu, @id_extra, @jumlah, @subtotal)";
+                    cmd.CommandText = "INSERT INTO detail_extra_fasilitas (id_detail_extra_fasilitas, id_header_extra_fasilitas, kode_kamar, id_extra_fasilitas, jumlah_extra_fasilitas, subtotal_extra_fasilitas) VALUES (@id_use, @id_header, @kode_kamar, @id_extra, @jumlah, @subtotal)";
                     cmd.Parameters.Add(new MySqlParameter("@id_use", new_id_use));
+                    cmd.Parameters.Add(new MySqlParameter("@id_header", id_header));
                     cmd.Parameters.Add(new MySqlParameter("@kode_kamar", kode_kamar));
-                    cmd.Parameters.Add(new MySqlParameter("@kode_tamu", kode_tamu));
                     cmd.Parameters.Add(new MySqlParameter("@id_extra", Convert.ToInt32(dgvKeranjang.Rows[i].Cells[0].Value.ToString())));
                     cmd.Parameters.Add(new MySqlParameter("@jumlah", Convert.ToInt32(dgvKeranjang.Rows[i].Cells[3].Value.ToString())));
                     cmd.Parameters.Add(new MySqlParameter("@subtotal", subtotal));
@@ -164,10 +181,10 @@ namespace Hotel_Harem_SamGun
                     cmd.CommandText = $"UPDATE extra_fasilitas SET stok_extra_fasilitas = '{stok_baru}' WHERE id_extra_fasilitas = '{id_extra}'";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = $"SELECT total_biaya FROM reservasi WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
+                    cmd.CommandText = $"SELECT total_biaya_extra_fasilitas FROM header_extra_fasilitas WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
                     int total_biaya_baru = Convert.ToInt32(cmd.ExecuteScalar().ToString()) + subtotal;
 
-                    cmd.CommandText = $"UPDATE reservasi SET total_biaya = '{total_biaya_baru}' WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
+                    cmd.CommandText = $"UPDATE header_extra_fasilitas SET total_biaya_extra_fasilitas = '{total_biaya_baru}' WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
                     cmd.ExecuteNonQuery();
                 }
                 trans.Commit();
@@ -178,8 +195,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Gagal melakukan transaksi");
+                MessageBox.Show(ex.Message);
                 trans.Rollback();
             }
         }
