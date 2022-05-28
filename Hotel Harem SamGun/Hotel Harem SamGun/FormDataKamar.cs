@@ -200,7 +200,7 @@ namespace Hotel_Harem_SamGun
                         }
                         else
                         {
-                            status = 0;
+                            status = 99;
                         }
                         cmd = new MySqlCommand();
                         cmd.Connection = conn;
@@ -241,7 +241,7 @@ namespace Hotel_Harem_SamGun
                     }
                     else
                     {
-                        status = 0;
+                        status = 99;
                     }
                     query = $"UPDATE kamar SET kode_kamar = '{tbKode.Text}', nomor_kamar = '{tbNoKamar.Text}', nomor_lantai = '{numLantai.Value}',status_kamar = '{status}', id_jenis_kamar = '{comboJenisKamar.SelectedValue}' WHERE id_kamar = '{tbID.Text}'";
                     cmd = new MySqlCommand(query, conn);
@@ -261,7 +261,7 @@ namespace Hotel_Harem_SamGun
         {
             if (selectedIdx > -1)
             {
-                query = $"UPDATE kamar SET status_kamar = '0' WHERE id_kamar = '{tbID.Text}'";
+                query = $"UPDATE kamar SET status_kamar = '99' WHERE id_kamar = '{tbID.Text}'";
                 cmd = new MySqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Berhasil menghapus kamar");

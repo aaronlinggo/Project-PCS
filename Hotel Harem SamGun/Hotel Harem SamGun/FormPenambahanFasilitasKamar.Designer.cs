@@ -60,6 +60,10 @@ namespace Hotel_Harem_SamGun
             this.label10 = new System.Windows.Forms.Label();
             this.tbSubtotal = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbCari = new System.Windows.Forms.TextBox();
+            this.btnCari = new System.Windows.Forms.Button();
+            this.btnBersihkan2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeranjang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).BeginInit();
@@ -345,7 +349,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label8.Location = new System.Drawing.Point(541, 29);
+            this.label8.Location = new System.Drawing.Point(532, 29);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(137, 24);
             this.label8.TabIndex = 47;
@@ -355,7 +359,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.lblNoKamar.AutoSize = true;
             this.lblNoKamar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblNoKamar.Location = new System.Drawing.Point(704, 29);
+            this.lblNoKamar.Location = new System.Drawing.Point(695, 29);
             this.lblNoKamar.Name = "lblNoKamar";
             this.lblNoKamar.Size = new System.Drawing.Size(60, 24);
             this.lblNoKamar.TabIndex = 48;
@@ -373,7 +377,7 @@ namespace Hotel_Harem_SamGun
             // 
             // tbSubtotal
             // 
-            this.tbSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSubtotal.Location = new System.Drawing.Point(488, 394);
             this.tbSubtotal.Name = "tbSubtotal";
             this.tbSubtotal.ReadOnly = true;
@@ -390,11 +394,55 @@ namespace Hotel_Harem_SamGun
             this.label11.TabIndex = 51;
             this.label11.Text = "Rp. ";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label12.Location = new System.Drawing.Point(612, 93);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 24);
+            this.label12.TabIndex = 52;
+            this.label12.Text = "Cari :";
+            // 
+            // tbCari
+            // 
+            this.tbCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCari.Location = new System.Drawing.Point(685, 93);
+            this.tbCari.Name = "tbCari";
+            this.tbCari.Size = new System.Drawing.Size(204, 26);
+            this.tbCari.TabIndex = 53;
+            // 
+            // btnCari
+            // 
+            this.btnCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCari.Location = new System.Drawing.Point(918, 89);
+            this.btnCari.Name = "btnCari";
+            this.btnCari.Size = new System.Drawing.Size(128, 34);
+            this.btnCari.TabIndex = 54;
+            this.btnCari.Text = "CARI";
+            this.btnCari.UseVisualStyleBackColor = true;
+            this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
+            // 
+            // btnBersihkan2
+            // 
+            this.btnBersihkan2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBersihkan2.Location = new System.Drawing.Point(1062, 89);
+            this.btnBersihkan2.Name = "btnBersihkan2";
+            this.btnBersihkan2.Size = new System.Drawing.Size(128, 34);
+            this.btnBersihkan2.TabIndex = 55;
+            this.btnBersihkan2.Text = "BERSIHKAN";
+            this.btnBersihkan2.UseVisualStyleBackColor = true;
+            this.btnBersihkan2.Click += new System.EventHandler(this.btnBersihkan2_Click);
+            // 
             // FormPenambahanFasilitasKamar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.btnBersihkan2);
+            this.Controls.Add(this.btnCari);
+            this.Controls.Add(this.tbCari);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.tbSubtotal);
             this.Controls.Add(this.label10);
@@ -464,5 +512,9 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbSubtotal;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbCari;
+        private System.Windows.Forms.Button btnCari;
+        private System.Windows.Forms.Button btnBersihkan2;
     }
 }

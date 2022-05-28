@@ -19,6 +19,7 @@ namespace Hotel_Harem_SamGun
         DataTable dt;
         int id_reservasi, selectedIdxFasilitas = -1, selectedIdxKeranjang = -1;
         FormPenambahanFasilitasDataTamu formLama;
+        
         public FormPenambahanFasilitasKamar(FormPenambahanFasilitasDataTamu formLama)
         {
             Koneksi.openConn();
@@ -69,6 +70,25 @@ namespace Hotel_Harem_SamGun
             dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
+        public void searchDGV(string keyword)
+        {
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = $"SELECT id_extra_fasilitas, nama_extra_fasilitas, stok_extra_fasilitas, CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')) FROM extra_fasilitas WHERE status_extra_fasilitas = 1 AND nama_extra_fasilitas LIKE '%{keyword}%'";
+            dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(dt);
+            dgvFasilitas.DataSource = dt;
+            dgvFasilitas.Columns[0].HeaderText = "ID";
+            dgvFasilitas.Columns[1].HeaderText = "Nama Fasilitas";
+            dgvFasilitas.Columns[2].HeaderText = "Stok";
+            dgvFasilitas.Columns[3].HeaderText = "Harga";
+            dgvFasilitas.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvFasilitas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+        }
+
         public void resetField()
         {
             selectedIdxFasilitas = -1;
@@ -93,7 +113,11 @@ namespace Hotel_Harem_SamGun
                 subtotal += (jumlah * harga);
 
             }
-            tbSubtotal.Text = subtotal.ToString();
+            // tbSubtotal.Text = subtotal.ToString();
+            decimal number;
+            number = decimal.Parse(subtotal.ToString(), System.Globalization.NumberStyles.Currency);
+            tbSubtotal.Text = number.ToString("#,#");
+            tbSubtotal.SelectionStart = tbSubtotal.Text.Length;
         }
 
         private void btnKembali_Click(object sender, EventArgs e)
@@ -110,7 +134,10 @@ namespace Hotel_Harem_SamGun
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
-            dgvKeranjang.Rows.RemoveAt(selectedIdxKeranjang);
+            if(selectedIdxKeranjang > -1)
+            {
+                dgvKeranjang.Rows.RemoveAt(selectedIdxKeranjang);
+            }
         }
 
         private void dgvKeranjang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -200,64 +227,84 @@ namespace Hotel_Harem_SamGun
             }
         }
 
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            searchDGV(tbCari.Text);
+        }
+
+        private void btnBersihkan2_Click(object sender, EventArgs e)
+        {
+            selectedIdxFasilitas = -1;
+            selectedIdxKeranjang = -1;
+            refreshDGV();
+            tbCari.Text = "";
+        }
+
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            if (numJumlah.Value > 0)
+            if(selectedIdxFasilitas > -1)
             {
-                int idxRow = -1;
-                for (int i = 0; i < dgvKeranjang.Rows.Count; i++)
+                if (numJumlah.Value > 0)
                 {
-                    if (tbID.Text == dgvKeranjang.Rows[i].Cells[0].Value.ToString())
+                    int idxRow = -1;
+                    for (int i = 0; i < dgvKeranjang.Rows.Count; i++)
                     {
-                        idxRow = i;
+                        if (tbID.Text == dgvKeranjang.Rows[i].Cells[0].Value.ToString())
+                        {
+                            idxRow = i;
+                        }
                     }
-                }
 
-                if (idxRow == -1)
-                {
-                    int stok = Convert.ToInt32(dgvFasilitas.Rows[selectedIdxFasilitas].Cells[2].Value.ToString());
-                    int jumlah = Convert.ToInt32(numJumlah.Value.ToString());
-                    if (jumlah > stok)
+                    if (idxRow == -1)
                     {
-                        MessageBox.Show("Stok tidak mencukupi");
+                        int stok = Convert.ToInt32(dgvFasilitas.Rows[selectedIdxFasilitas].Cells[2].Value.ToString());
+                        int jumlah = Convert.ToInt32(numJumlah.Value.ToString());
+                        if (jumlah > stok)
+                        {
+                            MessageBox.Show("Stok tidak mencukupi");
+                        }
+                        else
+                        {
+                            idxRow = dgvKeranjang.Rows.Add();
+                            dgvKeranjang.Rows[idxRow].Cells[0].Value = tbID.Text;
+                            dgvKeranjang.Rows[idxRow].Cells[1].Value = tbNama.Text;
+                            dgvKeranjang.Rows[idxRow].Cells[2].Value = tbHarga.Text;
+                            dgvKeranjang.Rows[idxRow].Cells[3].Value = numJumlah.Value;
+                            cmd = new MySqlCommand();
+                            cmd.CommandText = $"SELECT harga_extra_fasilitas FROM extra_fasilitas WHERE id_extra_fasilitas = '{tbID.Text}'";
+                            cmd.Connection = conn;
+                            int harga = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                            cmd = new MySqlCommand();
+                            cmd.CommandText = $"SELECT CONCAT('Rp ', FORMAT({numJumlah.Value * Convert.ToInt32(harga)},0,'de_DE')) FROM DUAL";
+                            cmd.Connection = conn;
+                            dgvKeranjang.Rows[idxRow].Cells[4].Value = cmd.ExecuteScalar().ToString();
+                            resetField();
+                        }
                     }
                     else
                     {
-                        idxRow = dgvKeranjang.Rows.Add();
-                        dgvKeranjang.Rows[idxRow].Cells[0].Value = tbID.Text;
-                        dgvKeranjang.Rows[idxRow].Cells[1].Value = tbNama.Text;
-                        dgvKeranjang.Rows[idxRow].Cells[2].Value = tbHarga.Text;
-                        dgvKeranjang.Rows[idxRow].Cells[3].Value = numJumlah.Value;
-                        cmd = new MySqlCommand();
-                        cmd.CommandText = $"SELECT harga_extra_fasilitas FROM extra_fasilitas WHERE id_extra_fasilitas = '{tbID.Text}'";
-                        cmd.Connection = conn;
-                        int harga = Convert.ToInt32(cmd.ExecuteScalar().ToString());
-                        cmd = new MySqlCommand();
-                        cmd.CommandText = $"SELECT CONCAT('Rp ', FORMAT({numJumlah.Value * Convert.ToInt32(harga)},0,'de_DE')) FROM DUAL";
-                        cmd.Connection = conn;
-                        dgvKeranjang.Rows[idxRow].Cells[4].Value = cmd.ExecuteScalar().ToString();
-                        resetField();
+                        int stok = Convert.ToInt32(dgvFasilitas.Rows[selectedIdxFasilitas].Cells[2].Value.ToString());
+                        int jumlah = Convert.ToInt32(numJumlah.Value.ToString()) + Convert.ToInt32(dgvKeranjang.Rows[idxRow].Cells[3].Value.ToString());
+                        if (jumlah > stok)
+                        {
+                            MessageBox.Show("Stok tidak mencukupi");
+                        }
+                        else
+                        {
+                            dgvKeranjang.Rows[idxRow].Cells[3].Value = jumlah;
+                            dgvKeranjang.Rows[idxRow].Cells[4].Value = (Convert.ToInt32(dgvKeranjang.Rows[idxRow].Cells[3].Value.ToString()) * Convert.ToInt32(tbHarga.Text));
+                            resetField();
+                        }
                     }
                 }
                 else
                 {
-                    int stok = Convert.ToInt32(dgvFasilitas.Rows[selectedIdxFasilitas].Cells[2].Value.ToString());
-                    int jumlah = Convert.ToInt32(numJumlah.Value.ToString()) + Convert.ToInt32(dgvKeranjang.Rows[idxRow].Cells[3].Value.ToString());
-                    if (jumlah > stok)
-                    {
-                        MessageBox.Show("Stok tidak mencukupi");
-                    }
-                    else
-                    {
-                        dgvKeranjang.Rows[idxRow].Cells[3].Value = jumlah;
-                        dgvKeranjang.Rows[idxRow].Cells[4].Value = (Convert.ToInt32(dgvKeranjang.Rows[idxRow].Cells[3].Value.ToString()) * Convert.ToInt32(tbHarga.Text));
-                        resetField();
-                    }
+                    MessageBox.Show("Jumlah harus lebih besar dari 0");
                 }
             }
             else
             {
-                MessageBox.Show("Jumlah harus lebih besar dari 0");
+                MessageBox.Show("Silahkan pilih fasilitas terlebih dahulu");
             }
         }
 
