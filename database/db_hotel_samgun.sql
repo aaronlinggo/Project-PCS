@@ -1441,8 +1441,8 @@ CREATE TABLE `tamu` (
 
 insert  into `tamu`(`id_tamu`,`kode_tamu`,`nama_tamu`,`jenis_kelamin_tamu`,`tanggal_lahir_tamu`,`alamat_tamu`,`negara_asal`,`nomor_telepon_tamu`,`email_tamu`,`status_tamu`) values 
 (1,'FRWI001','Frank Williams','L','1978-10-17','Jl. Siliwangi 381, Jawa Tengah','United States','0247608795','frankdwilliams@armyspy.com',1),
-(2,'BOGA001','Bobby Gainer','L','1977-07-22','Jl. Hayam Wuruk Glodok Jaya Blok C/28 Lt. Dasar, DKI Jakarta','United States','5152746701','bobbyagainer@dayrep.com',1),
-(3,'JAMO001','Janice Moore','P','1998-01-19','Jl. Ngagel Jaya Indah I/10, Jawa Timur','United States',' 0315025552','janicetmoore@teleworm.us',1),
+(2,'BOGA001','Bobby Gainer','L','1977-07-22','Jl. Hayam Wuruk Glodok Jaya Blok C/28 Lt. Dasar, DKI Jakarta','United States','0152746701','bobbyagainer@dayrep.com',1),
+(3,'JAMO001','Janice Moore','P','1998-01-19','Jl. Ngagel Jaya Indah I/10, Jawa Timur','United States','0315025552','janicetmoore@teleworm.us',1),
 (4,'JIBO001','Jimmy Boggs','L','1980-06-10','Jl. Kalibutuh 195-197, Jawa Timur','United States','0315311552','jimmysboggs@rhyta.com',1),
 (5,'JEHU001','Jennie Huff','P','1990-05-13','Jl. Cempaka Putih XIX 8 RT 007/07, DKI Jakarta','United States','0214264274','jennielhuff@jourrapide.com',1),
 (6,'DANA001','Dalia Napolitano','P','1986-10-27','Jl. Rawagatel Kav. III Blok S-39, DKI Jakarta','Italy','0214894934','dalianapolitano@rhyta.com',1),
