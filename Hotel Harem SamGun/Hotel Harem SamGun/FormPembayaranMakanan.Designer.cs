@@ -57,7 +57,7 @@ namespace Hotel_Harem_SamGun
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(427, 47);
             this.label1.TabIndex = 6;
-            this.label1.Text = "PEMBAYAN MAKANAN";
+            this.label1.Text = "PEMBAYARAN MAKANAN";
             // 
             // dataGridView1
             // 
