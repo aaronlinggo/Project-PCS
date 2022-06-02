@@ -169,11 +169,11 @@ namespace Hotel_Harem_SamGun
             // btnKembali
             // 
             this.btnKembali.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnKembali.Location = new System.Drawing.Point(1149, 29);
+            this.btnKembali.Location = new System.Drawing.Point(1110, 29);
             this.btnKembali.Name = "btnKembali";
-            this.btnKembali.Size = new System.Drawing.Size(79, 36);
+            this.btnKembali.Size = new System.Drawing.Size(118, 36);
             this.btnKembali.TabIndex = 14;
-            this.btnKembali.Text = "Kembali";
+            this.btnKembali.Text = "KEMBALi";
             this.btnKembali.UseVisualStyleBackColor = true;
             this.btnKembali.Click += new System.EventHandler(this.btnKembali_Click);
             // 
@@ -185,7 +185,7 @@ namespace Hotel_Harem_SamGun
             this.btnPesan.Name = "btnPesan";
             this.btnPesan.Size = new System.Drawing.Size(250, 41);
             this.btnPesan.TabIndex = 39;
-            this.btnPesan.Text = "Pesan";
+            this.btnPesan.Text = "PESAN";
             this.btnPesan.UseVisualStyleBackColor = true;
             this.btnPesan.Click += new System.EventHandler(this.btnPesan_Click);
             // 
@@ -197,7 +197,7 @@ namespace Hotel_Harem_SamGun
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(250, 41);
             this.btnHapus.TabIndex = 38;
-            this.btnHapus.Text = "Hapus";
+            this.btnHapus.Text = "HAPUS";
             this.btnHapus.UseVisualStyleBackColor = true;
             this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
@@ -209,7 +209,7 @@ namespace Hotel_Harem_SamGun
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(250, 41);
             this.btnTambah.TabIndex = 37;
-            this.btnTambah.Text = "Tambah";
+            this.btnTambah.Text = "TAMBAH";
             this.btnTambah.UseVisualStyleBackColor = true;
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
@@ -301,7 +301,7 @@ namespace Hotel_Harem_SamGun
             this.btnBersihkan.Name = "btnBersihkan";
             this.btnBersihkan.Size = new System.Drawing.Size(250, 41);
             this.btnBersihkan.TabIndex = 42;
-            this.btnBersihkan.Text = "Bersihkan";
+            this.btnBersihkan.Text = "BERSIHKAN";
             this.btnBersihkan.UseVisualStyleBackColor = true;
             this.btnBersihkan.Click += new System.EventHandler(this.btnBersihkan_Click);
             // 

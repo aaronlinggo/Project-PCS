@@ -245,9 +245,9 @@ namespace Hotel_Harem_SamGun
             // btnBersihkan
             // 
             this.btnBersihkan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBersihkan.Location = new System.Drawing.Point(1010, 21);
+            this.btnBersihkan.Location = new System.Drawing.Point(1016, 22);
             this.btnBersihkan.Name = "btnBersihkan";
-            this.btnBersihkan.Size = new System.Drawing.Size(118, 43);
+            this.btnBersihkan.Size = new System.Drawing.Size(118, 36);
             this.btnBersihkan.TabIndex = 7;
             this.btnBersihkan.Text = "BERSIHKAN";
             this.btnBersihkan.UseVisualStyleBackColor = true;
@@ -256,9 +256,9 @@ namespace Hotel_Harem_SamGun
             // btnKembali
             // 
             this.btnKembali.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnKembali.Location = new System.Drawing.Point(1138, 21);
+            this.btnKembali.Location = new System.Drawing.Point(1138, 22);
             this.btnKembali.Name = "btnKembali";
-            this.btnKembali.Size = new System.Drawing.Size(105, 43);
+            this.btnKembali.Size = new System.Drawing.Size(105, 36);
             this.btnKembali.TabIndex = 16;
             this.btnKembali.Text = "KEMBALI";
             this.btnKembali.UseVisualStyleBackColor = true;
@@ -267,9 +267,9 @@ namespace Hotel_Harem_SamGun
             // btnCari
             // 
             this.btnCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCari.Location = new System.Drawing.Point(916, 27);
+            this.btnCari.Location = new System.Drawing.Point(922, 22);
             this.btnCari.Name = "btnCari";
-            this.btnCari.Size = new System.Drawing.Size(88, 31);
+            this.btnCari.Size = new System.Drawing.Size(88, 36);
             this.btnCari.TabIndex = 21;
             this.btnCari.Text = "CARI";
             this.btnCari.UseVisualStyleBackColor = true;
@@ -278,7 +278,7 @@ namespace Hotel_Harem_SamGun
             // tbCari
             // 
             this.tbCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCari.Location = new System.Drawing.Point(630, 27);
+            this.tbCari.Location = new System.Drawing.Point(648, 27);
             this.tbCari.Name = "tbCari";
             this.tbCari.Size = new System.Drawing.Size(268, 26);
             this.tbCari.TabIndex = 20;
@@ -287,7 +287,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(571, 28);
+            this.label6.Location = new System.Drawing.Point(601, 27);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 20);
             this.label6.TabIndex = 19;

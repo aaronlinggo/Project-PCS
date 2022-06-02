@@ -66,10 +66,9 @@ namespace Hotel_Harem_SamGun
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(20, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(429, 39);
+            this.label1.Size = new System.Drawing.Size(342, 31);
             this.label1.TabIndex = 5;
             this.label1.Text = "PEMESANAN MAKANAN";
             // 
@@ -77,10 +76,9 @@ namespace Hotel_Harem_SamGun
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 126);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(20, 102);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(276, 39);
+            this.label2.Size = new System.Drawing.Size(222, 31);
             this.label2.TabIndex = 6;
             this.label2.Text = "DAFTAR MENU";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -93,14 +91,15 @@ namespace Hotel_Harem_SamGun
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(34, 168);
+            this.dataGridView1.Location = new System.Drawing.Point(26, 136);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(663, 658);
+            this.dataGridView1.Size = new System.Drawing.Size(497, 535);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -108,10 +107,9 @@ namespace Hotel_Harem_SamGun
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(750, 515);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(562, 418);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 25);
+            this.label4.Size = new System.Drawing.Size(133, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "Nama Makanan";
             // 
@@ -119,10 +117,9 @@ namespace Hotel_Harem_SamGun
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(843, 566);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(632, 460);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 25);
+            this.label5.Size = new System.Drawing.Size(58, 20);
             this.label5.TabIndex = 10;
             this.label5.Text = "Harga";
             // 
@@ -130,61 +127,55 @@ namespace Hotel_Harem_SamGun
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(857, 623);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(643, 506);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 25);
+            this.label6.Size = new System.Drawing.Size(46, 20);
             this.label6.TabIndex = 11;
             this.label6.Text = "Stok";
             // 
             // tbNama
             // 
             this.tbNama.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNama.Location = new System.Drawing.Point(921, 510);
-            this.tbNama.Margin = new System.Windows.Forms.Padding(4);
+            this.tbNama.Location = new System.Drawing.Point(691, 414);
             this.tbNama.Name = "tbNama";
             this.tbNama.ReadOnly = true;
-            this.tbNama.Size = new System.Drawing.Size(329, 30);
+            this.tbNama.Size = new System.Drawing.Size(248, 26);
             this.tbNama.TabIndex = 13;
             // 
             // tbHarga
             // 
             this.tbHarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHarga.Location = new System.Drawing.Point(921, 563);
-            this.tbHarga.Margin = new System.Windows.Forms.Padding(4);
+            this.tbHarga.Location = new System.Drawing.Point(691, 457);
             this.tbHarga.Name = "tbHarga";
             this.tbHarga.ReadOnly = true;
-            this.tbHarga.Size = new System.Drawing.Size(329, 30);
+            this.tbHarga.Size = new System.Drawing.Size(248, 26);
             this.tbHarga.TabIndex = 14;
             // 
             // tbStok
             // 
             this.tbStok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbStok.Location = new System.Drawing.Point(921, 620);
-            this.tbStok.Margin = new System.Windows.Forms.Padding(4);
+            this.tbStok.Location = new System.Drawing.Point(691, 504);
             this.tbStok.Name = "tbStok";
             this.tbStok.ReadOnly = true;
-            this.tbStok.Size = new System.Drawing.Size(329, 30);
+            this.tbStok.Size = new System.Drawing.Size(248, 26);
             this.tbStok.TabIndex = 15;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1284, 498);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(963, 405);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(345, 32);
+            this.label7.Size = new System.Drawing.Size(269, 26);
             this.label7.TabIndex = 16;
             this.label7.Text = "Jumlah yang ingin dibeli";
             // 
             // tbPembelian
             // 
             this.tbPembelian.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPembelian.Location = new System.Drawing.Point(1352, 551);
-            this.tbPembelian.Margin = new System.Windows.Forms.Padding(4);
+            this.tbPembelian.Location = new System.Drawing.Point(1014, 448);
             this.tbPembelian.Name = "tbPembelian";
-            this.tbPembelian.Size = new System.Drawing.Size(50, 30);
+            this.tbPembelian.Size = new System.Drawing.Size(38, 26);
             this.tbPembelian.TabIndex = 17;
             this.tbPembelian.Text = "0";
             this.tbPembelian.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -194,9 +185,10 @@ namespace Hotel_Harem_SamGun
             // 
             this.btnMines.Enabled = false;
             this.btnMines.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMines.Location = new System.Drawing.Point(1290, 543);
+            this.btnMines.Location = new System.Drawing.Point(968, 441);
+            this.btnMines.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMines.Name = "btnMines";
-            this.btnMines.Size = new System.Drawing.Size(55, 47);
+            this.btnMines.Size = new System.Drawing.Size(41, 38);
             this.btnMines.TabIndex = 18;
             this.btnMines.Text = "-";
             this.btnMines.UseVisualStyleBackColor = true;
@@ -206,22 +198,24 @@ namespace Hotel_Harem_SamGun
             // 
             this.btnTambah.Enabled = false;
             this.btnTambah.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.Location = new System.Drawing.Point(1290, 596);
+            this.btnTambah.Location = new System.Drawing.Point(968, 484);
+            this.btnTambah.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(368, 51);
+            this.btnTambah.Size = new System.Drawing.Size(276, 41);
             this.btnTambah.TabIndex = 20;
-            this.btnTambah.Text = "Tambah";
+            this.btnTambah.Text = "TAMBAH";
             this.btnTambah.UseVisualStyleBackColor = true;
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // btnBersihkan
             // 
             this.btnBersihkan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBersihkan.Location = new System.Drawing.Point(627, 81);
+            this.btnBersihkan.Location = new System.Drawing.Point(470, 66);
+            this.btnBersihkan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBersihkan.Name = "btnBersihkan";
-            this.btnBersihkan.Size = new System.Drawing.Size(140, 30);
+            this.btnBersihkan.Size = new System.Drawing.Size(105, 24);
             this.btnBersihkan.TabIndex = 21;
-            this.btnBersihkan.Text = "Bersihkan";
+            this.btnBersihkan.Text = "BERSIHKAN";
             this.btnBersihkan.UseVisualStyleBackColor = true;
             this.btnBersihkan.Click += new System.EventHandler(this.btnBersihkan_Click);
             // 
@@ -229,11 +223,12 @@ namespace Hotel_Harem_SamGun
             // 
             this.btnPesan.Enabled = false;
             this.btnPesan.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesan.Location = new System.Drawing.Point(723, 772);
+            this.btnPesan.Location = new System.Drawing.Point(542, 627);
+            this.btnPesan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPesan.Name = "btnPesan";
-            this.btnPesan.Size = new System.Drawing.Size(935, 51);
+            this.btnPesan.Size = new System.Drawing.Size(701, 41);
             this.btnPesan.TabIndex = 22;
-            this.btnPesan.Text = "Pesan";
+            this.btnPesan.Text = "PESAN";
             this.btnPesan.UseVisualStyleBackColor = true;
             this.btnPesan.Click += new System.EventHandler(this.btnPesan_Click);
             // 
@@ -245,14 +240,15 @@ namespace Hotel_Harem_SamGun
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(723, 168);
+            this.dataGridView2.Location = new System.Drawing.Point(542, 136);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(935, 317);
+            this.dataGridView2.Size = new System.Drawing.Size(701, 258);
             this.dataGridView2.TabIndex = 23;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView2_RowsAdded);
@@ -262,10 +258,9 @@ namespace Hotel_Harem_SamGun
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(717, 126);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(538, 102);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(292, 39);
+            this.label8.Size = new System.Drawing.Size(235, 31);
             this.label8.TabIndex = 24;
             this.label8.Text = "ISI KERANJANG";
             // 
@@ -273,9 +268,10 @@ namespace Hotel_Harem_SamGun
             // 
             this.btnPlus.Enabled = false;
             this.btnPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlus.Location = new System.Drawing.Point(1409, 540);
+            this.btnPlus.Location = new System.Drawing.Point(1057, 439);
+            this.btnPlus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(55, 47);
+            this.btnPlus.Size = new System.Drawing.Size(41, 38);
             this.btnPlus.TabIndex = 25;
             this.btnPlus.Text = "+";
             this.btnPlus.UseVisualStyleBackColor = true;
@@ -284,10 +280,9 @@ namespace Hotel_Harem_SamGun
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(1501, 25);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Location = new System.Drawing.Point(1126, 20);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(157, 53);
+            this.button6.Size = new System.Drawing.Size(118, 43);
             this.button6.TabIndex = 26;
             this.button6.Text = "KEMBALI";
             this.button6.UseVisualStyleBackColor = true;
@@ -297,11 +292,12 @@ namespace Hotel_Harem_SamGun
             // 
             this.btnHapus.Enabled = false;
             this.btnHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHapus.Location = new System.Drawing.Point(1290, 656);
+            this.btnHapus.Location = new System.Drawing.Point(968, 533);
+            this.btnHapus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHapus.Name = "btnHapus";
-            this.btnHapus.Size = new System.Drawing.Size(368, 51);
+            this.btnHapus.Size = new System.Drawing.Size(276, 41);
             this.btnHapus.TabIndex = 29;
-            this.btnHapus.Text = "Hapus";
+            this.btnHapus.Text = "HAPUS";
             this.btnHapus.UseVisualStyleBackColor = true;
             this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
@@ -309,42 +305,38 @@ namespace Hotel_Harem_SamGun
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1143, 132);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(857, 107);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(192, 32);
+            this.label9.Size = new System.Drawing.Size(151, 26);
             this.label9.TabIndex = 30;
             this.label9.Text = "Subtotal : Rp";
             // 
             // tbSubtotal
             // 
             this.tbSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSubtotal.Location = new System.Drawing.Point(1343, 129);
-            this.tbSubtotal.Margin = new System.Windows.Forms.Padding(4);
+            this.tbSubtotal.Location = new System.Drawing.Point(1007, 105);
             this.tbSubtotal.Name = "tbSubtotal";
             this.tbSubtotal.ReadOnly = true;
-            this.tbSubtotal.Size = new System.Drawing.Size(315, 38);
+            this.tbSubtotal.Size = new System.Drawing.Size(237, 32);
             this.tbSubtotal.TabIndex = 31;
             this.tbSubtotal.Text = "0";
             // 
             // tbKeterangan
             // 
             this.tbKeterangan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKeterangan.Location = new System.Drawing.Point(921, 677);
-            this.tbKeterangan.Margin = new System.Windows.Forms.Padding(4);
+            this.tbKeterangan.Location = new System.Drawing.Point(691, 550);
             this.tbKeterangan.Name = "tbKeterangan";
             this.tbKeterangan.ReadOnly = true;
-            this.tbKeterangan.Size = new System.Drawing.Size(329, 30);
+            this.tbKeterangan.Size = new System.Drawing.Size(248, 26);
             this.tbKeterangan.TabIndex = 33;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(789, 680);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(592, 552);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 25);
+            this.label3.Size = new System.Drawing.Size(102, 20);
             this.label3.TabIndex = 32;
             this.label3.Text = "Keterangan";
             // 
@@ -352,39 +344,41 @@ namespace Hotel_Harem_SamGun
             // 
             this.cbTamu.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTamu.FormattingEnabled = true;
-            this.cbTamu.Location = new System.Drawing.Point(833, 29);
+            this.cbTamu.Location = new System.Drawing.Point(625, 24);
+            this.cbTamu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbTamu.Name = "cbTamu";
-            this.cbTamu.Size = new System.Drawing.Size(368, 39);
+            this.cbTamu.Size = new System.Drawing.Size(277, 34);
             this.cbTamu.TabIndex = 34;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(718, 32);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(538, 26);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(108, 32);
+            this.label10.Size = new System.Drawing.Size(85, 26);
             this.label10.TabIndex = 35;
             this.label10.Text = "Tamu :";
             // 
             // tbCari
             // 
             this.tbCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCari.Location = new System.Drawing.Point(104, 81);
+            this.tbCari.Location = new System.Drawing.Point(78, 66);
+            this.tbCari.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbCari.Name = "tbCari";
-            this.tbCari.Size = new System.Drawing.Size(392, 30);
+            this.tbCari.Size = new System.Drawing.Size(295, 26);
             this.tbCari.TabIndex = 36;
             this.tbCari.TextChanged += new System.EventHandler(this.tbCari_TextChanged);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(502, 81);
+            this.button1.Location = new System.Drawing.Point(376, 66);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 30);
+            this.button1.Size = new System.Drawing.Size(82, 24);
             this.button1.TabIndex = 38;
-            this.button1.Text = "Cari";
+            this.button1.Text = "CARI";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -392,18 +386,17 @@ namespace Hotel_Harem_SamGun
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(29, 84);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(22, 68);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 25);
+            this.label13.Size = new System.Drawing.Size(55, 20);
             this.label13.TabIndex = 39;
             this.label13.Text = "Nama";
             // 
             // FormPemesananMakanan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1685, 838);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbCari);
@@ -434,6 +427,7 @@ namespace Hotel_Harem_SamGun
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "FormPemesananMakanan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

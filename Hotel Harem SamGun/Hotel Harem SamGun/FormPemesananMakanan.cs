@@ -390,7 +390,7 @@ order by 1 asc";
                     MySqlCommand cmd1 = new MySqlCommand(query, Koneksi.getConn());
                     cmd1.ExecuteNonQuery();
 
-                    int tot_harga = 0;
+                    // int tot_harga = 0;
 
                     MySqlCommand cmd565 = new MySqlCommand();
                     cmd565.CommandText = "select max(id_detail_pemesanan) + 1 from detail_pemesanan_makanan";

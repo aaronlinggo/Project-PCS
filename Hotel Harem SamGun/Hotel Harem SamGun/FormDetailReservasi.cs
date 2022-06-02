@@ -437,6 +437,7 @@ namespace Hotel_Harem_SamGun
             catch (Exception ex)
             {
                 trans.Rollback();
+                Console.WriteLine(ex.Message);
                 MessageBox.Show("Gagal reservasi!", "GAGAL");
             }
         }
@@ -463,6 +464,7 @@ namespace Hotel_Harem_SamGun
             catch (Exception ex)
             {
                 trans.Rollback();
+                Console.WriteLine(ex.Message);
                 MessageBox.Show("Gagal membatalkan reservasi!", "GAGAL");
             }
         }

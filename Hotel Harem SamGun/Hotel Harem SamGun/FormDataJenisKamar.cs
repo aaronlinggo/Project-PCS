@@ -116,15 +116,15 @@ namespace Hotel_Harem_SamGun
         {
             if (selectedIdx > -1)
             {
-                int status;
-                if (rb1.Checked)
-                {
-                    status = 1;
-                }
-                else
-                {
-                    status = 0;
-                }
+                // int status;
+                // if (rb1.Checked)
+                // {
+                //     status = 1;
+                // }
+                // else
+                // {
+                //     status = 0;
+                // }
                 query = $"UPDATE jenis_kamar SET status_jenis_kamar = 99 WHERE id_jenis_kamar = '{tbID.Text}'";
                 cmd = new MySqlCommand(query, conn);
                 cmd.ExecuteNonQuery();

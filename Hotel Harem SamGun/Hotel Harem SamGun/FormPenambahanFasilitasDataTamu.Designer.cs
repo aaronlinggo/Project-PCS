@@ -85,7 +85,7 @@ namespace Hotel_Harem_SamGun
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 49);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Pilih";
+            this.button1.Text = "PILIH";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -96,7 +96,7 @@ namespace Hotel_Harem_SamGun
             this.btnKembali.Name = "btnKembali";
             this.btnKembali.Size = new System.Drawing.Size(119, 49);
             this.btnKembali.TabIndex = 9;
-            this.btnKembali.Text = "Kembali";
+            this.btnKembali.Text = "KEMBALI";
             this.btnKembali.UseVisualStyleBackColor = true;
             this.btnKembali.Click += new System.EventHandler(this.btnKembali_Click);
             // 

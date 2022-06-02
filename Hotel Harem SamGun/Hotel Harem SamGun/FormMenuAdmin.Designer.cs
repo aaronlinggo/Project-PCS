@@ -119,7 +119,7 @@ namespace Hotel_Harem_SamGun
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(560, 72);
             this.btnLogout.TabIndex = 6;
-            this.btnLogout.Text = "Logout";
+            this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
