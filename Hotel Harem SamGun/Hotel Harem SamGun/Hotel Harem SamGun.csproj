@@ -54,9 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataGridViewHelper.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="FormCheckInOut.cs">
       <SubType>Form</SubType>
     </Compile>
