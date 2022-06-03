@@ -351,7 +351,7 @@ namespace Hotel_Harem_SamGun
                 //CHECK JADWAL CHECK IN DAN JADWAL CHECK OUT
                 for (int i = 0; i < dtListedReservasi.Rows.Count; i++)
                 {
-                    if ((dtpJadwalCheckIn.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckIn.Value < (DateTime)dtListedReservasi.Rows[i][1]) || (dtpJadwalCheckOut.Value > (DateTime)dtListedReservasi.Rows[i][0]))
+                    if ((dtpJadwalCheckIn.Value >= (DateTime)dtListedReservasi.Rows[i][0] && dtpJadwalCheckIn.Value < (DateTime)dtListedReservasi.Rows[i][1]) || (dtpJadwalCheckOut.Value <= (DateTime)dtListedReservasi.Rows[i][0]))
                     {
                         return false;
                     }
