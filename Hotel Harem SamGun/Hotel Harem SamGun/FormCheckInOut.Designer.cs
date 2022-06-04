@@ -42,6 +42,7 @@ namespace Hotel_Harem_SamGun
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,6 +114,7 @@ namespace Hotel_Harem_SamGun
             this.dataGridView1.Size = new System.Drawing.Size(1238, 528);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridView1_ColumnAdded);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // radioButton1
             // 
@@ -188,12 +190,23 @@ namespace Hotel_Harem_SamGun
             this.button3.Text = "BERSIHKAN";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(937, 96);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(160, 21);
+            this.checkBox1.TabIndex = 18;
+            this.checkBox1.Text = "Kembalikan Deposito";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // FormCheckInOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
@@ -235,5 +248,6 @@ namespace Hotel_Harem_SamGun
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

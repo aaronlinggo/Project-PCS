@@ -36,6 +36,10 @@ namespace Hotel_Harem_SamGun
             radioButton1.Checked = true;
             radioButton2.Checked = false;
 
+            checkBox1.Checked = true;
+            checkBox1.Enabled = false;
+            checkBox1.Visible = false;
+
             columnName.Add("Kode Reservasi");
             columnName.Add("Nama Tamu");
             columnName.Add("Nomor Kamar");
@@ -49,6 +53,7 @@ namespace Hotel_Harem_SamGun
             columnName.Add("Subtotal Reservasi");
             columnName.Add("Status Reservasi");
             columnName.Add("ID");
+            columnName.Add("Kode Kamar");
 
             dataGridViewSetup();
         }
@@ -82,7 +87,7 @@ namespace Hotel_Harem_SamGun
         {
             try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter("SELECT hr.kode_reservasi, t.nama_tamu, k.nomor_kamar, jk.nama_jenis_kamar, CONCAT(dr.jumlah_penghuni_kamar, ' orang'), DATE_FORMAT(dr.tanggal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.tanggal_check_out, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_out, '%W, %d %M %Y'), CONCAT(DATEDIFF(dr.jadwal_check_out, dr.jadwal_check_in), ' hari'), CONCAT('Rp. ', FORMAT(dr.subtotal_biaya_reservasi, '###,###,###')), dr.status_detail_reservasi, dr.id_detail_reservasi FROM header_reservasi hr RIGHT OUTER JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi LEFT OUTER JOIN kamar k ON dr.kode_kamar = k.kode_kamar LEFT OUTER JOIN tamu t ON hr.kode_tamu = t.kode_tamu LEFT OUTER JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE dr.status_detail_reservasi = @status_detail_reservasi;", Koneksi.getConn());
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT hr.kode_reservasi, t.nama_tamu, k.nomor_kamar, jk.nama_jenis_kamar, CONCAT(dr.jumlah_penghuni_kamar, ' orang'), DATE_FORMAT(dr.tanggal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.tanggal_check_out, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_out, '%W, %d %M %Y'), CONCAT(DATEDIFF(dr.jadwal_check_out, dr.jadwal_check_in), ' hari'), CONCAT('Rp. ', FORMAT(dr.subtotal_biaya_reservasi, '###,###,###')), dr.status_detail_reservasi, dr.id_detail_reservasi, k.kode_kamar FROM header_reservasi hr RIGHT OUTER JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi LEFT OUTER JOIN kamar k ON dr.kode_kamar = k.kode_kamar LEFT OUTER JOIN tamu t ON hr.kode_tamu = t.kode_tamu LEFT OUTER JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE dr.status_detail_reservasi = @status_detail_reservasi;", Koneksi.getConn());
                 da.SelectCommand.Parameters.AddWithValue("@status_detail_reservasi", (radioButton2.Checked) ? 2 : 1);
 
                 dtList = new DataTable();
@@ -138,6 +143,7 @@ namespace Hotel_Harem_SamGun
                 dataGridView1.Columns[10].Visible = false;
                 dataGridView1.Columns[11].Visible = false;
                 dataGridView1.Columns[12].Visible = false;
+                dataGridView1.Columns[13].Visible = false;
             }
             else
             {
@@ -146,6 +152,7 @@ namespace Hotel_Harem_SamGun
                 dataGridView1.Columns[9].Visible = false;
                 dataGridView1.Columns[11].Visible = false;
                 dataGridView1.Columns[12].Visible = false;
+                dataGridView1.Columns[13].Visible = false;
             }
 
             // dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular);
@@ -167,6 +174,7 @@ namespace Hotel_Harem_SamGun
         {
             if (radioButton1.Checked)
             {
+                checkBox1.Visible = false;
                 label1.Text = "KONFIRMASI CHECK IN";
                 button1.Text = "CHECK IN";
                 dataGridViewSetup();
@@ -180,6 +188,8 @@ namespace Hotel_Harem_SamGun
                 label1.Text = "KONFIRMASI CHECK OUT";
                 button1.Text = "CHECK OUT";
                 dataGridViewSetup();
+                checkBox1.Checked = true;
+                checkBox1.Visible = true;
             }
         }
 
@@ -192,36 +202,61 @@ namespace Hotel_Harem_SamGun
                     try
                     {
                         string kode_reservasi = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                        int id_detail_reservasi = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[12].Value);
 
-                        MySqlCommand cmd = new MySqlCommand("SELECT jk.harga_jenis_kamar / 2 FROM kamar k LEFT OUTER JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE k.nomor_kamar = @nomor_kamar", Koneksi.getConn());
-                        cmd.Parameters.AddWithValue("@nomor_kamar", dataGridView1.SelectedRows[0].Cells[2].Value);
-                        int harga_jenis_kamar = Convert.ToInt32(cmd.ExecuteScalar());
+                        MySqlCommand cmd = new MySqlCommand("SELECT dr.jadwal_check_in FROM detail_reservasi dr WHERE dr.id_detail_reservasi = @id_detail_reservasi;", Koneksi.getConn());
+                        cmd.Parameters.AddWithValue("@id_detail_reservasi", id_detail_reservasi);
+                        DateTime jadwal_check_in = Convert.ToDateTime(cmd.ExecuteScalar().ToString());
 
-                        cmd = new MySqlCommand("UPDATE detail_reservasi SET tanggal_check_in = @tanggal_check_in, subtotal_biaya_reservasi = @subtotal_biaya_reservasi, status_detail_reservasi = @status_detail_reservasi WHERE id_detail_reservasi = @id_detail_reservasi;", Koneksi.getConn());
-                        cmd.Parameters.AddWithValue("@tanggal_check_in", DateTime.Now.ToString("yyyy-MM-dd"));
-                        cmd.Parameters.AddWithValue("@subtotal_biaya_reservasi", harga_jenis_kamar);
-                        cmd.Parameters.AddWithValue("@status_detail_reservasi", 2);
-                        cmd.Parameters.AddWithValue("@id_detail_reservasi", dataGridView1.SelectedRows[0].Cells[12].Value);
-                        cmd.ExecuteNonQuery();
+                        if (DateTime.Now.Date < jadwal_check_in.Date)
+                        {
+                            obTrans.Rollback();
+                            MessageBox.Show("Check-in tidak boleh di luar jadwal yang sudah direservasi!", "Gagal");
+                        }
+                        else
+                        {
+                            cmd = new MySqlCommand("SELECT COUNT(dr.kode_kamar) FROM detail_reservasi dr WHERE dr.kode_kamar = @kode_kamar AND dr.status_detail_reservasi = 2;", Koneksi.getConn());
+                            cmd.Parameters.AddWithValue("@kode_kamar", dataGridView1.SelectedRows[0].Cells[13].Value.ToString());
+                            int activeReservation = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        cmd = new MySqlCommand("SELECT hr.total_biaya_reservasi FROM header_reservasi hr WHERE hr.kode_reservasi = @kode_reservasi;", Koneksi.getConn());
-                        cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
-                        int total_biaya_reservasi = Convert.ToInt32(cmd.ExecuteScalar());
+                            if (activeReservation != 0)
+                            {
+                                obTrans.Rollback();
+                                MessageBox.Show("Kamar masih ditempati/belum kosong!", "Gagal");
+                            }
+                            else
+                            {
+                                cmd = new MySqlCommand("SELECT jk.harga_jenis_kamar / 2 FROM kamar k LEFT OUTER JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE k.nomor_kamar = @nomor_kamar;", Koneksi.getConn());
+                                cmd.Parameters.AddWithValue("@nomor_kamar", dataGridView1.SelectedRows[0].Cells[2].Value);
+                                int harga_jenis_kamar = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        cmd = new MySqlCommand("UPDATE header_reservasi SET total_biaya_reservasi = @total_biaya_reservasi WHERE kode_reservasi = @kode_reservasi;", Koneksi.getConn());
-                        cmd.Parameters.AddWithValue("@total_biaya_reservasi", total_biaya_reservasi + harga_jenis_kamar);
-                        cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
-                        cmd.ExecuteNonQuery();
+                                cmd = new MySqlCommand("UPDATE detail_reservasi SET tanggal_check_in = @tanggal_check_in, subtotal_biaya_reservasi = @subtotal_biaya_reservasi, status_detail_reservasi = @status_detail_reservasi WHERE id_detail_reservasi = @id_detail_reservasi;", Koneksi.getConn());
+                                cmd.Parameters.AddWithValue("@tanggal_check_in", DateTime.Now.ToString("yyyy-MM-dd"));
+                                cmd.Parameters.AddWithValue("@subtotal_biaya_reservasi", harga_jenis_kamar);
+                                cmd.Parameters.AddWithValue("@status_detail_reservasi", 2);
+                                cmd.Parameters.AddWithValue("@id_detail_reservasi", id_detail_reservasi);
+                                cmd.ExecuteNonQuery();
 
-                        obTrans.Commit();
-                        MessageBox.Show("Berhasil check-in!", "Berhasil");
+                                cmd = new MySqlCommand("SELECT hr.total_biaya_reservasi FROM header_reservasi hr WHERE hr.kode_reservasi = @kode_reservasi;", Koneksi.getConn());
+                                cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                                int total_biaya_reservasi = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        dataGridViewSetup();
+                                cmd = new MySqlCommand("UPDATE header_reservasi SET total_biaya_reservasi = @total_biaya_reservasi WHERE kode_reservasi = @kode_reservasi;", Koneksi.getConn());
+                                cmd.Parameters.AddWithValue("@total_biaya_reservasi", total_biaya_reservasi + harga_jenis_kamar);
+                                cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                                cmd.ExecuteNonQuery();
+
+                                obTrans.Commit();
+                                MessageBox.Show("Berhasil check-in!", "Berhasil");
+
+                                dataGridViewSetup();
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
                         obTrans.Rollback();
+                        Console.WriteLine(ex.Message);
                         MessageBox.Show("Tidak ada data yang sedang dipilih!", "Gagal");
                     }
                 }
@@ -232,21 +267,76 @@ namespace Hotel_Harem_SamGun
                 {
                     try
                     {
-                        Console.WriteLine(dataGridView1.SelectedRows[0].Cells[0].Value);
+                        // status detail extra fasilitas
+                        string kode_reservasi = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                        int id_detail_reservasi = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[12].Value);
 
-                        // MySqlCommand cmd = new MySqlCommand("UPDATE detail_reservasi SET status_detail_reservasi = 0 WHERE kode_reservasi = @kode;", Koneksi.getConn());
-                        // cmd.Parameters.AddWithValue("@kode", dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-                        // cmd.ExecuteNonQuery();
+                        MySqlCommand cmd = new MySqlCommand("SELECT dr.subtotal_biaya_reservasi FROM detail_reservasi dr WHERE dr.id_detail_reservasi = @id_detail_reservasi;", Koneksi.getConn());
+                        cmd.Parameters.AddWithValue("@id_detail_reservasi", id_detail_reservasi);
+                        int subtotal_biaya_reservasi = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        // obTrans.Commit();
-                        // MessageBox.Show("Berhasil check-out!", "Berhasil");
+                        cmd = new MySqlCommand("SELECT IFNULL(SUM(def.subtotal_extra_fasilitas), 0) FROM detail_extra_fasilitas def LEFT OUTER JOIN header_extra_fasilitas hef ON def.id_header_extra_fasilitas = hef.id_header_extra_fasilitas WHERE hef.kode_reservasi = @kode_reservasi AND def.kode_kamar = @kode_kamar AND def.status_detail = @status_detail;", Koneksi.getConn());
+                        cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                        cmd.Parameters.AddWithValue("@kode_kamar", dataGridView1.SelectedRows[0].Cells[13].Value.ToString());
+                        cmd.Parameters.AddWithValue("@status_detail", 1);
+                        int subtotal_extra_fasilitas = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        cmd = new MySqlCommand("UPDATE detail_reservasi SET tanggal_check_out = @tanggal_check_out, subtotal_biaya_reservasi = @subtotal_biaya_reservasi, status_detail_reservasi = @status_detail_reservasi WHERE id_detail_reservasi = @id_detail_reservasi;", Koneksi.getConn());
+                        cmd.Parameters.AddWithValue("@tanggal_check_out", DateTime.Now.ToString("yyyy-MM-dd"));
+                        cmd.Parameters.AddWithValue("@subtotal_biaya_reservasi", subtotal_biaya_reservasi + subtotal_extra_fasilitas);
+                        cmd.Parameters.AddWithValue("@status_detail_reservasi", 0);
+                        cmd.Parameters.AddWithValue("@id_detail_reservasi", id_detail_reservasi);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new MySqlCommand("SELECT hr.total_biaya_reservasi FROM header_reservasi hr WHERE hr.kode_reservasi = @kode_reservasi;", Koneksi.getConn());
+                        cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                        int total_biaya_reservasi = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        cmd = new MySqlCommand("UPDATE header_reservasi SET total_biaya_reservasi = @total_biaya_reservasi WHERE kode_reservasi = @kode_reservasi;", Koneksi.getConn());
+                        cmd.Parameters.AddWithValue("@total_biaya_reservasi", total_biaya_reservasi + subtotal_extra_fasilitas);
+                        cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new MySqlCommand("SELECT COUNT(*) FROM detail_reservasi dr WHERE dr.kode_reservasi = @kode_reservasi AND (dr.status_detail_reservasi = 1 OR dr.status_detail_reservasi = 2);", Koneksi.getConn());
+                        cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                        int activeReservation = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        if (activeReservation == 0)
+                        {
+                            cmd = new MySqlCommand("UPDATE header_reservasi SET status_header_reservasi = 0 WHERE kode_reservasi = @kode_reservasi;", Koneksi.getConn());
+                            cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        if (checkBox1.Checked)
+                        {
+                            cmd = new MySqlCommand("SELECT dr.deposito FROM detail_reservasi dr WHERE dr.id_detail_reservasi = @id_detail_reservasi;", Koneksi.getConn());
+                            cmd.Parameters.AddWithValue("@id_detail_reservasi", id_detail_reservasi);
+                            int deposito = Convert.ToInt32(cmd.ExecuteScalar());
+
+                            cmd = new MySqlCommand("SELECT hr.total_biaya_reservasi FROM header_reservasi hr WHERE hr.kode_reservasi = @kode_reservasi;", Koneksi.getConn());
+                            cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                            total_biaya_reservasi = Convert.ToInt32(cmd.ExecuteScalar());
+
+                            cmd = new MySqlCommand("UPDATE header_reservasi SET total_biaya_reservasi = @total_biaya_reservasi WHERE kode_reservasi = @kode_reservasi;", Koneksi.getConn());
+                            cmd.Parameters.AddWithValue("@total_biaya_reservasi", total_biaya_reservasi - deposito);
+                            cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                            cmd.ExecuteNonQuery();
+
+                            cmd = new MySqlCommand("UPDATE detail_reservasi SET deposito = 0 WHERE id_detail_reservasi = @id_detail_reservasi;", Koneksi.getConn());
+                            cmd.Parameters.AddWithValue("@id_detail_reservasi", id_detail_reservasi);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        obTrans.Commit();
+                        MessageBox.Show("Berhasil check-out!", "Berhasil");
 
                         dataGridViewSetup();
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
                         obTrans.Rollback();
+                        Console.WriteLine(ex.Message);
                         MessageBox.Show("Tidak ada data yang sedang dipilih!", "Gagal");
                     }
                 }
@@ -261,6 +351,18 @@ namespace Hotel_Harem_SamGun
         private void dataGridView1_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
         {
             dataGridView1.Columns[e.Column.Index].SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                checkBox1.Enabled = true;
+            }
+            else
+            {
+                checkBox1.Enabled = false;
+            }
         }
     }
 }
