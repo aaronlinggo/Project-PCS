@@ -276,7 +276,8 @@ namespace Hotel_Harem_SamGun
             {
                 this.Hide();
                 FormDetailFasilitasJenisKamar form = new FormDetailFasilitasJenisKamar(this);
-                form.Show();
+                form.ShowDialog();
+                this.Show();
             }
             else
             {

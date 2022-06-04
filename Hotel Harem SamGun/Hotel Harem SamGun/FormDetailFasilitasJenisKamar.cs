@@ -182,6 +182,11 @@ namespace Hotel_Harem_SamGun
             selectedIdx2 = -1;
         }
 
+        private void btnKembali_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnBersihkan_Click(object sender, EventArgs e)
         {
             refreshDGVFasilitas();

@@ -57,9 +57,9 @@ namespace Hotel_Harem_SamGun
             // btnBersihkan
             // 
             this.btnBersihkan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBersihkan.Location = new System.Drawing.Point(1005, 16);
+            this.btnBersihkan.Location = new System.Drawing.Point(1008, 16);
             this.btnBersihkan.Name = "btnBersihkan";
-            this.btnBersihkan.Size = new System.Drawing.Size(118, 43);
+            this.btnBersihkan.Size = new System.Drawing.Size(116, 43);
             this.btnBersihkan.TabIndex = 14;
             this.btnBersihkan.Text = "BERSIHKAN";
             this.btnBersihkan.UseVisualStyleBackColor = true;
@@ -68,9 +68,9 @@ namespace Hotel_Harem_SamGun
             // btnUbah
             // 
             this.btnUbah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUbah.Location = new System.Drawing.Point(296, 601);
+            this.btnUbah.Location = new System.Drawing.Point(292, 601);
             this.btnUbah.Name = "btnUbah";
-            this.btnUbah.Size = new System.Drawing.Size(105, 43);
+            this.btnUbah.Size = new System.Drawing.Size(116, 43);
             this.btnUbah.TabIndex = 13;
             this.btnUbah.Text = "UBAH";
             this.btnUbah.UseVisualStyleBackColor = true;
@@ -198,7 +198,7 @@ namespace Hotel_Harem_SamGun
             this.btnTambah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTambah.Location = new System.Drawing.Point(26, 601);
             this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(105, 43);
+            this.btnTambah.Size = new System.Drawing.Size(116, 43);
             this.btnTambah.TabIndex = 10;
             this.btnTambah.Text = "TAMBAH";
             this.btnTambah.UseVisualStyleBackColor = true;
@@ -207,9 +207,9 @@ namespace Hotel_Harem_SamGun
             // btnHapus
             // 
             this.btnHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHapus.Location = new System.Drawing.Point(150, 601);
+            this.btnHapus.Location = new System.Drawing.Point(158, 601);
             this.btnHapus.Name = "btnHapus";
-            this.btnHapus.Size = new System.Drawing.Size(118, 43);
+            this.btnHapus.Size = new System.Drawing.Size(116, 43);
             this.btnHapus.TabIndex = 9;
             this.btnHapus.Text = "HAPUS";
             this.btnHapus.UseVisualStyleBackColor = true;
@@ -234,9 +234,9 @@ namespace Hotel_Harem_SamGun
             // btnKembali
             // 
             this.btnKembali.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnKembali.Location = new System.Drawing.Point(1140, 17);
+            this.btnKembali.Location = new System.Drawing.Point(1129, 17);
             this.btnKembali.Name = "btnKembali";
-            this.btnKembali.Size = new System.Drawing.Size(105, 43);
+            this.btnKembali.Size = new System.Drawing.Size(116, 43);
             this.btnKembali.TabIndex = 15;
             this.btnKembali.Text = "KEMBALI";
             this.btnKembali.UseVisualStyleBackColor = true;
@@ -245,7 +245,7 @@ namespace Hotel_Harem_SamGun
             // tbCari
             // 
             this.tbCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCari.Location = new System.Drawing.Point(550, 25);
+            this.tbCari.Location = new System.Drawing.Point(531, 24);
             this.tbCari.Name = "tbCari";
             this.tbCari.Size = new System.Drawing.Size(334, 26);
             this.tbCari.TabIndex = 17;
@@ -254,7 +254,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(491, 27);
+            this.label4.Location = new System.Drawing.Point(472, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 20);
             this.label4.TabIndex = 16;
@@ -263,9 +263,9 @@ namespace Hotel_Harem_SamGun
             // btnCari
             // 
             this.btnCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCari.Location = new System.Drawing.Point(900, 22);
+            this.btnCari.Location = new System.Drawing.Point(883, 16);
             this.btnCari.Name = "btnCari";
-            this.btnCari.Size = new System.Drawing.Size(88, 31);
+            this.btnCari.Size = new System.Drawing.Size(116, 43);
             this.btnCari.TabIndex = 18;
             this.btnCari.Text = "CARI";
             this.btnCari.UseVisualStyleBackColor = true;
@@ -273,12 +273,12 @@ namespace Hotel_Harem_SamGun
             // 
             // btnFasilitas
             // 
-            this.btnFasilitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFasilitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnFasilitas.Location = new System.Drawing.Point(1122, 601);
             this.btnFasilitas.Name = "btnFasilitas";
-            this.btnFasilitas.Size = new System.Drawing.Size(130, 43);
+            this.btnFasilitas.Size = new System.Drawing.Size(116, 43);
             this.btnFasilitas.TabIndex = 26;
-            this.btnFasilitas.Text = "UBAH FASILITAS";
+            this.btnFasilitas.Text = "FASILITAS";
             this.btnFasilitas.UseVisualStyleBackColor = true;
             this.btnFasilitas.Click += new System.EventHandler(this.btnFasilitas_Click);
             // 

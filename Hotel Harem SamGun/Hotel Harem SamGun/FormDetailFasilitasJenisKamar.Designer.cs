@@ -126,6 +126,7 @@ namespace Hotel_Harem_SamGun
             this.btnKembali.TabIndex = 14;
             this.btnKembali.Text = "KEMBALI";
             this.btnKembali.UseVisualStyleBackColor = true;
+            this.btnKembali.Click += new System.EventHandler(this.btnKembali_Click);
             // 
             // label3
             // 
@@ -143,9 +144,9 @@ namespace Hotel_Harem_SamGun
             this.lblJenisKamar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold);
             this.lblJenisKamar.Location = new System.Drawing.Point(199, 59);
             this.lblJenisKamar.Name = "lblJenisKamar";
-            this.lblJenisKamar.Size = new System.Drawing.Size(159, 26);
+            this.lblJenisKamar.Size = new System.Drawing.Size(40, 26);
             this.lblJenisKamar.TabIndex = 17;
-            this.lblJenisKamar.Text = "Jenis Kamar :";
+            this.lblJenisKamar.Text = "....";
             // 
             // label2
             // 

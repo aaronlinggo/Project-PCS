@@ -98,6 +98,7 @@ namespace Hotel_Harem_SamGun
             tbHarga.Text = "";
             numJumlah.Value = 0;
             hitungSubtotal();
+            dgvFasilitas.SelectedRows.Count = -1;
         }
 
         public void hitungSubtotal()
@@ -130,6 +131,7 @@ namespace Hotel_Harem_SamGun
         private void btnBersihkan_Click(object sender, EventArgs e)
         {
             dgvKeranjang.Rows.Clear();
+            hitungSubtotal();
         }
 
         private void btnHapus_Click(object sender, EventArgs e)
@@ -138,6 +140,7 @@ namespace Hotel_Harem_SamGun
             {
                 dgvKeranjang.Rows.RemoveAt(selectedIdxKeranjang);
             }
+            hitungSubtotal();
         }
 
         private void dgvKeranjang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -190,7 +193,7 @@ namespace Hotel_Harem_SamGun
 
                     int subtotal = harga * Convert.ToInt32(dgvKeranjang.Rows[i].Cells[3].Value.ToString());
 
-                    cmd.CommandText = "INSERT INTO detail_extra_fasilitas (id_detail_extra_fasilitas, id_header_extra_fasilitas, kode_kamar, id_extra_fasilitas, jumlah_extra_fasilitas, subtotal_extra_fasilitas) VALUES (@id_use, @id_header, @kode_kamar, @id_extra, @jumlah, @subtotal)";
+                    cmd.CommandText = "INSERT INTO detail_extra_fasilitas (id_detail_extra_fasilitas, id_header_extra_fasilitas, kode_kamar, id_extra_fasilitas, jumlah_extra_fasilitas, subtotal_extra_fasilitas, status_detail) VALUES (@id_use, @id_header, @kode_kamar, @id_extra, @jumlah, @subtotal,1)";
                     cmd.Parameters.Add(new MySqlParameter("@id_use", new_id_use));
                     cmd.Parameters.Add(new MySqlParameter("@id_header", id_header));
                     cmd.Parameters.Add(new MySqlParameter("@kode_kamar", kode_kamar));
@@ -237,6 +240,7 @@ namespace Hotel_Harem_SamGun
             selectedIdxFasilitas = -1;
             selectedIdxKeranjang = -1;
             refreshDGV();
+            resetField();
             tbCari.Text = "";
         }
 
@@ -292,7 +296,13 @@ namespace Hotel_Harem_SamGun
                         else
                         {
                             dgvKeranjang.Rows[idxRow].Cells[3].Value = jumlah;
-                            dgvKeranjang.Rows[idxRow].Cells[4].Value = (Convert.ToInt32(dgvKeranjang.Rows[idxRow].Cells[3].Value.ToString()) * Convert.ToInt32(tbHarga.Text));
+                            cmd.CommandText = $"SELECT harga_extra_fasilitas FROM extra_fasilitas WHERE id_extra_fasilitas = '{tbID.Text}'";
+                            cmd.Connection = conn;
+                            int harga = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                            cmd = new MySqlCommand();
+                            cmd.CommandText = $"SELECT CONCAT('Rp ', FORMAT({jumlah * Convert.ToInt32(harga)},0,'de_DE')) FROM DUAL";
+                            cmd.Connection = conn;
+                            dgvKeranjang.Rows[idxRow].Cells[4].Value = cmd.ExecuteScalar().ToString();
                             resetField();
                         }
                     }

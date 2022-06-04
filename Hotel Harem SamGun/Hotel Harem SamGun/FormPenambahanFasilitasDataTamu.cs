@@ -32,7 +32,7 @@ namespace Hotel_Harem_SamGun
         {
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "SELECT id_header_reservasi, hr.kode_reservasi, nama_tamu, nomor_kamar, nama_jenis_kamar, DATE_FORMAT(tanggal_check_in,'%W, %d %M %Y') FROM header_reservasi hr JOIN tamu t ON t.kode_tamu = hr.kode_tamu JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi JOIN kamar k ON k.kode_kamar = dr.kode_kamar  JOIN jenis_kamar jk ON jk.id_jenis_kamar = k.id_jenis_kamar WHERE tanggal_check_in IS NOT NULL AND tanggal_check_out IS NULL";
+            cmd.CommandText = "SELECT id_detail_reservasi, hr.kode_reservasi, nama_tamu, nomor_kamar, nama_jenis_kamar, DATE_FORMAT(tanggal_check_in,'%W, %d %M %Y') FROM header_reservasi hr JOIN tamu t ON t.kode_tamu = hr.kode_tamu JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi JOIN kamar k ON k.kode_kamar = dr.kode_kamar  JOIN jenis_kamar jk ON jk.id_jenis_kamar = k.id_jenis_kamar WHERE tanggal_check_in IS NOT NULL AND tanggal_check_out IS NULL";
             dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -55,7 +55,7 @@ namespace Hotel_Harem_SamGun
         {
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = $"SELECT id_header_reservasi, hr.kode_reservasi, nama_tamu, nomor_kamar, nama_jenis_kamar, DATE_FORMAT(tanggal_check_in,'%W, %d %M %Y') FROM header_reservasi hr JOIN tamu t ON t.kode_tamu = hr.kode_tamu JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi JOIN kamar k ON k.kode_kamar = dr.kode_kamar  JOIN jenis_kamar jk ON jk.id_jenis_kamar = k.id_jenis_kamar WHERE tanggal_check_in IS NOT NULL AND tanggal_check_out IS NULL AND nama_tamu LIKE'%{tamu}%' AND nomor_kamar LIKE '%{no_kamar}%'";
+            cmd.CommandText = $"SELECT id_detail_reservasi, hr.kode_reservasi, nama_tamu, nomor_kamar, nama_jenis_kamar, DATE_FORMAT(tanggal_check_in,'%W, %d %M %Y') FROM header_reservasi hr JOIN tamu t ON t.kode_tamu = hr.kode_tamu JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi JOIN kamar k ON k.kode_kamar = dr.kode_kamar  JOIN jenis_kamar jk ON jk.id_jenis_kamar = k.id_jenis_kamar WHERE tanggal_check_in IS NOT NULL AND tanggal_check_out IS NULL AND nama_tamu LIKE'%{tamu}%' AND nomor_kamar LIKE '%{no_kamar}%'";
             dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -86,8 +86,8 @@ namespace Hotel_Harem_SamGun
             int selectedIdx = dataGridView1.CurrentCell.RowIndex; 
             id_reservasi = Convert.ToInt32(dataGridView1.Rows[selectedIdx].Cells[0].Value.ToString());
             FormPenambahanFasilitasKamar form = new FormPenambahanFasilitasKamar(this);
-            form.Show();
-            
+            form.ShowDialog();
+            this.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)

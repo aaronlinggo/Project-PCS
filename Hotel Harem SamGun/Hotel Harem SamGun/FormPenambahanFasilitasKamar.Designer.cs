@@ -173,7 +173,7 @@ namespace Hotel_Harem_SamGun
             this.btnKembali.Name = "btnKembali";
             this.btnKembali.Size = new System.Drawing.Size(118, 36);
             this.btnKembali.TabIndex = 14;
-            this.btnKembali.Text = "KEMBALi";
+            this.btnKembali.Text = "KEMBALI";
             this.btnKembali.UseVisualStyleBackColor = true;
             this.btnKembali.Click += new System.EventHandler(this.btnKembali_Click);
             // 
