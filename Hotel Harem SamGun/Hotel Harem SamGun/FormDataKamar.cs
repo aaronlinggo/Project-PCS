@@ -18,6 +18,7 @@ namespace Hotel_Harem_SamGun
         string query;
         DataTable dt;
         int selectedIdx = -1;
+        public string fontName = "Gill Sans MT";
 
         public FormDataKamar()
         {
@@ -34,21 +35,39 @@ namespace Hotel_Harem_SamGun
             generateKode();
         }
 
+        private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
+        {
+            dataGridView.Font = new Font(fontName, fontSize, dataGridView.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
+
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+
+            foreach (DataGridViewRow r in dataGridView.Rows)
+            {
+                r.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            }
+
+            return dataGridView;
+        }
 
         public void resetTampilan()
         {
-            tbID.Text = "";
+            tbID.Text = "-";
             comboJenisKamar.SelectedIndex = 0;
             numKamarKe.Value = 0;
             numLantai.Value = 0;
             rb1.Checked = true;
-            tbKode.Text = "";
-            tbNoKamar.Text = "";
+            tbKode.Text = "-";
+            tbNoKamar.Text = "-";
             selectedIdx = -1;
         }
 
         public void refreshDGV()
         {
+            dgvKamar.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvKamar.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvKamar.EnableHeadersVisualStyles = false;
+
             dt = new DataTable();
             query = "SELECT id_kamar, kode_kamar, nomor_kamar, nomor_lantai, nama_jenis_kamar, CONCAT('Rp ', FORMAT(harga_jenis_kamar,0,'de_DE')), IF(status_kamar=1,'Tersedia','Tidak tersedia') FROM kamar k JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar ORDER BY id_kamar";
             cmd = new MySqlCommand(query, conn);
@@ -70,6 +89,7 @@ namespace Hotel_Harem_SamGun
             dgvKamar.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvKamar.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
+            dgvKamar = UpdateDataGridViewFont(dgvKamar, 16F);
         }
 
         public void searchDGV(string keyword)
