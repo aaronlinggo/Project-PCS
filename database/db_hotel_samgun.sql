@@ -27,6 +27,7 @@ CREATE TABLE `detail_extra_fasilitas` (
   `id_extra_fasilitas` int(11) NOT NULL,
   `jumlah_extra_fasilitas` int(5) NOT NULL,
   `subtotal_extra_fasilitas` int(16) NOT NULL,
+  `status_detail` int(2) NOT NULL,
   PRIMARY KEY (`id_detail_extra_fasilitas`),
   KEY `id_header_extra_fasilitas` (`id_header_extra_fasilitas`) USING BTREE,
   KEY `kode_kamar` (`kode_kamar`),
@@ -38,14 +39,14 @@ CREATE TABLE `detail_extra_fasilitas` (
 
 /*Data for the table `detail_extra_fasilitas` */
 
-insert  into `detail_extra_fasilitas`(`id_detail_extra_fasilitas`,`id_header_extra_fasilitas`,`kode_kamar`,`id_extra_fasilitas`,`jumlah_extra_fasilitas`,`subtotal_extra_fasilitas`) values 
-(1,1,'PRT605',10,1,650000),
-(2,2,'CLK716',3,1,118000),
-(3,3,'PRS1210',2,1,338000),
-(4,3,'PRS1210',5,1,248000),
-(5,3,'PRS1211',7,2,50000),
-(6,3,'PRS1212',8,2,40000),
-(7,3,'PRS1212',1,1,278000);
+insert  into `detail_extra_fasilitas`(`id_detail_extra_fasilitas`,`id_header_extra_fasilitas`,`kode_kamar`,`id_extra_fasilitas`,`jumlah_extra_fasilitas`,`subtotal_extra_fasilitas`,`status_detail`) values 
+(1,1,'PRT605',10,1,650000,0),
+(2,2,'CLK716',3,1,118000,1),
+(3,3,'PRS1210',2,1,338000,1),
+(4,3,'PRS1210',5,1,248000,1),
+(5,3,'PRS1211',7,2,50000,1),
+(6,3,'PRS1212',8,2,40000,1),
+(7,3,'PRS1212',1,1,278000,1);
 
 /*Table structure for table `detail_fasilitas` */
 
@@ -615,7 +616,7 @@ CREATE TABLE `detail_reservasi` (
   KEY `kode_kamar` (`kode_kamar`),
   CONSTRAINT `detail_reservasi_ibfk_1` FOREIGN KEY (`kode_reservasi`) REFERENCES `header_reservasi` (`kode_reservasi`),
   CONSTRAINT `detail_reservasi_ibfk_2` FOREIGN KEY (`kode_kamar`) REFERENCES `kamar` (`kode_kamar`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `detail_reservasi` */
 
@@ -635,7 +636,10 @@ insert  into `detail_reservasi`(`id_detail_reservasi`,`kode_reservasi`,`kode_kam
 (13,'RSV160522LJ1210','PRS1210',1,4550000,500000,'2022-05-16','2022-05-21','2022-05-16',NULL,5136000,2),
 (14,'RSV160522LJ1210','PRS1211',1,4550000,500000,'2022-05-16','2022-05-21','2022-05-16',NULL,4600000,2),
 (15,'RSV160522LJ1210','PRS1212',1,4550000,500000,'2022-05-16','2022-05-21','2022-05-16',NULL,4868000,2),
-(16,'RSV160522LH1214','PRS1214',1,4550000,500000,'2022-05-16','2022-05-22','2022-05-16',NULL,4550000,2);
+(16,'RSV160522LH1214','PRS1214',1,4550000,500000,'2022-05-16','2022-05-22','2022-05-16',NULL,4550000,2),
+(17,'RSV030622KM1111','ROS1111',2,1800000,500000,'2022-06-03','2022-06-06','2022-06-04',NULL,1800000,2),
+(18,'RSV030622KM1111','PRS1212',1,4550000,500000,'2022-06-05','2022-06-10',NULL,NULL,0,1),
+(19,'RSV030622KM1111','ROS1111',2,1800000,500000,'2022-06-09','2022-06-12',NULL,NULL,0,1);
 
 /*Table structure for table `extra_fasilitas` */
 
@@ -828,7 +832,7 @@ CREATE TABLE `header_reservasi` (
   KEY `kode_karyawan` (`kode_karyawan`),
   CONSTRAINT `header_reservasi_ibfk_1` FOREIGN KEY (`kode_tamu`) REFERENCES `tamu` (`kode_tamu`),
   CONSTRAINT `header_reservasi_ibfk_2` FOREIGN KEY (`kode_karyawan`) REFERENCES `karyawan` (`kode_karyawan`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `header_reservasi` */
 
@@ -846,7 +850,8 @@ insert  into `header_reservasi`(`id_header_reservasi`,`kode_reservasi`,`kode_tam
 (11,'RSV040522MM0716','MYMI001',2228000,'RE003',1),
 (12,'RSV070522SY0406','SUYU001',1030000,'RE002',1),
 (13,'RSV160522LJ1210','LEJI001',29754000,'RE002',1),
-(14,'RSV160522LH1214','LEHY001',9600000,'RE003',1);
+(14,'RSV160522LH1214','LEHY001',9600000,'RE003',1),
+(15,'RSV030622KM1111','KIMI001',11450000,'RE001',1);
 
 /*Table structure for table `jenis_kamar` */
 
