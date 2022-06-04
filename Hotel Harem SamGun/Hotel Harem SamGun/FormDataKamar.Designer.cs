@@ -356,7 +356,7 @@ namespace Hotel_Harem_SamGun
             this.btnKembali.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKembali.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKembali.ForeColor = System.Drawing.Color.White;
-            this.btnKembali.Location = new System.Drawing.Point(1139, 15);
+            this.btnKembali.Location = new System.Drawing.Point(1139, 13);
             this.btnKembali.Name = "btnKembali";
             this.btnKembali.Size = new System.Drawing.Size(105, 33);
             this.btnKembali.TabIndex = 16;
