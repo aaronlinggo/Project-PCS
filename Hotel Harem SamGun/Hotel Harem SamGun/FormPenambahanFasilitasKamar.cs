@@ -98,7 +98,6 @@ namespace Hotel_Harem_SamGun
             tbHarga.Text = "";
             numJumlah.Value = 0;
             hitungSubtotal();
-            dgvFasilitas.SelectedRows.Count = -1;
         }
 
         public void hitungSubtotal()
