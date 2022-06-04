@@ -35,7 +35,7 @@ CREATE TABLE `detail_extra_fasilitas` (
   CONSTRAINT `detail_extra_fasilitas_ibfk_1` FOREIGN KEY (`id_header_extra_fasilitas`) REFERENCES `header_extra_fasilitas` (`id_header_extra_fasilitas`),
   CONSTRAINT `detail_extra_fasilitas_ibfk_2` FOREIGN KEY (`kode_kamar`) REFERENCES `kamar` (`kode_kamar`),
   CONSTRAINT `detail_extra_fasilitas_ibfk_3` FOREIGN KEY (`id_extra_fasilitas`) REFERENCES `extra_fasilitas` (`id_extra_fasilitas`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `detail_extra_fasilitas` */
 
@@ -45,16 +45,21 @@ insert  into `detail_extra_fasilitas`(`id_detail_extra_fasilitas`,`id_header_ext
 (3,3,'PRS1210',2,1,338000,1),
 (4,3,'PRS1210',5,1,248000,1),
 (5,3,'PRS1211',7,2,50000,1),
-(6,3,'PRS1212',8,2,40000,1),
-(7,3,'PRS1212',1,1,278000,1),
-(8,4,'PRS1212',1,1,278000,1),
-(9,4,'PRS1212',3,1,118000,1),
-(10,4,'PRS1212',4,1,288000,1),
-(11,4,'PRS1212',5,1,248000,1),
-(12,4,'PRS1212',7,3,75000,1),
-(13,4,'ROS1111',8,1,20000,1),
-(14,4,'ROS1111',7,1,25000,1),
-(15,4,'ROS1111',3,1,118000,1);
+(6,3,'PRS1212',8,2,40000,0),
+(7,3,'PRS1212',1,1,278000,0),
+(8,4,'PRS1212',1,1,278000,0),
+(9,4,'PRS1212',3,1,118000,0),
+(10,4,'PRS1212',4,1,288000,0),
+(11,4,'PRS1212',5,1,248000,0),
+(12,4,'PRS1212',7,3,75000,0),
+(13,4,'ROS1111',8,1,20000,0),
+(14,4,'ROS1111',7,1,25000,0),
+(15,4,'ROS1111',3,1,118000,0),
+(16,4,'ROS1111',3,2,236000,0),
+(17,4,'ROS1111',4,2,576000,0),
+(18,4,'ROS1111',5,2,496000,0),
+(19,4,'ROS1111',6,2,156000,0),
+(20,4,'ROS1111',7,4,100000,0);
 
 /*Table structure for table `detail_fasilitas` */
 
@@ -645,9 +650,9 @@ insert  into `detail_reservasi`(`id_detail_reservasi`,`kode_reservasi`,`kode_kam
 (14,'RSV160522LJ1210','PRS1211',1,4550000,500000,'2022-05-16','2022-05-21','2022-05-16',NULL,4600000,2),
 (15,'RSV160522LJ1210','PRS1212',1,4550000,0,'2022-05-16','2022-05-21','2022-05-16','2022-05-21',5186000,0),
 (16,'RSV160522LH1214','PRS1214',1,4550000,500000,'2022-05-16','2022-05-22','2022-05-16',NULL,4550000,2),
-(17,'RSV030622KM1111','ROS1111',2,1800000,0,'2022-06-03','2022-06-07','2022-06-04','2022-06-04',1963000,0),
+(17,'RSV030622KM1111','ROS1111',2,1800000,0,'2022-06-03','2022-06-07','2022-06-04','2022-06-07',1963000,0),
 (18,'RSV030622KM1111','PRS1212',1,4550000,0,'2022-06-04','2022-06-10','2022-06-04','2022-06-09',5557000,0),
-(19,'RSV030622KM1111','ROS1111',2,1800000,500000,'2022-06-09','2022-06-12',NULL,NULL,0,1);
+(19,'RSV030622KM1111','ROS1111',2,1800000,0,'2022-06-09','2022-06-12','2022-06-09','2022-06-12',3364000,0);
 
 /*Table structure for table `extra_fasilitas` */
 
@@ -667,11 +672,11 @@ CREATE TABLE `extra_fasilitas` (
 insert  into `extra_fasilitas`(`id_extra_fasilitas`,`nama_extra_fasilitas`,`stok_extra_fasilitas`,`harga_extra_fasilitas`,`status_extra_fasilitas`) values 
 (1,'Blanket',178,278000,1),
 (2,'Thick Blanket',119,338000,1),
-(3,'Towel',217,118000,1),
-(4,'Pillow',239,288000,1),
-(5,'Bolster',178,248000,1),
-(6,'Slippers',200,78000,1),
-(7,'Tissue Pack',194,25000,1),
+(3,'Towel',215,118000,1),
+(4,'Pillow',237,288000,1),
+(5,'Bolster',176,248000,1),
+(6,'Slippers',198,78000,1),
+(7,'Tissue Pack',190,25000,1),
 (8,'Electrical Socket',247,20000,1),
 (9,'First Aid Kit',150,48000,1),
 (10,'Rollaway Bed',99,650000,1);
@@ -796,7 +801,7 @@ insert  into `header_extra_fasilitas`(`id_header_extra_fasilitas`,`kode_reservas
 (1,'RSV270422YJ0605',650000),
 (2,'RSV040522MM0716',118000),
 (3,'RSV160522LJ1210',954000),
-(4,'RSV030622KM1111',1170000);
+(4,'RSV030622KM1111',2734000);
 
 /*Table structure for table `header_pemesanan_makanan` */
 
@@ -860,7 +865,7 @@ insert  into `header_reservasi`(`id_header_reservasi`,`kode_reservasi`,`kode_tam
 (12,'RSV070522SY0406','SUYU001',1030000,'RE002',1),
 (13,'RSV160522LJ1210','LEJI001',29572000,'RE002',1),
 (14,'RSV160522LH1214','LEHY001',9600000,'RE003',1),
-(15,'RSV030622KM1111','KIMI001',16170000,'RE001',1);
+(15,'RSV030622KM1111','KIMI001',19034000,'RE001',0);
 
 /*Table structure for table `jenis_kamar` */
 

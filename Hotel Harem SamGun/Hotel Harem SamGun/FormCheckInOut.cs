@@ -267,7 +267,6 @@ namespace Hotel_Harem_SamGun
                 {
                     try
                     {
-                        // status detail extra fasilitas
                         string kode_reservasi = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                         int id_detail_reservasi = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[12].Value);
 
@@ -286,6 +285,11 @@ namespace Hotel_Harem_SamGun
                         cmd.Parameters.AddWithValue("@subtotal_biaya_reservasi", subtotal_biaya_reservasi + subtotal_extra_fasilitas);
                         cmd.Parameters.AddWithValue("@status_detail_reservasi", 0);
                         cmd.Parameters.AddWithValue("@id_detail_reservasi", id_detail_reservasi);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new MySqlCommand("UPDATE detail_extra_fasilitas def LEFT OUTER JOIN header_extra_fasilitas hef ON def.id_header_extra_fasilitas = hef.id_header_extra_fasilitas SET def.status_detail = 0 WHERE hef.kode_reservasi = @kode_reservasi AND def.kode_kamar = @kode_kamar AND def.status_detail = 1;", Koneksi.getConn());
+                        cmd.Parameters.AddWithValue("@kode_reservasi", kode_reservasi);
+                        cmd.Parameters.AddWithValue("@kode_kamar", dataGridView1.SelectedRows[0].Cells[13].Value.ToString());
                         cmd.ExecuteNonQuery();
 
                         cmd = new MySqlCommand("SELECT hr.total_biaya_reservasi FROM header_reservasi hr WHERE hr.kode_reservasi = @kode_reservasi;", Koneksi.getConn());
