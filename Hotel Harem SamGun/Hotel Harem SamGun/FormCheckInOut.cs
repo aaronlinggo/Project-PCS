@@ -16,6 +16,7 @@ namespace Hotel_Harem_SamGun
         private DataTable dtList;
         private List<string> columnName;
         public string fontName = "Gill Sans MT";
+        private bool searchModeOn;
 
         public FormCheckInOut()
         {
@@ -33,6 +34,11 @@ namespace Hotel_Harem_SamGun
 
         private void FormCheckInOut_Load(object sender, EventArgs e)
         {
+            searchModeOn = false;
+
+            textBox2.Enabled = false;
+            textBox2.Text = "-";
+
             radioButton1.Checked = true;
             radioButton2.Checked = false;
 
@@ -71,24 +77,35 @@ namespace Hotel_Harem_SamGun
             return dataGridView;
         }
 
-        private void dataGridViewSetup()
-        {
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView1.EnableHeadersVisualStyles = false;
-
-            loadDatabase();
-            refreshDataGridView();
-
-            dataGridView1 = UpdateDataGridViewFont(dataGridView1, 14F);
-        }
-
         public void loadDatabase()
         {
             try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter("SELECT hr.kode_reservasi, t.nama_tamu, k.nomor_kamar, jk.nama_jenis_kamar, CONCAT(dr.jumlah_penghuni_kamar, ' orang'), DATE_FORMAT(dr.tanggal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.tanggal_check_out, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_out, '%W, %d %M %Y'), CONCAT(DATEDIFF(dr.jadwal_check_out, dr.jadwal_check_in), ' hari'), CONCAT('Rp. ', FORMAT(dr.subtotal_biaya_reservasi, '###,###,###')), dr.status_detail_reservasi, dr.id_detail_reservasi, k.kode_kamar FROM header_reservasi hr RIGHT OUTER JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi LEFT OUTER JOIN kamar k ON dr.kode_kamar = k.kode_kamar LEFT OUTER JOIN tamu t ON hr.kode_tamu = t.kode_tamu LEFT OUTER JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE dr.status_detail_reservasi = @status_detail_reservasi;", Koneksi.getConn());
-                da.SelectCommand.Parameters.AddWithValue("@status_detail_reservasi", (radioButton2.Checked) ? 2 : 1);
+                MySqlDataAdapter da;
+
+                if (!searchModeOn)
+                {
+                    da = new MySqlDataAdapter("SELECT hr.kode_reservasi, t.nama_tamu, k.nomor_kamar, jk.nama_jenis_kamar, CONCAT(dr.jumlah_penghuni_kamar, ' orang'), DATE_FORMAT(dr.tanggal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.tanggal_check_out, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_out, '%W, %d %M %Y'), CONCAT(DATEDIFF(dr.jadwal_check_out, dr.jadwal_check_in), ' hari'), CONCAT('Rp. ', FORMAT(dr.subtotal_biaya_reservasi, '###,###,###')), dr.status_detail_reservasi, dr.id_detail_reservasi, k.kode_kamar FROM header_reservasi hr RIGHT OUTER JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi LEFT OUTER JOIN kamar k ON dr.kode_kamar = k.kode_kamar LEFT OUTER JOIN tamu t ON hr.kode_tamu = t.kode_tamu LEFT OUTER JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE dr.status_detail_reservasi = @status_detail_reservasi;", Koneksi.getConn());
+                    da.SelectCommand.Parameters.AddWithValue("@status_detail_reservasi", (radioButton2.Checked) ? 2 : 1);
+                }
+                else
+                {
+                    if (textBox2.Text == "")
+                    {
+                        da = new MySqlDataAdapter("SELECT hr.kode_reservasi, t.nama_tamu, k.nomor_kamar, jk.nama_jenis_kamar, CONCAT(dr.jumlah_penghuni_kamar, ' orang'), DATE_FORMAT(dr.tanggal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.tanggal_check_out, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_out, '%W, %d %M %Y'), CONCAT(DATEDIFF(dr.jadwal_check_out, dr.jadwal_check_in), ' hari'), CONCAT('Rp. ', FORMAT(dr.subtotal_biaya_reservasi, '###,###,###')), dr.status_detail_reservasi, dr.id_detail_reservasi, k.kode_kamar FROM header_reservasi hr RIGHT OUTER JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi LEFT OUTER JOIN kamar k ON dr.kode_kamar = k.kode_kamar LEFT OUTER JOIN tamu t ON hr.kode_tamu = t.kode_tamu LEFT OUTER JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE dr.status_detail_reservasi = @status_detail_reservasi AND t.nama_tamu LIKE @nama_tamu;", Koneksi.getConn());
+                        da.SelectCommand.Parameters.AddWithValue("@status_detail_reservasi", (radioButton2.Checked) ? 2 : 1);
+                        da.SelectCommand.Parameters.AddWithValue("@nama_tamu", "%" + textBox1.Text.Trim() + "%");
+                    }
+                    else
+                    {
+                        da = new MySqlDataAdapter("SELECT hr.kode_reservasi, t.nama_tamu, k.nomor_kamar, jk.nama_jenis_kamar, CONCAT(dr.jumlah_penghuni_kamar, ' orang'), DATE_FORMAT(dr.tanggal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.tanggal_check_out, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_in, '%W, %d %M %Y'), DATE_FORMAT(dr.jadwal_check_out, '%W, %d %M %Y'), CONCAT(DATEDIFF(dr.jadwal_check_out, dr.jadwal_check_in), ' hari'), CONCAT('Rp. ', FORMAT(dr.subtotal_biaya_reservasi, '###,###,###')), dr.status_detail_reservasi, dr.id_detail_reservasi, k.kode_kamar FROM header_reservasi hr RIGHT OUTER JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi LEFT OUTER JOIN kamar k ON dr.kode_kamar = k.kode_kamar LEFT OUTER JOIN tamu t ON hr.kode_tamu = t.kode_tamu LEFT OUTER JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE dr.status_detail_reservasi = @status_detail_reservasi AND t.nama_tamu LIKE @nama_tamu AND k.nomor_kamar = @nomor_kamar;", Koneksi.getConn());
+                        da.SelectCommand.Parameters.AddWithValue("@status_detail_reservasi", (radioButton2.Checked) ? 2 : 1);
+                        da.SelectCommand.Parameters.AddWithValue("@nama_tamu", "%" + textBox1.Text.Trim() + "%");
+                        da.SelectCommand.Parameters.AddWithValue("@nomor_kamar", textBox2.Text.Trim());
+                    }
+
+                    searchModeOn = false;
+                }
 
                 dtList = new DataTable();
                 da.Fill(dtList);
@@ -170,13 +187,25 @@ namespace Hotel_Harem_SamGun
             dataGridView1.ClearSelection();
         }
 
+        private void dataGridViewSetup()
+        {
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridView1.EnableHeadersVisualStyles = false;
+
+            loadDatabase();
+            refreshDataGridView();
+
+            dataGridView1 = UpdateDataGridViewFont(dataGridView1, 14F);
+        }
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
             {
                 checkBox1.Visible = false;
                 label1.Text = "KONFIRMASI CHECK IN";
-                button1.Text = "CHECK IN";
+                btnUpdate.Text = "CHECK IN";
                 dataGridViewSetup();
             }
         }
@@ -186,14 +215,69 @@ namespace Hotel_Harem_SamGun
             if (radioButton2.Checked)
             {
                 label1.Text = "KONFIRMASI CHECK OUT";
-                button1.Text = "CHECK OUT";
+                btnUpdate.Text = "CHECK OUT";
                 dataGridViewSetup();
                 checkBox1.Checked = true;
                 checkBox1.Visible = true;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim().Length > 0)
+            {
+                textBox2.Enabled = true;
+                textBox2.Text = "";
+            }
+            else
+            {
+                textBox2.Enabled = false;
+                textBox2.Text = "-";
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "" && textBox2.Text == "-")
+            {
+                MessageBox.Show("Isi minimal field nama untuk dapat menggunakan fitur Cari!", "Gagal");
+
+                dataGridViewSetup();
+            }
+            else
+            {
+                try
+                {
+                    int roomNumber = (textBox2.Text.Trim().Length > 0) ? Convert.ToInt32(textBox2.Text.Trim()) : 0;
+
+                    if (roomNumber < 0)
+                    {
+                        MessageBox.Show("Nomor kamar tidak boleh minus!", "Gagal");
+                    }
+                    else
+                    {
+                        searchModeOn = true;
+
+                        dataGridViewSetup();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    MessageBox.Show("Nomor kamar harus berupa angka!", "Gagal");
+                }
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "-";
+
+            dataGridViewSetup();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
             {
