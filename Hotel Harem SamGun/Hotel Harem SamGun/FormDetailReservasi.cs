@@ -30,12 +30,18 @@ namespace Hotel_Harem_SamGun
             loadNamaTamu();
             loadJenisKamar();
             changeMode(1);
+            dgvDetailReservasi.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvDetailReservasi.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvDetailReservasi.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
         }
 
         private void fillDT(DataTable dt, string query)
         {
             try
             {
+                dgvDetailReservasi.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dgvDetailReservasi.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dgvDetailReservasi.EnableHeadersVisualStyles = false;
                 da = new MySqlDataAdapter(query, Koneksi.conn);
                 da.Fill(dt);
             }
@@ -47,6 +53,9 @@ namespace Hotel_Harem_SamGun
 
         private void loadDetailReservasi(int status)
         {
+            dgvDetailReservasi.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvDetailReservasi.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvDetailReservasi.EnableHeadersVisualStyles = false;
             dtDetailReservasi = new DataTable();
             string query = @"
                 SELECT CONCAT(t.nama_tamu, ' - ', dr.kode_reservasi) AS nama_kode, dr.kode_reservasi, t.nama_tamu, jk.nama_jenis_kamar, km.nomor_kamar, dr.jumlah_penghuni_kamar, CONCAT('Rp ', FORMAT(down_payment, 0, 'de_DE')), down_payment, CONCAT('Rp ', FORMAT(deposito, 0, 'de_DE')), deposito, DATE_FORMAT(jadwal_check_in, '%W, %d %M %Y'), jadwal_check_in, DATE_FORMAT(jadwal_check_out, '%W, %d %M %Y'), jadwal_check_out, IFNULL(DATE_FORMAT(tanggal_check_in, '%W, %d %M %Y'), '-'), tanggal_check_in, IFNULL(DATE_FORMAT(tanggal_check_out, '%W, %d %M %Y'), '-'), tanggal_check_out, CONCAT('Rp ', FORMAT(dr.subtotal_biaya_reservasi, 0, 'de_DE')), dr.subtotal_biaya_reservasi, dr.status_detail_reservasi
@@ -81,6 +90,9 @@ namespace Hotel_Harem_SamGun
 
         private void refresh_cbCari_dgvDetailReservasi(int status = -1)
         {
+            dgvDetailReservasi.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvDetailReservasi.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvDetailReservasi.EnableHeadersVisualStyles = false;
             loadDetailReservasi(status);
             cbCari.DataSource = dtDetailReservasi;
             cbCari.DisplayMember = "nama_kode";
@@ -410,7 +422,8 @@ namespace Hotel_Harem_SamGun
                     cmd.Parameters.AddWithValue("@KodeKaryawan", FormLogin.dtKaryawan.Rows[0][0].ToString());
                     cmd.Parameters.AddWithValue("@StatusHeader", 1);
                     cmd.ExecuteNonQuery();
-                } else
+                }
+                else
                 {
                     // CARI total_biaya_reservasi
                     query = @"SELECT total_biaya_reservasi FROM header_reservasi WHERE kode_reservasi = @KodeReservasi";
