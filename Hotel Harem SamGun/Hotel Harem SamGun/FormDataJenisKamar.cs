@@ -228,11 +228,11 @@ namespace Hotel_Harem_SamGun
                         }
                         else
                         {
-                            cmd.CommandText = "INSERT INTO jenis_kamar (id_jenis_kamar, nama_jenis_kamar, harga_jenis_kamar, total_penyewaan, status_jenis_kamar) VALUES (@id, @nama, @harga, @sewa, @status)";
+                            cmd.CommandText = "INSERT INTO jenis_kamar (id_jenis_kamar, nama_jenis_kamar, harga_jenis_kamar, total_penyewaan, maks_penghuni_kamar, status_jenis_kamar) VALUES (@id, @nama, @harga, 0, 2, @status)";
                             cmd.Parameters.Add(new MySqlParameter("@id", tbID.Text));
                             cmd.Parameters.Add(new MySqlParameter("@nama", tbNama.Text));
                             cmd.Parameters.Add(new MySqlParameter("@harga", harga));
-                            cmd.Parameters.Add(new MySqlParameter("@sewa", 0));
+                            // cmd.Parameters.Add(new MySqlParameter("@sewa", '0'));
                             cmd.Parameters.Add(new MySqlParameter("@status", status));
                             cmd.ExecuteNonQuery();
                         }
