@@ -73,6 +73,7 @@ namespace Hotel_Harem_SamGun
             dgvJenisKamar.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
 
+            dgvJenisKamar.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvJenisKamar = UpdateDataGridViewFont(dgvJenisKamar, 16F);
             dgvJenisKamar.ClearSelection();
         }
@@ -98,6 +99,7 @@ namespace Hotel_Harem_SamGun
             dgvJenisKamar.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvJenisKamar.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
+            dgvJenisKamar.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvJenisKamar = UpdateDataGridViewFont(dgvJenisKamar, 16F);
             dgvJenisKamar.ClearSelection();
         }

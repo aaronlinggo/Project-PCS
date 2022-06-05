@@ -111,8 +111,10 @@ WHERE tamu.status_tamu = 1";
             dataGridView2.Columns[1].HeaderText = "Tanggal Pemesanan";
             dataGridView2.Columns[2].HeaderText = "Kode Tamu";
             dataGridView2.Columns[3].HeaderText = "Total Biaya Pemesanan";
+            dataGridView2.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView2.Columns[3].Visible = false;
             dataGridView2.Columns[4].HeaderText = "Total Biaya Pemesanan";
+            dataGridView2.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView2.Columns[5].HeaderText = "Status Pemesanan Makanan";
             dataGridView2.Columns[5].Visible = false;
 

@@ -53,6 +53,9 @@ namespace Hotel_Harem_SamGun
 
         public void refreshDGV()
         {
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvFasilitas.EnableHeadersVisualStyles = false;
             cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = "SELECT id_extra_fasilitas, nama_extra_fasilitas, stok_extra_fasilitas, CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')) FROM extra_fasilitas WHERE status_extra_fasilitas = 1";
@@ -68,10 +71,14 @@ namespace Hotel_Harem_SamGun
             dgvFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvFasilitas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvFasilitas.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         public void searchDGV(string keyword)
         {
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvFasilitas.EnableHeadersVisualStyles = false;
             cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = $"SELECT id_extra_fasilitas, nama_extra_fasilitas, stok_extra_fasilitas, CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')) FROM extra_fasilitas WHERE status_extra_fasilitas = 1 AND nama_extra_fasilitas LIKE '%{keyword}%'";
@@ -87,6 +94,7 @@ namespace Hotel_Harem_SamGun
             dgvFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvFasilitas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvFasilitas.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         public void resetField()

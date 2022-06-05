@@ -74,7 +74,7 @@ order by 1 asc";
 
             cbJenisMakanan.SelectedIndex = 0;
         }
-        
+
 
         // private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
         // {
@@ -113,13 +113,40 @@ order by 1 asc";
                 dataGridView1.Columns[6].Visible = false;
                 dataGridView1.Columns[7].HeaderText = "Jenis Makanan";
 
-                // dataGridView1 = UpdateDataGridViewFont(dataGridView1, 16F);
+                fitDataGridViewColumn(0, false);
+                fitDataGridViewColumn(3, false);
+                fitDataGridViewColumn(4, false);
+                fitDataGridViewColumn(7, false);
+
+                dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void fitDataGridViewColumn(int columnIndex, bool setWidthGrow = false, int minimumWidth = 0)
+        {
+            if (setWidthGrow)
+            {
+                dataGridView1.Columns[columnIndex].MinimumWidth = (minimumWidth != 0) ? minimumWidth : dataGridView1.Columns[columnIndex].Width;
+            }
+
+            dataGridView1.Columns[columnIndex].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            // Console.WriteLine("Column [Index, Width]: " + columnIndex + ", " + dataGridView1.Columns[columnIndex].Width);
+        }
+
+        private void fitDataGridViewColumn(string columnName, bool setWidthGrow = false, int minimumWidth = 0)
+        {
+            if (setWidthGrow)
+            {
+                dataGridView1.Columns[columnName].MinimumWidth = (minimumWidth != 0) ? minimumWidth : dataGridView1.Columns[columnName].Width;
+            }
+
+            dataGridView1.Columns[columnName].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            // Console.WriteLine("Column [Index, Width]: " + columnName + ", " + dataGridView1.Columns[columnName].Width);
         }
 
         private void tbHarga_TextChanged(object sender, EventArgs e)

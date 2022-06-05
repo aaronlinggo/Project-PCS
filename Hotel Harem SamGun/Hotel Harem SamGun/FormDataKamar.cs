@@ -39,7 +39,7 @@ namespace Hotel_Harem_SamGun
         private void FormDataKamar_Load(object sender, EventArgs e)
         {
             dgvKamar.ClearSelection();
-            
+
             dgvKamar.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvKamar.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             dgvKamar.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -80,7 +80,7 @@ namespace Hotel_Harem_SamGun
             dgvKamar.EnableHeadersVisualStyles = false;
 
             dt = new DataTable();
-            query = "SELECT id_kamar, kode_kamar, nomor_kamar, nomor_lantai, nama_jenis_kamar, CONCAT('Rp ', FORMAT(harga_jenis_kamar,0,'de_DE')), IF(status_kamar=1,'Tersedia','Tidak tersedia') FROM kamar k JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar ORDER BY id_kamar";
+            query = "SELECT id_kamar, kode_kamar, nomor_kamar, nomor_lantai, nama_jenis_kamar, CONCAT('Rp ', FORMAT(harga_jenis_kamar,0,'de_DE')), IF(status_kamar=1,'Tersedia','Tidak Tersedia') FROM kamar k JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar ORDER BY id_kamar";
             cmd = new MySqlCommand(query, conn);
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -100,15 +100,14 @@ namespace Hotel_Harem_SamGun
             dgvKamar.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvKamar.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
-
-            // dgvKamar = UpdateDataGridViewFont(dgvKamar, 16F);
+            dgvKamar.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvKamar.ClearSelection();
         }
 
         public void searchDGV(string keyword)
         {
             dt = new DataTable();
-            query = $"SELECT id_kamar, kode_kamar, nomor_kamar, nomor_lantai, nama_jenis_kamar, CONCAT('Rp ', FORMAT(harga_jenis_kamar,0,'de_DE')), IF(status_kamar=1,'Tersedia','Tidak tersedia') FROM kamar k JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE nama_jenis_kamar LIKE '%{keyword}%' ORDER BY id_kamar";
+            query = $"SELECT id_kamar, kode_kamar, nomor_kamar, nomor_lantai, nama_jenis_kamar, CONCAT('Rp ', FORMAT(harga_jenis_kamar,0,'de_DE')), IF(status_kamar=1,'Tersedia','Tidak Tersedia') FROM kamar k JOIN jenis_kamar jk ON k.id_jenis_kamar = jk.id_jenis_kamar WHERE nama_jenis_kamar LIKE '%{keyword}%' ORDER BY id_kamar";
             cmd = new MySqlCommand(query, conn);
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -128,6 +127,7 @@ namespace Hotel_Harem_SamGun
             dgvKamar.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvKamar.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
+            dgvKamar.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvKamar.ClearSelection();
         }
         public void isiComboKategori()

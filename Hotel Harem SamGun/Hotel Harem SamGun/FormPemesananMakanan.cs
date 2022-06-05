@@ -163,6 +163,7 @@ order by 1 asc";
                 dataGridView1.Columns[5].Visible = false;
                 dataGridView1.Columns[6].Visible = false;
                 dataGridView1.Columns[7].HeaderText = "Jenis";
+                dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
@@ -486,6 +487,7 @@ order by 1 asc";
             dataGridView1.Columns[1].HeaderText = "Nama Makanan";
             dataGridView1.Columns[2].Visible = false;
             dataGridView1.Columns[3].HeaderText = "Harga";
+            dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns[4].HeaderText = "Stok";
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
