@@ -25,11 +25,25 @@ namespace Hotel_Harem_SamGun
             conn = Koneksi.conn;
             InitializeComponent();
             refreshDGV();
-            
+        }
+
+        private void FormPenambahanFasilitasDataTamu_Load(object sender, EventArgs e)
+        {
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+        }
+
+        private void FormPenambahanFasilitasDataTamu_Shown(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
 
         public void refreshDGV()
         {
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridView1.EnableHeadersVisualStyles = false;
             cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = "SELECT id_detail_reservasi, hr.kode_reservasi, nama_tamu, nomor_kamar, nama_jenis_kamar, DATE_FORMAT(tanggal_check_in,'%W, %d %M %Y') FROM header_reservasi hr JOIN tamu t ON t.kode_tamu = hr.kode_tamu JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi JOIN kamar k ON k.kode_kamar = dr.kode_kamar  JOIN jenis_kamar jk ON jk.id_jenis_kamar = k.id_jenis_kamar WHERE tanggal_check_in IS NOT NULL AND tanggal_check_out IS NULL";
@@ -49,10 +63,14 @@ namespace Hotel_Harem_SamGun
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.ClearSelection();
         }
 
         public void searchDGV(string tamu, string no_kamar)
         {
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridView1.EnableHeadersVisualStyles = false;
             cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = $"SELECT id_detail_reservasi, hr.kode_reservasi, nama_tamu, nomor_kamar, nama_jenis_kamar, DATE_FORMAT(tanggal_check_in,'%W, %d %M %Y') FROM header_reservasi hr JOIN tamu t ON t.kode_tamu = hr.kode_tamu JOIN detail_reservasi dr ON hr.kode_reservasi = dr.kode_reservasi JOIN kamar k ON k.kode_kamar = dr.kode_kamar  JOIN jenis_kamar jk ON jk.id_jenis_kamar = k.id_jenis_kamar WHERE tanggal_check_in IS NOT NULL AND tanggal_check_out IS NULL AND nama_tamu LIKE'%{tamu}%' AND nomor_kamar LIKE '%{no_kamar}%'";
@@ -72,7 +90,7 @@ namespace Hotel_Harem_SamGun
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+            dataGridView1.ClearSelection();
         }
 
         private void btnKembali_Click(object sender, EventArgs e)
@@ -83,7 +101,7 @@ namespace Hotel_Harem_SamGun
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            int selectedIdx = dataGridView1.CurrentCell.RowIndex; 
+            int selectedIdx = dataGridView1.CurrentCell.RowIndex;
             id_reservasi = Convert.ToInt32(dataGridView1.Rows[selectedIdx].Cells[0].Value.ToString());
             FormPenambahanFasilitasKamar form = new FormPenambahanFasilitasKamar(this);
             form.ShowDialog();
