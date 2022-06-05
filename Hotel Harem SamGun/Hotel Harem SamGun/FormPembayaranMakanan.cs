@@ -28,17 +28,28 @@ namespace Hotel_Harem_SamGun
         {
             /*Koneksi.openConn();*/
             query = @"SELECT
-  tamu.kode_tamu,
-  tamu.nama_tamu
+tamu.kode_tamu,
+tamu.nama_tamu
 FROM tamu
 WHERE tamu.status_tamu = 1";
             loadDatagrid();
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+
+            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView2.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
         }
 
         public void loadDatagrid()
         {
             try
             {
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView1.EnableHeadersVisualStyles = false;
+
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, Koneksi.conn);
                 dttamu = new DataTable();
                 adapter.Fill(dttamu);
@@ -57,6 +68,10 @@ WHERE tamu.status_tamu = 1";
         {
             try
             {
+                dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dataGridView2.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView2.EnableHeadersVisualStyles = false;
+
                 MySqlDataAdapter adapter = new MySqlDataAdapter(queryPembelian, Koneksi.conn);
                 dtpembelian = new DataTable();
                 adapter.Fill(dtpembelian);
@@ -77,6 +92,9 @@ WHERE tamu.status_tamu = 1";
 
         public void refreshDataGridView()
         {
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.DataSource = dttamu;
             dataGridView1.Columns[0].HeaderText = "Kode Tamu";
             dataGridView1.Columns[1].HeaderText = "Nama Tamu";
@@ -85,6 +103,9 @@ WHERE tamu.status_tamu = 1";
 
         public void refreshDataGridView2()
         {
+            dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dataGridView2.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridView2.EnableHeadersVisualStyles = false;
             dataGridView2.DataSource = dtpembelian;
             dataGridView2.Columns[0].HeaderText = "Kode Pemesanan";
             dataGridView2.Columns[1].HeaderText = "Tanggal Pemesanan";
@@ -118,7 +139,7 @@ WHERE tamu.status_tamu = 1";
   tamu.nama_tamu
 FROM tamu
 WHERE tamu.status_tamu = 1
-AND tamu.nama_tamu LIKE '%"+ tbCari.Text +"%'";
+AND tamu.nama_tamu LIKE '%" + tbCari.Text + "%'";
             loadDatagrid();
             refreshDataGridView();
             tbCari.Text = "";
@@ -135,7 +156,7 @@ AND tamu.nama_tamu LIKE '%"+ tbCari.Text +"%'";
   CONCAT('Rp ', FORMAT(header_pemesanan_makanan.total_biaya_pemesanan, 0)),
   header_pemesanan_makanan.status_pemesanan_makanan
 FROM header_pemesanan_makanan
-WHERE header_pemesanan_makanan.kode_tamu='" + pick[0].ToString()+ "'";
+WHERE header_pemesanan_makanan.kode_tamu='" + pick[0].ToString() + "'";
 
             loadDatagrid2();
             refreshDataGridView2();
@@ -149,38 +170,45 @@ WHERE header_pemesanan_makanan.kode_tamu='" + pick[0].ToString()+ "'";
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (pickPembayaran[5].ToString() == "0")
+            if (pickPembayaran != null)
             {
-                MySqlTransaction sqlt = Koneksi.getConn().BeginTransaction();
-                try
+                if (pickPembayaran[5].ToString() == "0")
                 {
-                    MySqlCommand cmd2 = new MySqlCommand();
-                    cmd2.CommandText = @"UPDATE header_pemesanan_makanan SET status_pemesanan_makanan=@status_pemesanan_makanan
+                    MySqlTransaction sqlt = Koneksi.getConn().BeginTransaction();
+                    try
+                    {
+                        MySqlCommand cmd2 = new MySqlCommand();
+                        cmd2.CommandText = @"UPDATE header_pemesanan_makanan SET status_pemesanan_makanan=@status_pemesanan_makanan
                         WHERE kode_pemesanan=@kode_pemesanan";
-                    cmd2.Parameters.AddWithValue("@status_pemesanan_makanan", "1");
-                    cmd2.Parameters.AddWithValue("@kode_pemesanan", pickPembayaran[0].ToString());
+                        cmd2.Parameters.AddWithValue("@status_pemesanan_makanan", "1");
+                        cmd2.Parameters.AddWithValue("@kode_pemesanan", pickPembayaran[0].ToString());
 
-                    cmd2.Connection = Koneksi.getConn();
-                    cmd2.ExecuteNonQuery();
+                        cmd2.Connection = Koneksi.getConn();
+                        cmd2.ExecuteNonQuery();
 
-                    loadDatagrid2();
-                    refreshDataGridView2();
+                        loadDatagrid2();
+                        refreshDataGridView2();
 
-                    tbSubtotal.Text = "0";
+                        tbSubtotal.Text = "0";
 
-                    MessageBox.Show("Berhasil Bayar!");
-                    sqlt.Commit();
+                        MessageBox.Show("Berhasil Bayar!");
+                        sqlt.Commit();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        sqlt.Rollback();
+                        MessageBox.Show("Gagal Bayar!");
+                    }
                 }
-                catch (MySqlException ex)
+                else
                 {
-                    Console.WriteLine(ex.Message);
-                    sqlt.Rollback();
-                    MessageBox.Show("Gagal Bayar!");
+                    MessageBox.Show("Sudah dibayar!");
                 }
             }
             else
             {
-                MessageBox.Show("Sudah dibayar!");
+                MessageBox.Show("Silahkan pilih dahulu pembayaran yang ingin dibayarkan!");
             }
         }
 
