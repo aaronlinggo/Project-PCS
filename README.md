@@ -1,4 +1,4 @@
-# Project-PCS
+# Project-PCS 2021
 
 ## Anggota Kelompok
 * Aaron Linggo Satria - 220116898
@@ -13,12 +13,12 @@ To make it easy for you to get started, here's a list of recommended next steps.
 1. Download/Clone Github "https://github.com/aaronlinggo/Project-PCS.git"
 2. Add Database from folder database, import "db_hotel_samgun.sql"
 
-## Login for Actor
+# Login for Actor
 
-# Resepsionis
+## Resepsionis
 * Username : Kenny
 * Password : 12345678
 
-# Admin
+## Admin
 * Username : ExE
 * Password : admin1234
