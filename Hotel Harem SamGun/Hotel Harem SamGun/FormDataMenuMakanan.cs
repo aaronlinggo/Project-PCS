@@ -19,6 +19,8 @@ namespace Hotel_Harem_SamGun
         DataRow pick;
         bool start = false;
         string query = "";
+        public string fontName = "Gill Sans MT";
+
         public FormDataMenuMakanan()
         {
             InitializeComponent();
@@ -46,11 +48,11 @@ WHERE makanan.status_makanan != 0
 order by 1 asc";
             loadCB();
             loadDatagrid();
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
+            // dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            // dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            // dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            // dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            // label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
             start = true;
         }
 
@@ -73,11 +75,31 @@ order by 1 asc";
 
             cbJenisMakanan.SelectedIndex = 0;
         }
+        
+
+        private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
+        {
+            dataGridView.Font = new Font(fontName, fontSize, dataGridView.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
+
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+
+            foreach (DataGridViewRow r in dataGridView.Rows)
+            {
+                r.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            }
+
+            return dataGridView;
+        }
 
         public void loadDatagrid()
         {
             try
             {
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView1.EnableHeadersVisualStyles = false;
+
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, Koneksi.conn);
                 dtmakanan = new DataTable();
                 adapter.Fill(dtmakanan);
@@ -91,6 +113,8 @@ order by 1 asc";
                 dataGridView1.Columns[5].Visible = false;
                 dataGridView1.Columns[6].Visible = false;
                 dataGridView1.Columns[7].HeaderText = "Jenis Makanan";
+
+                dataGridView1 = UpdateDataGridViewFont(dataGridView1, 16F);
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
