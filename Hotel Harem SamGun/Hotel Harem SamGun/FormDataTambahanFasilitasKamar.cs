@@ -28,8 +28,20 @@ namespace Hotel_Harem_SamGun
             refreshDGV();
         }
 
+        private void FormDataTambahanFasilitasKamar_Load(object sender, EventArgs e)
+        {
+            dgvFasilitas.ClearSelection();
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvFasilitas.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+        }
+
         public void refreshDGV()
         {
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvFasilitas.EnableHeadersVisualStyles = false;
             dt = new DataTable();
             query = "SELECT id_extra_fasilitas,nama_extra_fasilitas,stok_extra_fasilitas,CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')), IF(status_extra_fasilitas = 1, 'Tersedia', 'Tidak Tersedia') FROM extra_fasilitas ORDER BY 1";
             cmd = new MySqlCommand(query, conn);
@@ -47,10 +59,14 @@ namespace Hotel_Harem_SamGun
             dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvFasilitas.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
+            dgvFasilitas.ClearSelection();
         }
 
         public void searchDGV(string keyword)
         {
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvFasilitas.EnableHeadersVisualStyles = false;
             dt = new DataTable();
             query = $"SELECT id_extra_fasilitas,nama_extra_fasilitas,stok_extra_fasilitas,CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')), IF(status_extra_fasilitas = 1, 'Tersedia', 'Tidak Tersedia') FROM extra_fasilitas WHERE nama_extra_fasilitas LIKE '%{keyword}%' ORDER BY 1";
             cmd = new MySqlCommand(query, conn);
@@ -68,6 +84,7 @@ namespace Hotel_Harem_SamGun
             dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvFasilitas.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
+            dgvFasilitas.ClearSelection();
         }
 
         public void resetTampilan()
