@@ -36,7 +36,7 @@ namespace Hotel_Harem_SamGun
 
         private void FormPenambahanFasilitasDataTamu_Shown(object sender, EventArgs e)
         {
-            dataGridView1.ClearSelection();
+            // dataGridView1.ClearSelection();
         }
 
         public void refreshDGV()
@@ -63,7 +63,7 @@ namespace Hotel_Harem_SamGun
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.ClearSelection();
+            // dataGridView1.ClearSelection();
         }
 
         public void searchDGV(string tamu, string no_kamar)
@@ -90,7 +90,7 @@ namespace Hotel_Harem_SamGun
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.ClearSelection();
+            // dataGridView1.ClearSelection();
         }
 
         private void btnKembali_Click(object sender, EventArgs e)

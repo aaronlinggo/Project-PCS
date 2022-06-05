@@ -198,6 +198,7 @@ namespace Hotel_Harem_SamGun
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FormPenambahanFasilitasDataTamu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Penambahan Fasilitas Kamar";
             this.Load += new System.EventHandler(this.FormPenambahanFasilitasDataTamu_Load);
             this.Shown += new System.EventHandler(this.FormPenambahanFasilitasDataTamu_Shown);
