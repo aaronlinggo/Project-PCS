@@ -107,7 +107,7 @@ namespace Hotel_Harem_SamGun
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Gill Sans MT", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(12, 11);
+            this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(541, 38);
             this.label1.TabIndex = 4;
@@ -342,7 +342,10 @@ namespace Hotel_Harem_SamGun
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvFasilitas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormDataTambahanFasilitasKamar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Data Tambahan Fasilitas Kamar";
             this.Load += new System.EventHandler(this.FormDataTambahanFasilitasKamar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).EndInit();

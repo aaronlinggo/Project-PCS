@@ -55,13 +55,16 @@ namespace Hotel_Harem_SamGun
             this.dgvFasilitas.AllowUserToDeleteRows = false;
             this.dgvFasilitas.AllowUserToResizeColumns = false;
             this.dgvFasilitas.AllowUserToResizeRows = false;
+            this.dgvFasilitas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFasilitas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvFasilitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFasilitas.Location = new System.Drawing.Point(22, 103);
+            this.dgvFasilitas.Location = new System.Drawing.Point(21, 103);
             this.dgvFasilitas.Name = "dgvFasilitas";
             this.dgvFasilitas.ReadOnly = true;
             this.dgvFasilitas.RowHeadersVisible = false;
+            this.dgvFasilitas.RowHeadersWidth = 51;
             this.dgvFasilitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFasilitas.Size = new System.Drawing.Size(1224, 256);
+            this.dgvFasilitas.Size = new System.Drawing.Size(536, 556);
             this.dgvFasilitas.TabIndex = 0;
             this.dgvFasilitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFasilitas_CellClick);
             // 
@@ -71,16 +74,19 @@ namespace Hotel_Harem_SamGun
             this.dgvDetailFasilitas.AllowUserToDeleteRows = false;
             this.dgvDetailFasilitas.AllowUserToResizeColumns = false;
             this.dgvDetailFasilitas.AllowUserToResizeRows = false;
+            this.dgvDetailFasilitas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDetailFasilitas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDetailFasilitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetailFasilitas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            this.dgvDetailFasilitas.Location = new System.Drawing.Point(24, 423);
+            this.dgvDetailFasilitas.Location = new System.Drawing.Point(707, 103);
             this.dgvDetailFasilitas.Name = "dgvDetailFasilitas";
             this.dgvDetailFasilitas.ReadOnly = true;
             this.dgvDetailFasilitas.RowHeadersVisible = false;
+            this.dgvDetailFasilitas.RowHeadersWidth = 51;
             this.dgvDetailFasilitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetailFasilitas.Size = new System.Drawing.Size(420, 246);
+            this.dgvDetailFasilitas.Size = new System.Drawing.Size(536, 556);
             this.dgvDetailFasilitas.TabIndex = 1;
             this.dgvDetailFasilitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetailFasilitas_CellClick);
             // 
@@ -99,131 +105,157 @@ namespace Hotel_Harem_SamGun
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(25, 17);
+            this.label1.Font = new System.Drawing.Font("Gill Sans MT", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(270, 31);
+            this.label1.Size = new System.Drawing.Size(274, 38);
             this.label1.TabIndex = 12;
             this.label1.Text = "DETAIL FASILITAS";
             // 
             // btnTambah
             // 
-            this.btnTambah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.Location = new System.Drawing.Point(1141, 365);
+            this.btnTambah.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnTambah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTambah.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTambah.ForeColor = System.Drawing.Color.White;
+            this.btnTambah.Location = new System.Drawing.Point(573, 310);
+            this.btnTambah.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
             this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(105, 43);
+            this.btnTambah.Size = new System.Drawing.Size(118, 33);
             this.btnTambah.TabIndex = 13;
             this.btnTambah.Text = "TAMBAH";
-            this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.UseVisualStyleBackColor = false;
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // btnKembali
             // 
-            this.btnKembali.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnKembali.Location = new System.Drawing.Point(1116, 44);
+            this.btnKembali.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnKembali.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKembali.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKembali.ForeColor = System.Drawing.Color.White;
+            this.btnKembali.Location = new System.Drawing.Point(1126, 13);
             this.btnKembali.Name = "btnKembali";
-            this.btnKembali.Size = new System.Drawing.Size(136, 44);
+            this.btnKembali.Size = new System.Drawing.Size(118, 33);
             this.btnKembali.TabIndex = 14;
             this.btnKembali.Text = "KEMBALI";
-            this.btnKembali.UseVisualStyleBackColor = true;
+            this.btnKembali.UseVisualStyleBackColor = false;
             this.btnKembali.Click += new System.EventHandler(this.btnKembali_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(25, 59);
+            this.label3.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(701, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(159, 26);
+            this.label3.Size = new System.Drawing.Size(150, 31);
             this.label3.TabIndex = 16;
             this.label3.Text = "Jenis Kamar :";
             // 
             // lblJenisKamar
             // 
             this.lblJenisKamar.AutoSize = true;
-            this.lblJenisKamar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold);
-            this.lblJenisKamar.Location = new System.Drawing.Point(199, 59);
+            this.lblJenisKamar.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold);
+            this.lblJenisKamar.Location = new System.Drawing.Point(857, 63);
             this.lblJenisKamar.Name = "lblJenisKamar";
-            this.lblJenisKamar.Size = new System.Drawing.Size(40, 26);
+            this.lblJenisKamar.Size = new System.Drawing.Size(38, 31);
             this.lblJenisKamar.TabIndex = 17;
             this.lblJenisKamar.Text = "....";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(19, 380);
+            this.label2.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(13, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(330, 26);
+            this.label2.Size = new System.Drawing.Size(170, 31);
             this.label2.TabIndex = 18;
-            this.label2.Text = "FASILITAS YANG TERSEDIA";
+            this.label2.Text = "Daftar Fasilitas";
             // 
             // btnHapus
             // 
-            this.btnHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHapus.Location = new System.Drawing.Point(461, 568);
+            this.btnHapus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHapus.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHapus.ForeColor = System.Drawing.Color.White;
+            this.btnHapus.Location = new System.Drawing.Point(573, 351);
+            this.btnHapus.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
             this.btnHapus.Name = "btnHapus";
-            this.btnHapus.Size = new System.Drawing.Size(105, 43);
+            this.btnHapus.Size = new System.Drawing.Size(118, 33);
             this.btnHapus.TabIndex = 19;
             this.btnHapus.Text = "HAPUS";
-            this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.UseVisualStyleBackColor = false;
             this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnSimpan
             // 
-            this.btnSimpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimpan.Location = new System.Drawing.Point(461, 626);
+            this.btnSimpan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnSimpan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSimpan.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimpan.ForeColor = System.Drawing.Color.White;
+            this.btnSimpan.Location = new System.Drawing.Point(573, 392);
+            this.btnSimpan.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
             this.btnSimpan.Name = "btnSimpan";
-            this.btnSimpan.Size = new System.Drawing.Size(105, 43);
+            this.btnSimpan.Size = new System.Drawing.Size(118, 33);
             this.btnSimpan.TabIndex = 20;
-            this.btnSimpan.Text = "SIMPAN";
-            this.btnSimpan.UseVisualStyleBackColor = true;
+            this.btnSimpan.Text = "UBAH";
+            this.btnSimpan.UseVisualStyleBackColor = false;
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
             // btnCari
             // 
-            this.btnCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCari.Location = new System.Drawing.Point(880, 53);
+            this.btnCari.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCari.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCari.ForeColor = System.Drawing.Color.White;
+            this.btnCari.Location = new System.Drawing.Point(728, 13);
+            this.btnCari.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.btnCari.Name = "btnCari";
-            this.btnCari.Size = new System.Drawing.Size(88, 31);
+            this.btnCari.Size = new System.Drawing.Size(118, 33);
             this.btnCari.TabIndex = 24;
             this.btnCari.Text = "CARI";
-            this.btnCari.UseVisualStyleBackColor = true;
+            this.btnCari.UseVisualStyleBackColor = false;
             this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
             // 
             // tbCari
             // 
-            this.tbCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCari.Location = new System.Drawing.Point(581, 53);
+            this.tbCari.Font = new System.Drawing.Font("Gill Sans MT", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCari.Location = new System.Drawing.Point(451, 15);
             this.tbCari.Name = "tbCari";
-            this.tbCari.Size = new System.Drawing.Size(282, 26);
+            this.tbCari.Size = new System.Drawing.Size(268, 29);
             this.tbCari.TabIndex = 23;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(498, 56);
+            this.label4.Font = new System.Drawing.Font("Gill Sans MT", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(382, 17);
+            this.label4.Margin = new System.Windows.Forms.Padding(12, 0, 12, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 20);
+            this.label4.Size = new System.Drawing.Size(54, 27);
             this.label4.TabIndex = 22;
-            this.label4.Text = "Cari";
+            this.label4.Text = "Cari :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnBersihkan
             // 
-            this.btnBersihkan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBersihkan.Location = new System.Drawing.Point(992, 47);
+            this.btnBersihkan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBersihkan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBersihkan.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBersihkan.ForeColor = System.Drawing.Color.White;
+            this.btnBersihkan.Location = new System.Drawing.Point(855, 13);
             this.btnBersihkan.Name = "btnBersihkan";
-            this.btnBersihkan.Size = new System.Drawing.Size(118, 43);
+            this.btnBersihkan.Size = new System.Drawing.Size(118, 33);
             this.btnBersihkan.TabIndex = 21;
             this.btnBersihkan.Text = "BERSIHKAN";
-            this.btnBersihkan.UseVisualStyleBackColor = true;
+            this.btnBersihkan.UseVisualStyleBackColor = false;
             this.btnBersihkan.Click += new System.EventHandler(this.btnBersihkan_Click);
             // 
             // FormDetailFasilitasJenisKamar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.btnCari);
             this.Controls.Add(this.tbCari);
@@ -239,8 +271,12 @@ namespace Hotel_Harem_SamGun
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDetailFasilitas);
             this.Controls.Add(this.dgvFasilitas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormDetailFasilitasJenisKamar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detail Fasilitas";
+            this.Load += new System.EventHandler(this.FormDetailFasilitasJenisKamar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailFasilitas)).EndInit();
             this.ResumeLayout(false);

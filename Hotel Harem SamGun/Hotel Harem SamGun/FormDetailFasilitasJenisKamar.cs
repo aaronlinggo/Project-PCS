@@ -18,9 +18,9 @@ namespace Hotel_Harem_SamGun
         MySqlCommand cmd;
         string query;
         DataTable dt, dtDetail;
-        int selectedIdx = -1,selectedIdx2 = -1;
+        int selectedIdx = -1, selectedIdx2 = -1;
         int id_jk;
-        
+
         public FormDetailFasilitasJenisKamar(FormDataJenisKamar formLama)
         {
             Koneksi.openConn();
@@ -31,13 +31,31 @@ namespace Hotel_Harem_SamGun
             cmd = new MySqlCommand();
             cmd.CommandText = $"SELECT nama_jenis_kamar FROM jenis_kamar WHERE id_jenis_kamar = {id_jk}";
             cmd.Connection = conn;
-            lblJenisKamar.Text =  cmd.ExecuteScalar().ToString();
+            lblJenisKamar.Text = cmd.ExecuteScalar().ToString();
             refreshDGVFasilitas();
             refreshDGVDetailFasilitasAwal();
         }
 
+        private void FormDetailFasilitasJenisKamar_Load(object sender, EventArgs e)
+        {
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvFasilitas.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvFasilitas.ClearSelection();
+
+            dgvDetailFasilitas.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvDetailFasilitas.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvDetailFasilitas.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvDetailFasilitas.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvDetailFasilitas.ClearSelection();
+        }
+
         public void refreshDGVFasilitas()
         {
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvFasilitas.EnableHeadersVisualStyles = false;
             dt = new DataTable();
             query = "SELECT id_fasilitas,nama_fasilitas, IF(status_fasilitas = 1, 'Tersedia','Tidak Tersedia') FROM fasilitas ORDER BY 1";
             cmd = new MySqlCommand(query, conn);
@@ -51,16 +69,20 @@ namespace Hotel_Harem_SamGun
             dgvFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvFasilitas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
+            dgvFasilitas.ClearSelection();
         }
 
         public void refreshDGVDetailFasilitasAwal()
         {
+            dgvDetailFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvDetailFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvDetailFasilitas.EnableHeadersVisualStyles = false;
             dgvDetailFasilitas.Rows.Clear();
             cmd = new MySqlCommand();
             cmd.CommandText = $"SELECT f.id_fasilitas AS \"ID Fasilitas\", nama_fasilitas AS \"Nama Fasilitas\" FROM detail_fasilitas df JOIN fasilitas f ON f.id_fasilitas = df.id_fasilitas JOIN jenis_kamar jk ON jk.id_jenis_kamar = df.id_jenis_kamar WHERE jk.id_jenis_kamar = {id_jk} AND status_detail_fasilitas = 1 ORDER BY 1";
             cmd.Connection = conn;
             MySqlDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
+            while (reader.Read())
             {
                 int idxRow = dgvDetailFasilitas.Rows.Add();
                 dgvDetailFasilitas.Rows[idxRow].Cells[0].Value = reader.GetString(0);
@@ -70,10 +92,15 @@ namespace Hotel_Harem_SamGun
             dgvDetailFasilitas.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvDetailFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             selectedIdx = -1;
+            dgvFasilitas.ClearSelection();
+            dgvDetailFasilitas.ClearSelection();
         }
 
         public void searchDGVFasilitas(string keyword)
         {
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvFasilitas.EnableHeadersVisualStyles = false;
             dt = new DataTable();
             query = $"SELECT id_fasilitas,nama_fasilitas, IF(status_fasilitas = 1, 'Tersedia','Tidak Tersedia') FROM fasilitas WHERE nama_fasilitas LIKE '%{keyword}%'ORDER BY 1";
             cmd = new MySqlCommand(query, conn);
@@ -87,22 +114,24 @@ namespace Hotel_Harem_SamGun
             dgvFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvFasilitas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
+            dgvFasilitas.ClearSelection();
+            dgvDetailFasilitas.ClearSelection();
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            if(selectedIdx > -1)
+            if (selectedIdx > -1)
             {
                 bool found = false;
                 string id_fas = dgvFasilitas.Rows[selectedIdx].Cells[0].Value.ToString();
                 for (int i = 0; i < dgvDetailFasilitas.Rows.Count; i++)
                 {
-                    if(id_fas == dgvDetailFasilitas.Rows[i].Cells[0].Value.ToString())
+                    if (id_fas == dgvDetailFasilitas.Rows[i].Cells[0].Value.ToString())
                     {
                         found = true;
                     }
                 }
-                if(found)
+                if (found)
                 {
                     MessageBox.Show("Fasilitas tersebut sudah ditambahkan");
                 }
@@ -119,6 +148,8 @@ namespace Hotel_Harem_SamGun
             }
             selectedIdx = -1;
             selectedIdx2 = -1;
+            dgvFasilitas.ClearSelection();
+            dgvDetailFasilitas.ClearSelection();
         }
 
         private void dgvDetailFasilitas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -128,9 +159,10 @@ namespace Hotel_Harem_SamGun
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
-            if(selectedIdx2 > -1)
+            if (selectedIdx2 > -1)
             {
                 dgvDetailFasilitas.Rows.RemoveAt(selectedIdx2);
+                dgvDetailFasilitas.ClearSelection();
             }
             else
             {
@@ -154,7 +186,7 @@ namespace Hotel_Harem_SamGun
                 int id_detail;
                 cmd.CommandText = $"SELECT COUNT(*) FROM detail_fasilitas WHERE id_jenis_kamar = '{id_jk}' AND id_fasilitas = '{dgvDetailFasilitas.Rows[i].Cells[0].Value}'";
                 int count = Convert.ToInt32(cmd.ExecuteScalar().ToString());
-                if(count > 0)
+                if (count > 0)
                 {
                     // sudah ada
                     cmd.CommandText = $"SELECT id_detail_fasilitas FROM detail_fasilitas WHERE id_jenis_kamar = '{id_jk}' AND id_fasilitas = '{dgvDetailFasilitas.Rows[i].Cells[0].Value}'";
