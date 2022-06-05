@@ -58,6 +58,9 @@ order by 1 asc";
         {
             try
             {
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView1.EnableHeadersVisualStyles = false;
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, Koneksi.conn);
                 dtkaryawan = new DataTable();
                 adapter.Fill(dtkaryawan);
@@ -73,7 +76,7 @@ order by 1 asc";
                 dataGridView1.Columns[7].HeaderText = "Nomor Telepon";
                 dataGridView1.Columns[8].HeaderText = "Email";
                 dataGridView1.Columns[9].Visible = false;
-                dataGridView1.Columns[10].HeaderText = "Password";
+                dataGridView1.Columns[10].Visible = false;
                 dataGridView1.Columns[11].HeaderText = "Roles";
                 dataGridView1.Columns[12].Visible = false;
                 dataGridView1.ClearSelection();
@@ -86,6 +89,9 @@ order by 1 asc";
 
         public void refreshDataGridView()
         {
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.DataSource = dtkaryawan;
             dataGridView1.Columns[0].HeaderText = "ID Karyawan";
             dataGridView1.Columns[1].HeaderText = "Kode Karyawan";
@@ -96,9 +102,10 @@ order by 1 asc";
             dataGridView1.Columns[6].HeaderText = "Alamat";
             dataGridView1.Columns[7].HeaderText = "Nomor Telepon";
             dataGridView1.Columns[8].HeaderText = "Email";
-            dataGridView1.Columns[9].HeaderText = "Password";
-            dataGridView1.Columns[10].HeaderText = "Roles";
-            dataGridView1.Columns[11].Visible = false;
+            dataGridView1.Columns[9].Visible = false;
+            dataGridView1.Columns[10].Visible = false;
+            dataGridView1.Columns[11].HeaderText = "Roles";
+            dataGridView1.Columns[12].Visible = false;
             dataGridView1.ClearSelection();
         }
 
@@ -814,7 +821,7 @@ order by 1 asc";
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            
+
         }
     }
 }

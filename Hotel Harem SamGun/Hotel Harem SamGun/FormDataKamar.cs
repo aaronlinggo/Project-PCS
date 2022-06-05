@@ -19,6 +19,7 @@ namespace Hotel_Harem_SamGun
         DataTable dt;
         int selectedIdx = -1;
         public string fontName = "Gill Sans MT";
+        public float fontSize = 16F;
 
         public FormDataKamar()
         {
@@ -38,6 +39,10 @@ namespace Hotel_Harem_SamGun
         private void FormDataKamar_Load(object sender, EventArgs e)
         {
             dgvKamar.ClearSelection();
+            
+            dgvKamar.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            dgvKamar.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvKamar.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
         }
 
         public void resetTampilan()
@@ -53,20 +58,20 @@ namespace Hotel_Harem_SamGun
             dgvKamar.ClearSelection();
         }
 
-        private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
-        {
-            dataGridView.Font = new Font(fontName, fontSize, dataGridView.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
+        // private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
+        // {
+        //     dataGridView.Font = new Font(fontName, fontSize, dataGridView.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
 
-            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+        //     dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+        //     dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
 
-            foreach (DataGridViewRow r in dataGridView.Rows)
-            {
-                r.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
-            }
+        //     foreach (DataGridViewRow r in dataGridView.Rows)
+        //     {
+        //         r.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+        //     }
 
-            return dataGridView;
-        }
+        //     return dataGridView;
+        // }
 
         public void refreshDGV()
         {
@@ -96,7 +101,7 @@ namespace Hotel_Harem_SamGun
             dgvKamar.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
 
-            dgvKamar = UpdateDataGridViewFont(dgvKamar, 16F);
+            // dgvKamar = UpdateDataGridViewFont(dgvKamar, 16F);
             dgvKamar.ClearSelection();
         }
 

@@ -20,6 +20,7 @@ namespace Hotel_Harem_SamGun
         bool start = false;
         string query = "";
         public string fontName = "Gill Sans MT";
+        public float fontSize = 16F;
 
         public FormDataMenuMakanan()
         {
@@ -48,11 +49,9 @@ WHERE makanan.status_makanan != 0
 order by 1 asc";
             loadCB();
             loadDatagrid();
-            // dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            // dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            // dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            // dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            // label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
             start = true;
         }
 
@@ -77,20 +76,20 @@ order by 1 asc";
         }
         
 
-        private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
-        {
-            dataGridView.Font = new Font(fontName, fontSize, dataGridView.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
+        // private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
+        // {
+        //     dataGridView.Font = new Font(fontName, fontSize, dataGridView.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
 
-            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+        //     dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+        //     dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
 
-            foreach (DataGridViewRow r in dataGridView.Rows)
-            {
-                r.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
-            }
+        //     foreach (DataGridViewRow r in dataGridView.Rows)
+        //     {
+        //         r.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+        //     }
 
-            return dataGridView;
-        }
+        //     return dataGridView;
+        // }
 
         public void loadDatagrid()
         {
@@ -114,7 +113,7 @@ order by 1 asc";
                 dataGridView1.Columns[6].Visible = false;
                 dataGridView1.Columns[7].HeaderText = "Jenis Makanan";
 
-                dataGridView1 = UpdateDataGridViewFont(dataGridView1, 16F);
+                // dataGridView1 = UpdateDataGridViewFont(dataGridView1, 16F);
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
@@ -252,11 +251,6 @@ WHERE makanan.status_makanan != 0
 order by 1 asc";
             loadDatagrid();
             tbCari.Text = "";
-        }
-
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
@@ -531,11 +525,6 @@ order by 1 asc", Koneksi.getConn());
                 sqlt.Rollback();
                 MessageBox.Show("Gagal Hapus Menu Makanan!");
             }
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
