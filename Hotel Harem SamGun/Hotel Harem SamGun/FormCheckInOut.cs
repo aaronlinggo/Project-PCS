@@ -23,13 +23,6 @@ namespace Hotel_Harem_SamGun
             InitializeComponent();
 
             columnName = new List<string>();
-
-            foreach (Control control in this.Controls)
-            {
-                // Console.WriteLine(control.GetType());
-
-                control.Font = new Font(fontName, control.Font.Size + 4, control.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
-            }
         }
 
         private void FormCheckInOut_Load(object sender, EventArgs e)
@@ -61,20 +54,14 @@ namespace Hotel_Harem_SamGun
             columnName.Add("ID");
             columnName.Add("Kode Kamar");
 
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+
             dataGridViewSetup();
-        }
 
-        private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
-        {
-            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-
-            foreach (DataGridViewRow r in dataGridView.Rows)
-            {
-                r.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
-            }
-
-            return dataGridView;
+            this.Text = "Konfirmasi Check-in";
+            this.Update();
         }
 
         public void loadDatabase()
@@ -148,9 +135,9 @@ namespace Hotel_Harem_SamGun
                 dtList.Columns[i].ColumnName = columnName[i];
             }
 
-            fitDataGridViewColumn("Kode Reservasi", true, minimumWidth: 132);
+            fitDataGridViewColumn("Kode Reservasi", true, minimumWidth: 150);
             fitDataGridViewColumn("Nomor Kamar", false);
-            fitDataGridViewColumn("Jenis Kamar", true, minimumWidth: 116);
+            fitDataGridViewColumn("Jenis Kamar", true, minimumWidth: 130);
             fitDataGridViewColumn("Jumlah Penghuni Kamar", false);
 
             if (radioButton1.Checked)
@@ -172,10 +159,6 @@ namespace Hotel_Harem_SamGun
                 dataGridView1.Columns[13].Visible = false;
             }
 
-            // dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular);
-            // dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            // dataGridView1.AutoSize = false;
-
             if (radioButton2.Checked)
             {
                 foreach (DataGridViewRow r in dataGridView1.Rows)
@@ -195,8 +178,6 @@ namespace Hotel_Harem_SamGun
 
             loadDatabase();
             refreshDataGridView();
-
-            dataGridView1 = UpdateDataGridViewFont(dataGridView1, 14F);
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -204,9 +185,12 @@ namespace Hotel_Harem_SamGun
             if (radioButton1.Checked)
             {
                 checkBox1.Visible = false;
-                label1.Text = "KONFIRMASI CHECK IN";
+                label1.Text = "KONFIRMASI CHECK-IN";
                 btnUpdate.Text = "CHECK IN";
                 dataGridViewSetup();
+
+                this.Text = "Konfirmasi Check-in";
+                this.Update();
             }
         }
 
@@ -214,11 +198,14 @@ namespace Hotel_Harem_SamGun
         {
             if (radioButton2.Checked)
             {
-                label1.Text = "KONFIRMASI CHECK OUT";
+                label1.Text = "KONFIRMASI CHECK-OUT";
                 btnUpdate.Text = "CHECK OUT";
                 dataGridViewSetup();
                 checkBox1.Checked = true;
                 checkBox1.Visible = true;
+
+                this.Text = "Konfirmasi Check-out";
+                this.Update();
             }
         }
 
