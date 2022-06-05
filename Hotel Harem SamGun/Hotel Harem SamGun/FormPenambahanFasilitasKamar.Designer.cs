@@ -495,6 +495,7 @@ namespace Hotel_Harem_SamGun
             this.Name = "FormPenambahanFasilitasKamar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Penambahan Fasilitas Kamar";
+            this.Load += new System.EventHandler(this.FormPenambahanFasilitasKamar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeranjang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).EndInit();

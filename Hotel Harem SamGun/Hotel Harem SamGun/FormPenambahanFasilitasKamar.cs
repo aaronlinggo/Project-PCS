@@ -144,7 +144,10 @@ namespace Hotel_Harem_SamGun
 
         private void dgvKeranjang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            selectedIdxKeranjang = dgvKeranjang.CurrentCell.RowIndex;
+            if(dgvKeranjang.Rows.Count > 0)
+            {
+                selectedIdxKeranjang = dgvKeranjang.CurrentCell.RowIndex;
+            }
         }
 
         private void btnPesan_Click(object sender, EventArgs e)
@@ -242,6 +245,16 @@ namespace Hotel_Harem_SamGun
             resetField();
             tbCari.Text = "";
         }
+
+        private void FormPenambahanFasilitasKamar_Load(object sender, EventArgs e)
+        {
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvFasilitas.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvKeranjang.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvKeranjang.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvKeranjang.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+        }     
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
