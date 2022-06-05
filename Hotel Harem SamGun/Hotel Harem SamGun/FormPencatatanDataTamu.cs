@@ -24,6 +24,9 @@ namespace Hotel_Harem_SamGun
         {
             refresh_cbCari_dgvTamu();
             changeMode(1);
+            dgvTamu.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvTamu.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvTamu.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
         }
 
         private void generateKodeTamu()
@@ -108,6 +111,9 @@ namespace Hotel_Harem_SamGun
 
         private void loadTamu()
         {
+            dgvTamu.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvTamu.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvTamu.EnableHeadersVisualStyles = false;
             dtTamu = new DataTable();
             string query = @"SELECT CONCAT(nama_tamu, ' - ', kode_tamu) AS kode_lengkap, kode_tamu, nama_tamu, CASE WHEN jenis_kelamin_tamu = 'L' THEN 'Laki-laki' ELSE 'Perempuan' END, jenis_kelamin_tamu, DATE_FORMAT(tanggal_lahir_tamu, '%d %M %Y'), tanggal_lahir_tamu, alamat_tamu, negara_asal, nomor_telepon_tamu, email_tamu, CASE WHEN status_tamu = 1 THEN 'Aktif' ELSE 'Non Aktif' END, status_tamu FROM tamu;";
             MySqlDataAdapter da = new MySqlDataAdapter(query, Koneksi.conn);
@@ -116,6 +122,9 @@ namespace Hotel_Harem_SamGun
 
         private void refresh_cbCari_dgvTamu()
         {
+            dgvTamu.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvTamu.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvTamu.EnableHeadersVisualStyles = false;
             loadTamu();
             cbCari.DataSource = dtTamu;
             cbCari.DisplayMember = "kode_lengkap";
