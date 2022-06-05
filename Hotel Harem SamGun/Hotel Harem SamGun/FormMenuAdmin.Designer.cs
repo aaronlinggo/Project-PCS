@@ -104,7 +104,7 @@ namespace Hotel_Harem_SamGun
             // lbWelcome
             // 
             this.lbWelcome.BackColor = System.Drawing.Color.Transparent;
-            this.lbWelcome.Font = new System.Drawing.Font("Gill Sans MT", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWelcome.Font = new System.Drawing.Font("Gill Sans MT", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbWelcome.Location = new System.Drawing.Point(12, 9);
             this.lbWelcome.Name = "lbWelcome";
             this.lbWelcome.Size = new System.Drawing.Size(653, 137);
@@ -115,9 +115,9 @@ namespace Hotel_Harem_SamGun
             // btnLogout
             // 
             this.btnLogout.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(691, 578);
+            this.btnLogout.Location = new System.Drawing.Point(691, 580);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(560, 72);
+            this.btnLogout.Size = new System.Drawing.Size(559, 68);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -169,7 +169,7 @@ namespace Hotel_Harem_SamGun
             this.MaximizeBox = false;
             this.Name = "FormMenuAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form Menu Admin";
+            this.Text = "Menu Admin";
             this.Load += new System.EventHandler(this.FormMenuAdmin_Load);
             this.ResumeLayout(false);
 
