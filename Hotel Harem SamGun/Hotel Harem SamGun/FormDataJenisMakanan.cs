@@ -17,6 +17,8 @@ namespace Hotel_Harem_SamGun
         DataRow pick;
         bool isEdit = false;
         string query = "";
+        public string fontName = "Gill Sans MT";
+
         public FormDataJenisMakanan()
         {
             InitializeComponent();
@@ -24,11 +26,11 @@ namespace Hotel_Harem_SamGun
 
         private void FormDataJenisMakanan_Load(object sender, EventArgs e)
         {
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
+            // dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            // dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            // dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            // dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            // label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
             /*Koneksi.openConn();*/
             query = @"SELECT
   jenis_makanan.id_jenis_makanan,
@@ -44,14 +46,22 @@ order by 1 asc";
         {
             try
             {
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView1.EnableHeadersVisualStyles = false;
+
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, Koneksi.conn);
                 dtjenis = new DataTable();
                 adapter.Fill(dtjenis);
 
                 dataGridView1.DataSource = dtjenis;
                 dataGridView1.Columns[0].HeaderText = "ID Jenis Makanan";
+                dataGridView1.Columns[0].MinimumWidth = dataGridView1.Columns[0].MinimumWidth + 6;
+                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dataGridView1.Columns[1].HeaderText = "Nama Jenis Makanan";
                 dataGridView1.ClearSelection();
+
+                dataGridView1 = UpdateDataGridViewFont(dataGridView1, 16F);
             }
             catch (Exception ex)
             {
@@ -59,12 +69,35 @@ order by 1 asc";
             }
         }
 
+        private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
+        {
+            dataGridView.Font = new Font(fontName, fontSize, dataGridView.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
+
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+
+            foreach (DataGridViewRow r in dataGridView.Rows)
+            {
+                r.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            }
+
+            return dataGridView;
+        }
+
         public void refreshDataGridView()
         {
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridView1.EnableHeadersVisualStyles = false;
+
             dataGridView1.DataSource = dtjenis;
             dataGridView1.Columns[0].HeaderText = "ID Jenis Makanan";
+            dataGridView1.Columns[0].MinimumWidth = dataGridView1.Columns[0].MinimumWidth + 6;
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[1].HeaderText = "Nama Jenis Makanan";
             dataGridView1.ClearSelection();
+
+            dataGridView1 = UpdateDataGridViewFont(dataGridView1, 16F);
         }
 
         public void generateID()

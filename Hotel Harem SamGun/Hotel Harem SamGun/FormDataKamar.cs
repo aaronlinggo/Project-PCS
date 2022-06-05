@@ -35,6 +35,24 @@ namespace Hotel_Harem_SamGun
             generateKode();
         }
 
+        private void FormDataKamar_Load(object sender, EventArgs e)
+        {
+            dgvKamar.ClearSelection();
+        }
+
+        public void resetTampilan()
+        {
+            tbID.Text = "-";
+            comboJenisKamar.SelectedIndex = 0;
+            numKamarKe.Value = 0;
+            numLantai.Value = 0;
+            rb1.Checked = true;
+            tbKode.Text = "-";
+            tbNoKamar.Text = "-";
+            selectedIdx = -1;
+            dgvKamar.ClearSelection();
+        }
+
         private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
         {
             dataGridView.Font = new Font(fontName, fontSize, dataGridView.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
@@ -48,18 +66,6 @@ namespace Hotel_Harem_SamGun
             }
 
             return dataGridView;
-        }
-
-        public void resetTampilan()
-        {
-            tbID.Text = "-";
-            comboJenisKamar.SelectedIndex = 0;
-            numKamarKe.Value = 0;
-            numLantai.Value = 0;
-            rb1.Checked = true;
-            tbKode.Text = "-";
-            tbNoKamar.Text = "-";
-            selectedIdx = -1;
         }
 
         public void refreshDGV()
@@ -90,6 +96,7 @@ namespace Hotel_Harem_SamGun
             dgvKamar.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
             dgvKamar = UpdateDataGridViewFont(dgvKamar, 16F);
+            dgvKamar.ClearSelection();
         }
 
         public void searchDGV(string keyword)
@@ -115,6 +122,7 @@ namespace Hotel_Harem_SamGun
             dgvKamar.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvKamar.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
+            dgvKamar.ClearSelection();
         }
         public void isiComboKategori()
         {
@@ -314,11 +322,6 @@ namespace Hotel_Harem_SamGun
         private void btnCari_Click(object sender, EventArgs e)
         {
             searchDGV(tbCari.Text);
-        }
-
-        private void FormDataKamar_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
