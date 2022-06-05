@@ -507,18 +507,18 @@ namespace Hotel_Harem_SamGun
                      CREATE OR REPLACE TRIGGER update_status_totalBiaya_header_reservasi
                      AFTER UPDATE ON detail_reservasi FOR EACH ROW
                      BEGIN
-	                     DECLARE jumlah INT;
+	                     DECLARE jumlah INT DEFAULT 0;
 	                     DECLARE total_biaya INT;
 	
-	                     SELECT total_biaya_reservasi INTO total_biaya FROM header_reservasi WHERE kode_reservas = NEW.kode_reservasi;
-	                     SET total_biaya = total_biaya - (NEW.subtotal_biaya_reservasi + NEW.deposito + (0.5 *NEW.down_payment));
-	                     UPDATE header_reservasi SET total_biaya_reservasi = total_biaya WHERE kode_reservasi =NEW.kode_reservasi;
+	                     SELECT total_biaya_reservasi INTO total_biaya FROM header_reservasi WHERE kode_reservasi = NEW.kode_reservasi;
+	                     SET total_biaya = total_biaya - (NEW.subtotal_biaya_reservasi + NEW.deposito + (0.5 * NEW.down_payment));
+	                     UPDATE header_reservasi SET total_biaya_reservasi = total_biaya WHERE kode_reservasi = NEW.kode_reservasi;
 	
 	                     # JIKA SEMUA STATUS DETAIL = 99 MAKA STATUS HEADER 99
-	                     SELECT COUNT(*) INTO jumlah FROM detail_reservasi WHERE status_detail_reservasi != 99AND kode_reservasi = NEW.kode_reservasi;
+	                     SELECT COUNT(*) INTO jumlah FROM detail_reservasi WHERE status_detail_reservasi != 99 AND kode_reservasi = NEW.kode_reservasi;
 	
 	                     IF (jumlah = 0) THEN
-		                     UPDATE header_reservasi SET status_header_reservasi = 99 WHERE kode_reservasi =NEW.kode_reservasi;
+		                     UPDATE header_reservasi SET status_header_reservasi = 99 WHERE kode_reservasi = NEW.kode_reservasi;
 	                     END IF;
                      END";
                 cmd.ExecuteNonQuery();
