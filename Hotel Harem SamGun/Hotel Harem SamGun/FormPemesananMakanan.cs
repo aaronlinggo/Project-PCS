@@ -28,9 +28,9 @@ namespace Hotel_Harem_SamGun
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void FormPemesananMakanan_Shown(object sender, EventArgs e)
         {
-
+            dataGridView1.ClearSelection();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -81,12 +81,10 @@ namespace Hotel_Harem_SamGun
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
             dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
             dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             dataGridView2.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
+            // label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
 
             query = @"SELECT
   makanan.id_makanan,
@@ -112,14 +110,7 @@ order by 1 asc";
             dtkeranjang.Columns.Add("Jumlah Pemesanan", typeof(string));
             dtkeranjang.Columns.Add("Total Harga", typeof(string));
             dataGridView2.DataSource = dtkeranjang;
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
-            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
-            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
-            dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            dataGridView2.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
-            dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dataGridView2.ClearSelection();
             /*Koneksi.openConn();*/
             loadDatagrid();
             loadCB();
@@ -151,6 +142,13 @@ order by 1 asc";
         {
             try
             {
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView1.EnableHeadersVisualStyles = false;
+                dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dataGridView2.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView2.EnableHeadersVisualStyles = false;
+
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, Koneksi.conn);
                 dtmakanan = new DataTable();
                 adapter.Fill(dtmakanan);
@@ -227,6 +225,7 @@ order by 1 asc";
             btnMines.Enabled = false;
             btnPlus.Enabled = false;
             dataGridView1.ClearSelection();
+            dataGridView2.ClearSelection();
             loadDatagrid();
             tbCari.Text = "";
         }
@@ -266,6 +265,8 @@ order by 1 asc";
                 }
 
                 dataGridView2.DataSource = dtkeranjang;
+                dataGridView1.ClearSelection();
+                dataGridView2.ClearSelection();
 
                 tbSubtotal.Text = Convert.ToInt32(tbSubtotal.Text) + (Convert.ToInt32(dataGridView1.Rows[pilih].Cells[2].Value) * Convert.ToInt32(tbPembelian.Text)) + "";
 
@@ -512,11 +513,6 @@ makanan.nama_makanan LIKE '%" + tbCari.Text + @"%'
 order by 1 asc";
             loadDatagrid();
             tbCari.Text = "";
-        }
-
-        private void tbCari_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
