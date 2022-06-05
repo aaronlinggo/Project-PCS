@@ -163,10 +163,11 @@ namespace Hotel_Harem_SamGun
             // lbKodeTamu
             // 
             this.lbKodeTamu.AutoSize = true;
-            this.lbKodeTamu.Location = new System.Drawing.Point(153, 494);
-            this.lbKodeTamu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbKodeTamu.Font = new System.Drawing.Font("Gill Sans MT", 14F);
+            this.lbKodeTamu.Location = new System.Drawing.Point(193, 474);
+            this.lbKodeTamu.Margin = new System.Windows.Forms.Padding(3);
             this.lbKodeTamu.Name = "lbKodeTamu";
-            this.lbKodeTamu.Size = new System.Drawing.Size(10, 13);
+            this.lbKodeTamu.Size = new System.Drawing.Size(18, 27);
             this.lbKodeTamu.TabIndex = 9;
             this.lbKodeTamu.Text = "-";
             // 

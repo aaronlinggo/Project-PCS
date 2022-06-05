@@ -25,12 +25,18 @@ namespace Hotel_Harem_SamGun
         {
             refresh_cbCari_dgvHeaderReservasi();
             ResetAll();
+            dgvHeaderReservasi.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvHeaderReservasi.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvHeaderReservasi.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
         }
 
         private void fillDT(DataTable dt, string query)
         {
             try
             {
+                dgvHeaderReservasi.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dgvHeaderReservasi.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dgvHeaderReservasi.EnableHeadersVisualStyles = false;
                 da = new MySqlDataAdapter(query, Koneksi.conn);
                 da.Fill(dt);
             }
@@ -69,6 +75,9 @@ namespace Hotel_Harem_SamGun
 
         private void refresh_cbCari_dgvHeaderReservasi(int status = -1)
         {
+            dgvHeaderReservasi.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvHeaderReservasi.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvHeaderReservasi.EnableHeadersVisualStyles = false;
             loadHeaderReservasi(status);
             cbCari.DataSource = dtHeaderReservasi;
             cbCari.DisplayMember = "nama_kode";
