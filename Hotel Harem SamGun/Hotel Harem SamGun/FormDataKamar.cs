@@ -95,6 +95,7 @@ namespace Hotel_Harem_SamGun
             dgvKamar.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvKamar.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
+
             dgvKamar = UpdateDataGridViewFont(dgvKamar, 16F);
             dgvKamar.ClearSelection();
         }

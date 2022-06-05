@@ -19,6 +19,8 @@ namespace Hotel_Harem_SamGun
         DataTable dt;
         int selectedIdx = -1;
         public int id_jk;
+        public string fontName = "Gill Sans MT";
+
         public FormDataJenisKamar()
         {
             Koneksi.openConn();
@@ -29,8 +31,32 @@ namespace Hotel_Harem_SamGun
             refreshDGV();
         }
 
+        private void FormDataJenisKamar_Load(object sender, EventArgs e)
+        {
+            dgvJenisKamar.ClearSelection();
+        }
+
+        private DataGridView UpdateDataGridViewFont(DataGridView dataGridView, float fontSize)
+        {
+            dataGridView.Font = new Font(fontName, fontSize, dataGridView.Font.Style, GraphicsUnit.Pixel, ((byte)(0)));
+
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+
+            foreach (DataGridViewRow r in dataGridView.Rows)
+            {
+                r.DefaultCellStyle.Font = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
+            }
+
+            return dataGridView;
+        }
+
         public void refreshDGV()
         {
+            dgvJenisKamar.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvJenisKamar.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvJenisKamar.EnableHeadersVisualStyles = false;
+
             dt = new DataTable();
             query = "SELECT id_jenis_kamar,nama_jenis_kamar,CONCAT('Rp ', FORMAT(harga_jenis_kamar,0,'de_DE')),IF(status_jenis_kamar = 1, 'Tersedia','Tidak Tersedia') FROM jenis_kamar ORDER BY id_jenis_kamar";
             cmd = new MySqlCommand(query, conn);
@@ -46,10 +72,17 @@ namespace Hotel_Harem_SamGun
             dgvJenisKamar.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvJenisKamar.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             selectedIdx = -1;
+
+            dgvJenisKamar = UpdateDataGridViewFont(dgvJenisKamar, 16F);
+            dgvJenisKamar.ClearSelection();
         }
 
         public void searchDGV(string keyword)
         {
+            dgvJenisKamar.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvJenisKamar.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvJenisKamar.EnableHeadersVisualStyles = false;
+
             dt = new DataTable();
             query = $"SELECT id_jenis_kamar,nama_jenis_kamar,CONCAT('Rp ', FORMAT(harga_jenis_kamar,0,'de_DE')),IF(status_jenis_kamar = 1, 'Tersedia','Tidak Tersedia') FROM jenis_kamar WHERE nama_jenis_kamar LIKE '%{keyword}%' ORDER BY id_jenis_kamar";
             cmd = new MySqlCommand(query, conn);
@@ -64,6 +97,9 @@ namespace Hotel_Harem_SamGun
             dgvJenisKamar.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvJenisKamar.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvJenisKamar.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+
+            dgvJenisKamar = UpdateDataGridViewFont(dgvJenisKamar, 16F);
+            dgvJenisKamar.ClearSelection();
         }
 
         public void resetTampilan()
