@@ -82,7 +82,7 @@ order by 1 asc";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -463,64 +463,64 @@ order by 1 asc", Koneksi.getConn());
                                                         btnHapus.Enabled = false;
                                                         btnEdit.Enabled = false;
 
-                                                        MessageBox.Show("Berhasil Insert Data Karyawan!");
+                                                        MessageBox.Show("Berhasil menambah data karyawan baru!", "Berhasil");
                                                         sqlt.Commit();
                                                     }
                                                     catch (MySqlException ex)
                                                     {
                                                         Console.WriteLine(ex.Message);
                                                         sqlt.Rollback();
-                                                        MessageBox.Show("Gagal Insert Data Karyawan!");
+                                                        MessageBox.Show("Gagal menambah data karyawan baru!", "Gagal");
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Confirm Password tidak sesuai!");
+                                                    MessageBox.Show("Confirm password tidak sesuai!", "Gagal");
                                                 }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Roles tidak boleh kosong!");
+                                                MessageBox.Show("Roles tidak boleh kosong!", "Gagal");
                                             }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Password tidak boleh kosong!");
+                                            MessageBox.Show("Password tidak boleh kosong!", "Gagal");
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Email tidak boleh kosong!");
+                                        MessageBox.Show("Email tidak boleh kosong!", "Gagal");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Alamat tidak boleh kosong!");
+                                    MessageBox.Show("Alamat tidak boleh kosong!", "Gagal");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Nomor Telepon tidak boleh kosong!");
+                                MessageBox.Show("Nomor telepon tidak boleh kosong!", "Gagal");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Umur Minimal 18 Tahun!");
+                            MessageBox.Show("Minimal umur adalah 18 tahun!", "Gagal");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Jenis kelamin tidak boleh kosong!");
+                        MessageBox.Show("Jenis kelamin tidak boleh kosong!", "Gagal");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Nama Karyawan tidak boleh kosong!");
+                    MessageBox.Show("Nama karyawan tidak boleh kosong!", "Gagal");
                 }
             }
             else
             {
-                MessageBox.Show("Username tidak boleh kosong!");
+                MessageBox.Show("Username tidak boleh kosong!", "Gagal");
             }
         }
 
@@ -616,14 +616,14 @@ order by 1 asc", Koneksi.getConn());
                 rbResepsionis.Enabled = true;
                 btnTambah.Enabled = true;
 
-                MessageBox.Show("Berhasil Hapus Data Karyawan!");
+                MessageBox.Show("Berhasil hapus data karyawan!", "Berhasil");
                 sqlt.Commit();
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
                 sqlt.Rollback();
-                MessageBox.Show("Gagal Hapus Data Karyawan!");
+                MessageBox.Show("Gagal hapus data karyawan!", "Gagal");
             }
         }
 
@@ -718,59 +718,59 @@ order by 1 asc", Koneksi.getConn());
                                                     rbAdmin.Enabled = true;
                                                     rbResepsionis.Enabled = true;
 
-                                                    MessageBox.Show("Berhasil Ubah Data Karyawan!");
+                                                    MessageBox.Show("Berhasil ubah data karyawan!", "Berhasil");
                                                     sqlt.Commit();
                                                 }
                                                 catch (MySqlException ex)
                                                 {
                                                     Console.WriteLine(ex.Message);
                                                     sqlt.Rollback();
-                                                    MessageBox.Show("Gagal Ubah Data Karyawan!");
+                                                    MessageBox.Show("Gagal ubah data karyawan!", "Gagal");
                                                 }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Roles tidak boleh kosong!");
+                                                MessageBox.Show("Roles tidak boleh kosong!", "Gagal");
                                             }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Password tidak boleh kosong!");
+                                            MessageBox.Show("Password tidak boleh kosong!", "Gagal");
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Email tidak boleh kosong!");
+                                        MessageBox.Show("Email tidak boleh kosong!", "Gagal");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Alamat tidak boleh kosong!");
+                                    MessageBox.Show("Alamat tidak boleh kosong!", "Gagal");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Nomor Telepon tidak boleh kosong!");
+                                MessageBox.Show("Nomor telepon tidak boleh kosong!", "Gagal");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Umur Minimal 18 Tahun!");
+                            MessageBox.Show("Minimal umur adalah 18 tahun!", "Gagal");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Jenis kelamin tidak boleh kosong!");
+                        MessageBox.Show("Jenis kelamin tidak boleh kosong!", "Gagal");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Nama Karyawan tidak boleh kosong!");
+                    MessageBox.Show("Nama karyawan tidak boleh kosong!", "Gagal");
                 }
             }
             else
             {
-                MessageBox.Show("Username tidak boleh kosong!");
+                MessageBox.Show("Username tidak boleh kosong!", "Gagal");
             }
         }
 

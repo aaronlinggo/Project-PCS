@@ -42,7 +42,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -183,7 +183,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
                 return 0;
             }
         }

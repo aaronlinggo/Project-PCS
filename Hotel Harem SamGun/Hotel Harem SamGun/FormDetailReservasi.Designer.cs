@@ -633,7 +633,7 @@ namespace Hotel_Harem_SamGun
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormDetailReservasi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form Detail Reservasi";
+            this.Text = "Detail Reservasi";
             this.Load += new System.EventHandler(this.FormDetailReservasi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailReservasi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahPenghuniKamar)).EndInit();

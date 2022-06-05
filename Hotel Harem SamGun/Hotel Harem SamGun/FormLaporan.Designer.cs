@@ -47,6 +47,7 @@ namespace Hotel_Harem_SamGun
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnBack);
             this.panel1.Controls.Add(this.btnReport5);
@@ -54,15 +55,15 @@ namespace Hotel_Harem_SamGun
             this.panel1.Controls.Add(this.btnReport4);
             this.panel1.Controls.Add(this.btnReport2);
             this.panel1.Controls.Add(this.btnReport1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(-1, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(266, 674);
+            this.panel1.Size = new System.Drawing.Size(268, 675);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(45, 22);
+            this.pictureBox1.Location = new System.Drawing.Point(45, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(176, 96);
             this.pictureBox1.TabIndex = 6;
@@ -157,9 +158,9 @@ namespace Hotel_Harem_SamGun
             this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(276, 65);
+            this.crystalReportViewer1.Location = new System.Drawing.Point(277, 65);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(976, 596);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(975, 595);
             this.crystalReportViewer1.TabIndex = 1;
             // 
             // lblReportTitle
@@ -167,11 +168,11 @@ namespace Hotel_Harem_SamGun
             this.lblReportTitle.AutoSize = true;
             this.lblReportTitle.Font = new System.Drawing.Font("Gill Sans MT", 20F, System.Drawing.FontStyle.Bold);
             this.lblReportTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblReportTitle.Location = new System.Drawing.Point(269, 13);
+            this.lblReportTitle.Location = new System.Drawing.Point(270, 13);
             this.lblReportTitle.Name = "lblReportTitle";
-            this.lblReportTitle.Size = new System.Drawing.Size(229, 38);
+            this.lblReportTitle.Size = new System.Drawing.Size(159, 38);
             this.lblReportTitle.TabIndex = 2;
-            this.lblReportTitle.Text = "LAPORAN <???>";
+            this.lblReportTitle.Text = "LAPORAN";
             // 
             // FormLaporan
             // 

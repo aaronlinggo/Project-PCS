@@ -47,7 +47,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -392,14 +392,14 @@ namespace Hotel_Harem_SamGun
             // TIDAK BOLEH ADA DATA KOSONG
             if (cbNamaTamu.SelectedIndex == -1 || cbJenisKamar.SelectedIndex == -1 || cbNomorKamar.SelectedIndex == -1)
             {
-                MessageBox.Show("Pastikan semua DATA TERISI dengan benar!", "GAGAL");
+                MessageBox.Show("Pastikan semua data terisi dengan benar!", "Gagal");
                 return;
             }
 
             // PENGECEKAN TANGGAL
             if (!bisaReservasi())
             {
-                MessageBox.Show("Kamar sudah direservasi / ditempati!", "GAGAL");
+                MessageBox.Show("Kamar sudah direservasi/ditempati!", "Gagal");
                 return;
             }
 
@@ -456,7 +456,7 @@ namespace Hotel_Harem_SamGun
                 cmd.ExecuteNonQuery();
 
                 trans.Commit();
-                MessageBox.Show("Berhasil reservasi!", "BERHASIL");
+                MessageBox.Show("Berhasil melakukan reservasi!", "Berhasil");
 
                 refresh_cbCari_dgvDetailReservasi();
                 changeMode(1);
@@ -465,7 +465,7 @@ namespace Hotel_Harem_SamGun
             {
                 trans.Rollback();
                 Console.WriteLine(ex.Message);
-                MessageBox.Show("Gagal reservasi!", "GAGAL");
+                MessageBox.Show("Gagal melakukan reservasi!", "Gagal");
             }
         }
 
@@ -483,7 +483,7 @@ namespace Hotel_Harem_SamGun
                 cmd.ExecuteNonQuery();
 
                 trans.Commit();
-                MessageBox.Show("Berhasil membatalkan reservasi!", "BERHASIL");
+                MessageBox.Show("Berhasil membatalkan reservasi!", "Berhasil");
 
                 refresh_cbCari_dgvDetailReservasi();
                 changeMode(1);
@@ -492,7 +492,7 @@ namespace Hotel_Harem_SamGun
             {
                 trans.Rollback();
                 Console.WriteLine(ex.Message);
-                MessageBox.Show("Gagal membatalkan reservasi!", "GAGAL");
+                MessageBox.Show("Gagal membatalkan reservasi!", "Gagal");
             }
         }
 
@@ -525,7 +525,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -535,7 +535,7 @@ namespace Hotel_Harem_SamGun
             {
                 if (dtpJadwalCheckIn.Value < DateTime.Today)
                 {
-                    MessageBox.Show("Jadwal Check In tidak boleh kurang dari Jadwal SAAT INI!");
+                    MessageBox.Show("Jadwal check-in tidak boleh kurang dari jadwal saat ini!", "Gagal");
                     dtpJadwalCheckIn.Value = DateTime.Today;
                 }
                 if (dtpJadwalCheckOut.Value <= dtpJadwalCheckIn.Value)
@@ -551,7 +551,7 @@ namespace Hotel_Harem_SamGun
             {
                 if (dtpJadwalCheckOut.Value <= dtpJadwalCheckIn.Value)
                 {
-                    MessageBox.Show("Jadwal Check Out tidak boleh kurang dari sama dengan Jadwal Check In!");
+                    MessageBox.Show("Jadwal check-out tidak boleh kurang dari sama dengan jadwal check-in!", "Gagal");
                     dtpJadwalCheckOut.Value = dtpJadwalCheckIn.Value.AddDays(1);
                 }
             }
@@ -605,7 +605,7 @@ namespace Hotel_Harem_SamGun
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 

@@ -123,7 +123,7 @@ order by 1 asc";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -375,44 +375,44 @@ order by 1 asc", Koneksi.getConn());
                                         btnEdit.Enabled = false;
                                         btnHapus.Enabled = false;
 
-                                        MessageBox.Show("Berhasil Insert Menu Makanan!");
+                                        MessageBox.Show("Berhasil menambah menu makanan baru!", "Berhasil");
                                         sqlt.Commit();
                                     }
                                     catch (MySqlException ex)
                                     {
                                         Console.WriteLine(ex.Message);
                                         sqlt.Rollback();
-                                        MessageBox.Show("Gagal Insert Menu Makanan!");
+                                        MessageBox.Show("Gagal menambah menu makanan baru!", "Gagal");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Stok Makanan harus lebih besar sama dengan 0 (>=0)");
+                                    MessageBox.Show("Stok makanan harus lebih besar sama dengan 0! (>=0)", "Gagal");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Harga Makanan harus lebih besar sama dengan 0 (>=0)");
+                                MessageBox.Show("Harga makanan harus lebih besar sama dengan 0! (>=0)", "Gagal");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Jenis Makanan tidak boleh kosong!");
+                            MessageBox.Show("Jenis makanan tidak boleh kosong!", "Gagal");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Stok Makanan tidak boleh kosong!");
+                        MessageBox.Show("Stok makanan tidak boleh kosong!", "Gagal");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Harga Makanan tidak boleh kosong!");
+                    MessageBox.Show("Harga makanan tidak boleh kosong!", "Gagal");
                 }
             }
             else
             {
-                MessageBox.Show("Nama Makanan tidak boleh kosong!");
+                MessageBox.Show("Nama makanan tidak boleh kosong!", "Gagal");
             }
         }
 
@@ -473,44 +473,44 @@ order by 1 asc", Koneksi.getConn());
                                         btnHapus.Enabled = false;
                                         btnTambah.Enabled = true;
 
-                                        MessageBox.Show("Berhasil Ubah Menu Makanan!");
+                                        MessageBox.Show("Berhasil ubah data menu makanan!", "Berhasil");
                                         sqlt.Commit();
                                     }
                                     catch (MySqlException ex)
                                     {
                                         Console.WriteLine(ex.Message);
                                         sqlt.Rollback();
-                                        MessageBox.Show("Gagal Ubah Menu Makanan!");
+                                        MessageBox.Show("Gagal ubah data menu makanan!", "Gagal");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Stok Makanan harus lebih besar sama dengan 0 (>=0)");
+                                    MessageBox.Show("Stok makanan harus lebih besar sama dengan 0! (>=0)", "Gagal");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Harga Makanan harus lebih besar sama dengan 0 (>=0)");
+                                MessageBox.Show("Harga makanan harus lebih besar sama dengan 0! (>=0)", "Gagal");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Jenis Makanan tidak boleh kosong!");
+                            MessageBox.Show("Jenis makanan tidak boleh kosong!", "Gagal");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Stok Makanan tidak boleh kosong!");
+                        MessageBox.Show("Stok makanan tidak boleh kosong!", "Gagal");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Harga Makanan tidak boleh kosong!");
+                    MessageBox.Show("Harga makanan tidak boleh kosong!", "Gagal");
                 }
             }
             else
             {
-                MessageBox.Show("Nama Makanan tidak boleh kosong!");
+                MessageBox.Show("Nama makanan tidak boleh kosong!", "Gagal");
             }
         }
 
@@ -543,14 +543,14 @@ order by 1 asc", Koneksi.getConn());
                 btnHapus.Enabled = false;
                 btnTambah.Enabled = true;
 
-                MessageBox.Show("Berhasil Hapus Menu Makanan!");
+                MessageBox.Show("Berhasil hapus menu makanan!", "Berhasil");
                 sqlt.Commit();
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
                 sqlt.Rollback();
-                MessageBox.Show("Gagal Hapus Menu Makanan!");
+                MessageBox.Show("Gagal hapus menu makanan!", "Gagal");
             }
         }
 

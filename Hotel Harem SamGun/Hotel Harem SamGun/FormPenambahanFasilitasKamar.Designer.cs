@@ -85,6 +85,7 @@ namespace Hotel_Harem_SamGun
             this.dgvKeranjang.AllowUserToDeleteRows = false;
             this.dgvKeranjang.AllowUserToResizeColumns = false;
             this.dgvKeranjang.AllowUserToResizeRows = false;
+            this.dgvKeranjang.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvKeranjang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKeranjang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -170,7 +171,7 @@ namespace Hotel_Harem_SamGun
             this.btnPesan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesan.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.btnPesan.ForeColor = System.Drawing.Color.White;
-            this.btnPesan.Location = new System.Drawing.Point(965, 606);
+            this.btnPesan.Location = new System.Drawing.Point(1126, 523);
             this.btnPesan.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
             this.btnPesan.Name = "btnPesan";
             this.btnPesan.Size = new System.Drawing.Size(118, 33);
@@ -185,7 +186,7 @@ namespace Hotel_Harem_SamGun
             this.btnHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHapus.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.btnHapus.ForeColor = System.Drawing.Color.White;
-            this.btnHapus.Location = new System.Drawing.Point(1126, 482);
+            this.btnHapus.Location = new System.Drawing.Point(1126, 441);
             this.btnHapus.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(118, 33);
@@ -200,7 +201,7 @@ namespace Hotel_Harem_SamGun
             this.btnTambah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTambah.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.btnTambah.ForeColor = System.Drawing.Color.White;
-            this.btnTambah.Location = new System.Drawing.Point(1126, 441);
+            this.btnTambah.Location = new System.Drawing.Point(965, 606);
             this.btnTambah.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
             this.btnTambah.Name = "btnTambah";
             this.btnTambah.Size = new System.Drawing.Size(118, 33);
@@ -299,7 +300,7 @@ namespace Hotel_Harem_SamGun
             this.btnBersihkan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBersihkan.Font = new System.Drawing.Font("Gill Sans MT", 12F);
             this.btnBersihkan.ForeColor = System.Drawing.Color.White;
-            this.btnBersihkan.Location = new System.Drawing.Point(1126, 523);
+            this.btnBersihkan.Location = new System.Drawing.Point(1126, 482);
             this.btnBersihkan.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
             this.btnBersihkan.Name = "btnBersihkan";
             this.btnBersihkan.Size = new System.Drawing.Size(118, 33);
@@ -312,7 +313,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.lblNoKamar.AutoSize = true;
             this.lblNoKamar.Font = new System.Drawing.Font("Gill Sans MT", 14F);
-            this.lblNoKamar.Location = new System.Drawing.Point(504, 73);
+            this.lblNoKamar.Location = new System.Drawing.Point(504, 66);
             this.lblNoKamar.Name = "lblNoKamar";
             this.lblNoKamar.Size = new System.Drawing.Size(52, 27);
             this.lblNoKamar.TabIndex = 48;
@@ -383,8 +384,9 @@ namespace Hotel_Harem_SamGun
             this.dgvFasilitas.AllowUserToDeleteRows = false;
             this.dgvFasilitas.AllowUserToResizeColumns = false;
             this.dgvFasilitas.AllowUserToResizeRows = false;
+            this.dgvFasilitas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvFasilitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFasilitas.Location = new System.Drawing.Point(21, 112);
+            this.dgvFasilitas.Location = new System.Drawing.Point(21, 105);
             this.dgvFasilitas.Margin = new System.Windows.Forms.Padding(3, 12, 3, 12);
             this.dgvFasilitas.Name = "dgvFasilitas";
             this.dgvFasilitas.ReadOnly = true;
@@ -398,7 +400,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Gill Sans MT", 14F);
-            this.label7.Location = new System.Drawing.Point(15, 73);
+            this.label7.Location = new System.Drawing.Point(15, 66);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(138, 27);
             this.label7.TabIndex = 43;
@@ -408,7 +410,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.lblKodeReservasi.AutoSize = true;
             this.lblKodeReservasi.Font = new System.Drawing.Font("Gill Sans MT", 14F);
-            this.lblKodeReservasi.Location = new System.Drawing.Point(159, 73);
+            this.lblKodeReservasi.Location = new System.Drawing.Point(159, 66);
             this.lblKodeReservasi.Name = "lblKodeReservasi";
             this.lblKodeReservasi.Size = new System.Drawing.Size(170, 27);
             this.lblKodeReservasi.TabIndex = 44;
@@ -418,7 +420,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Gill Sans MT", 14F);
-            this.label9.Location = new System.Drawing.Point(599, 73);
+            this.label9.Location = new System.Drawing.Point(599, 66);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(116, 27);
             this.label9.TabIndex = 45;
@@ -428,7 +430,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.lblNamaTamu.AutoSize = true;
             this.lblNamaTamu.Font = new System.Drawing.Font("Gill Sans MT", 14F);
-            this.lblNamaTamu.Location = new System.Drawing.Point(721, 73);
+            this.lblNamaTamu.Location = new System.Drawing.Point(721, 66);
             this.lblNamaTamu.Name = "lblNamaTamu";
             this.lblNamaTamu.Size = new System.Drawing.Size(124, 27);
             this.lblNamaTamu.TabIndex = 46;
@@ -438,7 +440,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Gill Sans MT", 14F);
-            this.label8.Location = new System.Drawing.Point(363, 73);
+            this.label8.Location = new System.Drawing.Point(363, 66);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(135, 27);
             this.label8.TabIndex = 47;

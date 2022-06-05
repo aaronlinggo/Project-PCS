@@ -139,13 +139,13 @@ namespace Hotel_Harem_SamGun
             if (selectedIdx > -1)
             {
                 //untuk update atau delete
-                MessageBox.Show("Tidak bisa insert di data yang sudah ada di database");
+                MessageBox.Show("Tidak bisa insert data yang sudah ada di database!", "Gagal");
             }
             else
             {
                 if (tbNama.Text == "" || tbHarga.Text == "" || tbStok.Text == "")
                 {
-                    MessageBox.Show("Semua field harus terisi");
+                    MessageBox.Show("Semua field harus terisi", "Gagal");
                 }
                 else
                 {
@@ -153,11 +153,11 @@ namespace Hotel_Harem_SamGun
                     if (!int.TryParse(tbHarga.Text, out harga))
                     {
                         // cek harga
-                        MessageBox.Show("Harga harus angka");
+                        MessageBox.Show("Harga harus berupa angka!", "Gagal");
                     }
                     else if (harga < 0)
                     {
-                        MessageBox.Show("Harga minimalnya adalah 0");
+                        MessageBox.Show("Minimal harga adalah 0!", "Gagal");
                     }
                     else
                     {
@@ -165,11 +165,11 @@ namespace Hotel_Harem_SamGun
                         if (!int.TryParse(tbStok.Text, out stok))
                         {
                             // cek stok
-                            MessageBox.Show("Stok harus angka");
+                            MessageBox.Show("Stok harus berupa angka!", "Gagal");
                         }
                         else if (stok < 0)
                         {
-                            MessageBox.Show("Stok minimalnya adalah 0");
+                            MessageBox.Show("Minimal stok adalah 0!", "Gagal");
                         }
                         else
                         {
@@ -208,7 +208,7 @@ namespace Hotel_Harem_SamGun
                                 cmd.ExecuteNonQuery();
                             }
 
-                            MessageBox.Show("Berhasil menambah tambahan fasilitas baru");
+                            MessageBox.Show("Berhasil menambah data fasilitas tambahan baru!", "Berhasil");
                             refreshDGV();
                             resetTampilan();
                         }
@@ -224,7 +224,7 @@ namespace Hotel_Harem_SamGun
             {
                 if (tbNama.Text == "" || tbHarga.Text == "" || tbStok.Text == "")
                 {
-                    MessageBox.Show("Semua field harus terisi");
+                    MessageBox.Show("Semua field harus terisi!", "Gagal");
                 }
                 else
                 {
@@ -232,11 +232,11 @@ namespace Hotel_Harem_SamGun
                     if (!int.TryParse(tbHarga.Text, out harga))
                     {
                         // cek harga
-                        MessageBox.Show("Harga harus angka");
+                        MessageBox.Show("Harga harus berupa angka!", "Gagal");
                     }
                     else if (harga < 0)
                     {
-                        MessageBox.Show("Harga minimalnya adalah 0");
+                        MessageBox.Show("Minimal harga adalah 0!", "Gagal");
                     }
                     else
                     {
@@ -244,11 +244,11 @@ namespace Hotel_Harem_SamGun
                         if (!int.TryParse(tbStok.Text, out stok))
                         {
                             // cek harga
-                            MessageBox.Show("Stok harus angka");
+                            MessageBox.Show("Stok harus berupa angka!", "Gagal");
                         }
                         else if (stok < 0)
                         {
-                            MessageBox.Show("Stok minimalnya adalah 0");
+                            MessageBox.Show("Minimal stok adalah 0!", "Gagal");
                         }
                         else
                         {
@@ -264,7 +264,7 @@ namespace Hotel_Harem_SamGun
                             query = $"UPDATE extra_fasilitas SET nama_extra_fasilitas = '{tbNama.Text}', stok_extra_fasilitas = '{tbStok.Text}', harga_extra_fasilitas = '{tbHarga.Text}', status_extra_fasilitas = '{status}' WHERE id_extra_fasilitas = '{tbID.Text}'";
                             cmd = new MySqlCommand(query, conn);
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Berhasil mengubah tambahan fasilitas");
+                            MessageBox.Show("Berhasil mengubah data fasilitas tambahan!", "Berhasil");
                             refreshDGV();
                             resetTampilan();
                         }
@@ -273,7 +273,7 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                MessageBox.Show("Tidak bisa mengubah tambahan fasilitas");
+                MessageBox.Show("Tidak bisa mengubah data fasilitas tambahan!", "Gagal");
             }
         }
 
@@ -300,13 +300,13 @@ namespace Hotel_Harem_SamGun
                 query = $"UPDATE extra_fasilitas SET nama_extra_fasilitas = '{tbNama.Text}', stok_extra_fasilitas = '{tbStok.Text}', harga_extra_fasilitas = '{tbHarga.Text}', status_extra_fasilitas = '{status}' WHERE id_extra_fasilitas = '{tbID.Text}'";
                 cmd = new MySqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Berhasil mengubah extra fasilitas");
+                MessageBox.Show("Berhasil mengubah data fasilitas tambahan!", "Berhasil");
                 refreshDGV();
                 resetTampilan();
             }
             else
             {
-                MessageBox.Show("Tidak bisa mengubah extra fasilitas");
+                MessageBox.Show("Tidak bisa mengubah data fasilitas tambahan!", "Gagal");
             }
         }
 

@@ -19,7 +19,7 @@ namespace Hotel_Harem_SamGun
         DataTable dt;
         int id_reservasi, selectedIdxFasilitas = -1, selectedIdxKeranjang = -1;
         FormPenambahanFasilitasDataTamu formLama;
-        
+
         public FormPenambahanFasilitasKamar(FormPenambahanFasilitasDataTamu formLama)
         {
             Koneksi.openConn();
@@ -30,8 +30,38 @@ namespace Hotel_Harem_SamGun
             isiKodeReservasidanNamaTamu();
             refreshDGV();
             hitungSubtotal();
+            priceColumnSetup();
         }
 
+        private void FormPenambahanFasilitasKamar_Load(object sender, EventArgs e)
+        {
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvFasilitas.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvKeranjang.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvKeranjang.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvKeranjang.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
+            dgvKeranjang.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvKeranjang.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
+
+        private void priceColumnSetup()
+        {
+            dgvFasilitas.Columns[2].MinimumWidth = dgvFasilitas.Columns[2].Width + 5;
+            dgvFasilitas.Columns[3].MinimumWidth = dgvFasilitas.Columns[3].Width + 30;
+            dgvFasilitas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvFasilitas.EnableHeadersVisualStyles = false;
+            dgvKeranjang.Columns[2].MinimumWidth = dgvKeranjang.Columns[2].Width + 10;
+            dgvKeranjang.Columns[4].MinimumWidth = dgvKeranjang.Columns[4].Width + 10;
+            dgvKeranjang.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvKeranjang.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvKeranjang.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvKeranjang.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            dgvKeranjang.EnableHeadersVisualStyles = false;
+        }
 
         public void isiKodeReservasidanNamaTamu()
         {
@@ -43,19 +73,14 @@ namespace Hotel_Harem_SamGun
             cmd.CommandText = $"SELECT nama_tamu FROM header_reservasi hr JOIN tamu t ON t.kode_tamu = hr.kode_tamu JOIN detail_reservasi dr ON dr.kode_reservasi = hr.kode_reservasi WHERE id_detail_reservasi = '{id_reservasi}'";
             cmd.Connection = conn;
             lblNamaTamu.Text = cmd.ExecuteScalar().ToString();
-            
+
             cmd.CommandText = $"SELECT nomor_kamar FROM header_reservasi hr  JOIN detail_reservasi dr ON dr.kode_reservasi = hr.kode_reservasi JOIN kamar k ON k.kode_kamar = dr.kode_kamar WHERE id_detail_reservasi = '{id_reservasi}'";
             cmd.Connection = conn;
             lblNoKamar.Text = cmd.ExecuteScalar().ToString();
         }
 
-
-
         public void refreshDGV()
         {
-            dgvFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            dgvFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
-            dgvFasilitas.EnableHeadersVisualStyles = false;
             cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = "SELECT id_extra_fasilitas, nama_extra_fasilitas, stok_extra_fasilitas, CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')) FROM extra_fasilitas WHERE status_extra_fasilitas = 1";
@@ -69,16 +94,11 @@ namespace Hotel_Harem_SamGun
             dgvFasilitas.Columns[3].HeaderText = "Harga";
             dgvFasilitas.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvFasilitas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvFasilitas.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         public void searchDGV(string keyword)
         {
-            dgvFasilitas.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            dgvFasilitas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
-            dgvFasilitas.EnableHeadersVisualStyles = false;
             cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = $"SELECT id_extra_fasilitas, nama_extra_fasilitas, stok_extra_fasilitas, CONCAT('Rp ', FORMAT(harga_extra_fasilitas,0,'de_DE')) FROM extra_fasilitas WHERE status_extra_fasilitas = 1 AND nama_extra_fasilitas LIKE '%{keyword}%'";
@@ -92,8 +112,6 @@ namespace Hotel_Harem_SamGun
             dgvFasilitas.Columns[3].HeaderText = "Harga";
             dgvFasilitas.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvFasilitas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvFasilitas.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvFasilitas.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
@@ -143,7 +161,7 @@ namespace Hotel_Harem_SamGun
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
-            if(selectedIdxKeranjang > -1)
+            if (selectedIdxKeranjang > -1)
             {
                 dgvKeranjang.Rows.RemoveAt(selectedIdxKeranjang);
             }
@@ -152,7 +170,7 @@ namespace Hotel_Harem_SamGun
 
         private void dgvKeranjang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvKeranjang.Rows.Count > 0)
+            if (dgvKeranjang.Rows.Count > 0)
             {
                 selectedIdxKeranjang = dgvKeranjang.CurrentCell.RowIndex;
             }
@@ -168,7 +186,7 @@ namespace Hotel_Harem_SamGun
                 cmd.Connection = conn;
                 cmd.CommandText = $"SELECT COUNT(*) FROM header_extra_fasilitas WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
                 int jml = Convert.ToInt32(cmd.ExecuteScalar().ToString());
-                if(jml > 0)
+                if (jml > 0)
                 {
                     // sudah ada di header
                     cmd.CommandText = $"SELECT id_header_extra_fasilitas FROM header_extra_fasilitas WHERE kode_reservasi = '{lblKodeReservasi.Text}'";
@@ -228,14 +246,14 @@ namespace Hotel_Harem_SamGun
                     cmd.ExecuteNonQuery();
                 }
                 trans.Commit();
-                MessageBox.Show("Transaksi Berhasil");
+                MessageBox.Show("Berhasil pesan fasilitas tambahan!", "Berhasil");
                 dgvKeranjang.Rows.Clear();
                 resetField();
                 refreshDGV();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
                 trans.Rollback();
             }
         }
@@ -254,19 +272,9 @@ namespace Hotel_Harem_SamGun
             tbCari.Text = "";
         }
 
-        private void FormPenambahanFasilitasKamar_Load(object sender, EventArgs e)
-        {
-            dgvFasilitas.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            dgvFasilitas.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            dgvFasilitas.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            dgvKeranjang.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            dgvKeranjang.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            dgvKeranjang.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-        }     
-
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            if(selectedIdxFasilitas > -1)
+            if (selectedIdxFasilitas > -1)
             {
                 if (numJumlah.Value > 0)
                 {
@@ -285,7 +293,7 @@ namespace Hotel_Harem_SamGun
                         int jumlah = Convert.ToInt32(numJumlah.Value.ToString());
                         if (jumlah > stok)
                         {
-                            MessageBox.Show("Stok tidak mencukupi");
+                            MessageBox.Show("Stok tidak mencukupi!", "Gagal");
                         }
                         else
                         {
@@ -311,7 +319,7 @@ namespace Hotel_Harem_SamGun
                         int jumlah = Convert.ToInt32(numJumlah.Value.ToString()) + Convert.ToInt32(dgvKeranjang.Rows[idxRow].Cells[3].Value.ToString());
                         if (jumlah > stok)
                         {
-                            MessageBox.Show("Stok tidak mencukupi");
+                            MessageBox.Show("Stok tidak mencukupi!", "Gagal");
                         }
                         else
                         {
@@ -329,12 +337,12 @@ namespace Hotel_Harem_SamGun
                 }
                 else
                 {
-                    MessageBox.Show("Jumlah harus lebih besar dari 0");
+                    MessageBox.Show("Jumlah pesanan harus lebih besar dari 0!", "Gagal");
                 }
             }
             else
             {
-                MessageBox.Show("Silahkan pilih fasilitas terlebih dahulu");
+                MessageBox.Show("Silahkan pilih terlebih dahulu fasilitas yang ingin ditambahkan!", "Gagal");
             }
         }
 

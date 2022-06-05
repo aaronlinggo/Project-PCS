@@ -369,7 +369,7 @@
             this.MaximizeBox = false;
             this.Name = "FormReservasi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reservasi";
+            this.Text = "Header Reservasi";
             this.Load += new System.EventHandler(this.FormReservasi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHeaderReservasi)).EndInit();
             this.ResumeLayout(false);

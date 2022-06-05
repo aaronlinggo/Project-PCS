@@ -203,13 +203,13 @@ namespace Hotel_Harem_SamGun
             if (selectedIdx > -1)
             {
                 //update atau delete
-                MessageBox.Show("Tidak bisa insert di data yang sudah ada di database");
+                MessageBox.Show("Tidak bisa insert data yang sudah ada di database", "Gagal");
             }
             else
             {
                 if (numLantai.Value == 0 || numKamarKe.Value == 0)
                 {
-                    MessageBox.Show("Lantai dan Kamarnya tidak mungkin 0");
+                    MessageBox.Show("Lantai atau nomor kamar tidak boleh 0!", "Gagal");
                 }
                 else
                 {
@@ -248,7 +248,7 @@ namespace Hotel_Harem_SamGun
                         cmd.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Berhasil menambah kamar baru");
+                    MessageBox.Show("Berhasil menambah data kamar baru!", "Berhasil");
                     refreshDGV();
                     resetTampilan();
                 }
@@ -264,7 +264,7 @@ namespace Hotel_Harem_SamGun
             {
                 if (numLantai.Value == 0 || numKamarKe.Value == 0)
                 {
-                    MessageBox.Show("Lantai dan nomor kamar tidak mungkin 0");
+                    MessageBox.Show("Lantai atau nomor kamar tidak boleh 0!", "Gagal");
                 }
                 else
                 {
@@ -280,14 +280,14 @@ namespace Hotel_Harem_SamGun
                     query = $"UPDATE kamar SET kode_kamar = '{tbKode.Text}', nomor_kamar = '{tbNoKamar.Text}', nomor_lantai = '{numLantai.Value}',status_kamar = '{status}', id_jenis_kamar = '{comboJenisKamar.SelectedValue}' WHERE id_kamar = '{tbID.Text}'";
                     cmd = new MySqlCommand(query, conn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Berhasil mengubah kamar");
+                    MessageBox.Show("Berhasil mengubah data kamar!", "Berhasil");
                     refreshDGV();
                     resetTampilan();
                 }
             }
             else
             {
-                MessageBox.Show("Tidak bisa mengubah");
+                MessageBox.Show("Tidak bisa mengubah data kamar!", "Gagal");
             }
         }
 
@@ -298,13 +298,13 @@ namespace Hotel_Harem_SamGun
                 query = $"UPDATE kamar SET status_kamar = '99' WHERE id_kamar = '{tbID.Text}'";
                 cmd = new MySqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Berhasil menghapus kamar");
+                MessageBox.Show("Berhasil menghapus data kamar!", "Berhasil");
                 refreshDGV();
                 resetTampilan();
             }
             else
             {
-                MessageBox.Show("Tidak bisa menghapus");
+                MessageBox.Show("Tidak bisa menghapus data kamar!", "Gagal");
             }
         }
 

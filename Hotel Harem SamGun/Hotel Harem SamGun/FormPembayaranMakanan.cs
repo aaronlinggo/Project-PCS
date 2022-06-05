@@ -57,11 +57,13 @@ WHERE tamu.status_tamu = 1";
                 dataGridView1.DataSource = dttamu;
                 dataGridView1.Columns[0].HeaderText = "Kode Tamu";
                 dataGridView1.Columns[1].HeaderText = "Nama Tamu";
+                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
         public void loadDatagrid2()
@@ -86,7 +88,7 @@ WHERE tamu.status_tamu = 1";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -193,24 +195,24 @@ WHERE header_pemesanan_makanan.kode_tamu='" + pick[0].ToString() + "'";
 
                         tbSubtotal.Text = "0";
 
-                        MessageBox.Show("Berhasil Bayar!");
+                        MessageBox.Show("Berhasil bayar!", "Berhasil");
                         sqlt.Commit();
                     }
                     catch (MySqlException ex)
                     {
                         Console.WriteLine(ex.Message);
                         sqlt.Rollback();
-                        MessageBox.Show("Gagal Bayar!");
+                        MessageBox.Show("Gagal bayar!", "Gagal");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Sudah dibayar!");
+                    MessageBox.Show("Sudah dibayar!", "Gagal");
                 }
             }
             else
             {
-                MessageBox.Show("Silahkan pilih dahulu pembayaran yang ingin dibayarkan!");
+                MessageBox.Show("Silahkan pilih terlebih dahulu pembayaran yang ingin dibayarkan!", "Gagal");
             }
         }
 

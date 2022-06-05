@@ -84,7 +84,6 @@ namespace Hotel_Harem_SamGun
             dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
             dataGridView2.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             dataGridView2.DefaultCellStyle.Font = new Font("Gill Sans MT", 12, FontStyle.Regular);
-            // label1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
 
             query = @"SELECT
   makanan.id_makanan,
@@ -110,7 +109,11 @@ order by 1 asc";
             dtkeranjang.Columns.Add("Jumlah Pemesanan", typeof(string));
             dtkeranjang.Columns.Add("Total Harga", typeof(string));
             dataGridView2.DataSource = dtkeranjang;
+            dataGridView2.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView2.ClearSelection();
+            dataGridView2.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView2.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView2.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             /*Koneksi.openConn();*/
             loadDatagrid();
             loadCB();
@@ -162,13 +165,16 @@ order by 1 asc";
                 dataGridView1.Columns[4].HeaderText = "Stok";
                 dataGridView1.Columns[5].Visible = false;
                 dataGridView1.Columns[6].Visible = false;
-                dataGridView1.Columns[7].HeaderText = "Jenis";
+                dataGridView1.Columns[7].HeaderText = "Jenis Makanan";
                 dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -280,7 +286,7 @@ order by 1 asc";
             }
             else
             {
-                MessageBox.Show("Jumlah yang ingin dibeli minimum 1!");
+                MessageBox.Show("Minimum jumlah makanan yang ingin dibeli adalah 1!", "Gagal");
             }
         }
 
@@ -432,7 +438,7 @@ order by 1 asc";
                         }
                         else
                         {
-                            MessageBox.Show("Gagal Beli, Stok tidak mencukupi!");
+                            MessageBox.Show("Stok tidak mencukupi!", "Gagal");
                             sqlt.Rollback();
                             return;
                         }
@@ -458,7 +464,7 @@ order by 1 asc";
                     btnMines.Enabled = false;
                     btnPlus.Enabled = false;
 
-                    MessageBox.Show("Berhasil Pesan Makanan!");
+                    MessageBox.Show("Berhasil melakukan pemesanan makanan!", "Berhasil");
 
                     adapter.Update(dt);
 
@@ -467,7 +473,7 @@ order by 1 asc";
                 catch (MySqlException ex)
                 {
                     sqlt.Rollback();
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Error");
                 }
 
                 loadDatagrid();
@@ -475,7 +481,7 @@ order by 1 asc";
             }
             else
             {
-                MessageBox.Show("Pilih Tamu yang ingin membeli makanan!");
+                MessageBox.Show("Silahkan pilih terlebih dahulu tamu yang ingin membeli makanan!", "Gagal");
             }
         }
 
@@ -487,11 +493,14 @@ order by 1 asc";
             dataGridView1.Columns[1].HeaderText = "Nama Makanan";
             dataGridView1.Columns[2].Visible = false;
             dataGridView1.Columns[3].HeaderText = "Harga";
-            dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns[4].HeaderText = "Stok";
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Columns[7].HeaderText = "Jenis";
+            dataGridView1.Columns[7].HeaderText = "Jenis Makanan";
+            dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.ClearSelection();
         }
 

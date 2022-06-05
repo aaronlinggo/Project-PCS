@@ -89,7 +89,7 @@ namespace Hotel_Harem_SamGun
                 dgvDetailFasilitas.Rows[idxRow].Cells[1].Value = reader.GetString(1);
             }
             reader.Close();
-            dgvDetailFasilitas.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvDetailFasilitas.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvDetailFasilitas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             selectedIdx = -1;
             dgvFasilitas.ClearSelection();
@@ -133,7 +133,7 @@ namespace Hotel_Harem_SamGun
                 }
                 if (found)
                 {
-                    MessageBox.Show("Fasilitas tersebut sudah ditambahkan");
+                    MessageBox.Show("Fasilitas tersebut sudah pernah ditambahkan ke dalam jenis kamar yang diinginkan!", "Gagal");
                 }
                 else
                 {
@@ -144,7 +144,7 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                MessageBox.Show("Silahkan pilih fasilitasnya terlebih dahulu");
+                MessageBox.Show("Silahkan pilih terlebih dahulu fasilitas yang ingin ditambahkan!", "Gagal");
             }
             selectedIdx = -1;
             selectedIdx2 = -1;
@@ -166,7 +166,7 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                MessageBox.Show("Silahkan pilih detail fasilitas yang mau dihapus");
+                MessageBox.Show("Silahkan pilih terlebih dahulu detail fasilitas yang ingin dihapus!", "Gagal");
             }
         }
 
@@ -208,7 +208,7 @@ namespace Hotel_Harem_SamGun
                 }
 
             }
-            MessageBox.Show("Berhasil merubah fasilitas");
+            MessageBox.Show("Berhasil ubah data fasilitas kamar!", "Berhasil");
             refreshDGVDetailFasilitasAwal();
             selectedIdx = -1;
             selectedIdx2 = -1;

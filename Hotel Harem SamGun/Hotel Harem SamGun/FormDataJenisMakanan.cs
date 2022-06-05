@@ -65,7 +65,7 @@ order by 1 asc";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -187,20 +187,20 @@ order by 1 asc", Koneksi.getConn());
                     btnEdit.Enabled = false;
                     btnHapus.Enabled = false;
 
-                    MessageBox.Show("Berhasil Insert Jenis Makanan!");
+                    MessageBox.Show("Berhasil menambah jenis makanan baru!", "Berhasil");
                     sqlt.Commit();
                 }
                 catch (MySqlException ex)
                 {
                     Console.WriteLine(ex.Message);
                     sqlt.Rollback();
-                    MessageBox.Show("Gagal Insert Jenis Makanan!");
+                    MessageBox.Show("Gagal menambah jenis makanan baru!", "Gagal");
                 }
 
             }
             else
             {
-                MessageBox.Show("Nama Jenis Makanan tidak boleh kosong!");
+                MessageBox.Show("Nama jenis makanan tidak boleh kosong!", "Gagal");
             }
         }
 
@@ -227,14 +227,14 @@ order by 1 asc", Koneksi.getConn());
                 btnHapus.Enabled = false;
                 btnTambah.Enabled = true;
 
-                MessageBox.Show("Berhasil Hapus Jenis Makanan!");
+                MessageBox.Show("Berhasil hapus jenis makanan!", "Berhasil");
                 sqlt.Commit();
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
                 sqlt.Rollback();
-                MessageBox.Show("Gagal Hapus Jenis Makanan!");
+                MessageBox.Show("Gagal hapus jenis makanan!", "Gagal");
             }
         }
 
@@ -265,19 +265,19 @@ order by 1 asc", Koneksi.getConn());
                     btnHapus.Enabled = false;
                     btnTambah.Enabled = true;
 
-                    MessageBox.Show("Berhasil Ubah Jenis Makanan!");
+                    MessageBox.Show("Berhasil ubah jenis makanan!", "Berhasil");
                     sqlt.Commit();
                 }
                 catch (MySqlException ex)
                 {
                     Console.WriteLine(ex.Message);
                     sqlt.Rollback();
-                    MessageBox.Show("Gagal Ubah Jenis Makanan!");
+                    MessageBox.Show("Gagal ubah jenis makanan!", "Gagal");
                 }
             }
             else
             {
-                MessageBox.Show("Nama Jenis Makanan tidak boleh kosong!");
+                MessageBox.Show("Nama jenis makanan tidak boleh kosong!", "Gagal");
             }
         }
 

@@ -166,13 +166,13 @@ namespace Hotel_Harem_SamGun
                 query = $"UPDATE jenis_kamar SET status_jenis_kamar = 99 WHERE id_jenis_kamar = '{tbID.Text}'";
                 cmd = new MySqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Berhasil menghapus jenis kamar");
+                MessageBox.Show("Berhasil menghapus jenis kamar!", "Berhasil");
                 refreshDGV();
                 resetTampilan();
             }
             else
             {
-                MessageBox.Show("Tidak bisa menghapus jenis kamar");
+                MessageBox.Show("Tidak bisa menghapus jenis kamar!", "Gagal");
             }
         }
 
@@ -181,24 +181,24 @@ namespace Hotel_Harem_SamGun
             if (selectedIdx > -1)
             {
                 //untuk update atau delete
-                MessageBox.Show("Tidak bisa insert di data yang sudah ada di database");
+                MessageBox.Show("Tidak bisa insert data yang sudah ada di database!", "Gagal");
             }
             else
             {
                 if (tbNama.Text == "" || tbHarga.Text == "")
                 {
-                    MessageBox.Show("Semua field harus terisi");
+                    MessageBox.Show("Semua field harus terisi!", "Gagal");
                 }
                 else
                 {
                     int harga;
                     if (!int.TryParse(tbHarga.Text, out harga))
                     {
-                        MessageBox.Show("Harga harus angka");
+                        MessageBox.Show("Harga harus berupa angka!", "Gagal");
                     }
                     else if (harga < 0)
                     {
-                        MessageBox.Show("Harga minimalnya adalah 0");
+                        MessageBox.Show("Minimal harga adalah 0!", "Gagal");
                     }
                     else
                     {
@@ -237,7 +237,7 @@ namespace Hotel_Harem_SamGun
                             cmd.ExecuteNonQuery();
                         }
 
-                        MessageBox.Show("Berhasil menambah jenis kamar baru");
+                        MessageBox.Show("Berhasil menambah jenis kamar baru!", "Berhasil");
                         refreshDGV();
                         resetTampilan();
                     }
@@ -253,11 +253,11 @@ namespace Hotel_Harem_SamGun
                 int harga;
                 if (!int.TryParse(tbHarga.Text, out harga))
                 {
-                    MessageBox.Show("Harga harus angka");
+                    MessageBox.Show("Harga harus berupa angka!", "Gagal");
                 }
                 else if (harga < 0)
                 {
-                    MessageBox.Show("Harga minimalnya adalah 0");
+                    MessageBox.Show("Minimal harga adalah 0!", "Gagal");
                 }
                 else
                 {
@@ -273,7 +273,7 @@ namespace Hotel_Harem_SamGun
                     query = $"UPDATE jenis_kamar SET nama_jenis_kamar = '{tbNama.Text}', harga_jenis_kamar = '{tbHarga.Text}', status_jenis_kamar = '{status}' WHERE id_jenis_kamar = '{tbID.Text}'";
                     cmd = new MySqlCommand(query, conn);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Berhasil mengubah jenis kamar");
+                    MessageBox.Show("Berhasil mengubah jenis kamar!", "Berhasil");
                     refreshDGV();
                     resetTampilan();
                 }
@@ -281,7 +281,7 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                MessageBox.Show("Tidak bisa mengubah jenis kamar");
+                MessageBox.Show("Tidak bisa mengubah jenis kamar!", "Gagal");
             }
         }
 
@@ -319,7 +319,7 @@ namespace Hotel_Harem_SamGun
             }
             else
             {
-                MessageBox.Show("Silahkan pilih terlebih dulu");
+                MessageBox.Show("Silahkan pilih terlebih dahulu jenis kamar yang ingin dilihat!", "Gagal");
             }
         }
     }
