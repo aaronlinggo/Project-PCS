@@ -195,6 +195,8 @@ namespace Hotel_Harem_SamGun
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormPenambahanFasilitasDataTamu";
             this.Text = "Penambahan Fasilitas Kamar";
             this.Load += new System.EventHandler(this.FormPenambahanFasilitasDataTamu_Load);
