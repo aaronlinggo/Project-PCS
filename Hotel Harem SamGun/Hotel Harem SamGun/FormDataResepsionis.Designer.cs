@@ -121,8 +121,8 @@ namespace Hotel_Harem_SamGun
             // 
             // btnEdit
             // 
-            this.btnEdit.Enabled = false;
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnEdit.Enabled = false;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
@@ -137,8 +137,8 @@ namespace Hotel_Harem_SamGun
             // 
             // btnHapus
             // 
-            this.btnHapus.Enabled = false;
             this.btnHapus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnHapus.Enabled = false;
             this.btnHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHapus.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHapus.ForeColor = System.Drawing.Color.White;
@@ -577,7 +577,7 @@ namespace Hotel_Harem_SamGun
             this.MaximizeBox = false;
             this.Name = "FormDataResepsionis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormDataResepsionis";
+            this.Text = "Data Resepsionis";
             this.Load += new System.EventHandler(this.FormDataResepsionis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

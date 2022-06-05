@@ -39,6 +39,7 @@ namespace Hotel_Harem_SamGun
             this.rb0 = new System.Windows.Forms.RadioButton();
             this.rb1 = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnUbah = new System.Windows.Forms.Button();
             this.numKamarKe = new System.Windows.Forms.NumericUpDown();
             this.numLantai = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@ namespace Hotel_Harem_SamGun
             this.label3 = new System.Windows.Forms.Label();
             this.tbKode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnUbah = new System.Windows.Forms.Button();
             this.btnBersihkan = new System.Windows.Forms.Button();
             this.btnKembali = new System.Windows.Forms.Button();
             this.btnCari = new System.Windows.Forms.Button();
@@ -202,6 +202,21 @@ namespace Hotel_Harem_SamGun
             this.label7.Text = "Status :";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnUbah
+            // 
+            this.btnUbah.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnUbah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUbah.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUbah.ForeColor = System.Drawing.Color.White;
+            this.btnUbah.Location = new System.Drawing.Point(921, 104);
+            this.btnUbah.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
+            this.btnUbah.Name = "btnUbah";
+            this.btnUbah.Size = new System.Drawing.Size(118, 34);
+            this.btnUbah.TabIndex = 6;
+            this.btnUbah.Text = "UBAH";
+            this.btnUbah.UseVisualStyleBackColor = false;
+            this.btnUbah.Click += new System.EventHandler(this.btnUbah_Click);
+            // 
             // numKamarKe
             // 
             this.numKamarKe.Font = new System.Drawing.Font("Gill Sans MT", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -321,21 +336,6 @@ namespace Hotel_Harem_SamGun
             this.label2.Text = "Kode :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnUbah
-            // 
-            this.btnUbah.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnUbah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUbah.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUbah.ForeColor = System.Drawing.Color.White;
-            this.btnUbah.Location = new System.Drawing.Point(921, 104);
-            this.btnUbah.Margin = new System.Windows.Forms.Padding(12, 6, 12, 6);
-            this.btnUbah.Name = "btnUbah";
-            this.btnUbah.Size = new System.Drawing.Size(118, 34);
-            this.btnUbah.TabIndex = 6;
-            this.btnUbah.Text = "UBAH";
-            this.btnUbah.UseVisualStyleBackColor = false;
-            this.btnUbah.Click += new System.EventHandler(this.btnUbah_Click);
-            // 
             // btnBersihkan
             // 
             this.btnBersihkan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -417,7 +417,7 @@ namespace Hotel_Harem_SamGun
             this.MaximizeBox = false;
             this.Name = "FormDataKamar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form Data Kamar";
+            this.Text = "Data Kamar";
             this.Load += new System.EventHandler(this.FormDataKamar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).EndInit();
             this.groupBox1.ResumeLayout(false);

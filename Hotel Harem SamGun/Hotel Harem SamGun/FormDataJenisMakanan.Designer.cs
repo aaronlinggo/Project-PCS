@@ -265,7 +265,7 @@ namespace Hotel_Harem_SamGun
             this.MaximizeBox = false;
             this.Name = "FormDataJenisMakanan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormDataJenisMakanan";
+            this.Text = "Data Jenis Makanan";
             this.Load += new System.EventHandler(this.FormDataJenisMakanan_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
