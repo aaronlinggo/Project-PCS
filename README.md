@@ -16,7 +16,7 @@ To make it easy for you to get started, here's a list of recommended next steps.
 ## Login for Actor
 
 ### Resepsionis
-* Username : Kenny
+* Username : Kosmas
 * Password : 12345678
 
 ### Admin
