@@ -22,9 +22,6 @@ namespace Hotel_Harem_SamGun
             btLogin.BackColor = System.Drawing.ColorTranslator.FromHtml("#f7a13e");
             btLogin.ForeColor = System.Drawing.Color.White;
 
-            // tbUsername.Text = "SamGun_Official";
-            // tbPassword.Text = "admin1234";
-
             Koneksi.openConn();
             btLogin.FlatAppearance.BorderSize = 0;
             if (!Koneksi.isValid)
@@ -40,10 +37,9 @@ namespace Hotel_Harem_SamGun
 
             try
             {
-                string query = $"SELECT kode_karyawan, nama_karyawan, username, password, roles FROM `karyawan` WHERE `username`=@Username AND `password`=@Password";
+                string query = $"SELECT kode_karyawan, nama_karyawan, username, password, roles FROM karyawan WHERE username=@username";
                 MySqlDataAdapter da = new MySqlDataAdapter(query, Koneksi.conn);
-                da.SelectCommand.Parameters.AddWithValue("@Username", tbUsername.Text);
-                da.SelectCommand.Parameters.AddWithValue("@Password", tbPassword.Text);
+                da.SelectCommand.Parameters.AddWithValue("@username", tbUsername.Text);
                 da.Fill(dtKaryawan);
 
                 if (dtKaryawan.Rows.Count == 1) return true;
@@ -66,47 +62,47 @@ namespace Hotel_Harem_SamGun
                 return;
             }
 
-            if (!getUsernamePasswordRoles())
+            string inputUsername = tbUsername.Text.Trim();
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM karyawan k WHERE k.username = @username", Koneksi.getConn());
+            cmd.Parameters.AddWithValue("@username", inputUsername);
+            int userCount = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (userCount > 0)
             {
-                MessageBox.Show("Username dan Password tidak ditemukan!", "GAGAL");
-                return;
-            }
+                cmd = new MySqlCommand("SELECT k.password FROM karyawan k WHERE k.username = @username", Koneksi.getConn());
+                cmd.Parameters.AddWithValue("@username", inputUsername);
+                string userPassword = cmd.ExecuteScalar().ToString();
 
-            //CEK USERNAME
-            if (tbUsername.Text.Trim() != dtKaryawan.Rows[0][2].ToString())
-            {
-                MessageBox.Show("Username Salah! Harap cek kembali!", "GAGAL");
-                return;
-            }
+                if (tbPassword.Text.Trim() == userPassword)
+                {
+                    cmd = new MySqlCommand("SELECT k.roles FROM karyawan k WHERE k.username = @username", Koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@username", inputUsername);
+                    string userRoles = cmd.ExecuteScalar().ToString();
 
-            //CEK PASSWORD
-            if (tbPassword.Text.Trim() != dtKaryawan.Rows[0][3].ToString())
-            {
-                MessageBox.Show("Password Salah! Harap cek kembali!", "GAGAL");
-                tbPassword.Text = "";
-                return;
-            }
+                    this.Hide();
 
-            string roles = dtKaryawan.Rows[0][4].ToString();
+                    if (userRoles == "Admin")
+                    {
+                        FormMenuAdmin form = new FormMenuAdmin();
+                        form.ShowDialog();
+                    }
+                    else
+                    {
+                        FormMenuResepsionis form = new FormMenuResepsionis();
+                        form.ShowDialog();
+                    }
 
-            //GANTI FORM
-            // tbUsername.Text = "";
-            // tbPassword.Text = "";
-
-            this.Hide();
-
-            if (roles == "Admin")
-            {
-                FormMenuAdmin form = new FormMenuAdmin();
-                form.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Password yang anda masukkan salah! Harap cek kembali!", "Gagal");
+                }
             }
             else
             {
-                FormMenuResepsionis form = new FormMenuResepsionis();
-                form.ShowDialog();
+                MessageBox.Show("Username tidak ditemukan!", "Gagal");
             }
-
-            this.Show();
         }
     }
 }

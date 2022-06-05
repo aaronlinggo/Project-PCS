@@ -45,10 +45,10 @@ namespace Hotel_Harem_SamGun
             this.btLogin.FlatAppearance.BorderSize = 0;
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLogin.Font = new System.Drawing.Font("Gill Sans MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLogin.Location = new System.Drawing.Point(71, 403);
+            this.btLogin.Location = new System.Drawing.Point(74, 411);
             this.btLogin.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(502, 46);
+            this.btLogin.Size = new System.Drawing.Size(500, 50);
             this.btLogin.TabIndex = 0;
             this.btLogin.Text = "LOGIN";
             this.btLogin.UseVisualStyleBackColor = true;
@@ -58,7 +58,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbUsername.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.Location = new System.Drawing.Point(73, 261);
+            this.tbUsername.Location = new System.Drawing.Point(74, 267);
             this.tbUsername.Margin = new System.Windows.Forms.Padding(10);
             this.tbUsername.Multiline = true;
             this.tbUsername.Name = "tbUsername";
@@ -69,7 +69,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbPassword.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(73, 340);
+            this.tbPassword.Location = new System.Drawing.Point(74, 359);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(10);
             this.tbPassword.Multiline = true;
             this.tbPassword.Name = "tbPassword";
@@ -81,7 +81,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(68, 304);
+            this.label3.Location = new System.Drawing.Point(68, 317);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 32);
@@ -103,7 +103,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Gill Sans MT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(919, 183);
+            this.label1.Location = new System.Drawing.Point(908, 201);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(330, 74);
@@ -116,7 +116,7 @@ namespace Hotel_Harem_SamGun
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(977, 280);
+            this.panel1.Location = new System.Drawing.Point(961, 297);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(224, 133);
             this.panel1.TabIndex = 6;
@@ -125,7 +125,7 @@ namespace Hotel_Harem_SamGun
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Gill Sans MT", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(66, 160);
+            this.label4.Location = new System.Drawing.Point(66, 158);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(389, 51);
@@ -156,7 +156,7 @@ namespace Hotel_Harem_SamGun
             this.MaximizeBox = false;
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form Login";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.FormLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
