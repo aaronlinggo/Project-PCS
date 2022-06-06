@@ -1,4 +1,4 @@
-# Project-PCS 2021
+# Project-PCS 2022
 
 ## Anggota Kelompok
 * Aaron Linggo Satria - 220116898
@@ -6,7 +6,7 @@
 * Ignatius Odi - 220116919
 * Samuel Gunawan - 220116928
 
-## Getting started
+## Getting Started
 
 To make it easy for you to get started, here's a list of recommended next steps.
 
