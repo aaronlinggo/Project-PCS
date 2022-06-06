@@ -39,7 +39,7 @@ To make it easy for you to get started, here's a list of recommended next steps.
 * Form Data Kamar
 * Form Data Tambahan Fasilitas Kamar
 * Form Data Jenis Kamar
-* Form Detail Fasilitas Jenis Kamar
+* Form Fasilitas di data jenis kamar
 * Laporan Penambahan Fasilitas yang paling sering di pesan
 * Laporan Tipe Kamar yang paling sering di pesan
 
